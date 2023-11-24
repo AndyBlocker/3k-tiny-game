@@ -1,0 +1,98 @@
+.content {
+    background-color: grey;
+    width: 100%;
+    min-height: 50em;
+    display: flex;
+    flex-direction: column;
+  }
+  
+.main {
+    border: 3px solid black;
+    width: 90%;
+    min-height: 48em;
+    border-radius: 1em;
+    background-color: mediumpurple;
+    margin: 1em auto auto auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+.number {
+    color: black;
+    margin: auto;
+    line-height: 1.5em;
+    font-size: 5em;
+  }
+  
+.text-container {
+    background-color: black;
+    margin: auto;
+    width: 90%;
+    height: 100%;
+    min-height: 40em;
+    box-sizing: border-box;
+    padding: 1em;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+.paragraph {
+    color: white;
+    width: 100%;
+    height: 100%;
+  }
+  
+.continue {
+      margin: auto;
+      text: black;
+      background: mediumpurple;
+      border-radius: 1em;
+      width: 10em;
+      box-sizing: border-box;
+      padding: 1em;
+      font-size: 1.5em;
+      border: none;
+}
+
+.card-wrapper {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+}
+  
+.card-container {
+    border-radius: 1em;
+    background: mediumpurple;
+    width: 100%;
+    height: 15em;
+    display: flex;
+    overflow: hidden;
+    max-width: 60%;
+    flex-grow: 1;
+    margin: 0 20px;
+  }
+  
+.card {
+    display: flex;
+    background: black;
+    color: white;
+    height: 80%;
+    width: 18%;
+    padding: 1em;
+    margin: auto;
+    text-align: center;
+    border-radius: 1em;
+}
+
+.prev-card, .next-card {
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px;
+    background-color: #ddd;
+    border: none;
+    border-radius: 5px;
+  }
