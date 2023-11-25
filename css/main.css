@@ -148,6 +148,10 @@
   max-height: 4em; 
 }
 
+.dev-area {
+  color: white;
+}
+
 @media screen and (max-width: 768px) {
   .card {
     width: 25%; 
