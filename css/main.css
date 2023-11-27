@@ -110,11 +110,10 @@
   margin: auto;
 }
 
-.button-area .large-button, .medium-button {
+.button-area .large-button, .medium-button, .small-button {
   margin: auto;
   color: black;
   background-color: mediumpurple;
-  background-image: './image/white.png';
   margin: 5%;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
@@ -130,6 +129,21 @@
 
 .button-area .medium-button {
   width: 40%;
+}
+
+.button-area .small-button {
+  width: 2em;
+}
+
+.nav-button {
+  border: 3px solid white;
+  background-color: transparent;
+  color:white;
+  margin: 5%;
+  height: 2em;
+  width: 2em;
+  border-radius: 1em;
+  font-size: 2em;
 }
   
 .continue {
@@ -212,6 +226,10 @@
 
   .button-area {
     width: 90%;
+  }
+
+  .nav-button {
+    margin: 5px;
   }
 }
 
