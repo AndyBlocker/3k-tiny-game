@@ -3,12 +3,9 @@ var allEvents = {
     {
         "type": "input",
         "description": "This is a description of event 434.",
+        "hintText": "Correct input: 1 or testCard, easter egg input: 2",
         "getCards": ["testCard", "100", "101", "102"],
-        "correctPrompt": {
-            "testCard": "Correct answer prompt for testCard",
-            "1": "Correct answer prompt for 2"
-        },
-        "wrongPrompt": "You typed in the wrong answer!",
+        "correctPrompt": ["testCard", "1"],
         "easterEggPrompt" : {
             "2" : "WOW! YOU TYPED THE EASTER EGG!!"
         },

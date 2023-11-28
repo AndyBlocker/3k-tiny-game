@@ -18,8 +18,8 @@ const cardContainer = document.querySelector('.card-container');
 const lootContainer = document.getElementById('loots');
 
 const maxCardsToShow = 4;
-const startEventId = "434";
 
+let currentEventId = "434";
 let currentStartIndex = 0;
 let deck = ['1', '2', '3'];
 let branch = {
@@ -28,8 +28,6 @@ let branch = {
   l: false, // 爱线完成情况
   m: false  // 钱线完成情况
 };
-
-deck.forEach(addCardToContainer);
 
 /* 
     ===== BOOT CHECK =====
@@ -78,7 +76,7 @@ function getColor( cardId ) {
 }
 
 function getCardDescription(id) {
-  let card = allCards[id];
+  const card = allCards[id];
   if (card==undefined || card.description==undefined){
     return "未找到卡牌信息！ID：" + id;
   }
@@ -98,7 +96,7 @@ function getCardDescription(id) {
 }
 
 function previewCard(id) {
-  let desc = getCardDescription(id);
+  const desc = getCardDescription(id);
   if ( desc ){
     window.alert(desc);
   }
@@ -117,7 +115,6 @@ function addCardToContainer(cardId, options) {
     cardDiv.style.backgroundColor = options.color || getColor( cardId );
   
     cardContainer.appendChild(cardDiv);
-    
 }
 
 function popCardFromContainer(container, cardId) {
@@ -177,6 +174,23 @@ function getEventDescription(event) {
   return event.description;
 }
 
+document.querySelector('.hintPrompt').addEventListener('click', () => {
+  document.querySelector('.hintText').style.display = 'initial';
+})
+
+function setupHint(event) {
+  const hintPrompt = document.querySelector('.hintPrompt');
+  if (event==undefined || event.hintText==undefined) {
+    hintPrompt.style.display = 'none';
+    return;
+  }
+  
+  const hintText = document.querySelector('.hintText');
+  hintPrompt.style.display = 'initial';
+  hintText.style.display = 'none';
+  hintText.innerText = event.hintText;
+}
+
 function addCardToLootContainer(cardId, divClass) {
   const cardDiv = document.createElement('button');
   cardDiv.innerText = "获得" + cardId;
@@ -187,7 +201,7 @@ function addCardToLootContainer(cardId, divClass) {
   cardDiv.style.backgroundColor = options.color;
   setTimeout( () => {cardDiv.onclick = () => { 
     addCardToDeck(cardId, options);
-    cardDiv.style.opacity = 0;
+    cardDiv.classList.add('hidden-element');
     cardDiv.onclick = () => {};
   }} , 100);
   lootContainer.appendChild(cardDiv);
@@ -221,7 +235,7 @@ function setupLootArea(event) {
   if (event==undefined || event.getCards==undefined) {
     return;
   }
-  let newCards = checkDeck(event.getCards);
+  const newCards = checkDeck(event.getCards);
   setupLootArea_internal(newCards);
 }
 
@@ -230,36 +244,83 @@ function setupOutputArea(event) {
     return;
   }
 
-  let continueButton = document.querySelector('.continue');
+  const continueButton = document.querySelector('.continue');
   continueButton.innerText = event.buttonPrompt || DEFAULT_CONTINUE_TEXT;
   setTimeout(() => continueButton.onclick = () => { 
     startEvent(event.nextEvent);
   }, 100);
 }
 
+function playErrorAnimation(){
+  window.alert('Wrong input!');
+}
+
+function tryAddEasterEggDescription( easterEggID, text ) {
+  const descriptionArea = document.getElementById('event-description');
+  let childs = descriptionArea.childNodes;
+  for(var i=0;i<childs.length;i++){
+    if (childs[i].name == easterEggID){
+      playErrorAnimation();
+      return;
+    }
+  }
+
+  const newLine = document.createElement('p');
+  newLine.innerText = text;
+  newLine.name = easterEggID;
+  descriptionArea.appendChild(newLine); 
+}
+
+function getUseResult(input, event) {
+  if (event.nextEvent == undefined) {
+    return;
+  }
+  if (event.correctPrompt == undefined || event.correctPrompt.includes(input)) {
+    startEvent(event.nextEvent);
+  }
+  else if (event.easterEggPrompt[input] != undefined) {
+    tryAddEasterEggDescription(input, event.easterEggPrompt[input]);
+  }
+  else {
+    playErrorAnimation();
+  }
+}
+
+function setupInputArea(event) {
+  document.getElementById('go').onclick = () => {
+    const inputBox = document.querySelector('.input-box');
+    const input = inputBox.value;
+    inputBox.value = "";
+    getUseResult(input, event);
+  }
+}
+
 function startEvent(eventId) {
+  currentEventId = eventId;
   popAllChildElement(lootContainer);
 
-  let event = allEvents[eventId];
+  const event = allEvents[eventId];
   document.querySelector('.topic').innerText = eventId;
-  document.querySelector('.paragraph').innerText = getEventDescription(event);
+  document.getElementById('event-description').innerText = getEventDescription(event);
 
+  setupHint(event);
   setupLootArea(event);
 
-  let isOutput = true; // TODO: Support input type
+  const isOutput = event == undefined || event.type != "input";
   if (isOutput) {
-    document.getElementById('outputs').style.display = '';
+    document.getElementById('outputs').style.display = 'initial';
     document.getElementById('inputs').style.display = 'none';
     setupOutputArea(event);
   }
   else {
-    document.getElementById('inputs').style.display = '';
+    document.getElementById('inputs').style.display = 'initial';
     document.getElementById('outputs').style.display = 'none';
-    // TODO: Support input type
+    setupInputArea(event);
   }
 }
 
-startEvent(startEventId);
+startEvent(currentEventId);
+deck.forEach(addCardToContainer);
 
 
 /* 

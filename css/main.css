@@ -28,7 +28,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 5%;
-  text-align: center;
+  /* text-align: center; */
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
@@ -46,6 +46,8 @@
 .text-container {
     /* background-color: black; */
     /* margin: auto; */
+    margin-left: 10%;
+    color: white;
     width: 60%;
     height: 80%;
     /* min-height: 40em; */
@@ -98,13 +100,25 @@
 }
 
 .paragraph {
-    color: white;
     width: 100%;
     height: 100%;
 }
 
+.hintPrompt {
+  color:lightyellow;
+  left: 0;
+}
+
+.hintPrompt:hover {
+  color: yellow;
+}
+
+.hintText {
+  display: none;
+}
+
 .button-area {
-  width: 30%;
+  width: 40%;
   left: 0;
   right: 0;
   margin: auto;
@@ -112,27 +126,51 @@
 
 .button-area .large-button, .medium-button, .small-button {
   margin: auto;
-  color: black;
   background-color: mediumpurple;
   margin: 5%;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
-  height: 2em;
+  height: 3em;
   border-radius: 10px;
   font-size: 1em;
   border: none;
+  touch-action: manipulation;
 }
 
 .button-area .large-button {
   width: 90%;
+  color: black;
 }
 
 .button-area .medium-button {
   width: 40%;
+  color: black;
 }
 
 .button-area .small-button {
-  width: 2em;
+  width: 3em;
+  color: white;
+  font-size: 1em;
+  font-style: bold;
+}
+
+.button-area .input-box {
+  margin: auto;
+  color: white;
+  background-color: transparent;
+  border: 3px solid mediumpurple;
+  margin: 5%;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  height: 3em;
+  border-radius: 10px;
+  font-size: 1em;
+  width: calc(80% - 3em);
+}
+
+.button-area .large-button:hover, .medium-button:hover, .small-button:hover {
+  cursor: pointer;
+  border: 3px solid rgba(255,255,255,0.5);
 }
 
 .nav-button {
@@ -144,6 +182,21 @@
   width: 2em;
   border-radius: 1em;
   font-size: 2em;
+  touch-action: manipulation;
+  text-align: center;
+}
+
+.nav-button:hover, .button-area .input-box:hover {
+  cursor: pointer;
+  background-color: rgba(255,255,255,0.4);
+}
+
+.hidden-element {
+  opacity: 0;
+}
+
+.hidden-element:hover {
+  cursor: default !important;
 }
   
 .continue {
@@ -186,16 +239,16 @@
   padding-top: calc(14% * 1.3 - 20px);
   max-height: 4em;  */
   height: calc( 25vh - 1em );
-  width: calc( (25vh) * 0.7 );
+  width: calc( max((25vh) * 0.7, 14%) );
 }
 
-.card:hover {
+.card:hover, .hintPrompt:hover {
   cursor: pointer;
 }
 
 .card:hover::before {
   content: '';
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255,255,255,0.3);
   z-index: 1;
   border-radius: inherit;
   position: absolute;
@@ -205,12 +258,14 @@
   width: 100%;
 }
 
-.mask:hover {
-  opacity: 1;
-}
-
 .dev-area {
   color: white;
+}
+
+@media screen and (max-width: 1023px) {
+  .button-area {
+    width: 90%;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -222,10 +277,6 @@
     width: 25%; 
     margin: 0;
     /* padding-top: calc(25% * 1.3 - 20px); */
-  }
-
-  .button-area {
-    width: 90%;
   }
 
   .nav-button {
