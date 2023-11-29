@@ -245,16 +245,39 @@ function setupLootArea(event) {
   setupLootArea_internal(newCards);
 }
 
-function setupOutputArea(event) {
-  if (event==undefined || event.nextEvent==undefined) {
+function addOutputButton(nextEventId, buttonPrompt) {
+  if (nextEventId==undefined) {
     return;
   }
 
-  const continueButton = document.querySelector('.continue');
-  continueButton.innerText = event.buttonPrompt || DEFAULT_CONTINUE_TEXT;
+  const continueButton = document.createElement('button');
+  continueButton.name = nextEventId;
+  continueButton.classList.add('continue');
+  continueButton.classList.add('large-button');
+  document.getElementById('outputs').appendChild(continueButton);
+
+  continueButton.innerText = buttonPrompt || DEFAULT_CONTINUE_TEXT;
   setTimeout(() => continueButton.onclick = () => { 
-    startEvent(event.nextEvent);
+    startEvent(nextEventId);
   }, 100);
+}
+
+function setupOutputArea(event) {
+  if (event==undefined) {
+    return;
+  }
+  popAllChildElement(document.getElementById('outputs'));
+  let choices = [];
+  if (event.choices != undefined) {
+    choices = event.choices;
+  }
+  else {
+    choices.push(event);
+  }
+  for (var i=0;i<choices.length;i++){
+    let choice = choices[i];
+    addOutputButton(choice.nextEvent, choice.buttonPrompt);
+  }
 }
 
 function playErrorAnimation(){

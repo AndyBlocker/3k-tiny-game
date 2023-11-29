@@ -9,7 +9,22 @@ var allEvents = {
         "easterEggPrompt" : {
             "2" : "WOW! YOU TYPED THE EASTER EGG!!"
         },
-        "nextEvent": "1"
+        "nextEvent": "sample-choice"
+    },
+    "sample-choice":
+    {
+        "type": "output",
+        "description": "This event has two choices",
+        "choices": [
+            {
+                "buttonPrompt": "Go back to 434",
+                "nextEvent": "434"
+            },
+            {
+                "buttonPrompt": "Go to next event",
+                "nextEvent": "1"
+            }
+        ]
     },
     "1":
     {
