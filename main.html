@@ -41,19 +41,40 @@
       </section>
       <button class="next-card nav-button">&gt;</button>
     </div>
-
-    <!-- DEV ZONE -->
-    <button class="add-card">Add a Card</button>
-    <div class="dev-area">
-      <input type="checkbox" name="dev-toogle-branch" value="j" />无J
-      <input type="checkbox" name="dev-toogle-branch" value="d" />无梦
-      <input type="checkbox" name="dev-toogle-branch" value="l" />无爱
-      <input type="checkbox" name="dev-toogle-branch" value="m" />无钱
-      <button id="dev-toggle-branch">Refresh</button>
-    </div>
-    <!-- END OF DEV ZONE -->
-
   </div>
+
+      <!-- DEV ZONE -->
+      <div class="dev-area">
+        DEBUG OPTIONS
+        <div><input type="text" id="dev-add-card-box"><button class="add-card">Add Card</button><div>
+        <div>
+          <input type="checkbox" name="dev-toogle-branch" value="j" />无J
+          <input type="checkbox" name="dev-toogle-branch" value="d" />无梦
+          <input type="checkbox" name="dev-toogle-branch" value="l" />无爱
+          <input type="checkbox" name="dev-toogle-branch" value="m" />无钱
+          <button id="dev-toggle-branch">Refresh</button>
+        </div>
+        <div style="margin: 0em 2em;">
+          数据修改：
+          <div>
+            <input type="radio" name="dev-eval-select" value='single-event' checked="checked" onclick="dev_toggleEvalInput('event', false)" />修改单个事件
+            <input type="radio" name="dev-eval-select" value='single-card' onclick="dev_toggleEvalInput('card', false)" />修改单个卡牌
+            <input type="radio" name="dev-eval-select" value='all-events' onclick="dev_toggleEvalInput('event', true)" />修改全部事件
+            <input type="radio" name="dev-eval-select" value='all-cards' onclick="dev_toggleEvalInput('card', true)" />修改全部卡牌
+            <button id="dev-clear-input">清空文本框</button>
+            <button id="dev-load-data" style="color:red">载入数据并刷新</button>
+          </div>
+          <div>
+            <div id="dev-eval-file" style="display: none;">请将<span id="dev-eval-path"></span>全文黏贴至此处：</div>
+            <div id="dev-eval-key">
+              &quot; <input type="text" id="dev-eval-title" style="width: 20em"/> &quot; : {
+            </div>
+            <div><textarea id="dev-eval-content" rows="10" style="width: 90%; margin-left: 2em;"></textarea></div>
+            <div id="dev-eval-key">},</div>
+          </div>
+        </div>
+      </div>
+      <!-- END OF DEV ZONE -->
 </body>
 
 <script type="text/javascript" src="./js/cards.js" id="cardsData"></script>
