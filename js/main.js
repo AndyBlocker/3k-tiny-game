@@ -186,15 +186,16 @@ document.querySelector('.hintPrompt').addEventListener('click', () => {
 
 function setupHint(event) {
   const hintPrompt = document.querySelector('.hintPrompt');
+  const hintText = document.querySelector('.hintText');
+  hintText.style.display = 'none';
+
   if (event==undefined || event.hintText==undefined) {
     hintPrompt.style.display = 'none';
-    return;
   }
-  
-  const hintText = document.querySelector('.hintText');
-  hintPrompt.style.display = 'initial';
-  hintText.style.display = 'none';
-  hintText.innerText = event.hintText;
+  else {
+    hintPrompt.style.display = 'initial';
+    hintText.innerText = event.hintText;
+  }
 }
 
 function addCardToLootContainer(cardId, divClass) {
@@ -371,7 +372,7 @@ if (DEV){
   });
 
   document.getElementById( 'dev-toggle-branch' ).addEventListener('click', () => {
-    let checkboxes = document.getElementsByName("dev-toogle-branch");
+    let checkboxes = document.getElementsByName("dev-choose-branch");
     branch.j = checkboxes[0].checked;
     branch.d = checkboxes[1].checked;
     branch.l = checkboxes[2].checked;

@@ -178,9 +178,9 @@
   background-color: transparent;
   color:white;
   margin: 5%;
-  height: 2em;
-  width: 2em;
-  border-radius: 1em;
+  height: 8vh;
+  width: 8vh;
+  border-radius: 4vh;
   font-size: 2em;
   touch-action: manipulation;
   text-align: center;
@@ -238,8 +238,8 @@
   max-width: 6em;
   padding-top: calc(14% * 1.3 - 20px);
   max-height: 4em;  */
-  height: calc( 25vh - 1em );
-  width: calc( max((25vh) * 0.7, 14%) );
+  height: 22vh;
+  width: calc( max((22vh) * 0.7, 14%) );
 }
 
 .card:hover, .hintPrompt:hover {
