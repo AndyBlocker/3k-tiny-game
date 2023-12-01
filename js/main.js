@@ -198,7 +198,9 @@ function setupHint(event) {
   }
 }
 
-function addCardToLootContainer(cardId, divClass) {
+let _lootToPick = 0;
+
+function addCardToLootContainer(event, cardId, divClass) {
   const cardDiv = document.createElement('button');
   cardDiv.innerText = "获得" + cardId;
   cardDiv.id = cardId;
@@ -210,18 +212,23 @@ function addCardToLootContainer(cardId, divClass) {
     addCardToDeck(cardId, options);
     cardDiv.classList.add('hidden-element');
     cardDiv.onclick = () => {};
+  
+    _lootToPick--;
+    if (_lootToPick == 0){
+      setupInOutArea(event);
+    }
   }} , 100);
   lootContainer.appendChild(cardDiv);
 }
 
-function setupLootArea_internal(cardList) {
+function setupLootArea_internal(event, cardList) {
   if (cardList.length >= 2) {
-    addCardToLootContainer( cardList[0], 'medium-button' );
-    addCardToLootContainer( cardList[1], 'medium-button' );
-    setupLootArea_internal(cardList.slice(2));
+    addCardToLootContainer( event, cardList[0], 'medium-button' );
+    addCardToLootContainer( event, cardList[1], 'medium-button' );
+    setupLootArea_internal( event, cardList.slice(2));
   }
   else if (cardList.length == 1) {
-    addCardToLootContainer( cardList[0], 'large-button' );
+    addCardToLootContainer( event, cardList[0], 'large-button' );
   }
   else {
     return;
@@ -239,11 +246,19 @@ function checkDeck(cardList){
 }
 
 function setupLootArea(event) {
+  popAllChildElement(lootContainer);
   if (event==undefined || event.getCards==undefined) {
-    return;
+    return false;
   }
+
   const newCards = checkDeck(event.getCards);
-  setupLootArea_internal(newCards);
+  _lootToPick = newCards.length;
+  if (_lootToPick == 0){
+    return false;
+  }
+  
+  setupLootArea_internal(event, newCards);
+  return true;
 }
 
 function addOutputButton(nextEventId, buttonPrompt) {
@@ -325,27 +340,32 @@ function setupInputArea(event) {
   }
 }
 
+function setupInOutArea(event) {
+  popAllChildElement(lootContainer);
+  const isOutput = event == undefined || event.type != "input";
+    if (isOutput) {
+      document.getElementById('outputs').style.display = 'initial';
+      setupOutputArea(event);
+    }
+    else {
+      document.getElementById('inputs').style.display = 'initial';
+      setupInputArea(event);
+    }
+}
+
+
 function startEvent(eventId) {
   currentEventId = eventId;
-  popAllChildElement(lootContainer);
 
   const event = allEvents[eventId];
   document.querySelector('.topic').innerText = eventId;
   document.getElementById('event-description').innerText = getEventDescription(event);
+  document.getElementById('inputs').style.display = 'none';
+  document.getElementById('outputs').style.display = 'none';
 
   setupHint(event);
-  setupLootArea(event);
-
-  const isOutput = event == undefined || event.type != "input";
-  if (isOutput) {
-    document.getElementById('outputs').style.display = 'initial';
-    document.getElementById('inputs').style.display = 'none';
-    setupOutputArea(event);
-  }
-  else {
-    document.getElementById('inputs').style.display = 'initial';
-    document.getElementById('outputs').style.display = 'none';
-    setupInputArea(event);
+  if (!setupLootArea(event)){
+    setupInOutArea(event);
   }
 }
 
