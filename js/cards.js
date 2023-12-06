@@ -17,8 +17,10 @@ var allCards = {
         "objClass": "Keter",
         "description": "Card 3. Object Class: Keter"
     },
-    "testCard": {
+    "585": {
+        "name": "一笔兔",
         "type": "SCP",
+        "img": "./img/585.png",
         "objClass": "Apollyon",
         "description": "Description of card testCard. You get this card from event 434."
     }
