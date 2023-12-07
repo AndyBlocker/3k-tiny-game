@@ -7,6 +7,7 @@ const SAFE_COLOR = "#8FBC8B";
 const EUCLID_COLOR = "#F0E68C";
 const KETER_COLOR = "#CD5C5C";
 const CLINICAL_COLOR = "#BBBBBB";
+const IMAGE_PATH = "./img/";
 const DEFAULT_CLINICAL_VAGUE_DESC = "该异常的性质不明。";
 const DEFAULT_CONTINUE_TEXT = "前往下一事件";
 
@@ -109,7 +110,7 @@ function previewCard(cardId) {
 
   if (cardData && cardData.img) {
     var img = document.createElement('img');
-    img.src = cardData.img;
+    img.src = IMAGE_PATH + cardData.img;
     img.className = 'card-description-img';
     modalContent.appendChild(img);
   }
