@@ -13,6 +13,19 @@ if (typeof (allEvents) === undefined) {
     ===== DECK INITIALIZATION =====
 */
 
+// TODO: 上传到wikidot之后要改链接？github有点慢并且有可能被墙
+fetch('https://raw.githubusercontent.com/AndyBlocker/3k-tiny-game/main/json/cards.json').then(response => {
+  if (!response.ok) {
+    throw new Error("HTTP error " + response.status);
+  }
+  return response.json();
+}).then(json => {
+  allCards = json;
+}).catch(function () {
+  this.dataError = true;
+  console.log("ERROR: cards.json not found!");
+});
+
 document.querySelector('.prev-card').addEventListener('click', () => {
   currentStartIndex = Math.max(currentStartIndex - 1, 0);
   updateCardVisibility();
@@ -27,7 +40,6 @@ document.querySelector('.next-card').addEventListener('click', () => {
     ===== EVENT INITIALIZATION =====
 */
 
-allEvents = [];
 fetch('https://raw.githubusercontent.com/AndyBlocker/3k-tiny-game/main/json/events.json').then(response => {
   if (!response.ok) {
     throw new Error("HTTP error " + response.status);
@@ -35,6 +47,7 @@ fetch('https://raw.githubusercontent.com/AndyBlocker/3k-tiny-game/main/json/even
   return response.json();
 }).then(json => {
   allEvents = json;
+  startEvent(currentEventId);
 }).catch(function () {
   this.dataError = true;
   console.log("ERROR: events.json not found!");
@@ -173,7 +186,6 @@ function startEvent(eventId) {
   }
 }
 
-startEvent(currentEventId);
+// startEvent(currentEventId);
 deck.forEach(addCardToContainer);
 updateCardVisibility();
-print(123);

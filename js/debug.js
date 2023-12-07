@@ -73,7 +73,7 @@ if (DEV) {
         }
         document.getElementById('dev-eval-path').innerText = dataTypeDesc[_dataType].filepath;
     }
-    dev_toggleEvalInput('event', false);
+    // dev_toggleEvalInput('event', false);
 
     document.getElementById('dev-clear-input').addEventListener('click', () => {
         document.getElementById('dev-eval-title').setAttribute("placeholder", '');
