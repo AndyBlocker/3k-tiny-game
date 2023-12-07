@@ -32,8 +32,21 @@ var allEvents = {
     "1":
     {
         "type": "output",
-        "description": "This is a description of event 1.",
+        "description": "该事件在无爱J时会有特殊描述。在持有卡牌111时也会有特殊描述（用debug区域加后刷新一下）",
+        "specialDescription": true,
         "buttonPrompt": "Go back to 434",
         "nextEvent": "434"
+    }
+}
+
+var GetSpecialEventDesc = {
+    "1": () => {
+        if (branch.j && branch.l) {
+            return "目前处于无爱J线";
+        }
+        else if (deck.includes("111")) {
+            return "你有一张卡牌111";
+        }
+        return undefined;
     }
 }

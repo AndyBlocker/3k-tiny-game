@@ -226,11 +226,15 @@ document.querySelector('.next-card').addEventListener('click', () => {
     ===== EVENT INITIALIZATION =====
 */
 
-function getEventDescription(event) {
+function getEventDescription(id) {
+  const event = allEvents[id];
   if (event == undefined || event.description == undefined) {
-    return "未找到卡牌信息！ID：" + id;
+    return "未找到事件信息！ID：" + id;
   }
 
+  if (event.specialDescription && GetSpecialEventDesc[id] != undefined && GetSpecialEventDesc[id]() != undefined){
+    return GetSpecialEventDesc[id]();
+  }
   if (branch.j && branch.m) {
     return event.descriptionNoJM;
   }
@@ -426,7 +430,7 @@ function startEvent(eventId) {
 
   const event = allEvents[eventId];
   document.querySelector('.topic').innerText = eventId;
-  document.getElementById('event-description').innerText = getEventDescription(event);
+  document.getElementById('event-description').innerText = getEventDescription(eventId);
   document.getElementById('inputs').style.display = 'none';
   document.getElementById('outputs').style.display = 'none';
 
