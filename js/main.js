@@ -392,11 +392,16 @@ function getUseResult(input, event) {
   if (event.nextEvent == undefined) {
     return;
   }
-  if (event.correctPrompt == undefined || event.correctPrompt.includes(input)) {
+  const correctPrompt = event.correctPrompt;
+  const easterEggPrompt = event.easterEggPrompt;
+
+  if (correctPrompt == undefined || 
+      correctPrompt == input || 
+      (Array.isArray(correctPrompt) && correctPrompt.includes(input))) {
     startEvent(event.nextEvent);
   }
-  else if (event.easterEggPrompt[input] != undefined) {
-    tryAddEasterEggDescription(input, event.easterEggPrompt[input]);
+  else if (easterEggPrompt && easterEggPrompt[input] != undefined) {
+    tryAddEasterEggDescription(input, easterEggPrompt[input]);
   }
   else {
     playErrorAnimation();
