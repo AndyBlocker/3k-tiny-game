@@ -20,12 +20,13 @@ const lootContainer = document.getElementById('loots');
 
 const maxCardsToShow = 4;
 
-let currentEventId = "434";
+let currentEventId = "0";
 let currentStartIndex = 0;
-let deck = ['1', '2', '3', '585'];
+let deck = [];
 let branch = {
     j: false, // J线完成情况
     d: false, // 梦线完成情况
     l: false, // 爱线完成情况
     m: false  // 钱线完成情况
 };
+let _lootToPick = 0;

@@ -191,6 +191,48 @@ function setupLootArea_internal(event, cardList) {
     }
 }
 
+function setupLootArea(event) {
+    popAllChildElement(lootContainer);
+    if (event == undefined || event.getCards == undefined) {
+        return false;
+    }
+    const newCards = checkDeck(event.getCards);
+    _lootToPick = newCards.length;
+    if (_lootToPick == 0) {
+        return false;
+    }
+
+    setupLootArea_internal(event, newCards);
+    return true;
+}
+
+function setupOutputArea(event) {
+    if (event == undefined) {
+        return;
+    }
+    popAllChildElement(document.getElementById('outputs'));
+    let choices = [];
+    if (event.choices != undefined) {
+        choices = event.choices;
+    }
+    else {
+        choices.push(event);
+    }
+    for (var i = 0; i < choices.length; i++) {
+        let choice = choices[i];
+        addOutputButton(choice.nextEvent, choice.buttonPrompt);
+    }
+}
+
+function setupInputArea(event) {
+    document.getElementById('go').onclick = () => {
+        const inputBox = document.querySelector('.input-box');
+        const input = inputBox.value;
+        inputBox.value = "";
+        getUseResult(input, event);
+    }
+}
+
 function playErrorAnimation() {
     window.alert('Wrong input!');
 }
@@ -210,4 +252,17 @@ function addOutputButton(nextEventId, buttonPrompt) {
     setTimeout(() => continueButton.onclick = () => {
         startEvent(nextEventId);
     }, 100);
+}
+
+function setupInOutArea(event) {
+    popAllChildElement(lootContainer);
+    const isOutputType = event == undefined || event.type != "input";
+    if (isOutputType || branch.m) {
+        document.getElementById('outputs').style.display = 'initial';
+        setupOutputArea(event);
+    }
+    else {
+        document.getElementById('inputs').style.display = 'initial';
+        setupInputArea(event);
+    }
 }

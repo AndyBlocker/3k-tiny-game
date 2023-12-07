@@ -30,6 +30,18 @@ function addCardToDeck(cardId, options) {
     updateCardVisibility();
 }
 
+// 从deck中删除card
+function loseCards(cardList) {
+    cardList.forEach(card => {
+        if (deck.includes(card)) {
+            deck.splice(deck.indexOf(card), 1);
+            popCardFromContainer(cardContainer, card);
+        }
+    });
+    currentStartIndex = Math.max(0, deck.length - maxCardsToShow);
+    updateCardVisibility();
+}
+
 // 清空card
 function refreshCardContainer() {
     popAllChildElement(cardContainer);
@@ -37,3 +49,12 @@ function refreshCardContainer() {
     updateCardVisibility();
 }
 
+function checkDeck(cardList) {
+    let newCards = [];
+    for (var i = 0; i < cardList.length; i++) {
+        if (!deck.includes(cardList[i])) {
+            newCards.push(cardList[i]);
+        }
+    }
+    return newCards;
+}
