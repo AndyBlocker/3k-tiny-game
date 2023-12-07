@@ -23,7 +23,7 @@ var allCards = {
     "585": {
         "name": "一笔兔",
         "type": "SCP",
-        "img": "585.png",
+        "img": "/cards/585.png",
         "objClass": "Apollyon",
         "description": "满足什么样的条件可以让一个图形能一笔画"
     }
