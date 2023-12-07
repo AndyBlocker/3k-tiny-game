@@ -33,10 +33,10 @@ let branch = {
     ===== BOOT CHECK =====
 */
 
-if (typeof(allCards) === undefined) {
+if (typeof (allCards) === undefined) {
   window.alert('card import failed!');
 }
-if (typeof(allEvents) === undefined) {
+if (typeof (allEvents) === undefined) {
   window.alert('event import failed!');
 }
 
@@ -45,25 +45,25 @@ if (typeof(allEvents) === undefined) {
 */
 
 function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
 
-function getColor( cardId ) {
-  if (branch.j){
+function getColor(cardId) {
+  if (branch.j) {
     return CLINICAL_COLOR;
   }
 
-  if (!cardId || !allCards[cardId] || !allCards[cardId].objClass ){
+  if (!cardId || !allCards[cardId] || !allCards[cardId].objClass) {
     return getRandomColor();
   }
 
   let objClass = allCards[cardId].objClass;
-  switch ( objClass.toLowerCase() ){
+  switch (objClass.toLowerCase()) {
     case "safe":
       return SAFE_COLOR;
     case "euclid":
@@ -77,78 +77,88 @@ function getColor( cardId ) {
 
 function getCardDescription(id) {
   const card = allCards[id];
-  if (card==undefined || card.description==undefined){
+  if (card == undefined || card.description == undefined) {
     return "未找到卡牌信息！ID：" + id;
   }
 
-  if (branch.j && branch.l){
+  if (branch.j && branch.l) {
     return card.descriptionNoJL || DEFAULT_CLINICAL_VAGUE_DESC;
   }
-  else if (branch.j && card.descriptionNoJ != undefined){
+  else if (branch.j && card.descriptionNoJ != undefined) {
     return card.descriptionNoJ;
   }
-  else if (branch.l && card.descriptionNoL != undefined){
+  else if (branch.l && card.descriptionNoL != undefined) {
     return card.descriptionNoL;
   }
-  else{
+  else {
     return card.description;
   }
 }
 
 function previewCard(id) {
   const desc = getCardDescription(id);
-  if ( desc ){
+  if (desc) {
     window.alert(desc);
   }
-  else{
+  else {
     window.alert(id + ' has been clicked!');
   }
 }
 
 function addCardToContainer(cardId, options) {
-    const cardDiv = document.createElement('div');
-    cardDiv.innerText = cardId;
-    cardDiv.id = cardId;
-    cardDiv.classList.add('card');
-    cardDiv.addEventListener('click', () => { previewCard(cardId); });
+  const cardDiv = document.createElement('div');
+  cardDiv.id = cardId;
+  cardDiv.classList.add('card');
 
-    cardDiv.style.backgroundColor = (options && options.color) || getColor( cardId );
-  
-    cardContainer.appendChild(cardDiv);
+  const cardTitle = document.createElement('div');
+  cardTitle.innerText = cardId;
+  cardTitle.classList.add('card-title');
+  cardDiv.appendChild(cardTitle);
+
+  const cardImage = document.createElement('img');
+  cardImage.src = options && options.imageUrl ? options.imageUrl : './img/585.png';
+  cardImage.classList.add('card-image');
+  cardDiv.appendChild(cardImage);
+
+  cardDiv.addEventListener('click', () => { previewCard(cardId); });
+  // cardDiv.style.backgroundColor = (options && options.color) || '#222222';
+  cardDiv.style.backgroundColor = '#222222';
+  cardContainer.appendChild(cardDiv);
 }
+
 
 function popCardFromContainer(container, cardId) {
   let childs = container.childNodes;
-  for(var i=0;i<childs.length;i++){
-    if(childs[i].id==cardId){
+  for (var i = 0; i < childs.length; i++) {
+    if (childs[i].id == cardId) {
       container.removeChild(childs[i]);
       return;
     }
   }
 }
 
-function popAllChildElement( parent ) {
+function popAllChildElement(parent) {
   let childs = parent.childNodes;
-  for(var i=childs.length-1;i>=0;i--){
+  for (var i = childs.length - 1; i >= 0; i--) {
     parent.removeChild(childs[i]);
   }
 }
 
 function updateCardVisibility() {
-    const cardElements = cardContainer.querySelectorAll('.card');
-    cardElements.forEach((card, index) => {
-      if (index >= currentStartIndex && index < currentStartIndex + maxCardsToShow) {
-        card.style.display = '';
-      } else {
-        card.style.display = 'none';
-      }
-    });
+  const cardElements = cardContainer.querySelectorAll('.card');
+  cardElements.forEach((card, index) => {
+    if (index >= currentStartIndex && index < currentStartIndex + maxCardsToShow) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
 }
 
 function addCardToDeck(cardId, options) {
   deck.push(cardId);
   addCardToContainer(cardId, options);
-  currentStartIndex = Math.max(0,deck.length - maxCardsToShow);
+  currentStartIndex = Math.max(0, deck.length - maxCardsToShow);
   updateCardVisibility();
 }
 
@@ -164,7 +174,7 @@ document.querySelector('.prev-card').addEventListener('click', () => {
 });
 
 document.querySelector('.next-card').addEventListener('click', () => {
-  currentStartIndex = Math.min(currentStartIndex + 1, Math.max(0,deck.length - maxCardsToShow));
+  currentStartIndex = Math.min(currentStartIndex + 1, Math.max(0, deck.length - maxCardsToShow));
   updateCardVisibility();
 });
 
@@ -173,7 +183,7 @@ document.querySelector('.next-card').addEventListener('click', () => {
 */
 
 function getEventDescription(event) {
-  if (event==undefined || event.description==undefined) {
+  if (event == undefined || event.description == undefined) {
     return "test in white";
   }
   // TODO: 支持不同线描述
@@ -189,7 +199,7 @@ function setupHint(event) {
   const hintText = document.querySelector('.hintText');
   hintText.style.display = 'none';
 
-  if (event==undefined || event.hintText==undefined) {
+  if (event == undefined || event.hintText == undefined) {
     hintPrompt.style.display = 'none';
   }
   else {
@@ -206,39 +216,41 @@ function addCardToLootContainer(event, cardId, divClass) {
   cardDiv.id = cardId;
   cardDiv.classList.add(divClass);
 
-  let options = { "color": getColor( cardId ) };
+  let options = { "color": getColor(cardId) };
   cardDiv.style.backgroundColor = options.color;
-  setTimeout( () => {cardDiv.onclick = () => { 
-    addCardToDeck(cardId, options);
-    cardDiv.classList.add('hidden-element');
-    cardDiv.onclick = () => {};
-  
-    _lootToPick--;
-    if (_lootToPick == 0){
-      setupInOutArea(event);
+  setTimeout(() => {
+    cardDiv.onclick = () => {
+      addCardToDeck(cardId, options);
+      cardDiv.classList.add('hidden-element');
+      cardDiv.onclick = () => { };
+
+      _lootToPick--;
+      if (_lootToPick == 0) {
+        setupInOutArea(event);
+      }
     }
-  }} , 100);
+  }, 100);
   lootContainer.appendChild(cardDiv);
 }
 
 function setupLootArea_internal(event, cardList) {
   if (cardList.length >= 2) {
-    addCardToLootContainer( event, cardList[0], 'medium-button' );
-    addCardToLootContainer( event, cardList[1], 'medium-button' );
-    setupLootArea_internal( event, cardList.slice(2));
+    addCardToLootContainer(event, cardList[0], 'medium-button');
+    addCardToLootContainer(event, cardList[1], 'medium-button');
+    setupLootArea_internal(event, cardList.slice(2));
   }
   else if (cardList.length == 1) {
-    addCardToLootContainer( event, cardList[0], 'large-button' );
+    addCardToLootContainer(event, cardList[0], 'large-button');
   }
   else {
     return;
   }
 }
 
-function checkDeck(cardList){
+function checkDeck(cardList) {
   let newCards = [];
-  for (var i=0;i<cardList.length;i++) {
-    if (!deck.includes(cardList[i])){
+  for (var i = 0; i < cardList.length; i++) {
+    if (!deck.includes(cardList[i])) {
       newCards.push(cardList[i]);
     }
   }
@@ -247,22 +259,22 @@ function checkDeck(cardList){
 
 function setupLootArea(event) {
   popAllChildElement(lootContainer);
-  if (event==undefined || event.getCards==undefined) {
+  if (event == undefined || event.getCards == undefined) {
     return false;
   }
 
   const newCards = checkDeck(event.getCards);
   _lootToPick = newCards.length;
-  if (_lootToPick == 0){
+  if (_lootToPick == 0) {
     return false;
   }
-  
+
   setupLootArea_internal(event, newCards);
   return true;
 }
 
 function addOutputButton(nextEventId, buttonPrompt) {
-  if (nextEventId==undefined) {
+  if (nextEventId == undefined) {
     return;
   }
 
@@ -273,13 +285,13 @@ function addOutputButton(nextEventId, buttonPrompt) {
   document.getElementById('outputs').appendChild(continueButton);
 
   continueButton.innerText = buttonPrompt || DEFAULT_CONTINUE_TEXT;
-  setTimeout(() => continueButton.onclick = () => { 
+  setTimeout(() => continueButton.onclick = () => {
     startEvent(nextEventId);
   }, 100);
 }
 
 function setupOutputArea(event) {
-  if (event==undefined) {
+  if (event == undefined) {
     return;
   }
   popAllChildElement(document.getElementById('outputs'));
@@ -290,21 +302,21 @@ function setupOutputArea(event) {
   else {
     choices.push(event);
   }
-  for (var i=0;i<choices.length;i++){
+  for (var i = 0; i < choices.length; i++) {
     let choice = choices[i];
     addOutputButton(choice.nextEvent, choice.buttonPrompt);
   }
 }
 
-function playErrorAnimation(){
+function playErrorAnimation() {
   window.alert('Wrong input!');
 }
 
-function tryAddEasterEggDescription( easterEggID, text ) {
+function tryAddEasterEggDescription(easterEggID, text) {
   const descriptionArea = document.getElementById('event-description');
   let childs = descriptionArea.childNodes;
-  for(var i=0;i<childs.length;i++){
-    if (childs[i].name == easterEggID){
+  for (var i = 0; i < childs.length; i++) {
+    if (childs[i].name == easterEggID) {
       playErrorAnimation();
       return;
     }
@@ -313,7 +325,7 @@ function tryAddEasterEggDescription( easterEggID, text ) {
   const newLine = document.createElement('p');
   newLine.innerText = text;
   newLine.name = easterEggID;
-  descriptionArea.appendChild(newLine); 
+  descriptionArea.appendChild(newLine);
 }
 
 function getUseResult(input, event) {
@@ -343,14 +355,14 @@ function setupInputArea(event) {
 function setupInOutArea(event) {
   popAllChildElement(lootContainer);
   const isOutput = event == undefined || event.type != "input";
-    if (isOutput) {
-      document.getElementById('outputs').style.display = 'initial';
-      setupOutputArea(event);
-    }
-    else {
-      document.getElementById('inputs').style.display = 'initial';
-      setupInputArea(event);
-    }
+  if (isOutput) {
+    document.getElementById('outputs').style.display = 'initial';
+    setupOutputArea(event);
+  }
+  else {
+    document.getElementById('inputs').style.display = 'initial';
+    setupInputArea(event);
+  }
 }
 
 
@@ -364,7 +376,7 @@ function startEvent(eventId) {
   document.getElementById('outputs').style.display = 'none';
 
   setupHint(event);
-  if (!setupLootArea(event)){
+  if (!setupLootArea(event)) {
     setupInOutArea(event);
   }
 }
@@ -378,11 +390,11 @@ deck.forEach(addCardToContainer);
 */
 
 const globalEval = eval; // A reference to eval() in topmost level so that it can modify global variables
-if (DEV){
+if (DEV) {
   document.querySelector('.add-card').addEventListener('click', () => {
     const inputBox = document.getElementById('dev-add-card-box');
     const id = inputBox.value;
-    if (id != undefined && id != "" && !deck.includes(id)){
+    if (id != undefined && id != "" && !deck.includes(id)) {
       inputBox.value = "";
       addCardToDeck(id);
     }
@@ -391,7 +403,7 @@ if (DEV){
     }
   });
 
-  document.getElementById( 'dev-toggle-branch' ).addEventListener('click', () => {
+  document.getElementById('dev-toggle-branch').addEventListener('click', () => {
     let checkboxes = document.getElementsByName("dev-choose-branch");
     branch.j = checkboxes[0].checked;
     branch.d = checkboxes[1].checked;
@@ -404,26 +416,26 @@ if (DEV){
     ===== Hot Load New Data =====
   */
   const dataTypeDesc = {
-    "card" : {
-      varName : 'allCards',
-      filepath : 'cards.js',
-      defaultText : '"type": "SCP",\n"objClass": "Safe",\n"description": "Card 1. Object Class: Safe",\n ......',
+    "card": {
+      varName: 'allCards',
+      filepath: 'cards.js',
+      defaultText: '"type": "SCP",\n"objClass": "Safe",\n"description": "Card 1. Object Class: Safe",\n ......',
     },
-    "event" : {
-      varName : 'allEvents',
-      filepath : 'events.js',
-      defaultText : '"type": "input",\n"description": "This is a description of event 434."\n"hintText": "This is the hint"\n"getCards": ["testCard", "100"],\n ......',
+    "event": {
+      varName: 'allEvents',
+      filepath: 'events.js',
+      defaultText: '"type": "input",\n"description": "This is a description of event 434."\n"hintText": "This is the hint"\n"getCards": ["testCard", "100"],\n ......',
 
     }
   };
   let dirtyMarker = {
-    "card" : {
-      single : [],
-      all : false
+    "card": {
+      single: [],
+      all: false
     },
-    "event" : {
-      single : [],
-      all : false
+    "event": {
+      single: [],
+      all: false
     }
   };
 
@@ -434,12 +446,12 @@ if (DEV){
     const fileHeader = document.getElementById('dev-eval-file');
     const keyHeader = document.getElementById('dev-eval-key');
     const inputArea = document.getElementById('dev-eval-content');
-    if (_replaceAll){
+    if (_replaceAll) {
       fileHeader.style.display = 'initial';
       keyHeader.style.display = 'none';
       inputArea.setAttribute("placeholder", '');
     }
-    else{
+    else {
       fileHeader.style.display = 'none';
       keyHeader.style.display = 'initial';
       inputArea.setAttribute("placeholder", dataTypeDesc[_dataType].defaultText);
@@ -464,15 +476,15 @@ if (DEV){
     }
   }
 
-  function changeSingle(key, text){
-    if (key==undefined || key==''){
+  function changeSingle(key, text) {
+    if (key == undefined || key == '') {
       window.alert("ID不能为空！");
       return;
     }
     let fullText = dataTypeDesc[_dataType].varName + '["' + key + '"] = {' + text + '}';
     tryExecute(fullText, () => {
       let dirtyList = dirtyMarker[_dataType].single;
-      if (!dirtyList.includes(key)){
+      if (!dirtyList.includes(key)) {
         dirtyList.push(key);
       }
     });
@@ -483,7 +495,7 @@ if (DEV){
     const text = document.getElementById('dev-eval-content').value;
     if (_replaceAll) {
       tryExecute(text.slice(3), //Remove the var identifier
-      () => { dirtyMarker[_dataType].all = true; })
+        () => { dirtyMarker[_dataType].all = true; })
     }
     else {
       changeSingle(key, text);
@@ -493,7 +505,7 @@ if (DEV){
   });
 
 }
-else{
+else {
   document.querySelector('.dev-area').style.display = 'none';
 }
 
