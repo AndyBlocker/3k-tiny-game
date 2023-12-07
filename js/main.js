@@ -21,7 +21,7 @@ const maxCardsToShow = 4;
 
 let currentEventId = "434";
 let currentStartIndex = 0;
-let deck = ['1', '2', '3'];
+let deck = ['1', '2', '3', '585'];
 let branch = {
   j: false, // J线完成情况
   d: false, // 梦线完成情况
@@ -95,15 +95,59 @@ function getCardDescription(id) {
   }
 }
 
-function previewCard(id) {
-  const desc = getCardDescription(id);
-  if (desc) {
-    window.alert(desc);
+function previewCard(cardId) {
+  var cardData = allCards[cardId];
+  var modal = document.getElementById('modal');
+  var modalContent = modal.querySelector('.modal-content');
+
+  modalContent.innerHTML = '<span class="close">&times;</span>';
+
+  var titleDiv = document.createElement('div');
+  titleDiv.textContent = cardId;
+  titleDiv.className = 'card-description-id';
+  modalContent.appendChild(titleDiv);
+
+  if (cardData.img) {
+    var img = document.createElement('img');
+    img.src = cardData.img;
+    img.className = 'card-description-img';
+    modalContent.appendChild(img);
   }
-  else {
-    window.alert(id + ' has been clicked!');
+
+  var divider = document.createElement('div');
+  divider.className = 'divider';
+  modalContent.appendChild(divider);
+
+  if (cardData.name) {
+    var nameDiv = document.createElement('div');
+    nameDiv.textContent = cardData.name;
+    nameDiv.className = 'card-description-name';
+    modalContent.appendChild(nameDiv);
+  }
+
+  var descriptionDiv = document.createElement('div');
+  descriptionDiv.textContent = cardData.description;
+  descriptionDiv.className = 'card-description-text';
+  modalContent.appendChild(descriptionDiv);
+
+  modal.style.display = "flex";
+
+  var span = document.getElementsByClassName('close')[0];
+
+  span.onclick = function () {
+    modal.style.display = "none";
+    modalContent.innerHTML = '';
+  }
+
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+      modalContent.innerHTML = '';
+    }
   }
 }
+
+
 
 function addCardToContainer(cardId, options) {
   const cardDiv = document.createElement('div');
@@ -383,7 +427,6 @@ function startEvent(eventId) {
 
 startEvent(currentEventId);
 deck.forEach(addCardToContainer);
-
 
 /* 
     ===== DEV AREA =====
