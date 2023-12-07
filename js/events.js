@@ -3,6 +3,9 @@ var allEvents = {
     {
         "type": "input",
         "description": "This is a description of event 434.",
+        "descriptionNoJ": "event 434无J描述。",
+        "descriptionNoM": "你没有钱啦！但是没关系，因为你也没有输入框了！",
+        "descriptionNoJM": "event 434无钱无J描述。",
         "hintText": "Correct input: 1 or testCard, easter egg input: 2",
         "getCards": ["testCard", "100", "101", "102"],
         "correctPrompt": ["testCard", "1"],

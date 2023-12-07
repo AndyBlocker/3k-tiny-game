@@ -107,7 +107,7 @@ function previewCard(cardId) {
   titleDiv.className = 'card-description-id';
   modalContent.appendChild(titleDiv);
 
-  if (cardData.img) {
+  if (cardData && cardData.img) {
     var img = document.createElement('img');
     img.src = cardData.img;
     img.className = 'card-description-img';
@@ -118,7 +118,7 @@ function previewCard(cardId) {
   divider.className = 'divider';
   modalContent.appendChild(divider);
 
-  if (cardData.name) {
+  if (cardData && cardData.name) {
     var nameDiv = document.createElement('div');
     nameDiv.textContent = cardData.name;
     nameDiv.className = 'card-description-name';
@@ -126,7 +126,7 @@ function previewCard(cardId) {
   }
 
   var descriptionDiv = document.createElement('div');
-  descriptionDiv.textContent = cardData.description;
+  descriptionDiv.textContent = getCardDescription(cardId);
   descriptionDiv.className = 'card-description-text';
   modalContent.appendChild(descriptionDiv);
 
@@ -228,10 +228,21 @@ document.querySelector('.next-card').addEventListener('click', () => {
 
 function getEventDescription(event) {
   if (event == undefined || event.description == undefined) {
-    return "test in white";
+    return "未找到卡牌信息！ID：" + id;
   }
-  // TODO: 支持不同线描述
-  return event.description;
+
+  if (branch.j && branch.m) {
+    return event.descriptionNoJM;
+  }
+  else if (branch.m && event.descriptionNoM != undefined) {
+    return event.descriptionNoM;
+  }
+  else if (branch.j && event.descriptionNoJ != undefined) {
+    return event.descriptionNoJ;
+  }
+  else {
+    return event.description;
+  }
 }
 
 document.querySelector('.hintPrompt').addEventListener('click', () => {
@@ -398,8 +409,8 @@ function setupInputArea(event) {
 
 function setupInOutArea(event) {
   popAllChildElement(lootContainer);
-  const isOutput = event == undefined || event.type != "input";
-  if (isOutput) {
+  const isOutputType = event == undefined || event.type != "input";
+  if (isOutputType || branch.m) {
     document.getElementById('outputs').style.display = 'initial';
     setupOutputArea(event);
   }
@@ -452,6 +463,7 @@ if (DEV) {
     branch.d = checkboxes[1].checked;
     branch.l = checkboxes[2].checked;
     branch.m = checkboxes[3].checked;
+    startEvent(currentEventId);
     refreshCardContainer();
   });
 
