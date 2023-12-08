@@ -1,4 +1,4 @@
-var allEvents = {
+var allEventsBackup = {
     "434":
     {
         "type": "input",
@@ -72,16 +72,4 @@ var allEvents = {
         "getCards": ["1", "2", "3", "585"],
         "nextEvent": "434"
     },
-}
-
-var GetSpecialEventDesc = {
-    "1": () => {
-        if (branch.j && branch.l) {
-            return "目前处于无爱J线";
-        }
-        else if (deck.includes("111")) {
-            return "你有一张卡牌111";
-        }
-        return undefined;
-    }
 }

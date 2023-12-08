@@ -2,9 +2,21 @@
     ===== DEV AREA =====
 */
 
+// DEV: 这里定义的方法和全局变量应当有dev_前缀，正式游戏中不应该调用任何dev_方法。如果有需要，则应该把方法放在其他js文件中
+
 const globalEval = eval; // A reference to eval() in topmost level so that it can modify global variables
 if (DEV) {
+    document.querySelector('.dev-area').style.display = 'initial';
     // print("123");
+
+    if (typeof (allCards) === undefined) {
+      allCards = allCardsBackup;
+    }
+    if (typeof (allEvents) === undefined) {
+      allEvents = allEventsBackup;
+    }
+
+
     document.querySelector('.add-card').addEventListener('click', () => {
         const inputBox = document.getElementById('dev-add-card-box');
         const id = inputBox.value;
@@ -30,15 +42,15 @@ if (DEV) {
     /* 
       ===== Hot Load New Data =====
     */
-    const dataTypeDesc = {
+    const dev_dataTypeDesc = {
         "card": {
             varName: 'allCards',
-            filepath: 'cards.js',
+            filepath: 'cards.json',
             defaultText: '"type": "SCP",\n"objClass": "Safe",\n"description": "Card 1. Object Class: Safe",\n ......',
         },
         "event": {
             varName: 'allEvents',
-            filepath: 'events.js',
+            filepath: 'events.json',
             defaultText: '"type": "input",\n"description": "This is a description of event 434."\n"hintText": "This is the hint"\n"getCards": ["testCard", "100"],\n ......',
 
         }
@@ -60,27 +72,34 @@ if (DEV) {
         _replaceAll = replaceAll;
         const fileHeader = document.getElementById('dev-eval-file');
         const keyHeader = document.getElementById('dev-eval-key');
+        const keyEnd = document.getElementById('dev-eval-end');
         const inputArea = document.getElementById('dev-eval-content');
         if (_replaceAll) {
             fileHeader.style.display = 'initial';
             keyHeader.style.display = 'none';
+            keyEnd.innerText = '\n';
             inputArea.setAttribute("placeholder", '');
         }
         else {
             fileHeader.style.display = 'none';
             keyHeader.style.display = 'initial';
-            inputArea.setAttribute("placeholder", dataTypeDesc[_dataType].defaultText);
+            keyEnd.innerText = '},';
+            inputArea.setAttribute("placeholder", dev_dataTypeDesc[_dataType].defaultText);
         }
-        document.getElementById('dev-eval-path').innerText = dataTypeDesc[_dataType].filepath;
+        document.getElementById('dev-eval-path').innerText = dev_dataTypeDesc[_dataType].filepath;
     }
-    // dev_toggleEvalInput('event', false);
+    
+    dev_toggleEvalInput('event', false);
 
     document.getElementById('dev-clear-input').addEventListener('click', () => {
-        document.getElementById('dev-eval-title').setAttribute("placeholder", '');
-        document.getElementById('dev-eval-content').setAttribute("placeholder", '');
+        document.getElementById('dev-eval-title').value = '';
+        document.getElementById('dev-eval-content').value = '';
     });
 
-    function tryExecute(text, callback) {
+    /*
+    // Unused: These are for js file reading.
+
+    function dev_tryExecute(text, callback) {
         try {
             globalEval(text);
             callback();
@@ -91,29 +110,71 @@ if (DEV) {
         }
     }
 
-    function changeSingle(key, text) {
-        if (key == undefined || key == '') {
-            window.alert("ID不能为空！");
-            return;
-        }
-        let fullText = dataTypeDesc[_dataType].varName + '["' + key + '"] = {' + text + '}';
-        tryExecute(fullText, () => {
+    function dev_changeSingleJS(key, text) {
+        let fullText = dev_dataTypeDesc[_dataType].varName + '["' + key + '"] = {' + text + '}';
+        dev_tryExecute(fullText, () => {
             let dirtyList = dirtyMarker[_dataType].single;
             if (!dirtyList.includes(key)) {
                 dirtyList.push(key);
             }
         });
     }
+    */
+
+    function dev_loadJSONStr(text, callback) {
+        try {
+            const obj = JSON.parse(text);
+            callback();
+            return obj;
+        } catch (e) {
+            window.alert("载入失败！请检查语法错误");
+        }
+    }
+
+    function dev_replaceAll(text) {
+        let callback = () => { dirtyMarker[_dataType].all = true};
+        //dev_tryExecute(text.slice(3), //Remove the var identifier
+        //callback);
+
+        if (_dataType == "card"){
+            allCards = dev_loadJSONStr(text, callback);
+        }
+        else {
+            allEvents = dev_loadJSONStr(text, callback);
+        }
+    }
+
+    function dev_changeSingle(key, text) {
+        if (key == undefined || key == '') {
+            window.alert("ID不能为空！");
+            return;
+        }
+
+        // dev_changeSingleJS(key, text);
+
+        let callback = () => {
+            let dirtyList = dirtyMarker[_dataType].single;
+            if (!dirtyList.includes(key)) {
+                dirtyList.push(key);
+            }
+        }
+
+        if (_dataType == "card"){
+            allCards[key] = dev_loadJSONStr('{' + text + '}', callback);
+        }
+        else {
+            allEvents[key] = dev_loadJSONStr('{' + text + '}', callback);
+        }
+    }
 
     document.getElementById('dev-load-data').addEventListener('click', () => {
         const key = document.getElementById('dev-eval-title').value;
         const text = document.getElementById('dev-eval-content').value;
         if (_replaceAll) {
-            tryExecute(text.slice(3), //Remove the var identifier
-                () => { dirtyMarker[_dataType].all = true; })
+            dev_replaceAll(text);
         }
         else {
-            changeSingle(key, text);
+            dev_changeSingle(key, text);
         }
         startEvent(currentEventId);
         refreshCardContainer();

@@ -1,30 +1,23 @@
 /* 
-    ===== BOOT CHECK =====
-*/
-
-if (typeof (allCards) === undefined) {
-  window.alert('card import failed!');
-}
-if (typeof (allEvents) === undefined) {
-  window.alert('event import failed!');
-}
-
-/* 
     ===== DECK INITIALIZATION =====
 */
 
+var allCards;
 // TODO: 上传到wikidot之后要改链接？github有点慢并且有可能被墙
-// fetch('https://raw.githubusercontent.com/AndyBlocker/3k-tiny-game/main/json/cards.json').then(response => {
-//   if (!response.ok) {
-//     throw new Error("HTTP error " + response.status);
-//   }
-//   return response.json();
-// }).then(json => {
-//   allCards = json;
-// }).catch(function () {
-//   this.dataError = true;
-//   console.log("ERROR: cards.json not found!");
-// });
+fetch(JSON_PATH + 'cards.json').then(response => {
+  if (!response.ok) {
+    throw new Error("HTTP error " + response.status);
+  }
+  return response.json();
+}).then(json => {
+  allCards = json;
+  deck.forEach(addCardToContainer);
+  updateCardVisibility();
+}).catch(function () {
+  this.dataError = true;
+  console.log("ERROR: cards.json not found!");
+  window.alert("未能读取cards.json！如果你看到这个弹窗，请告知");
+});
 
 document.querySelector('.prev-card').addEventListener('click', () => {
   currentStartIndex = Math.max(currentStartIndex - 1, 0);
@@ -40,27 +33,22 @@ document.querySelector('.next-card').addEventListener('click', () => {
     ===== EVENT INITIALIZATION =====
 */
 
-// fetch('https://raw.githubusercontent.com/AndyBlocker/3k-tiny-game/main/json/events.json').then(response => {
-//   if (!response.ok) {
-//     throw new Error("HTTP error " + response.status);
-//   }
-//   return response.json();
-// }).then(json => {
-//   allEvents = json;
-//   startEvent(currentEventId);
-// }).catch(function () {
-//   this.dataError = true;
-//   console.log("ERROR: events.json not found!");
-// });
+var allEvents;
+fetch(JSON_PATH + 'events.json').then(response => {
+  if (!response.ok) {
+    throw new Error("HTTP error " + response.status);
+  }
+  return response.json();
+}).then(json => {
+  allEvents = json;
+  startEvent(currentEventId);
+}).catch(function () { 
+  this.dataError = true;
+  console.log("ERROR: events.json not found!");
+  window.alert("未能读取events.json！如果你看到这个弹窗，请告知");
+});
+
 
 document.querySelector('.hintPrompt').addEventListener('click', () => {
   document.querySelector('.hintText').style.display = 'initial';
 })
-
-
-
-
-
-startEvent(currentEventId);
-deck.forEach(addCardToContainer);
-updateCardVisibility();

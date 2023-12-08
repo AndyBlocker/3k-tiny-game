@@ -88,8 +88,25 @@ function startEvent(eventId) {
     if (!setupLootArea(event)) {
         setupInOutArea(event);
     }
-    if (event.loseCards != undefined) {
+    if (event && event.loseCards != undefined) {
         loseCards(event.loseCards);
     }
 
+}
+
+
+/*
+    ===== 特殊事件相关 =====
+*/
+
+var GetSpecialEventDesc = {
+    "1": () => {
+        if (branch.j && branch.l) {
+            return "目前处于无爱J线";
+        }
+        else if (deck.includes("111")) {
+            return "你有一张卡牌111";
+        }
+        return undefined;
+    }
 }

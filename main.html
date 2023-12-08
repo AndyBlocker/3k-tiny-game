@@ -51,7 +51,7 @@
 
 
   <!-- DEV ZONE -->
-  <div class="dev-area">
+  <div class="dev-area" style="display:none;">
     DEBUG OPTIONS
     <div><input type="text" id="dev-add-card-box"><button class="add-card">Add Card</button>
       <div>
@@ -82,11 +82,13 @@
               &quot; <input type="text" id="dev-eval-title" style="width: 20em" /> &quot; : {
             </div>
             <div><textarea id="dev-eval-content" rows="10" style="width: 90%; margin-left: 2em;"></textarea></div>
-            <div id="dev-eval-key">},</div>
+            <div id="dev-eval-end">},</div>
           </div>
         </div>
       </div>
-      <!-- END OF DEV ZONE -->
+    </div>
+  </div>
+  <!-- END OF DEV ZONE -->
 </body>
 
 
@@ -98,7 +100,7 @@
 <script type="text/javascript" src="./json/cards.js">  </script>
 <script type="text/javascript" src="./json/events.js"> </script>
 
-<script type="text/javascript" src="./js/debug.js">  </script>
+<script type="text/javascript" src="./js/debug.js">  </script><!-- DELETE THIS LINE WHEN SHIPPING -->
 <script type="text/javascript" src="./js/card.js">   </script>
 <script type="text/javascript" src="./js/event.js">  </script>
 <script type="text/javascript" src="./js/ui.js">     </script>

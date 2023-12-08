@@ -1,4 +1,4 @@
-var allCards = {
+var allCardsBackup = {
     "1": {
         "type": "SCP",
         "objClass": "Safe",

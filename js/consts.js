@@ -1,5 +1,12 @@
 const DEV = true;
 
+/*
+   ===== PATHS =====
+*/
+
+const IMAGE_PATH = "./img/";
+const JSON_PATH = "./json/"; // https://raw.githubusercontent.com/AndyBlocker/3k-tiny-game/main/json/
+
 /* 
     ===== TUNABLES =====
 */
@@ -7,7 +14,6 @@ const SAFE_COLOR = "#8FBC8B";
 const EUCLID_COLOR = "#F0E68C";
 const KETER_COLOR = "#CD5C5C";
 const CLINICAL_COLOR = "#BBBBBB";
-const IMAGE_PATH = "./img/";
 const DEFAULT_CLINICAL_VAGUE_DESC = "该异常的性质不明。";
 const DEFAULT_CONTINUE_TEXT = "前往下一事件";
 
@@ -20,6 +26,9 @@ const lootContainer = document.getElementById('loots');
 
 const maxCardsToShow = 4;
 
+/* 
+    ===== GAME STATUS =====
+*/
 let currentEventId = "0";
 let currentStartIndex = 0;
 let deck = [];
