@@ -3,22 +3,10 @@
 */
 
 var allCards;
-// TODO: 上传到wikidot之后要改链接？github有点慢并且有可能被墙
-fetch(JSON_PATH + 'cards.json').then(response => {
-  if (!response.ok) {
-    throw new Error("HTTP error " + response.status);
-  }
-  return response.json();
-}).then(json => {
-  allCards = json;
-  populateInheritedData(DATA_TYPES.Card, attributesCommon.concat(attributesCards));
-
+loadDataAndBoot(DATA_TYPES.Card, 'cards.json', attributesCard, (populatedData) => {
+  allCards = populatedData;
   deck.forEach(addCardToContainer);
   updateCardVisibility();
-}).catch(function () {
-  this.dataError = true;
-  console.log("ERROR: cards.json not found!");
-  window.alert("未能读取cards.json！如果你看到这个弹窗，请告知");
 });
 
 document.querySelector('.prev-card').addEventListener('click', () => {
@@ -36,20 +24,9 @@ document.querySelector('.next-card').addEventListener('click', () => {
 */
 
 var allEvents;
-fetch(JSON_PATH + 'events.json').then(response => {
-  if (!response.ok) {
-    throw new Error("HTTP error " + response.status);
-  }
-  return response.json();
-}).then(json => {
-  allEvents = json;
-  populateInheritedData(DATA_TYPES.Event, attributesCommon.concat(attributesEvent));
-
+loadDataAndBoot(DATA_TYPES.Event, 'events.json', attributesEvent, (populatedData) => {
+  allEvents = populatedData;
   startEvent(currentEventId);
-}).catch(function () { 
-  this.dataError = true;
-  console.log("ERROR: events.json not found!");
-  window.alert("未能读取events.json！如果你看到这个弹窗，请告知");
 });
 
 

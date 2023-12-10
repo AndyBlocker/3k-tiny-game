@@ -32,7 +32,7 @@ const attributesCommon = [
 const attributesEvent = [
     "type", "hintText", "getCards", "loseCards", "correctPrompt", "easterEggPrompt", "nextEvent", "choices", "buttonPrompt", "specialDescription"
 ];
-const attributesCards = [
+const attributesCard = [
     "name", "img"
 ];
 const DATA_TYPES = {

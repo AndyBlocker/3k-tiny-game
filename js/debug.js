@@ -9,14 +9,6 @@ if (DEV) {
     document.querySelector('.dev-area').style.display = 'initial';
     // print("123");
 
-    if (typeof (allCards) === undefined) {
-      allCards = allCardsBackup;
-    }
-    if (typeof (allEvents) === undefined) {
-      allEvents = allEventsBackup;
-    }
-
-
     document.querySelector('.add-card').addEventListener('click', () => {
         const inputBox = document.getElementById('dev-add-card-box');
         const id = inputBox.value;

@@ -2,8 +2,24 @@
     ===== Card和Event共用，这个部分多的话就拆出去 =====
 */
 
-function populateInheritedData(dataType, attributes) {
-    const obj = (dataType == DATA_TYPES.Event) && allEvents || allCards;
+function loadDataAndBoot(dataType, path, attributes, callback) {
+    // TODO: 上传到wikidot之后要改链接？github有点慢并且有可能被墙
+    fetch(JSON_PATH + path).then(response => {
+        if (!response.ok) {
+        throw new Error("HTTP error " + response.status);
+        }
+        return response.json();
+    }).then(json => {
+        const populatedData = populateInheritedData(dataType, json, attributesCommon.concat(attributes));
+        callback(populatedData);
+    }).catch(function () {
+        this.dataError = true;
+        console.log("ERROR: " + path + " not found!");
+        window.alert("未能读取" + path + "！如果你看到这个弹窗，请告知");
+    });
+}
+
+function populateInheritedData(type, obj, attributes) {
     for (var key in obj){
         const element = obj[key];
         if (element.parent){
@@ -19,15 +35,11 @@ function populateInheritedData(dataType, attributes) {
                         newData[attr] = parent[attr];
                     }
                 });
-                if (dataType == DATA_TYPES.Event) {
-                    allEvents[key] = newData;
-                }
-                else {
-                    allCards[key] = newData;
-                }
+               obj[key] = newData;
             }
         }
     }
+    return obj;
 }
 
 function getDescription(id, type) {
