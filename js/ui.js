@@ -72,7 +72,7 @@ function previewCard(cardId) {
     }
 
     var descriptionDiv = document.createElement('div');
-    descriptionDiv.textContent = getCardDescription(cardId);
+    descriptionDiv.textContent = getDescription(cardId, DATA_TYPES.Card);
     descriptionDiv.className = 'card-description-text';
     modalContent.appendChild(descriptionDiv);
 

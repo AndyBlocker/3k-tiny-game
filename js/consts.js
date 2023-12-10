@@ -25,6 +25,11 @@ const cardContainer = document.querySelector('.card-container');
 const lootContainer = document.getElementById('loots');
 
 const maxCardsToShow = 4;
+const DATA_TYPES = {
+    Card: 0,
+    Event: 1,
+    __Count: 2,
+}
 
 /* 
     ===== GAME STATUS =====

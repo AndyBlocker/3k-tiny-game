@@ -1,7 +1,46 @@
 /*
+    ===== Card和Event共用，这个部分多的话就拆出去 =====
+*/
+
+function getDescription(id, type) {
+    const obj = (type == DATA_TYPES.Card) && allCards || allEvents;
+    const data = obj[id];
+
+    if (data == undefined || data.description == undefined) {
+        return "未找到" + ((type == DATA_TYPES.Card) && '卡牌' || '事件') + "信息！ID：" + id;
+    }
+
+    if (data.specialDescription){
+        // 特殊事件描述
+        if (type == DATA_TYPES.Event && GetSpecialEventDesc[id] != undefined && GetSpecialEventDesc[id]() != undefined){
+            return GetSpecialEventDesc[id]();
+        }
+    }
+
+    if (branch.j && branch.l && data.descriptionNoJL) {
+        return data.descriptionNoJL;
+    }
+    else if (branch.j && data.descriptionNoJ != undefined) {
+        return data.descriptionNoJ;
+    }
+    else if (branch.l && data.descriptionNoL != undefined) {
+        return data.descriptionNoL;
+    }
+    else {
+        if (branch.j && branch.l && type == DATA_TYPES.Card){
+            // 卡牌无爱无J默认返回统一描述
+            return DEFAULT_CLINICAL_VAGUE_DESC;
+        }
+
+        return data.description;
+    }
+}
+
+/*
     ===== 有关card对象CRUD等操作的接口 =====
 */
 
+/*
 function getCardDescription(id) {
     const card = allCards[id];
     if (card == undefined || card.description == undefined) {
@@ -21,6 +60,7 @@ function getCardDescription(id) {
         return card.description;
     }
 }
+*/
 
 // 添加一张card
 function addCardToDeck(cardId, options) {

@@ -2,6 +2,7 @@
     ===== 有关事件&提示的接口 =====
 */
 
+/*
 function getEventDescription(id) {
     const event = allEvents[id];
     if (event == undefined || event.description == undefined) {
@@ -24,6 +25,8 @@ function getEventDescription(id) {
         return event.description;
     }
 }
+
+*/
 
 function setupHint(event) {
     const hintPrompt = document.querySelector('.hintPrompt');
@@ -80,7 +83,7 @@ function startEvent(eventId) {
 
     const event = allEvents[eventId];
     document.querySelector('.topic').innerText = eventId;
-    document.getElementById('event-description').innerText = getEventDescription(eventId);
+    document.getElementById('event-description').innerText = getDescription(eventId, DATA_TYPES.Event);
     document.getElementById('inputs').style.display = 'none';
     document.getElementById('outputs').style.display = 'none';
 

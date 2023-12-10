@@ -29,6 +29,15 @@ if (DEV) {
         }
     });
 
+    document.querySelector('.goto-event').addEventListener('click', () => {
+        const inputBox = document.getElementById('dev-goto-event-box');
+        const id = inputBox.value;
+        if (id != undefined && id != "") {
+            inputBox.value = "";
+            startEvent(id);
+        }
+    });
+
     document.getElementById('dev-toggle-branch').addEventListener('click', () => {
         let checkboxes = document.getElementsByName("dev-choose-branch");
         branch.j = checkboxes[0].checked;
