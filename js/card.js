@@ -2,6 +2,34 @@
     ===== Card和Event共用，这个部分多的话就拆出去 =====
 */
 
+function populateInheritedData(dataType, attributes) {
+    const obj = (dataType == DATA_TYPES.Event) && allEvents || allCards;
+    for (var key in obj){
+        const element = obj[key];
+        if (element.parent){
+            const parent = obj[element.parent];
+            if (parent == undefined) {
+                console.log( "WARNING: " + ((type == DATA_TYPES.Card) && '卡牌' || '事件') + key + 
+                "被设置为" + element.parent + "的变种，但未找到" + element.parent + "的数据！" );
+            }
+            else {
+                let newData = element;
+                attributes.forEach( (attr) => {
+                    if (newData[attr] == undefined && parent[attr] != undefined) {
+                        newData[attr] = parent[attr];
+                    }
+                });
+                if (dataType == DATA_TYPES.Event) {
+                    allEvents[key] = newData;
+                }
+                else {
+                    allCards[key] = newData;
+                }
+            }
+        }
+    }
+}
+
 function getDescription(id, type) {
     const obj = (type == DATA_TYPES.Card) && allCards || allEvents;
     const data = obj[id];

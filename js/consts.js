@@ -25,6 +25,16 @@ const cardContainer = document.querySelector('.card-container');
 const lootContainer = document.getElementById('loots');
 
 const maxCardsToShow = 4;
+
+const attributesCommon = [
+    "description", "descriptionNoJ", "descriptionNoL", "descriptionNoJL"
+];
+const attributesEvent = [
+    "type", "hintText", "getCards", "loseCards", "correctPrompt", "easterEggPrompt", "nextEvent", "choices", "buttonPrompt", "specialDescription"
+];
+const attributesCards = [
+    "name", "img"
+];
 const DATA_TYPES = {
     Card: 0,
     Event: 1,

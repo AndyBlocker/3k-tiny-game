@@ -58,8 +58,16 @@ function tryAddEasterEggDescription(easterEggID, text) {
     descriptionArea.appendChild(newLine);
 }
 
-function getUseResult(input, event) {
-    if (event.nextEvent == undefined) {
+function getNextEvent(input, event, id) {
+    if (event.specialNextEvent && GetSpecialNextEvent[id] != undefined && GetSpecialNextEvent[id](input) != undefined) {
+        return GetSpecialNextEvent[id](input);
+    }
+    return event.nextEvent;
+}
+
+function getUseResult(input, event, id) {
+    const nextEvent = getNextEvent(input, event, id);
+    if (nextEvent == undefined) {
         return;
     }
     const correctPrompt = event.correctPrompt;
@@ -68,7 +76,7 @@ function getUseResult(input, event) {
     if (correctPrompt == undefined ||
         correctPrompt == input ||
         (Array.isArray(correctPrompt) && correctPrompt.includes(input))) {
-        startEvent(event.nextEvent);
+        startEvent(nextEvent);
     }
     else if (easterEggPrompt && easterEggPrompt[input] != undefined) {
         tryAddEasterEggDescription(input, easterEggPrompt[input]);
@@ -89,7 +97,7 @@ function startEvent(eventId) {
 
     setupHint(event);
     if (!setupLootArea(event)) {
-        setupInOutArea(event);
+        setupInOutArea(event, eventId);
     }
     if (event && event.loseCards != undefined) {
         loseCards(event.loseCards);
@@ -103,12 +111,21 @@ function startEvent(eventId) {
 */
 
 var GetSpecialEventDesc = {
-    "1": () => {
-        if (branch.j && branch.l) {
-            return "目前处于无爱J线";
+    "sample-specialDesc": () => {
+        if (branch.m && !branch.j) {
+            return "你没有钱了，但是没有关系，你的输入框也没有了！";
         }
         else if (deck.includes("111")) {
             return "你有一张卡牌111";
+        }
+        return undefined;
+    }
+}
+
+var GetSpecialNextEvent = {
+    "sample-specialDesc": (input) => {
+        if (branch.m && !branch.j) {
+            return "sample-variant";
         }
         return undefined;
     }

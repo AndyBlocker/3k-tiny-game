@@ -11,6 +11,8 @@ fetch(JSON_PATH + 'cards.json').then(response => {
   return response.json();
 }).then(json => {
   allCards = json;
+  populateInheritedData(DATA_TYPES.Card, attributesCommon.concat(attributesCards));
+
   deck.forEach(addCardToContainer);
   updateCardVisibility();
 }).catch(function () {
@@ -41,6 +43,8 @@ fetch(JSON_PATH + 'events.json').then(response => {
   return response.json();
 }).then(json => {
   allEvents = json;
+  populateInheritedData(DATA_TYPES.Event, attributesCommon.concat(attributesEvent));
+
   startEvent(currentEventId);
 }).catch(function () { 
   this.dataError = true;

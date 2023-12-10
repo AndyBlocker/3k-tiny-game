@@ -7,6 +7,10 @@
         "descriptionNoL": "Seems to be a card with number 1.",
         "descriptionNoJL": "Item 1 properties are yet to be known."
     },
+    "11": {
+        "parent": "1",
+        "description": "这是卡牌1的变种。"
+    },
     "2": {
         "type": "SCP",
         "objClass": "Euclid",

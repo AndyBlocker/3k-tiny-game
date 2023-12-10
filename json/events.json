@@ -21,27 +21,6 @@
         },
         "nextEvent": "sample-choice"
     },
-    "sample-choice": {
-        "type": "output",
-        "description": "This event has two choices",
-        "choices": [
-            {
-                "buttonPrompt": "Go back to 434",
-                "nextEvent": "434"
-            },
-            {
-                "buttonPrompt": "Go to next event",
-                "nextEvent": "1"
-            }
-        ]
-    },
-    "1": {
-        "type": "output",
-        "description": "该事件在无爱J时会有特殊描述。在持有卡牌111时也会有特殊描述（用debug区域加后刷新一下）",
-        "specialDescription": true,
-        "buttonPrompt": "Go back to 434",
-        "nextEvent": "434"
-    },
     "0":
     {
         "type": "output",
@@ -66,7 +45,34 @@
         "hintText": "输入1000",
         "correctPrompt": "1000",
         "loseCards": ["585"],
-        "nextEvent": "3000"
+        "nextEvent": "sample-specialDesc"
+    },
+    "sample-specialDesc": {
+        "type": "input",
+        "description": "该事件是用来展示特殊差分的。在无钱有J时会有特殊描述（不同于常规的无爱无J差分），并且会送你去特殊的事件。在持有卡牌111时也会有特殊描述（可以用debug区域加后点一下Refresh）。输入1000或111进入下一个事件。",
+        "hintText": "输入1000，或者切到无钱",
+        "specialDescription": true,
+        "buttonPrompt": "你没有钱了",
+        "nextEvent": "sample-choice",
+        "specialNextEvent": true
+    },
+    "sample-choice": {
+        "type": "output",
+        "description": "这个事件是用来展示多选的。",
+        "choices": [
+            {
+                "buttonPrompt": "返回上一个事件",
+                "nextEvent": "sample-specialDesc"
+            },
+            {
+                "buttonPrompt": "前往下一个事件",
+                "nextEvent": "3000"
+            }
+        ]
+    },
+    "sample-variant": {
+        "parent": "sample-choice",
+        "description": "这个事件是用来展示变种的。因为你没有钱了，所以被送到了这里，而不是sample-choice。它除了描述以外，所有东西都和sample-choice一样。"
     },
     "3000":
     {

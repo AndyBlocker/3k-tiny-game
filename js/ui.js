@@ -206,7 +206,7 @@ function setupLootArea(event) {
     return true;
 }
 
-function setupOutputArea(event) {
+function setupOutputArea(event, eventId) {
     if (event == undefined) {
         return;
     }
@@ -216,7 +216,8 @@ function setupOutputArea(event) {
         choices = event.choices;
     }
     else {
-        choices.push(event);
+        const nextEvent = getNextEvent('', event, eventId);
+        choices.push({nextEvent: nextEvent, buttonPrompt: event.buttonPrompt});
     }
     for (var i = 0; i < choices.length; i++) {
         let choice = choices[i];
@@ -224,12 +225,12 @@ function setupOutputArea(event) {
     }
 }
 
-function setupInputArea(event) {
+function setupInputArea(event, eventId) {
     document.getElementById('go').onclick = () => {
         const inputBox = document.querySelector('.input-box');
         const input = inputBox.value;
         inputBox.value = "";
-        getUseResult(input, event);
+        getUseResult(input, event, eventId);
     }
 }
 
@@ -254,15 +255,15 @@ function addOutputButton(nextEventId, buttonPrompt) {
     }, 100);
 }
 
-function setupInOutArea(event) {
+function setupInOutArea(event, eventId) {
     popAllChildElement(lootContainer);
     const isOutputType = event == undefined || event.type != "input";
     if (isOutputType || branch.m) {
         document.getElementById('outputs').style.display = 'initial';
-        setupOutputArea(event);
+        setupOutputArea(event, eventId);
     }
     else {
         document.getElementById('inputs').style.display = 'initial';
-        setupInputArea(event);
+        setupInputArea(event, eventId);
     }
 }
