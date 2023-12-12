@@ -7,6 +7,10 @@ const DEV = true;
 const IMAGE_PATH = "./img/";
 const JSON_PATH = "./json/"; // https://raw.githubusercontent.com/AndyBlocker/3k-tiny-game/main/json/
 
+// for local debug
+// const IMAGE_PATH = " https://raw.githubusercontent.com/AndyBlocker/3k-tiny-game/main/img/";
+// const JSON_PATH = " https://raw.githubusercontent.com/AndyBlocker/3k-tiny-game/main/json/";
+
 /* 
     ===== TUNABLES =====
 */

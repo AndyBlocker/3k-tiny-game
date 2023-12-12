@@ -161,7 +161,7 @@ function addCardToLootContainer(event, cardId, divClass) {
     cardDiv.classList.add(divClass);
 
     let options = { "color": getColor(cardId) };
-    cardDiv.style.backgroundColor = options.color;
+    cardDiv.style.borderColor = options.color;
     setTimeout(() => {
         cardDiv.onclick = () => {
             addCardToDeck(cardId, options);
@@ -217,7 +217,7 @@ function setupOutputArea(event, eventId) {
     }
     else {
         const nextEvent = getNextEvent('', event, eventId);
-        choices.push({nextEvent: nextEvent, buttonPrompt: event.buttonPrompt});
+        choices.push({ nextEvent: nextEvent, buttonPrompt: event.buttonPrompt });
     }
     for (var i = 0; i < choices.length; i++) {
         let choice = choices[i];

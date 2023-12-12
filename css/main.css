@@ -7,7 +7,8 @@
 }
 
 .main {
-  border: 3px solid black;
+  background-color: #222222;
+  border: 2px solid black;
   width: 90%;
   height: 70vh;
   /* min-height: 48em; */
@@ -19,23 +20,30 @@
 
 .main-container {
   display: flex;
+  align-items: flex-start;
   width: 90%;
   height: 80%;
   background-color: #222222;
   /* margin-top: 5%; */
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 5%;
+  /* margin-bottom: 5%; */
   /* text-align: center; */
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+  flex-grow: 1;
+  overflow-y: hidden;
 }
 
 .topic {
+  background-color: #222222;
+
+  width: 90%;
   color: #e5c4f4;
+  margin: auto;
   margin-top: 0em;
-  margin-bottom: 0em;
+  margin-bottom: 0.2em;
   text-align: center;
   font-size: 2em;
 }
@@ -47,13 +55,14 @@
   margin-left: 10%;
   color: white;
   width: 60%;
-  height: 80%;
+  height: 100%;
   /* min-height: 40em; */
   box-sizing: border-box;
-  padding: 1em;
+  /* padding: 1em; */
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 .img-container {
@@ -61,12 +70,15 @@
   max-height: 50%;
   display: flex;
   justify-self: center;
-  align-items: center;
-  top: 15%;
+  align-items: flex-start;
+  top: -5%;
   position: relative;
 }
 
 .img-container img {
+  margin-top: 0;
+  width: auto;
+  height: auto;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
@@ -75,6 +87,7 @@
 @media screen and (max-width: 768px) {
   .main-container {
     flex-direction: column;
+    overflow-y: auto;
   }
 
   .text-container,
@@ -86,6 +99,7 @@
 
   .text-container {
     height: 50%;
+    overflow-y: visible;
   }
 
   .img-container {
@@ -105,11 +119,10 @@
   margin: auto;
 }
 
-
-
-.paragraph {
-  width: 100%;
-  height: 100%;
+.prompt {
+  color: white;
+  width: 90%;
+  margin: auto;
 }
 
 .hintPrompt {
@@ -126,35 +139,38 @@
 }
 
 .button-area {
+  /* background-color: #222222; */
   width: 40%;
   left: 0;
   right: 0;
   margin: auto;
+  flex-grow: 1;
 }
 
 .button-area .large-button,
 .medium-button,
 .small-button {
   margin: auto;
-  background-color: mediumpurple;
+  border: 2px solid #e5c4f4;
+  background-color: #222222;
   margin: 5%;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   height: 3em;
   border-radius: 10px;
   font-size: 1em;
-  border: none;
   touch-action: manipulation;
 }
 
 .button-area .large-button {
   width: 90%;
-  color: black;
+  /* border: #e5c4f4 2px; */
+  color: white;
 }
 
 .button-area .medium-button {
   width: 40%;
-  color: black;
+  color: white;
 }
 
 .button-area .small-button {

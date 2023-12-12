@@ -91,7 +91,8 @@ function startEvent(eventId) {
 
     const event = allEvents[eventId];
     document.querySelector('.topic').innerText = eventId;
-    document.getElementById('event-description').innerText = getDescription(eventId, DATA_TYPES.Event);
+    document.getElementsByClassName('text-container')[0].innerText = getDescription(eventId, DATA_TYPES.Event);
+    // document.getElementById('event-description').innerText = getDescription(eventId, DATA_TYPES.Event);
     document.getElementById('inputs').style.display = 'none';
     document.getElementById('outputs').style.display = 'none';
 
