@@ -235,7 +235,7 @@ function setupInputArea(event, eventId) {
 }
 
 function playErrorAnimation() {
-    window.alert('Wrong input!');
+    triggerErrorAnimation(document.querySelector('.input-box'));
 }
 
 function addOutputButton(nextEventId, buttonPrompt) {
@@ -266,4 +266,12 @@ function setupInOutArea(event, eventId) {
         document.getElementById('inputs').style.display = 'initial';
         setupInputArea(event, eventId);
     }
+}
+
+function triggerErrorAnimation(element) {
+    element.classList.add("error-shake");
+
+    element.addEventListener('animationend', () => {
+        element.classList.remove("error-shake");
+    });
 }
