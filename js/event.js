@@ -29,16 +29,21 @@ function getEventDescription(id) {
 */
 
 function setupHint(event) {
-    const hintPrompt = document.querySelector('.hintPrompt');
-    const hintText = document.querySelector('.hintText');
-    hintText.style.display = 'none';
+    const hintPrompt1 = document.getElementById('hintPrompt1');
+    const hintPrompt2 = document.getElementById('hintPrompt2');
+    hintText1.style.display = 'none';
+    hintPrompt2.style.display = 'none';
+    hintText2.style.display = 'none';
 
     if (event == undefined || event.hintText == undefined) {
-        hintPrompt.style.display = 'none';
+        hintPrompt1.style.display = 'none';
     }
     else {
-        hintPrompt.style.display = 'initial';
-        hintText.innerText = event.hintText;
+        hintPrompt1.style.display = 'initial';
+        hintText1.innerText = event.hintText;
+        if (event.hintText2){
+            hintText2.innerText = event.hintText2;
+        }
     }
 }
 

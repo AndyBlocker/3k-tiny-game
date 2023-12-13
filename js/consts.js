@@ -27,6 +27,8 @@ const DEFAULT_CONTINUE_TEXT = "前往下一事件";
 
 const cardContainer = document.querySelector('.card-container');
 const lootContainer = document.getElementById('loots');
+const hintText1 = document.getElementById('hintText1');
+const hintText2 = document.getElementById('hintText2');
 
 const maxCardsToShow = 4;
 

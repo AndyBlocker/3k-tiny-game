@@ -30,6 +30,12 @@ loadDataAndBoot(DATA_TYPES.Event, 'events.json', attributesEvent, (populatedData
 });
 
 
-document.querySelector('.hintPrompt').addEventListener('click', () => {
-  document.querySelector('.hintText').style.display = 'initial';
+document.getElementById('hintPrompt1').addEventListener('click', () => {
+  hintText1.style.display = 'initial';
+  if (hintText2.innerHTML) {
+    document.getElementById('hintPrompt2').style.display = 'initial';
+  }
+})
+document.getElementById('hintPrompt2').addEventListener('click', () => {
+  hintText2.style.display = 'initial';
 })

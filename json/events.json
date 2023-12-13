@@ -26,6 +26,7 @@
         "type": "output",
         "description": "这是一个开始事件，它表示游戏从此开始。",
         "hintText": "Correct input: 1000",
+        "hintText2": "都说了是1000",
         "correctPrompt": "1000",
         "nextEvent": "1000"
     },
