@@ -498,6 +498,7 @@
   }
   .card-description-img{
     width: 70%;
+    height: auto;
   }
   .card-description-id{
     font-size: 1.5em;
