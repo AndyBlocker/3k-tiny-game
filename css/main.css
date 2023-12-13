@@ -88,9 +88,10 @@
 }
 
 @media screen and (max-width: 768px) {
-  .main{
+  .main {
     height: 85vh;
   }
+
   .main-container {
     flex-direction: column;
     overflow-y: auto;
@@ -248,19 +249,6 @@
   border: 3px solid rgba(255, 255, 255, 0.5);
 }
 
-.nav-button {
-  border: 3px solid white;
-  background-color: transparent;
-  color: white;
-  margin: 5%;
-  height: 8vh;
-  width: 8vh;
-  border-radius: 4vh;
-  font-size: 2em;
-  touch-action: manipulation;
-  text-align: center;
-}
-
 .nav-button:hover,
 .button-area .input-box:hover {
   cursor: pointer;
@@ -341,9 +329,10 @@
 }
 
 @media screen and (max-width: 768px) {
-  .card-wrapper{
+  .card-wrapper {
     height: 15vh;
   }
+
   .card {
     border: 1px solid #ff928c;
   }
@@ -385,30 +374,44 @@
   .card-wrapper {
     width: 90%;
   }
-
-  .nav-button {
-    margin: 5px;
-  }
 }
+
+/* .nav-button {
+  border: 3px solid white;
+  background-color: transparent;
+  color: white;
+  margin: 5%;
+  height: 8vh;
+  width: 8vh;
+  border-radius: 4vh;
+  font-size: 2em;
+  touch-action: manipulation;
+  text-align: center;
+} */
 
 .nav-button {
   border: 1px solid white;
   background-color: transparent;
   color: white;
-  /* margin: 5%; */
-  height: 5vh;
-  width: 5vh;
+  margin: 5%;
+  height: 3vw;
+  width: 3vw;
   font-size: 2em;
   touch-action: manipulation;
   text-align: center;
+  border-radius: 4vw;
 }
 
 @media screen and (max-width: 768px) {
   .nav-button {
-    width: 6vw;
-    height: 6vw;
-    /* border-radius: 6vw; */
-    font-size: 1em;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -487,7 +490,7 @@
   height: 2px;
   width: 80%;
   background-color: #ff928c;
-  margin-top: 15px;
+  /* margin-top: 15px; */
   margin-bottom: 15px;
 }
 
@@ -496,17 +499,22 @@
     width: 60vw;
     height: 100vw;
   }
-  .card-description-img{
-    width: 70%;
-    height: auto;
+
+  .card-description-img {
+    height: 50%;
+    width: auto;
+    overflow: hidden;
   }
-  .card-description-id{
+
+  .card-description-id {
     font-size: 1.5em;
   }
-  .card-description-name{
+
+  .card-description-name {
     font-size: 1em;
   }
-  .card-description-text{
+
+  .card-description-text {
     font-size: 0.8em;
   }
 }
