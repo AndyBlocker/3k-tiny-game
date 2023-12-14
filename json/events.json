@@ -87,7 +87,8 @@
         "specialOnEnter": true,
         "type": "output",
         "color": "event",
-        "description": "这个事件是选线事件，它会清除天王以外的卡。"
+        "description": "这个事件是选线事件，它会清除天王以外的卡。",
+        "nextEvent": "3000"
     },
     "3000":
     {
