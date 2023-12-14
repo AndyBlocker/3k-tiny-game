@@ -11,24 +11,29 @@ function getRandomColor() {
     return color;
 }
 
-function getColor(cardId) {
+function getColor(data, dataType) {
     if (branch.j) {
         return CLINICAL_COLOR;
     }
 
-    if (!cardId || !allCards[cardId] || !allCards[cardId].objClass) {
+    if (!data || !data.type) {
         return getRandomColor();
     }
 
-    let objClass = allCards[cardId].objClass;
-    switch (objClass.toLowerCase()) {
-        case "safe":
-            return SAFE_COLOR;
-        case "euclid":
-            return EUCLID_COLOR;
-        case "keter":
-            return KETER_COLOR;
+    let type = data.type;
+    switch (type.toLowerCase()) {
+        case "scp":
+            return SCP_COLOR;
+        case "props":
+            return PROPS_COLOR;
+        case "event":
+            return EVENT_COLOR;
+        case "boss":
+            return BOSS_COLOR;
         default:
+            if (dataType == DATA_TYPES.Event) {
+                return EVENT_COLOR;
+            }
             return getRandomColor();
     }
 }
@@ -160,7 +165,7 @@ function addCardToLootContainer(event, cardId, divClass) {
     cardDiv.id = cardId;
     cardDiv.classList.add(divClass);
 
-    let options = { "color": getColor(cardId) };
+    let options = { "color": getColor(allCards[cardId]) };
     cardDiv.style.borderColor = options.color;
     setTimeout(() => {
         cardDiv.onclick = () => {

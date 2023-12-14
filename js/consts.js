@@ -14,9 +14,10 @@ const JSON_PATH = "./json/"; // https://raw.githubusercontent.com/AndyBlocker/3k
 /* 
     ===== TUNABLES =====
 */
-const SAFE_COLOR = "#8FBC8B";
-const EUCLID_COLOR = "#F0E68C";
-const KETER_COLOR = "#CD5C5C";
+const SCP_COLOR = "#FF9D95";
+const PROPS_COLOR = "#CCE9FF";
+const EVENT_COLOR = "#CFB9FF";
+const BOSS_COLOR = "#FFE4CC";
 const CLINICAL_COLOR = "#BBBBBB";
 const DEFAULT_CLINICAL_VAGUE_DESC = "该异常的性质不明。";
 const DEFAULT_CONTINUE_TEXT = "前往下一事件";
