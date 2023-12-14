@@ -1,6 +1,6 @@
 {
     "1": {
-        "type": "SCP",
+        "color": "SCP",
         "description": "Card 1. Object Class: Safe",
         "descriptionNoJ": "A clinical description of card 1. Object class: Safe.",
         "descriptionNoL": "Seems to be a card with number 1.",
@@ -11,11 +11,11 @@
         "description": "这是卡牌1的变种。"
     },
     "2": {
-        "type": "Boss",
+        "color": "Boss",
         "description": "Card 2. Object Class: Euclid"
     },
     "3": {
-        "type": "Props",
+        "color": "Props",
         "description": "Card 3. Object Class: Keter"
     },
     "testCard": {
@@ -23,7 +23,7 @@
     },
     "585": {
         "name": "一笔兔",
-        "type": "SCP",
+        "color": "SCP",
         "img": "/cards/585.png",
         "objClass": "Apollyon",
         "description": "满足什么样的条件可以让一个图形能一笔画"

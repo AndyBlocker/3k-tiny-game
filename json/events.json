@@ -79,6 +79,7 @@
     "3000":
     {
         "type": "input",
+        "color": "boss",
         "description": "结束了，但仍然会显示一笔兔。随便输入些什么也许会进入其他的事件。理论上这里应该结束了，但还不知道游戏结束的时候界面是什么样子的。",
         "hintText": "no hints.",
         "correctPrompt": "434",

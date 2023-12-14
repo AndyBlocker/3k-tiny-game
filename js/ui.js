@@ -16,12 +16,15 @@ function getColor(data, dataType) {
         return CLINICAL_COLOR;
     }
 
-    if (!data || !data.type) {
+    if (!data || !data.color) {
+        if (dataType == DATA_TYPES.Event) {
+            return EVENT_COLOR;
+        }
         return getRandomColor();
     }
 
-    let type = data.type;
-    switch (type.toLowerCase()) {
+    let color = data.color;
+    switch (color.toLowerCase()) {
         case "scp":
             return SCP_COLOR;
         case "props":
@@ -31,9 +34,6 @@ function getColor(data, dataType) {
         case "boss":
             return BOSS_COLOR;
         default:
-            if (dataType == DATA_TYPES.Event) {
-                return EVENT_COLOR;
-            }
             return getRandomColor();
     }
 }
@@ -262,7 +262,7 @@ function addOutputButton(nextEventId, buttonPrompt) {
 
 function setupInOutArea(event, eventId) {
     popAllChildElement(lootContainer);
-    const isOutputType = event == undefined || event.type != "input";
+    const isOutputType = event == undefined || event.type != "input" || event.type != "Input";
     if (isOutputType || branch.m) {
         document.getElementById('outputs').style.display = 'initial';
         setupOutputArea(event, eventId);
