@@ -41,9 +41,7 @@ function setupHint(event) {
     else {
         hintPrompt1.style.display = 'initial';
         hintText1.innerText = event.hintText;
-        if (event.hintText2){
-            hintText2.innerText = event.hintText2;
-        }
+        hintText2.innerText = event.hintText2 || '';
     }
 }
 

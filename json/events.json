@@ -52,6 +52,7 @@
         "type": "input",
         "description": "该事件是用来展示特殊差分的。在无钱有J时会有特殊描述（不同于常规的无爱无J差分），并且会送你去特殊的事件。在持有卡牌111时也会有特殊描述（可以用debug区域加后点一下Refresh）。输入1000或111进入下一个事件。",
         "hintText": "输入1000，或者切到无钱",
+        "correctPrompt": ["1000", "111"],
         "specialDescription": true,
         "buttonPrompt": "你没有钱了",
         "nextEvent": "sample-choice",
