@@ -126,6 +126,7 @@ function loseCards(cardList) {
 function refreshCardContainer() {
     popAllChildElement(cardContainer);
     deck.forEach(addCardToContainer);
+    currentStartIndex = Math.max(0, deck.length - maxCardsToShow);
     updateCardVisibility();
 }
 
