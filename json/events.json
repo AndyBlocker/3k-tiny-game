@@ -68,13 +68,26 @@
             },
             {
                 "buttonPrompt": "前往下一个事件",
-                "nextEvent": "3000"
+                "nextEvent": "sample-get-cards"
             }
         ]
     },
     "sample-variant": {
         "parent": "sample-choice",
         "description": "这个事件是用来展示变种的。因为你没有钱了，所以被送到了这里，而不是sample-choice。它除了描述以外，所有东西都和sample-choice一样。"
+    },
+    "sample-get-cards": {
+        "type": "output",
+        "color": "boss",
+        "description": "这个事件是用来获得卡片的，卡片分别是不同类型。接下来你会进入选线事件并且失去天王以外的卡。",
+        "getCards": ["1", "2", "3", "testBoss"],
+        "nextEvent": "2"
+    },
+    "2" : {
+        "specialOnEnter": true,
+        "type": "output",
+        "color": "event",
+        "description": "这个事件是选线事件，它会清除天王以外的卡。"
     },
     "3000":
     {

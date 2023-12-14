@@ -46,7 +46,7 @@ function popAllChildElement(parent) {
 }
 
 // 绘制卡片详情窗口
-function previewCard(cardId) {
+function previewCard(cardId, options) {
     var cardData = allCards[cardId];
     var modal = document.getElementById('modal');
     var modalContent = modal.querySelector('.modal-content');
@@ -57,6 +57,7 @@ function previewCard(cardId) {
     titleDiv.textContent = cardId;
     titleDiv.className = 'card-description-id';
     modalContent.appendChild(titleDiv);
+    titleDiv.style.color = options.color;
 
     if (cardData && cardData.img) {
         var img = document.createElement('img');
@@ -68,6 +69,8 @@ function previewCard(cardId) {
     var divider = document.createElement('div');
     divider.className = 'divider';
     modalContent.appendChild(divider);
+    modalContent.style.borderColor = options.color;
+    divider.style.backgroundColor = options.color;
 
     if (cardData && cardData.name) {
         var nameDiv = document.createElement('div');
@@ -104,17 +107,22 @@ function addCardToContainer(cardId, options) {
     cardDiv.id = cardId;
     cardDiv.classList.add('card');
 
+    options = options ? options : {};
+    options.color = options.color ? options.color : getColor(allCards[cardId]);
+    cardDiv.style.borderColor = options.color;
+
     const cardTitle = document.createElement('div');
     cardTitle.innerText = cardId;
     cardTitle.classList.add('card-title');
     cardDiv.appendChild(cardTitle);
+    cardTitle.style.color = options.color;
 
     const cardImage = document.createElement('img');
     cardImage.src = options && options.imageUrl ? options.imageUrl : './img/cards/585.png';
     cardImage.classList.add('card-image');
     cardDiv.appendChild(cardImage);
 
-    cardDiv.addEventListener('click', () => { previewCard(cardId); });
+    cardDiv.addEventListener('click', () => { previewCard(cardId, options); });
     cardDiv.style.backgroundColor = '#222222';
     cardContainer.appendChild(cardDiv);
 }
@@ -254,7 +262,7 @@ function addOutputButton(nextEventId, buttonPrompt) {
     continueButton.classList.add('large-button');
     document.getElementById('outputs').appendChild(continueButton);
 
-    continueButton.innerText = buttonPrompt || DEFAULT_CONTINUE_TEXT;
+    continueButton.innerText = buttonPrompt ? buttonPrompt : DEFAULT_CONTINUE_TEXT;
     setTimeout(() => continueButton.onclick = () => {
         startEvent(nextEventId);
     }, 100);
@@ -262,7 +270,7 @@ function addOutputButton(nextEventId, buttonPrompt) {
 
 function setupInOutArea(event, eventId) {
     popAllChildElement(lootContainer);
-    const isOutputType = event == undefined || event.type != "input" || event.type != "Input";
+    const isOutputType = event == undefined || (event.type != "input" && event.type != "Input");
     if (isOutputType || branch.m) {
         document.getElementById('outputs').style.display = 'initial';
         setupOutputArea(event, eventId);

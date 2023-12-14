@@ -25,7 +25,7 @@ function populateInheritedData(type, obj, attributes) {
         if (element.parent){
             const parent = obj[element.parent];
             if (parent == undefined) {
-                console.log( "WARNING: " + ((type == DATA_TYPES.Card) && '卡牌' || '事件') + key + 
+                console.log( "WARNING: " + ((type == DATA_TYPES.Card) ? '卡牌' : '事件') + key + 
                 "被设置为" + element.parent + "的变种，但未找到" + element.parent + "的数据！" );
             }
             else {
@@ -43,11 +43,11 @@ function populateInheritedData(type, obj, attributes) {
 }
 
 function getDescription(id, type) {
-    const obj = (type == DATA_TYPES.Card) && allCards || allEvents;
+    const obj = (type == DATA_TYPES.Card) ? allCards : allEvents;
     const data = obj[id];
 
     if (data == undefined || data.description == undefined) {
-        return "未找到" + ((type == DATA_TYPES.Card) && '卡牌' || '事件') + "信息！ID：" + id;
+        return "未找到" + ((type == DATA_TYPES.Card) ? '卡牌' : '事件') + "信息！ID：" + id;
     }
 
     if (data.specialDescription){

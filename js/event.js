@@ -41,7 +41,7 @@ function setupHint(event) {
     else {
         hintPrompt1.style.display = 'initial';
         hintText1.innerText = event.hintText;
-        hintText2.innerText = event.hintText2 || '';
+        hintText2.innerText = event.hintText2 ? event.hintText2 : '';
     }
 }
 
@@ -93,6 +93,12 @@ function startEvent(eventId) {
     currentEventId = eventId;
 
     const event = allEvents[eventId];
+    if (event){
+        if (event.specialOnEnter && GetSpecialOnEnter[eventId]){
+            GetSpecialOnEnter[eventId]();
+        }
+    }
+
     const color = getColor(event, DATA_TYPES.Event);
     document.querySelector('.topic').innerText = eventId;
     document.querySelector('.topic').style.color = color;
@@ -135,5 +141,18 @@ var GetSpecialNextEvent = {
             return "sample-variant";
         }
         return undefined;
+    }
+}
+
+var GetSpecialOnEnter = {
+    "2": () => {
+        let newDeck = [];
+        deck.forEach( (id) => {
+            if (allCards[id] && (allCards[id].color == "Boss" || allCards[id].color == "boss")) {
+                newDeck.push(id);
+            }
+        } )
+        deck = newDeck;
+        refreshCardContainer();
     }
 }
