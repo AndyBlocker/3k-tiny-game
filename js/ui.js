@@ -147,6 +147,10 @@ function updateCardVisibility() {
             card.style.display = 'none';
         }
     });
+    if (deck.length > maxCardsToShow) {
+        document.querySelector('.prev-card').style.display = '';
+        document.querySelector('.next-card').style.display = '';
+    }
 }
 
 function addButtonToLootContainer(buttonPrompt, buttonClass, buttonFunction) {
@@ -287,4 +291,11 @@ function triggerErrorAnimation(element) {
     element.addEventListener('animationend', () => {
         element.classList.remove("error-shake");
     });
+}
+
+function calcNumberOfCardToShow() {
+    let screenWidth = window.innerWidth;
+    let cardSize = 6 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+    maxCardsToShow = Math.max(Math.floor(screenWidth / cardSize), 8);
+    updateCardVisibility();
 }

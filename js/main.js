@@ -19,6 +19,9 @@ document.querySelector('.next-card').addEventListener('click', () => {
   updateCardVisibility();
 });
 
+// 默认隐藏
+document.querySelector('.prev-card').style.display = 'none';
+document.querySelector('.next-card').style.display = 'none';
 /* 
     ===== EVENT INITIALIZATION =====
 */
@@ -39,3 +42,6 @@ document.getElementById('hintPrompt1').addEventListener('click', () => {
 document.getElementById('hintPrompt2').addEventListener('click', () => {
   hintText2.style.display = 'initial';
 })
+
+window.addEventListener('resize', calcNumberOfCardToShow);
+calcNumberOfCardToShow();
