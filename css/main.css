@@ -587,4 +587,5 @@ div.RAISA-title {
 div.RAISA-description {
   font-size: 1em;
   color: black;
+  white-space: pre-line;
 }
