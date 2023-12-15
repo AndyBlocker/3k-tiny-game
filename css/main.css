@@ -316,9 +316,15 @@ background-color: rgb(112, 112, 112);
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  padding: 10px;
+  /* padding: 10px; */
   height: 100%;
   gap: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .card-container {
+    gap: 10px;
+  }
 }
 
 .card {
@@ -421,7 +427,9 @@ background-color: rgb(112, 112, 112);
 .nav-button {
   background-color: transparent;
   margin: 5%;
+  min-height: 60px;
   height: 5vw;
+  min-width: 60px;
   width: 5vw;
   touch-action: manipulation;
   text-align: center;
@@ -528,8 +536,8 @@ background-color: rgb(112, 112, 112);
 
 @media screen and (max-width: 768px) {
   .modal-content {
-    width: 60vw;
-    height: 100vw;
+    width: 48vw;
+    height: 60vw;
   }
 
   .card-description-img {
