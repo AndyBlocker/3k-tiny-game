@@ -102,9 +102,7 @@ function startEvent(eventId) {
     const color = getColor(event, DATA_TYPES.Event);
     document.querySelector('.topic').innerText = eventId;
     document.querySelector('.topic').style.color = color;
-    document.querySelector('.main').style.borderColor = color;
     document.getElementsByClassName('text-container')[0].innerText = getDescription(eventId, DATA_TYPES.Event);
-    // document.getElementById('event-description').innerText = getDescription(eventId, DATA_TYPES.Event);
     document.getElementById('inputs').style.display = 'none';
     document.getElementById('outputs').style.display = 'none';
 

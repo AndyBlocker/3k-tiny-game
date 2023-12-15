@@ -37,7 +37,7 @@ background-color: rgb(112, 112, 112);
 
 .main {
   background-color: #222222;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   width: 90%;
   height: 70vh;
   /* min-height: 48em; */
