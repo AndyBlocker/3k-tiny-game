@@ -151,6 +151,10 @@ function updateCardVisibility() {
         document.querySelector('.prev-card').style.display = '';
         document.querySelector('.next-card').style.display = '';
     }
+    else {
+        document.querySelector('.prev-card').style.display = 'none';
+        document.querySelector('.next-card').style.display = 'none';
+    }
 }
 
 function addButtonToLootContainer(buttonPrompt, buttonClass, buttonFunction) {
@@ -295,7 +299,8 @@ function triggerErrorAnimation(element) {
 
 function calcNumberOfCardToShow() {
     let screenWidth = window.innerWidth;
-    let cardSize = 6 * parseFloat(getComputedStyle(document.documentElement).fontSize);
-    maxCardsToShow = Math.max(Math.floor(screenWidth / cardSize), 8);
+    let cardSize = 10 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+    maxCardsToShow = Math.min(Math.floor(screenWidth / cardSize), 8);
     updateCardVisibility();
+    console.log("maxCardsToShow: " + maxCardsToShow);
 }
