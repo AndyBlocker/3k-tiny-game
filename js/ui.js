@@ -85,18 +85,21 @@ function previewCard(cardId, options) {
     modalContent.appendChild(descriptionDiv);
 
     modal.style.display = "flex";
+    modalContent.style.display = "flex";
 
     var span = document.getElementsByClassName('close')[0];
 
     span.onclick = function () {
         modal.style.display = "none";
         modalContent.innerHTML = '';
+        modalContent.style.display = "none";
     }
 
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
             modalContent.innerHTML = '';
+            modalContent.style.display = "none";
         }
     }
 }
@@ -303,4 +306,31 @@ function calcNumberOfCardToShow() {
     maxCardsToShow = Math.min(Math.floor(screenWidth / cardSize), 8);
     updateCardVisibility();
     console.log("maxCardsToShow: " + maxCardsToShow);
+}
+
+function displayRAISA(title, description) {
+    var modal = document.getElementById('modal');
+    var RAISA = modal.querySelector('.RAISA');
+
+    var titleDiv = modal.querySelector('.RAISA-title');
+    var descriptionDiv = modal.querySelector('.RAISA-description');
+
+    titleDiv.textContent = title;
+    descriptionDiv.innerHTML = description;
+
+    modal.style.display = "flex";
+    RAISA.style.display = "block";
+
+    var span = RAISA.querySelector('.close');
+    span.onclick = function () {
+        modal.style.display = "none";
+        RAISA.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            RAISA.style.display = "none";
+        }
+    }
 }

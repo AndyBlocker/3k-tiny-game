@@ -19,12 +19,12 @@ button:focus {
 
 ::-webkit-scrollbar-track {
   width: 0.3em;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 ::-webkit-scrollbar-thumb {
-background-color: rgb(112, 112, 112);
-/* outline: 1px solid slategrey; */
+  background-color: rgb(112, 112, 112);
+  /* outline: 1px solid slategrey; */
 }
 
 .content {
@@ -480,7 +480,7 @@ background-color: rgb(112, 112, 112);
   max-height: 50em;
   /* 模态高度 */
   position: relative;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
 }
@@ -557,4 +557,34 @@ background-color: rgb(112, 112, 112);
   .card-description-text {
     font-size: 0.8em;
   }
+}
+
+div.RAISA {
+  border: 1px solid #000;
+  background-color: #fff9e6;
+  text-align: center;
+  margin: auto;
+  width: 40vw;
+  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  div.RAISA {
+    width: 80vw;
+  }
+}
+
+div.RAISA-title {
+  font-size: 1em;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 10px;
+}
+
+div.RAISA-description {
+  font-size: 1em;
+  color: black;
 }
