@@ -1,0 +1,141 @@
+//以下为卡牌sample留档
+    "1": {
+        "color": "SCP",
+        "description": "Card 1. Object Class: Safe",
+        "descriptionNoJ": "A clinical description of card 1. Object class: Safe.",
+        "descriptionNoL": "Seems to be a card with number 1.",
+        "descriptionNoJL": "Item 1 properties are yet to be known."
+    },
+    "11": {
+        "parent": "1",
+        "description": "这是卡牌1的变种。"
+    },
+    "2": {
+        "color": "Props",
+        "description": "Card 2. Object Class: Euclid"
+    },
+    "3": {
+        "color": "Props",
+        "description": "Card 3. Object Class: Keter"
+    },
+    "testBoss": {
+        "color": "Boss",
+        "description": "我朝，Boss"
+    },
+//以下为事件sample留档
+
+
+"434": {
+        "type": "input",
+        "description": "This is a description of event 434.",
+        "descriptionNoJ": "event 434无J描述。",
+        "descriptionNoL": "event 434无爱描述",
+        "descriptionNoJL": "event 434无J无爱描述。",
+        "hintText": "Correct input: 1 or testCard, easter egg input: 2",
+        "getCards": [
+            "testCard",
+            "100",
+            "101",
+            "102"
+        ],
+        "correctPrompt": [
+            "testCard",
+            "1"
+        ],
+        "easterEggPrompt": {
+            "2": "WOW! YOU TYPED THE EASTER EGG!!"
+        },
+        "nextEvent": "sample-choice"
+    },
+    "0": {
+        "type": "output",
+        "description": "从debug面板输入737，开始梦线。现在似乎事件图片还没适配的样子。下面是测试文本。\n你握着手中薄薄的一片钱包。3000块钱，或者说，3000个‘单位’的金钱，是以什么形式存放在里面的？硬币、纸币，或者干脆是一张信用卡、一个二维码？你*第一次*意识到这件事：没有人和你谈过找零、刷卡或者扫码，因为那些都不重要。 \n\n这就是价值的本质：一个数字，而SCP列表则是一张价目单。你们基金会当然不会把任何一个异常“出售”出去，但他——你手里的那个钱包，能让你们去做这件事。夸张一点来说，如果你们那些埋在加密下的001号异常是某种有形的物品，那把至今为止的二十八个一起卖掉，也只不过抵上一颗月球模型（SCP-CN-1028 晒月亮）的一个零头。\n\n紧张了吗？没关系，你已经凑出了购买它自身——SCP-CN-3000的“价值”。你拥有他，他自然向你展示性质。接下来要收容他、或者做些别的什么，都随你的便了。不过我在这里向你解释这些，纯粹是因为这孩子不会说话而已，不代表我会回答你别的什么问题。\n\n顺带一提，他是我们的游戏的重要构成，如果你收容了它，那么这个游戏会变成什么样……嗯，大概会是一个很无趣的样子吧。\n\n那么，在下一个家具塔的顶端再见。",
+        "hintText": "Correct input: 1000",
+        "hintText2": "都说了是1000",
+        "correctPrompt": "1000",
+        "nextEvent": "1000"
+    },
+    "1000": {
+        "type": "input",
+        "description": "这是事件1000，你会在此获得一张一笔兔。这个事件是用来展示获得卡片和一笔兔的立绘的。点击按钮可以获得一笔兔，然后输入1000进入下一个事件。",
+        "hintText": "输入1000",
+        "correctPrompt": "1000",
+        "getCards": [
+            "585"
+        ],
+        "nextEvent": "2000"
+    },
+    "2000": {
+        "type": "input",
+        "description": "这是事件2000，你会在此失去一笔兔。这个事件是用来展示失去卡片的。输入1000进入下一个事件。",
+        "hintText": "输入1000",
+        "correctPrompt": "1000",
+        "loseCards": [
+            "585"
+        ],
+        "nextEvent": "sample-specialDesc"
+    },
+    "sample-specialDesc": {
+        "type": "input",
+        "description": "该事件是用来展示特殊差分的。在无钱有J时会有特殊描述（不同于常规的无爱无J差分），并且会送你去特殊的事件。在持有卡牌111时也会有特殊描述（可以用debug区域加后点一下Refresh）。输入1000或111进入下一个事件。",
+        "hintText": "输入1000，或者切到无钱",
+        "correctPrompt": [
+            "1000",
+            "111"
+        ],
+        "specialDescription": true,
+        "buttonPrompt": "你没有钱了",
+        "nextEvent": "sample-choice",
+        "specialNextEvent": true
+    },
+    "sample-choice": {
+        "type": "output",
+        "description": "这个事件是用来展示多选的。",
+        "choices": [
+            {
+                "buttonPrompt": "返回上一个事件",
+                "nextEvent": "sample-specialDesc"
+            },
+            {
+                "buttonPrompt": "前往下一个事件",
+                "nextEvent": "sample-get-cards"
+            }
+        ]
+    },
+    "sample-variant": {
+        "parent": "sample-choice",
+        "description": "这个事件是用来展示变种的。因为你没有钱了，所以被送到了这里，而不是sample-choice。它除了描述以外，所有东西都和sample-choice一样。"
+    },
+    "sample-get-cards": {
+        "type": "output",
+        "color": "boss",
+        "description": "这个事件是用来获得卡片的，卡片分别是不同类型。接下来你会进入选线事件并且失去天王以外的卡。",
+        "getCards": [
+            "1",
+            "2",
+            "3",
+            "testBoss"
+        ],
+        "nextEvent": "2"
+    },
+    "2": {
+        "specialOnEnter": true,
+        "type": "output",
+        "color": "event",
+        "description": "这个事件是选线事件，它会清除天王以外的卡。",
+        "nextEvent": "3000"
+    },
+    "3000": {
+        "type": "input",
+        "color": "boss",
+        "description": "结束了，但仍然会显示一笔兔。随便输入些什么也许会进入其他的事件。理论上这里应该结束了，但还不知道游戏结束的时候界面是什么样子的。",
+        "hintText": "no hints.",
+        "correctPrompt": "434",
+        "getCards": [
+            "1",
+            "2",
+            "3",
+            "585"
+        ],
+        "nextEvent": "434"
+    },
