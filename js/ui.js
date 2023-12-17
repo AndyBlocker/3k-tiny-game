@@ -255,6 +255,9 @@ function setupInputArea(event, eventId) {
         const input = inputBox.value;
         inputBox.value = "";
         getUseResult(input, event, eventId);
+
+        document.querySelector(".cal-1").value = null;
+        document.querySelector(".cal-2").value = null;
     }
 }
 
@@ -340,13 +343,13 @@ function displayRAISA(title, description) {
 */
 
 function deployCalculater() {
-    document.querySelector(".button-area #inputs .calculater").onclick = () => {
-        const classList = document.querySelector(".button-area #inputs .calculater-container").classList;
+    document.querySelector(".calculater").onclick = () => {
+        const classList = document.querySelector(".calculater-container").classList;
         classList.contains("display") ? classList.remove("display") : classList.add("display");
     };
 
-    const cal1 = document.querySelector(".button-area #inputs .calculater-container .cal-1");
-    const cal2 = document.querySelector(".button-area #inputs .calculater-container .cal-2");
+    const cal1 = document.querySelector(".cal-1");
+    const cal2 = document.querySelector(".cal-2");
     cal1.onkeyup = calculate;
     cal2.onkeyup = calculate;
 
