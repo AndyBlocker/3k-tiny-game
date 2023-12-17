@@ -524,6 +524,7 @@ button:focus {
   color: #ffffff;
   margin-top: 15px;
   overflow-y: auto;
+  white-space: pre-line;
 }
 
 .divider {
