@@ -1,26 +1,8 @@
 {
-    "1": {
-        "color": "SCP",
-        "description": "Card 1. Object Class: Safe",
-        "descriptionNoJ": "A clinical description of card 1. Object class: Safe.",
-        "descriptionNoL": "Seems to be a card with number 1.",
-        "descriptionNoJL": "Item 1 properties are yet to be known."
-    },
-    "11": {
-        "parent": "1",
-        "description": "这是卡牌1的变种。"
-    },
-    "2": {
-        "color": "Props",
-        "description": "Card 2. Object Class: Euclid"
-    },
-    "3": {
-        "color": "Props",
-        "description": "Card 3. Object Class: Keter"
-    },
-    "testBoss": {
-        "color": "Boss",
-        "description": "我朝，Boss"
+    "458": {
+        "name": "航天胶囊™轻量版",
+        "img": "458.png",
+        "description": "一红一蓝两颗药丸，吃红色的会从你的后门喷射出气体上天，吃蓝色的会从嘴巴喷射气体降落。这次提供的是适用于室内飞行的轻量化版本。"
     },
     "083": {
         "name": "画中湖水",
