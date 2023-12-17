@@ -89,16 +89,6 @@ function getUseResult(input, event, id) {
     }
 }
 
-function getEventImg(eventId) {
-    let url = IMAGE_PATH;
-    if(allEvents[eventId] && allEvents[eventId].img){
-        url += allEvents[eventId].img;
-    }
-    else{
-        url += "default.jpg";
-    }
-}
-
 function startEvent(eventId) {
     currentEventId = eventId;
 
@@ -114,6 +104,7 @@ function startEvent(eventId) {
     document.querySelector('.topic').style.color = color;
     document.getElementsByClassName('text-container')[0].innerText = getDescription(eventId, DATA_TYPES.Event);
 
+    // update event img
     if (allEvents[eventId] && allEvents[eventId].img) {
         document.querySelector('img-wrapper').src = IMAGE_PATH + allEvents[eventId].img;
         document.querySelector('img-wrapper').style.display = 'initial';

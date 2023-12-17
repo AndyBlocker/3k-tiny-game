@@ -4,6 +4,7 @@
 
 function loadDataAndBoot(dataType, path, attributes, callback) {
     // TODO: 上传到wikidot之后要改链接？github有点慢并且有可能被墙
+    console.log("Loading " + JSON_PATH + path + "...")
     fetch(JSON_PATH + path).then(response => {
         if (!response.ok) {
         throw new Error("HTTP error " + response.status);
