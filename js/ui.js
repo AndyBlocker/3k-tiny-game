@@ -334,3 +334,30 @@ function displayRAISA(title, description) {
         }
     }
 }
+
+/*
+    ===== 计算器相关 =====
+*/
+
+function deployCalculater() {
+    document.querySelector(".button-area #inputs .calculater").onclick = () => {
+        const classList = document.querySelector(".button-area #inputs .calculater-container").classList;
+        classList.contains("display") ? classList.remove("display") : classList.add("display");
+    };
+
+    const cal1 = document.querySelector(".button-area #inputs .calculater-container .cal-1");
+    const cal2 = document.querySelector(".button-area #inputs .calculater-container .cal-2");
+    cal1.onkeyup = calculate;
+    cal2.onkeyup = calculate;
+
+    function calculate() {
+        var calcRes = parseInt(cal1.value) + parseInt(cal2.value);
+        if (!isNaN(calcRes)) {
+            document.querySelector(".button-area #inputs .input-box").value = calcRes;
+        }
+    }
+
+}
+
+
+deployCalculater();

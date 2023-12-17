@@ -230,6 +230,40 @@ button:focus {
   width: calc(80% - 3em);
 }
 
+.button-area .calculater-container {
+  margin: auto 5%;
+  display: none;
+}
+
+.button-area .calculater {
+  width: 4em;
+  display: block;
+  margin: 2% 5%;
+  border-radius: 0.3em;
+}
+
+.button-area .calculater:hover {
+  cursor: pointer;
+  background-color: ghostwhite;
+}
+
+.button-area .calculater-container.display {
+  display: flex;
+}
+
+.button-area .calculater-container .cal-1, .button-area .calculater-container .cal-2 {
+  background-color: transparent;
+  border: 3px solid mediumpurple;
+  border-radius: 5px;
+  color: white;
+}
+
+.button-area .calculater-container .plus, .button-area .calculater-container .equal {
+  color: mediumpurple;
+  font-weight: bold;
+  margin: 0.5em;
+}
+
 @keyframes shake {
 
   0%,
@@ -279,7 +313,9 @@ button:focus {
 }
 
 .nav-button:hover,
-.button-area .input-box:hover {
+.button-area .input-box:hover,
+.button-area .calculater-container .cal-1:hover, 
+.button-area .calculater-container .cal-2:hover {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.4);
 }
