@@ -184,7 +184,7 @@ function addCardToLootContainer(event, cardId, divClass) {
     cardDiv.id = cardId;
     cardDiv.classList.add(divClass);
 
-    let options = { "color": getColor(allCards[cardId]) };
+    let options = { "color": getColor(allCards[cardId]), "imageUrl":  IMAGE_PATH + allCards[cardId].img};
     cardDiv.style.borderColor = options.color;
     setTimeout(() => {
         cardDiv.onclick = () => {
