@@ -1,118 +1,95 @@
 {
-    "434": {
-        "type": "input",
-        "description": "This is a description of event 434.",
-        "descriptionNoJ": "event 434无J描述。",
-        "descriptionNoL": "event 434无爱描述",
-        "descriptionNoJL": "event 434无J无爱描述。",
-        "hintText": "Correct input: 1 or testCard, easter egg input: 2",
-        "getCards": [
-            "testCard",
-            "100",
-            "101",
-            "102"
-        ],
-        "correctPrompt": [
-            "testCard",
-            "1"
-        ],
-        "easterEggPrompt": {
-            "2": "WOW! YOU TYPED THE EASTER EGG!!"
+"434": {
+    "type": "input",
+    "description": "This is a description of event 434.",
+    "descriptionNoJ": "event 434无J描述。",
+    "descriptionNoL": "event 434无爱描述",
+    "descriptionNoJL": "event 434无J无爱描述。",
+    "hintText": "Correct input: 1 or testCard, easter egg input: 2",
+    "getCards": [
+        "testCard",
+        "100",
+        "101",
+        "102"
+    ],
+    "correctPrompt": [
+        "testCard",
+        "1"
+    ],
+    "easterEggPrompt": {
+        "2": "WOW! YOU TYPED THE EASTER EGG!!"
+    },
+    "nextEvent": "sample-choice"
+},
+"0":
+{
+    "type": "output",
+    "color": "event",
+    "description": "哦，你好！听得见、不对，看得见吗？无论你现在身处哪里、在执行什么任务或者只是单纯地在摸鱼——忘掉这些吧！你已经掉入了超级异常家具城，你要在其中找到传说中的异常，SCP——CN——3000！",
+    "buttonPrompt": "什么超级家具城，你要对现实做什么？",
+    "nextEvent": "0-2"
+},
+"0-2":
+{
+    "type": "output",
+    "color": "event",
+    "description": "哦，你好！听得见、不对，看得见吗？无论你现在身处哪里、在执行什么任务或者只是单纯地在摸鱼——忘掉这些吧！你已经掉入了超级异常家具城，你要在其中找到传说中的异常，SCP——CN——3000！\n嗯……什么都不会做？我不喜欢动不动威胁玩家安全的游戏，所以只要你认真地、代入地玩下去，什么都不会发生哦。这个问题就当送给你的，之后等你找到我再问别的吧！祝你游戏愉快，再见！",
+    "buttonPrompt": "开始吧。",
+    "nextEvent": "1"
+},
+"1":
+{
+    "type": "output",
+    "color": "event",
+    "description": "你在射灯强烈的光线中睁开眼睛。你发现自己被困在了四个巨大纸箱之间的空隙中，空间仅勉强容你站立。四个纸箱中最矮的也有两米多高，头顶唤醒你的射灯更是在目测有十几米的高处。你可以开始行动了。",
+    "buttonPrompt": "试着用力推或者拉开周围的纸箱。",
+    "nextEvent": "1-2"
+},
+"1-2":
+{
+    "type": "input",
+    "color": "event",
+    "description": "你在射灯强烈的光线中睁开眼睛。你发现自己被困在了四个巨大纸箱之间的空隙中，空间仅勉强容你站立。四个纸箱中最矮的也有两米多高，头顶唤醒你的射灯更是在目测有十几米的高处。你可以开始行动了。\n在你用力的推拉下，纸箱微微倾斜了大概两到三度，随后落回原位，和地面碰撞发出巨响——显然你无法战胜这四件沉重的庞然大物的静摩擦力。\n但你也并非一无所获。在你双手抓住最矮的那个纸箱的上边沿、试图用引体向上的姿势把自己拽上去时，你伸出的手摸到了垒在纸箱上方的一个小盒。",
+    "hintText": "你好，我们又见面了。现在为你介绍一下这个游戏的基础机制：编号运算。你所处的每一个环境、获得的每一个物品都有编号，在某个环境下使用某件物品，则意味着去往编号为二者相加的新环境。如果有例外情况的话……嗯，到时候再说！",
+    "hintText2": "1+458=459",
+    "easterEggPrompt" : {
+        "3000" : "……想得美。"
+    },
+    "correctPrompt": "459",
+    "nextEvent": "459"
+},
+"459":
+{
+    "type": "output",
+    "color": "event",
+    "loseCards": ["458"],
+    "description": "你吃下了一颗红色药丸。你忽然感觉到你的肠道间积攒着一股力量，并且它极速迸发了出来！这股犹如火箭升天一般的推力让你直冲云霄，轻松飞跃了四个逼仄的纸箱。随后你又眼疾手快地在空中拆了一颗蓝色药丸及时吞下，推力顺势一百八十度调转方向。你想象自己是一只喷火龙……喷气龙，张嘴大呼一口气，于是你没那么平稳地从空中加速摔落到了地上。好在家具城里放着很多床垫，你没有摔伤，就是放了这么多床垫让你不禁想到是否有人在家具城里拍电影。\n可喜可贺，你成功化解了第一次危机！虽然在你们基金会的视角中，用异常对付异常几乎是禁止事项，但在家具城中，你需要忘掉这种迂腐的观念。在这之后你还会遇到很多的异常，你需要靠异常解决一切！\n顺带一提，你刚刚看到的红色卡片代表着它是一个你们已经收容的SCP，卡片的编号就是它的SCP编号；红色标题的事件亦然。像你现在所处的紫色事件，它的号码就与该编号的SCP无关；但这不代表它就是个普通事件了！家具城内不养闲人！总之我就是想告诉你，颜色也是经过我们的美术设计的！\n好了闲话不多说，既然你已经熟悉了游戏的基本操作，那么是时候进入正式内容了！超级异常家具城————开张！",
+    "buttonPrompt": "继续前进。",
+    "nextEvent": "2"
+},
+"2": {
+    "type": "output",
+    "color": "event",
+    "description": "当你仔细观察四周的环境，才发现堆叠的纸箱子只不过是家具城的冰山一角。你现在位于一个类似家具仓库的区域，四周是排列整齐、目测有十余米高的货架，架上满满当当地放着大小各异的纸箱。\n然后，你抬起头，四个方向的巨大指示牌吸引了你的注意，上面分别写着：“橱柜区”、“装饰区”、“商店街”、“卫浴区”。你觉得这大概是类似游戏选关的画面，反正最后估计都要去一遍的。既然这样，那不如就跟随直觉，随便选一个吧！",
+    "choices": [
+        {
+            "buttonPrompt": "走向“橱柜区”（爱线）",
+            "nextEvent": "love"
         },
-        "nextEvent": "sample-choice"
-    },
-    "0": {
-        "type": "output",
-        "description": "从debug面板输入737，开始梦线。现在似乎事件图片还没适配的样子。下面是测试文本。\n你握着手中薄薄的一片钱包。3000块钱，或者说，3000个‘单位’的金钱，是以什么形式存放在里面的？硬币、纸币，或者干脆是一张信用卡、一个二维码？你*第一次*意识到这件事：没有人和你谈过找零、刷卡或者扫码，因为那些都不重要。 \n\n这就是价值的本质：一个数字，而SCP列表则是一张价目单。你们基金会当然不会把任何一个异常“出售”出去，但他——你手里的那个钱包，能让你们去做这件事。夸张一点来说，如果你们那些埋在加密下的001号异常是某种有形的物品，那把至今为止的二十八个一起卖掉，也只不过抵上一颗月球模型（SCP-CN-1028 晒月亮）的一个零头。\n\n紧张了吗？没关系，你已经凑出了购买它自身——SCP-CN-3000的“价值”。你拥有他，他自然向你展示性质。接下来要收容他、或者做些别的什么，都随你的便了。不过我在这里向你解释这些，纯粹是因为这孩子不会说话而已，不代表我会回答你别的什么问题。\n\n顺带一提，他是我们的游戏的重要构成，如果你收容了它，那么这个游戏会变成什么样……嗯，大概会是一个很无趣的样子吧。\n\n那么，在下一个家具塔的顶端再见。",
-        "hintText": "Correct input: 1000",
-        "hintText2": "都说了是1000",
-        "correctPrompt": "1000",
-        "nextEvent": "1000"
-    },
-    "1000": {
-        "type": "input",
-        "description": "这是事件1000，你会在此获得一张一笔兔。这个事件是用来展示获得卡片和一笔兔的立绘的。点击按钮可以获得一笔兔，然后输入1000进入下一个事件。",
-        "hintText": "输入1000",
-        "correctPrompt": "1000",
-        "getCards": [
-            "585"
-        ],
-        "nextEvent": "2000"
-    },
-    "2000": {
-        "type": "input",
-        "description": "这是事件2000，你会在此失去一笔兔。这个事件是用来展示失去卡片的。输入1000进入下一个事件。",
-        "hintText": "输入1000",
-        "correctPrompt": "1000",
-        "loseCards": [
-            "585"
-        ],
-        "nextEvent": "sample-specialDesc"
-    },
-    "sample-specialDesc": {
-        "type": "input",
-        "description": "该事件是用来展示特殊差分的。在无钱有J时会有特殊描述（不同于常规的无爱无J差分），并且会送你去特殊的事件。在持有卡牌111时也会有特殊描述（可以用debug区域加后点一下Refresh）。输入1000或111进入下一个事件。",
-        "hintText": "输入1000，或者切到无钱",
-        "correctPrompt": [
-            "1000",
-            "111"
-        ],
-        "specialDescription": true,
-        "buttonPrompt": "你没有钱了",
-        "nextEvent": "sample-choice",
-        "specialNextEvent": true
-    },
-    "sample-choice": {
-        "type": "output",
-        "description": "这个事件是用来展示多选的。",
-        "choices": [
-            {
-                "buttonPrompt": "返回上一个事件",
-                "nextEvent": "sample-specialDesc"
-            },
-            {
-                "buttonPrompt": "前往下一个事件",
-                "nextEvent": "sample-get-cards"
-            }
-        ]
-    },
-    "sample-variant": {
-        "parent": "sample-choice",
-        "description": "这个事件是用来展示变种的。因为你没有钱了，所以被送到了这里，而不是sample-choice。它除了描述以外，所有东西都和sample-choice一样。"
-    },
-    "sample-get-cards": {
-        "type": "output",
-        "color": "boss",
-        "description": "这个事件是用来获得卡片的，卡片分别是不同类型。接下来你会进入选线事件并且失去天王以外的卡。",
-        "getCards": [
-            "1",
-            "2",
-            "3",
-            "testBoss"
-        ],
-        "nextEvent": "2"
-    },
-    "2": {
-        "specialOnEnter": true,
-        "type": "output",
-        "color": "event",
-        "description": "这个事件是选线事件，它会清除天王以外的卡。",
-        "nextEvent": "3000"
-    },
-    "3000": {
-        "type": "input",
-        "color": "boss",
-        "description": "结束了，但仍然会显示一笔兔。随便输入些什么也许会进入其他的事件。理论上这里应该结束了，但还不知道游戏结束的时候界面是什么样子的。",
-        "hintText": "no hints.",
-        "correctPrompt": "434",
-        "getCards": [
-            "1",
-            "2",
-            "3",
-            "585"
-        ],
-        "nextEvent": "434"
-    },
+        {
+            "buttonPrompt": "走向“装饰区”（梦线，已实装）",
+            "nextEvent": "737"
+        },
+        {
+            "buttonPrompt": "走向“商店街”（钱线）",
+            "nextEvent": "money"
+        },
+        {
+            "buttonPrompt": "走向“卫浴区”（J线）",
+            "nextEvent": "joke"
+        }
+    ]
+},
     "737": {
         "type": "output",
         "color": "SCP",
