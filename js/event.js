@@ -106,11 +106,16 @@ function startEvent(eventId) {
 
     // update event img
     if (allEvents[eventId] && allEvents[eventId].img) {
-        document.querySelector('img-wrapper').src = IMAGE_PATH + allEvents[eventId].img;
-        document.querySelector('img-wrapper').style.display = 'initial';
+        document.querySelector('.img-wrapper').src = IMAGE_PATH + allEvents[eventId].img;
+        // document.querySelector('.img-wrapper').style.display = 'initial';
+        document.querySelector('.img-container').style.display = 'initial';
+        document.querySelector('.text-container').style.marginLeft = '10%';
+        document.querySelector('.text-container').style.marginRight = '';
     }
     else {
-        document.querySelector('img-wrapper').style.display = 'none';
+        document.querySelector('.img-container').style.display = 'none';
+        document.querySelector('.text-container').style.marginLeft = 'auto';
+        document.querySelector('.text-container').style.marginRight = 'auto';
     }
 
     document.getElementById('inputs').style.display = 'none';
