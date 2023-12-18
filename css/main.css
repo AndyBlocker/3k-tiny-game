@@ -80,10 +80,10 @@ button:focus {
 
 .text-container {
   /* background-color: black; */
-  /* margin: auto; */
+  margin: auto;
   /* margin-top: auto; */
   line-height: 150%;
-  margin-left: 10%;
+  /* margin-left: 10%; */
   color: white;
   width: 60%;
   height: 100%;
@@ -105,10 +105,12 @@ button:focus {
   align-items: flex-start;
   top: -5%;
   position: relative;
+  margin: a;
 }
 
 .img-container img {
-  margin-top: 0;
+  /* margin-top: 0; */
+  margin: auto;
   width: auto;
   height: auto;
   max-width: 100%;
@@ -152,7 +154,7 @@ button:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  /* margin: auto; */
 }
 
 .prompt {
