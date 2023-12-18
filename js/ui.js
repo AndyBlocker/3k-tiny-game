@@ -54,7 +54,12 @@ function previewCard(cardId, options) {
     modalContent.innerHTML = '<span class="close">&times;</span>';
 
     var titleDiv = document.createElement('div');
-    titleDiv.textContent = cardId;
+    if (allCards[cardId] && allCards[cardId].displayID) {
+        titleDiv.textContent = allCards[cardId].displayID;
+    }
+    else {
+        titleDiv.textContent = cardId;
+    }
     titleDiv.className = 'card-description-id';
     modalContent.appendChild(titleDiv);
     titleDiv.style.color = options.color;
@@ -115,7 +120,12 @@ function addCardToContainer(cardId, options) {
     cardDiv.style.borderColor = options.color;
 
     const cardTitle = document.createElement('div');
-    cardTitle.innerText = cardId;
+    if (allCards[cardId] && allCards[cardId].displayID) {
+        cardTitle.textContent = allCards[cardId].displayID;
+    }
+    else {
+        cardTitle.textContent = cardId;
+    }
     cardTitle.classList.add('card-title');
     cardDiv.appendChild(cardTitle);
     cardTitle.style.color = options.color;

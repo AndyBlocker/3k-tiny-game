@@ -26,6 +26,7 @@
 },
 "1-2":
 {
+    "displayID": "1",
     "type": "input",
     "color": "event",
     "img": "1.PNG",

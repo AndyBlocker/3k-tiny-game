@@ -100,7 +100,10 @@ function startEvent(eventId) {
     }
 
     const color = getColor(event, DATA_TYPES.Event);
-    document.querySelector('.topic').innerText = eventId;
+    if (event && event.displayID)
+        document.querySelector('.topic').innerText = event.displayID;
+    else
+        document.querySelector('.topic').innerText = eventId;
     document.querySelector('.topic').style.color = color;
     document.getElementsByClassName('text-container')[0].innerText = getDescription(eventId, DATA_TYPES.Event);
     // if innerText is empty, hide the text container

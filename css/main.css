@@ -105,17 +105,19 @@ button:focus {
   align-items: flex-start;
   top: -5%;
   position: relative;
-  margin: a;
+  margin: auto;
+  /* overflow: hidden; */
 }
 
 .img-container img {
   /* margin-top: 0; */
   margin: auto;
   width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
+  height: 100%;
+  max-width: 500px;
+  max-height: 500px;
   object-fit: contain;
+  
 }
 
 @media screen and (max-width: 768px) {
@@ -314,7 +316,7 @@ button:focus {
   border: 3px solid rgba(255, 255, 255, 0.5);
 }
 
-.nav-button:hover,
+
 .button-area .input-box:hover,
 .button-area .calculater-container .cal-1:hover, 
 .button-area .calculater-container .cal-2:hover {
@@ -449,19 +451,6 @@ button:focus {
   }
 }
 
-/* .nav-button {
-  border: 3px solid white;
-  background-color: transparent;
-  color: white;
-  margin: 5%;
-  height: 8vh;
-  width: 8vh;
-  border-radius: 4vh;
-  font-size: 2em;
-  touch-action: manipulation;
-  text-align: center;
-} */
-
 .nav-button {
   background-color: transparent;
   margin: 5%;
@@ -469,7 +458,7 @@ button:focus {
   height: 5vw;
   min-width: 60px;
   width: 5vw;
-  touch-action: manipulation;
+  /* touch-action: manipulation; */
   text-align: center;
   border: none;
 }
@@ -477,10 +466,8 @@ button:focus {
 .nav-button img {
   width: 100%;
   height: auto;
-  object-fit: contain
+  object-fit: contain;
 }
-
-
 
 @media screen and (max-width: 768px) {
   .nav-button {
@@ -575,8 +562,8 @@ button:focus {
 
 @media screen and (max-width: 768px) {
   .modal-content {
-    width: 48vw;
-    height: 60vw;
+    width: 80vw;
+    height: 120vw;
   }
 
   .card-description-img {
