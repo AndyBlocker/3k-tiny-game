@@ -55,10 +55,10 @@ function previewCard(cardId, options) {
 
     var titleDiv = document.createElement('div');
     if (allCards[cardId] && allCards[cardId].displayID) {
-        titleDiv.textContent = allCards[cardId].displayID;
+        titleDiv.innerHTML = allCards[cardId].displayID;
     }
     else {
-        titleDiv.textContent = cardId;
+        titleDiv.innerHTML = cardId;
     }
     titleDiv.className = 'card-description-id';
     modalContent.appendChild(titleDiv);
@@ -79,13 +79,13 @@ function previewCard(cardId, options) {
 
     if (cardData && cardData.name) {
         var nameDiv = document.createElement('div');
-        nameDiv.textContent = cardData.name;
+        nameDiv.innerHTML = cardData.name;
         nameDiv.className = 'card-description-name';
         modalContent.appendChild(nameDiv);
     }
 
     var descriptionDiv = document.createElement('div');
-    descriptionDiv.textContent = getDescription(cardId, DATA_TYPES.Card);
+    descriptionDiv.innerHTML = getDescription(cardId, DATA_TYPES.Card);
     descriptionDiv.className = 'card-description-text';
     modalContent.appendChild(descriptionDiv);
 

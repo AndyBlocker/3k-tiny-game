@@ -40,8 +40,8 @@ function setupHint(event) {
     }
     else {
         hintPrompt1.style.display = 'initial';
-        hintText1.innerText = event.hintText;
-        hintText2.innerText = event.hintText2 ? event.hintText2 : '';
+        hintText1.innerHTML = event.hintText;
+        hintText2.innerHTML = event.hintText2 ? event.hintText2 : '';
     }
 }
 
@@ -56,7 +56,7 @@ function tryAddEasterEggDescription(easterEggID, text) {
     }
 
     const newLine = document.createElement('p');
-    newLine.innerText = text;
+    newLine.innerHTML = text;
     newLine.name = easterEggID;
     descriptionArea.appendChild(newLine);
 }
@@ -101,13 +101,13 @@ function startEvent(eventId) {
 
     const color = getColor(event, DATA_TYPES.Event);
     if (event && event.displayID)
-        document.querySelector('.topic').innerText = event.displayID;
+        document.querySelector('.topic').innerHTML = event.displayID;
     else
-        document.querySelector('.topic').innerText = eventId;
+        document.querySelector('.topic').innerHTML = eventId;
     document.querySelector('.topic').style.color = color;
-    document.getElementsByClassName('text-container')[0].innerText = getDescription(eventId, DATA_TYPES.Event);
-    // if innerText is empty, hide the text container
-    if (document.getElementsByClassName('text-container')[0].innerText == '') {
+    document.getElementsByClassName('text-container')[0].innerHTML = getDescription(eventId, DATA_TYPES.Event);
+    // if innerHTML is empty, hide the text container
+    if (document.getElementsByClassName('text-container')[0].innerHTML == '') {
         document.getElementsByClassName('text-container')[0].style.display = 'none';
         if (window.innerWidth > 768)
             document.querySelector('.main-container').style.justifyContent = 'center';
