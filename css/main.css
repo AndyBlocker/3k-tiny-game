@@ -166,12 +166,15 @@ button:focus {
 }
 
 .hintPrompt {
-  color: lightyellow;
+  border: 0px;
+  border-radius: 10px;
+  padding: 5px;
+  color: white;
   left: 0;
 }
 
 .hintPrompt:hover {
-  color: yellow;
+  background-color: #666666;
 }
 
 .hintText {
@@ -313,15 +316,21 @@ button:focus {
 .medium-button:hover,
 .small-button:hover {
   cursor: pointer;
-  border: 3px solid rgba(255, 255, 255, 0.5);
+  /* border: 3px solid; */
+  border-width: 3px;
 }
 
 
-.button-area .input-box:hover,
+.button-area .input-box:hover{
+  cursor: pointer;
+  border-width: 4px;
+}
+
 .button-area .calculater-container .cal-1:hover, 
 .button-area .calculater-container .cal-2:hover {
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.4);
+  /* background-color: rgba(255, 255, 255, 0.4); */
+  border-width: 3px;
 }
 
 .hidden-element {
@@ -420,11 +429,12 @@ button:focus {
 .card:hover,
 .hintPrompt:hover {
   cursor: pointer;
+  border-width: 3px;
 }
 
 .card:hover::before {
   content: '';
-  background-color: rgba(255, 255, 255, 0.3);
+  /* background-color: rgba(255, 255, 255, 0.3); */
   z-index: 1;
   border-radius: inherit;
   position: absolute;
