@@ -34,6 +34,7 @@
     },
     "585": {
         "name": "一笔兔",
+        "color": "SCP",
         "img": "585.png",
         "description": "被基金会编号为SCP-CN-585的神奇生物。\n\n虽然说是一笔兔，但其实用了三笔。喜欢吃线条，但油画里只有色块，所以现在很饿。",
         "descriptionNoJ": "SCP-CN-585是一类二维生物，以印刷品、手写内容和绘画中的线条为食，可在不同介质中移动及进行简单交流。",
@@ -41,8 +42,7 @@
         "descriptionNoJL": "SCP-CN-585是一个由线条组成的图案。"
     },
     "585-full": {
-        "name": "一笔兔",
-        "color": "SCP",
+        "parent": "585",
         "img": "585-full.PNG",
         "description": "被基金会编号为SCP-CN-585的神奇生物。\n\n虽然说是一笔兔，但其实用了三笔。喜欢吃线条，终于吃到了一个点，所以现在很饱。",
         "descriptionNoJ": "SCP-CN-585是一类二维生物，以印刷品、手写内容和绘画中的线条为食，可在不同介质中移动及进行简单交流。其进食特性已表现。",
@@ -118,4 +118,76 @@
         "descriptionNoL": false,
         "descriptionNoJL": false
     }
+    "206": {
+        "name": "飞行模式",
+        "color": "SCP",
+        "img": "206.png",
+        "description": "被基金会编号为SCP-CN-206的神奇物件。\n\n打开飞行模式之后真的可以飞起来的手机。",
+        "descriptionNoJ": "SCP-CN-206是一部iPhone7手机，异常性质为在开启“飞行模式”后可悬浮。",
+        "descriptionNoL": "被基金会编号为SCP-CN-206的神奇物件。\n\n看起来就是一部iPhone7，能用，但没啥特别的。",
+        "descriptionNoJL": "SCP-CN-206是一部iPhone7手机。"
+    },
+    "1066": {
+        "name": "“华曦”二手手机交易店",
+        "color": "SCP",
+        "img": "1066.png",
+        "description": "被基金会编号为SCP-CN-1066的神奇地点。\n\n一家二手手机店，你从店里顺了一张名片，上面写着“什么手机都卖的手机店”。",
+        "descriptionNoJ": "SCP-CN-1066是一家二手手机交易店，可购买任何型号的二手手机，包括停产或未发布的。",
+        "descriptionNoL": "被基金会编号为SCP-CN-1066的神奇地点。\n\n一家二手手机店，你从店里顺了一张名片。",
+        "descriptionNoJL": "SCP-CN-1066是一家二手手机交易店。"
+    },
+    "1881": {
+        "name": "描绘梦想",
+        "color": "SCP",
+        "img": "1881.png",
+        "description": "被基金会编号为SCP-CN-1881的神奇物件。\n\n一部索尼手机，据说有的人可以从中看到虚拟角色，甚至与其对话。",
+        "descriptionNoJ": "SCP-CN-1881是一部Xperia TX LT29i智能手机，当特定人群使用摄像机功能并将摄像头转至身后时，可发现一名或数名日本卡通动画风格的SCP-CN-1881-1个体。",
+        "descriptionNoL": "被基金会编号为SCP-CN-1881的神奇物件。\n\n一部索尼手机，能用，但没啥特别的。",
+        "descriptionNoJL": "SCP-CN-1881是一部Xperia TX LT29i智能手机。"
+    },
+    "-34": {
+        "name": "吃了一半的冰棍",
+        "color": "props",
+        "img": "-34.png",
+        "description": "一根吃了一半的“西南小棒”系列冰棍。似乎有某种传送的功能。",
+        "descriptionNoJ": "一例部分被食用的SCP-CN-434“开袋百分百有奖”，具有传送的异常性质。",
+        "descriptionNoL": "一根吃了一半的“西南小棒”系列冰棍。",
+        "descriptionNoJL": "一例部分被食用的SCP-CN-434“开袋百分百有奖”。"
+    },
+    "-25": {
+        "name": "冰鲜尸体",
+        "color": "props",
+        "img": "-25.png",
+        "description": "你从地球美食贩卖机里买到的尸体，你的同胞。对此你表示沉痛哀悼。",
+        "descriptionNoJ": "从SCP-CN-522“地球美食售货机”处购买的人类尸体。根据其售卖模式推测，人类尸体应当被一个或多个未确认的地外种族当做食物。",
+        "descriptionNoL": "你从地球美食贩卖机里买到的尸体。",
+        "descriptionNoJL": "从SCP-CN-522“地球美食售货机”处购买的人类尸体。"
+    },
+    "+87": {
+        "name": "OB传媒食品采购部的名片",
+        "color": "props",
+        "img": "+87.png",
+        "description": "一张和OB传媒风格不匹配的、很朴素的名片，上面写着食品采购部的电话号码。",
+        "descriptionNoJ": "从GoI“OB传媒”处获得的名片，登录了其组织内部食品采购部的联系电话。名片的外形设计较为简洁，与其一贯风格不符。",
+        "descriptionNoL": "一张名片，上面写着食品采购部的电话号码。",
+        "descriptionNoJL": "从GoI“OB传媒”处获得的名片，登录了其组织内部食品采购部的联系电话。"
+    },
+    "2303": {
+        "name": "一台手机",
+        "color": "SCP",
+        "img": "2303.png",
+        "description": "被基金会编号为SCP-CN-2303的神奇物件。\n\n一系列手机，非常容易上手，你买到的这一部是小米的。",
+        "descriptionNoJ": "SCP-CN-2303是一系列异常手机，可迅速让使用者熟悉其使用方式和功能。",
+        "descriptionNoL": "被基金会编号为SCP-CN-2303的神奇物件。\n\n一部小米手机，能用，而且非常好用，但也没啥特别的。",
+        "descriptionNoJL": "SCP-CN-2303是一部手机。"
+    },
+    "+48": {
+        "name": "茶泡饭员工餐",
+        "color": "props",
+        "img": "+48.png",
+        "description": "招财猫给你做的员工餐，看上去十分清淡。“+48”可能意味着它的正式售价是48块钱，有点贵。",
+        "descriptionNoJ": "从SCP-CN-1276“‘绝好调回转寿司！’”内的实体处获得的食品，本身不具备异常性质。",
+        "descriptionNoL": "招财猫给你做的员工餐，看上去十分清淡。",
+        "descriptionNoJL": "从SCP-CN-1276“‘绝好调回转寿司！’”内的实体处获得的食品，本身不具备异常性质。"
+    },
 }
