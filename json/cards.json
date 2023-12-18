@@ -109,15 +109,6 @@
         "descriptionNoL": "被基金会编号为SCP-CN-086的神奇现象。\n\n一套游戏中的舞蹈动作……不是，你真信了？强迫性这么明显？",
         "descriptionNoJL": "SCP-CN-086通过视觉传播，被影响者通常相信环绕汤匙旋转的行为必须实行。"
     },
-    "3000-Dream": {
-        "name": "异常物品Dream",
-        "color": "boss",
-        "img": "Dream.gif",
-        "description": "",
-        "descriptionNoJ": false,
-        "descriptionNoL": false,
-        "descriptionNoJL": false
-    },
     "206": {
         "name": "飞行模式",
         "color": "SCP",
@@ -271,15 +262,15 @@
         "description": "一篇浑水摸鱼的规则怪谈，标题为“超级异常家具城员工守则·卫浴区篇”。你看了之后不仅没感到害怕，还有点想笑。"
     },
     "006J": {
-        "name": "文乎wordのmeme是也です呐♥ 复合型文字模因，又名究极缝合怪",
+        "name": "<del>文乎wordのmeme是也です呐♥</del> 复合型文字模因，又名究极缝合怪",
         "color": "SCP",
         "img": "006J.PNG",
-        "description": "被基金会？编号为SCP-CN-1881的神奇物件。\n\n一张写满了各种你不忍直视的模因的纸。值得注意的好像有以下这些：\n\nSCP-CN-，00122 - 第五一模因\n艾斯 瑟 癖 横杠 瑟 恩 横杠 二九六 - 汉字模因\nSCP-CN-048-J - 中二病体验器\nSCP-CN-321-J - 一个车轱辘\nSCP-CN-888-J - 由于贯彻O5议会第一次会议关于收容异常的决议而被收容的模因官僚主义模因"
+        "description": "被基金会？编号为SCP-CN-1881的神奇物件。\n\n一张写满了各种你不忍直视的模因的纸。值得注意的好像有以下这些：\n\nSCP-CN-，00122 - 第五一模因\n艾斯 瑟 癖 横杠 瑟 恩 横杠 二九六 - 汉字模因\nSCP-CN-048-J - 中二病体验器\nSCP-CN-321-J - 一个车轱辘\nSCP-CN-888-J - <del>由于贯彻O5议会第一次会议关于收容异常的决议而被收容的模因</del> 官僚主义模因"
     },
     "006J-2": {
         "parent": "006J",
-        "description": "被基金会？编号为SCP-CN-1881的神奇物件。\n\n一张写满了各种你不忍直视的模因的纸。值得注意的好像有以下这些：\n\nSCP-CN-，00122 - 第五一模因\n艾斯 瑟 癖 横杠 瑟 恩 横杠 二九六 - 汉字模因\nSCP-CN-048-J - 中二病体验器\nSCP-CN-321-J - 一个车轱辘\nSCP-CN-888-J - 由于贯彻O5议会第一次会议关于收容异常的决议而被收容的模因官僚主义模因\nSCP-CN-648-J - 现在我的手中抓住了希望！\n\n咦，是不是增加了？"
-    },
+        "description": "被基金会？编号为SCP-CN-1881的神奇物件。\n\n一张写满了各种你不忍直视的模因的纸。值得注意的好像有以下这些：\n\nSCP-CN-，00122 - 第五一模因\n艾斯 瑟 癖 横杠 瑟 恩 横杠 二九六 - 汉字模因\nSCP-CN-048-J - 中二病体验器\nSCP-CN-321-J - 一个车轱辘\nSCP-CN-888-J - <del>由于贯彻O5议会第一次会议关于收容异常的决议而被收容的模因</del> 官僚主义模因\nSCP-CN-648-J - 现在我的手中抓住了希望！\n\n咦，是不是增加了？"
+    }
     "048J": {
         "name": "中二病体验器",
         "color": "SCP",
@@ -307,5 +298,141 @@
         "img": "600.PNG",
         "description": "被基金会编号为SCP-CN-600的神奇物件。\n\n一根巧克力棒，吃了之后会被原封不动拉出来，还能接着吃。",
         "descriptionNoL": "被基金会编号为SCP-CN-600的神奇物件。\n\n看上去是一根普通的巧克力棒。但相信你也发现了，很多看上去正常的东西实际上不正常……"
+    },
+    "383": {
+        "name": "黑暗料理餐厅",
+        "color": "SCP",
+        "img": "383.png",
+        "description": "被基金会编号为SCP-CN-383的神奇程序。\n\n一款手机游戏，可以让你充分DIY碳基生物不宜食用的东西，也可以订购其他人的。",
+        "descriptionNoJ": "SCP-CN-383是一个餐厅经营类手机游戏，可用于订购他人制作的，通常被定义为“难吃”或人类无法食用的食物。"
+    },
+    "564": {
+        "name": "你的個人辦公室",
+        "color": "SCP",
+        "img": "564.png",
+        "description": "被基金会编号为SCP-CN-564的神奇程序。\n\n一个手机app。在app中调出对应的文具或办公用具后，就可以用手机实现它的功能，可谓是一站式文具解决方案。然而没办法解决有些地方不能带手机的问题。",
+        "descriptionNoJ": "SCP-CN-564是一个手机程序，可使该手机获得程序中所显示的物品（主要是文具和办公用品，如圆珠笔、订书机等）的功能。"
+    },
+    "352": {
+        "name": "猫抽屉",
+        "color": "SCP",
+        "img": "352.png",
+        "description": "被基金会编号为SCP-CN-352的神奇物件。\n\n放入对应的物品，就会长出对应的猫的抽屉。猫咪，很神奇吧！",
+        "descriptionNoJ": "SCP-CN-352是一个床头柜，在抽屉中放入物品会产生具有该物品性质或特征的家猫。"
+    },
+    "2067": {
+        "name": "你好，我是赛博猫猫。",
+        "color": "SCP",
+        "img": "2067.png",
+        "description": "被基金会编号为SCP-CN-2067的神奇生物。\n\n进入基金会内网的赛博猫猫，其智慧程度已经完全看不出是猫了。你的好帮手！在任何时候将当前事件+5，即可获得赛博猫猫的提示。",
+        "descriptionNoJ": "SCP-CN-2067该异常是一个电子智能生命体，曾为植入物初期动物实验的对象。在本游戏中，拥有此卡时，在输入框中输入当前事件编号+5即可与其对话。"
+    },
+    "1469": {
+        "name": "鱼伞",
+        "color": "SCP",
+        "img": "1469.png",
+        "description": "被基金会编号为SCP-CN-1469的神奇物件。\n\n只要打开这把伞，全世界的鱼都会向你奔来！",
+        "descriptionNoJ": "SCP-CN-1469是一把折叠伞，展开后会让半径20km以内的鱼类向伞面靠近。"
+    },
+    "680": {
+        "name": "Wondertainment博士的澡盆大海战®",
+        "color": "SCP",
+        "img": "680.png",
+        "description": "被基金会编号为SCP-CN-680的神奇物件。\n\n让你可以身临其境在浴室里打海战的船只模型，你拿到的这个是一艘潜艇。",
+        "descriptionNoJ": "SCP-CN-680是一艘1：1000的金属潜艇模型，置入水中后可激活开启模拟海战游戏。"
+    },
+    "+1715": {
+        "name": "你的手机",
+        "color": "props",
+        "img": "+1715.png",
+        "description": "你自己的手机，除了里面装了几个奇怪的app之外没什么特别的。",
+        "descriptionNoJ": "属于研究员的个人手机，除内部安装的程序外均无异常。"
+    },
+    "+25": {
+        "name": "一顶帽子",
+        "color": "props",
+        "img": "+25.png",
+        "description": "水中的白鲸友人送给你的帽子，象征了你们的友谊。也许也可以成为将不同的友谊传递下去的纽带？",
+        "descriptionNoJ": "由SCP-CN-925“礼帽白鲸”赠予的帽子，不具备异常性质。"
+    },
+    "+1570": {
+        "name": "人鲨友好之水",
+        "color": "props",
+        "img": "+1570.png",
+        "description": "纪念人类与鲨鱼共同协作、建立海上交通大学的“校水”。虽说如此，看起来也就是瓶普通的矿泉水罢了。",
+        "descriptionNoJ": "由SCP-CN-985“考试鲨”赠予的瓶装水，据其所称具有特殊的纪念意义。"
+    },
+    "+460": {
+        "name": "薛定谔的奇妙cp文",
+        "color": "props",
+        "img": "+460.png",
+        "description": "旭蟹撰写的cp文，描写了薛定谔和Wontertainment博士的狗血恋情，以及作为他们恋爱结晶的……猫。到底是怎样的脑洞才能凑出这样的cp……",
+        "descriptionNoJ": "由SCP-CN-1211“今天起，做一个有梦想的旭蟹”撰写的有关埃尔温·薛定谔的文章，充满了荒谬的内容。"
+    },
+    "+709Butterfly": {
+        "name": "宇宙猫猫头（囚星蝶ver.）",
+        "displayID": "+709",
+        "color": "props",
+        "img": "+709-1.png",
+        "description": "在囚星蝶前方露出惊讶的神情，仿佛在思考宇宙奥秘的猫.jpg。",
+        "descriptionNoJ": "由SCP-CN-173“自定义先生”绘制的有关家猫的知名模因图像，背景中加入了SCP-CN-027“囚星蝶”。"
+    },
+    "+709Bird": {
+        "name": "宇宙猫猫头（青鸟ver.）",
+        "displayID": "+709",
+        "color": "props",
+        "img": "+709-2.png",
+        "description": "在青鸟前方露出惊讶的神情，仿佛在思考宇宙奥秘的猫.jpg。",
+        "descriptionNoJ": "由SCP-CN-173“自定义先生”绘制的有关家猫的知名模因图像，背景中加入了SCP-CN-1559“青鸟”。"
+    },
+    "+9": {
+        "name": "一瓶酒",
+        "color": "props",
+        "img": "+9.png",
+        "description": "三只小鸟酒吧出品的酒。小小一瓶，分量也非常适合鸟类顾客；就是不知道它们饮用的时候是不是要像乌鸦喝水一样往里面扔石头？",
+        "descriptionNoJ": "由SCP-CN-321“蹦迪小鸟”赠予的酒，瓶身为玻璃质地。"
+    },
+    "+944": {
+        "name": "猫的罪证",
+        "color": "props",
+        "img": "+944.png",
+        "description": "证明了猫的破坏性的酒瓶碎片。猫搞破坏，猫坏；猫是为了你能完成任务而搞破坏，猫好！",
+        "descriptionNoJ": "由于家猫个体的动作而坠落损坏的酒瓶的碎片。"
+    },
+    "3000-Dream": {
+        "name": "异常物品Dream",
+        "color": "boss",
+        "img": "Dream.gif",
+        "description": "",
+        "descriptionNoJ": false,
+        "descriptionNoL": false,
+        "descriptionNoJL": false
+    },
+    "3000-Joke": {
+        "name": "异常物品J",
+        "color": "boss",
+        "img": "Joke.gif",
+        "description": "",
+        "descriptionNoJ": false,
+        "descriptionNoL": false,
+        "descriptionNoJL": false
+    },
+    "3000-Love": {
+        "name": "异常物品Love",
+        "color": "boss",
+        "img": "Love.gif",
+        "description": "",
+        "descriptionNoJ": false,
+        "descriptionNoL": false,
+        "descriptionNoJL": false
+    },
+    "3000-Money": {
+        "name": "异常物品Money",
+        "color": "boss",
+        "img": "Money.gif",
+        "description": "",
+        "descriptionNoJ": false,
+        "descriptionNoL": false,
+        "descriptionNoJL": false
     }
 }
