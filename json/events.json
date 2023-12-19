@@ -65,11 +65,11 @@
         {
             "buttonPrompt": "走向“卫浴区”（J线）",
             "nextEvent": "joke"
-        }
+        },
          {
             "buttonPrompt": "走向“装饰区”（梦线，已实装）",
             "nextEvent": "737"
-        },
+        }
     ]
 },
     "737": {
@@ -165,7 +165,7 @@
     "Drawing-1979": {
         "type": "output",
         "color": "Event",
-        "displayID": "1979",
+        "displayID": "●|●●●●●●●●●|●●●●●●●|●●●●●●●●●|",
         "loseCards": [
             "585"
         ],
