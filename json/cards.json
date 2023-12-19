@@ -159,7 +159,7 @@
     "+87": {
         "name": "OB传媒食品采购部的名片",
         "color": "props",
-        "img": "+87.png",
+        "img": "P87.png",
         "description": "一张和OB传媒风格不匹配的、很朴素的名片，上面写着食品采购部的电话号码。",
         "descriptionNoJ": "从GoI“OB传媒”处获得的名片，登录了其组织内部食品采购部的联系电话。名片的外形设计较为简洁，与其一贯风格不符。",
         "descriptionNoL": "一张名片，上面写着食品采购部的电话号码。",
@@ -177,7 +177,7 @@
     "+48": {
         "name": "茶泡饭员工餐",
         "color": "props",
-        "img": "+48.png",
+        "img": "P48.png",
         "description": "招财猫给你做的员工餐，看上去十分清淡。“+48”可能意味着它的正式售价是48块钱，有点贵。",
         "descriptionNoJ": "从SCP-CN-1276“‘绝好调回转寿司！’”内的实体处获得的食品，本身不具备异常性质。",
         "descriptionNoL": "招财猫给你做的员工餐，看上去十分清淡。",
@@ -227,7 +227,7 @@
     "+4": {
         "name": "马桶碎片",
         "color": "props",
-        "img": "+4.PNG",
+        "img": "P4.PNG",
         "description": "被你打进二次元的马桶的残骸，仿佛在向你哭诉着它遭遇的苦难。",
         "descriptionNoL": "被你打进二次元的马桶的残骸。"
     },
@@ -241,7 +241,7 @@
     "+34": {
         "name": "铲子",
         "color": "props",
-        "img": "+34.PNG",
+        "img": "P34.PNG",
         "description": "顾名思义，是一把铲子，你可以用它来铲东西。"
     },
     "034J": {
@@ -254,7 +254,7 @@
     "+322": {
         "name": "二维炸弹",
         "color": "props",
-        "img": "+322.PNG",
+        "img": "P322.PNG",
         "description": "一个二维的炸弹，循环播放着爆炸动画。"
     },
     "322J": {
@@ -274,7 +274,7 @@
     "+111": {
         "name": "一坨大便",
         "color": "props",
-        "img": "+111.PNG",
+        "img": "P111.PNG",
         "description": "就是一坨大便，很可能是假的。但它只要有万分之一的可能是真的，你就不想碰。",
     },
     "111J": {
@@ -287,7 +287,7 @@
     "+6": {
         "name": "粗制滥造的规则怪谈",
         "color": "props",
-        "img": "+6.PNG",
+        "img": "P6.PNG",
         "description": "一篇浑水摸鱼的规则怪谈，标题为“超级异常家具城员工守则·卫浴区篇”。你看了之后不仅没感到害怕，还有点想笑。"
     },
     "006J": {
@@ -376,28 +376,28 @@
     "+1715": {
         "name": "你的手机",
         "color": "props",
-        "img": "+1715.png",
+        "img": "P1715.png",
         "description": "你自己的手机，除了里面装了几个奇怪的app之外没什么特别的。",
         "descriptionNoJ": "属于研究员的个人手机，除内部安装的程序外均无异常。"
     },
     "+25": {
         "name": "一顶帽子",
         "color": "props",
-        "img": "+25.png",
+        "img": "P25.png",
         "description": "水中的白鲸友人送给你的帽子，象征了你们的友谊。也许也可以成为将不同的友谊传递下去的纽带？",
         "descriptionNoJ": "由SCP-CN-925“礼帽白鲸”赠予的帽子，不具备异常性质。"
     },
     "+1570": {
         "name": "人鲨友好之水",
         "color": "props",
-        "img": "+1570.png",
+        "img": "P1570.png",
         "description": "纪念人类与鲨鱼共同协作、建立海上交通大学的“校水”。虽说如此，看起来也就是瓶普通的矿泉水罢了。",
         "descriptionNoJ": "由SCP-CN-985“考试鲨”赠予的瓶装水，据其所称具有特殊的纪念意义。"
     },
     "+460": {
         "name": "薛定谔的奇妙cp文",
         "color": "props",
-        "img": "+460.png",
+        "img": "P460.png",
         "description": "旭蟹撰写的cp文，描写了薛定谔和Wontertainment博士的狗血恋情，以及作为他们恋爱结晶的……猫。到底是怎样的脑洞才能凑出这样的cp……",
         "descriptionNoJ": "由SCP-CN-1211“今天起，做一个有梦想的旭蟹”撰写的有关埃尔温·薛定谔的文章，充满了荒谬的内容。"
     },
@@ -405,7 +405,7 @@
         "name": "宇宙猫猫头（囚星蝶ver.）",
         "displayID": "+709",
         "color": "props",
-        "img": "+709-1.png",
+        "img": "P709.png",
         "description": "在囚星蝶前方露出惊讶的神情，仿佛在思考宇宙奥秘的猫.jpg。",
         "descriptionNoJ": "由SCP-CN-173“自定义先生”绘制的有关家猫的知名模因图像，背景中加入了SCP-CN-027“囚星蝶”。"
     },
@@ -413,28 +413,28 @@
         "name": "宇宙猫猫头（青鸟ver.）",
         "displayID": "+709",
         "color": "props",
-        "img": "+709-2.png",
+        "img": "P709-2.png",
         "description": "在青鸟前方露出惊讶的神情，仿佛在思考宇宙奥秘的猫.jpg。",
         "descriptionNoJ": "由SCP-CN-173“自定义先生”绘制的有关家猫的知名模因图像，背景中加入了SCP-CN-1559“青鸟”。"
     },
     "+9": {
         "name": "一瓶酒",
         "color": "props",
-        "img": "+9.png",
+        "img": "P9.png",
         "description": "三只小鸟酒吧出品的酒。小小一瓶，分量也非常适合鸟类顾客；就是不知道它们饮用的时候是不是要像乌鸦喝水一样往里面扔石头？",
         "descriptionNoJ": "由SCP-CN-321“蹦迪小鸟”赠予的酒，瓶身为玻璃质地。"
     },
     "+944": {
         "name": "猫的罪证",
         "color": "props",
-        "img": "+944.png",
+        "img": "P944.png",
         "description": "证明了猫的破坏性的酒瓶碎片。猫搞破坏，猫坏；猫是为了你能完成任务而搞破坏，猫好！",
         "descriptionNoJ": "由于家猫个体的动作而坠落损坏的酒瓶的碎片。"
     },
     "3000-Dream": {
         "name": "异常物品Dream",
         "color": "boss",
-        "img": "Dream.gif",
+        "img": "dream.gif",
         "description": "",
         "descriptionNoJ": false,
         "descriptionNoL": false,
@@ -452,7 +452,7 @@
     "3000-Love": {
         "name": "异常物品Love",
         "color": "boss",
-        "img": "Love.gif",
+        "img": "love.gif",
         "description": "",
         "descriptionNoJ": false,
         "descriptionNoL": false,
@@ -461,7 +461,7 @@
     "3000-Money": {
         "name": "异常物品Money",
         "color": "boss",
-        "img": "Money.gif",
+        "img": "money.gif",
         "description": "",
         "descriptionNoJ": false,
         "descriptionNoL": false,
