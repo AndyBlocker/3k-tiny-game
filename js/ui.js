@@ -138,6 +138,7 @@ function addCardToContainer(cardId, options) {
     cardDiv.addEventListener('click', () => { previewCard(cardId, options); });
     cardDiv.style.backgroundColor = '#222222';
     cardContainer.appendChild(cardDiv);
+    fadeIn(cardDiv);
 }
 
 // 从container中删除card
@@ -145,6 +146,7 @@ function popCardFromContainer(container, cardId) {
     let childs = container.childNodes;
     for (var i = 0; i < childs.length; i++) {
         if (childs[i].id == cardId) {
+            fadeOut(childs[i]);
             container.removeChild(childs[i]);
             return;
         }
@@ -324,7 +326,7 @@ function triggerErrorAnimation(element) {
 
 function calcNumberOfCardToShow() {
     let screenWidth = window.innerWidth;
-    let cardSize = 10 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+    let cardSize = 8 * parseFloat(getComputedStyle(document.documentElement).fontSize);
     maxCardsToShow = Math.min(Math.floor(screenWidth / cardSize), 8);
     updateCardVisibility();
     console.log("maxCardsToShow: " + maxCardsToShow);
@@ -414,3 +416,14 @@ function updateCalcWidth() {
     console.log("input_box width: " + window.getComputedStyle(inputBox).width);
     console.log("calcContainer width: " + window.getComputedStyle(calcContainer).width);
 }
+
+function fadeIn(element) {
+    element.classList.remove('fade-out');
+    element.classList.add('fade-in');
+  }
+  
+  function fadeOut(element) {
+    element.classList.remove('fade-in');
+    element.classList.add('fade-out');
+  }
+  
