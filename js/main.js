@@ -34,13 +34,20 @@ loadDataAndBoot(DATA_TYPES.Event, 'events.json', attributesEvent, (populatedData
 
 
 document.getElementById('hintPrompt1').addEventListener('click', () => {
-  hintText1.style.display = 'initial';
-  if (hintText2.innerHTML != '') {
-    document.getElementById('hintPrompt2').style.display = 'initial';
+  if (hintText1.style.display == 'initial') {
+    hintText1.style.display = 'none';
+    document.getElementById('hintPrompt2').style.display = 'none';
+    hintText2.style.display = 'none';
+  }
+  else {
+    hintText1.style.display = 'initial';
+    if (hintText2.innerHTML != '') {
+      document.getElementById('hintPrompt2').style.display = 'initial';
+    }
   }
 })
 document.getElementById('hintPrompt2').addEventListener('click', () => {
-  hintText2.style.display = 'initial';
+  hintText2.style.display = hintText2.style.display == 'initial' ? 'none' : 'initial';
 })
 
 window.addEventListener('resize', calcNumberOfCardToShow);

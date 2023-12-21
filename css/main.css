@@ -62,7 +62,7 @@ button:focus {
   align-items: flex-start;
   /* justify-content: space-between; */
   flex-grow: 1;
-  overflow-y: hidden;
+  /* overflow-y: auto; */
 }
 
 .topic {
@@ -91,7 +91,7 @@ button:focus {
   white-space: pre-line;
   box-sizing: border-box;
   /* padding: 1em; */
-  overflow: hidden;
+  overflow: auto;
   display: initial;
   flex-direction: column;
   overflow-y: auto;
@@ -159,6 +159,7 @@ button:focus {
 }
 
 .prompt {
+  font-size: 0.75em;
   color: white;
   width: 90%;
   margin: auto;
@@ -178,6 +179,11 @@ button:focus {
 
 .hintText {
   display: none;
+}
+
+#hintText2{
+  text-align: center;
+  margin: auto;
 }
 
 .button-area {
