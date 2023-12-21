@@ -678,9 +678,9 @@ div.RAISA-description {
 }
 
 .fade-in {
-  animation: fadeIn 0.75s forwards;
+  animation: fadeIn 1s forwards;
 }
 
 .fade-out {
-  animation: fadeOut 0.75s forwards;
+  animation: fadeOut 1s forwards;
 }
