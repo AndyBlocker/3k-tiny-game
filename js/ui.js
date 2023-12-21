@@ -196,6 +196,7 @@ function addCardToLootContainer(event, cardId, divClass) {
 
     let options = { "color": getColor(allCards[cardId]), "imageUrl":  IMAGE_PATH + allCards[cardId].img};
     cardDiv.style.borderColor = options.color;
+    cardDiv.style.color = options.color;
     setTimeout(() => {
         cardDiv.onclick = () => {
             addCardToDeck(cardId, options);
@@ -287,6 +288,14 @@ function addOutputButton(nextEventId, buttonPrompt) {
     document.getElementById('outputs').appendChild(continueButton);
 
     continueButton.innerText = buttonPrompt ? buttonPrompt : DEFAULT_CONTINUE_TEXT;
+    // const borderColor = getComputedStyle(continueButton).borderColor;
+    // continueButton.style.color = borderColor;
+
+    const color = document.querySelector('.topic').style.color;
+    continueButton.style.color = color;
+    continueButton.style.borderColor = color;
+    
+    console.log(continueButton.style)
     setTimeout(() => continueButton.onclick = () => {
         startEvent(nextEventId);
     }, 100);
@@ -353,9 +362,12 @@ function displayRAISA(title, description) {
 */
 
 function deployCalculater() {
-    document.querySelector(".calculater").onclick = () => {
-        const classList = document.querySelector(".calculater-container").classList;
-        classList.contains("display") ? classList.remove("display") : classList.add("display");
+    var calc = document.querySelector(".calculater");
+    calc.onclick = () => {
+        console.log(document.querySelector('.calculater-container').style.display);
+        document.querySelector('.calculater-container').style.display = (document.querySelector('.calculater-container').style.display == "flex" ? "none" : "flex");
+        // const classList = document.querySelector(".calculater-container").classList;
+        // classList.contains("display") ? classList.remove("display") : classList.add("display");
     };
 
     const cal1 = document.querySelector(".cal-1");
@@ -372,5 +384,33 @@ function deployCalculater() {
 
 }
 
+function getFullDimensionsWithMargin(element) {
+    var style = window.getComputedStyle(element);
 
-deployCalculater();
+    var widthWithMargin = element.offsetWidth
+        + parseInt(style.marginLeft, 10)
+        + parseInt(style.marginRight, 10);
+
+    var heightWithMargin = element.offsetHeight
+        + parseInt(style.marginTop, 10)
+        + parseInt(style.marginBottom, 10);
+
+    return { width: widthWithMargin, height: heightWithMargin };
+}
+    
+function updateCalcWidth() {
+    const inputBox = document.querySelector(".input-box");
+    const calcContainer = document.querySelector(".calculater-container");
+    const input_and_calc = document.querySelector(".input-and-calc-container");
+    if (inputBox && calcContainer) {
+        if (window.innerWidth > 768) {
+            calcContainer.style.width = window.getComputedStyle(inputBox).width;
+        }
+        else {
+            calcContainer.style.width = window.getComputedStyle(input_and_calc).width;
+        }
+    }
+
+    console.log("input_box width: " + window.getComputedStyle(inputBox).width);
+    console.log("calcContainer width: " + window.getComputedStyle(calcContainer).width);
+}

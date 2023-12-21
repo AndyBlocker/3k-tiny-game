@@ -45,3 +45,7 @@ document.getElementById('hintPrompt2').addEventListener('click', () => {
 
 window.addEventListener('resize', calcNumberOfCardToShow);
 calcNumberOfCardToShow();
+deployCalculater();
+
+window.addEventListener('resize', updateCalcWidth);
+updateCalcWidth();

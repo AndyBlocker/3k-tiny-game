@@ -104,37 +104,31 @@ function startEvent(eventId) {
         document.querySelector('.topic').innerHTML = event.displayID;
     else
         document.querySelector('.topic').innerHTML = eventId;
+
     document.querySelector('.topic').style.color = color;
     document.getElementsByClassName('text-container')[0].innerHTML = getDescription(eventId, DATA_TYPES.Event);
+
     // if innerHTML is empty, hide the text container
     if (document.getElementsByClassName('text-container')[0].innerHTML == '') {
         document.getElementsByClassName('text-container')[0].style.display = 'none';
+
         if (window.innerWidth > 768)
             document.querySelector('.main-container').style.justifyContent = 'center';
-        else
-            document.querySelector('.text-container').style.height = '100%';
     }
     else {
         document.getElementsByClassName('text-container')[0].style.display = 'initial';
-        document.querySelector('.text-container').style.height = '50%';
+        document.querySelector('.text-container').style.height = 'auto';
     }
 
     // update event img
     if (allEvents[eventId] && allEvents[eventId].img) {
         document.querySelector('.img-wrapper').src = IMAGE_PATH + allEvents[eventId].img;
-        // document.querySelector('.img-wrapper').style.display = 'initial';
-        document.querySelector('.img-container').style.display = 'initial';
-        // document.querySelector('.text-container').style.marginLeft = '10%';
-        // document.querySelector('.text-container').style.marginRight = '';
-        if(window.innerWidth <= 768)
-            document.querySelector('.text-container').style.height = '50%';
+        document.querySelector('.img-container').style.display = 'flex';
     }
     else {
         document.querySelector('.img-container').style.display = 'none';
         document.querySelector('.text-container').style.marginLeft = 'auto';
         document.querySelector('.text-container').style.marginRight = 'auto';
-        if(window.innerWidth <= 768)
-            document.querySelector('.text-container').style.height = '100%';
     }
 
     document.getElementById('inputs').style.display = 'none';

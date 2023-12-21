@@ -60,7 +60,7 @@ button:focus {
   /* text-align: center; */
   flex-direction: row;
   align-items: flex-start;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   flex-grow: 1;
   overflow-y: hidden;
 }
@@ -69,7 +69,7 @@ button:focus {
   background-color: #222222;
 
   width: 90%;
-  color: #e5c4f4;
+  color: #9c67b5;
   margin: auto;
   margin-top: 0em;
   margin-bottom: 0.2em;
@@ -86,38 +86,37 @@ button:focus {
   /* margin-left: 10%; */
   color: white;
   width: 60%;
-  height: 100%;
+  height: auto;
   /* min-height: 40em; */
   white-space: pre-line;
   box-sizing: border-box;
   /* padding: 1em; */
   overflow: hidden;
-  display: flex;
+  display: initial;
   flex-direction: column;
   overflow-y: auto;
 }
 
 .img-container {
   width: 40%;
-  max-height: 50%;
+  /* max-height: 50%; */
   display: flex;
   justify-self: center;
   align-items: flex-start;
   top: -5%;
   position: relative;
   margin: auto;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 .img-container img {
   /* margin-top: 0; */
   margin: auto;
-  width: auto;
-  height: 100%;
+  /* width: auto; */
+  /* height: auto; */
   max-width: 500px;
   max-height: 500px;
   object-fit: contain;
-  
 }
 
 @media screen and (max-width: 768px) {
@@ -138,7 +137,7 @@ button:focus {
   }
 
   .text-container {
-    height: 50%;
+    height: auto;
     overflow-y: visible;
   }
 
@@ -193,8 +192,8 @@ button:focus {
 .button-area .large-button,
 .medium-button,
 .small-button {
-  margin: auto;
-  border: 2px solid #e5c4f4;
+  /* margin: auto; */
+  border: 2px solid #9c67b5;
   background-color: #222222;
   margin: 5%;
   margin-top: 0.5em;
@@ -207,7 +206,7 @@ button:focus {
 
 .button-area .large-button {
   width: 90%;
-  /* border: #e5c4f4 2px; */
+  /* border: #9c67b5 2px; */
   color: white;
 }
 
@@ -224,11 +223,11 @@ button:focus {
 }
 
 .button-area .input-box {
-  margin: auto;
+  margin: 10px;
   color: white;
   background-color: transparent;
-  border: 3px solid mediumpurple;
-  margin: 5%;
+  border: 3px solid #9c67b5;
+  /* margin: 5%; */
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   height: 3em;
@@ -237,16 +236,64 @@ button:focus {
   width: calc(80% - 3em);
 }
 
+.calculater-container{
+  /* width: calc(80% - 3em); */
+  margin-left: calc(2em + 10px);
+  /* overflow: hidden; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cal-1, .cal-2{
+  flex: 1;
+  border: 3px solid #9c67b5;
+  background-color: transparent;
+  color: white;
+  height: 3em;
+  border-radius: 10px;
+  font-size: 1em;
+  width: calc((100% - 3em) / 2);
+}
+.equal, .plus{
+  width: 1em;
+  text-align: center;
+  /* justify-content: center; */
+}
+
+@media screen and (max-width: 768px) {
+  .calculater-container{
+    margin-left: 0;
+  }
+  .equal{
+    width: 2em;
+    font-size: 1em;
+    margin:5%;
+    margin-left: 5px;
+    border: 3px;
+  }
+}
+
+.plus, .equal{
+  font-size: 1.5em;
+  color: #9c67b5;
+}
+
 .button-area .calculater-container {
-  margin: auto 5%;
+  /* margin: auto 5%; */
   display: none;
 }
 
+.input-and-calc-container {
+  display: flex;
+  align-items: center;
+}
+
 .button-area .calculater {
-  width: 4em;
-  display: block;
-  margin: 2% 5%;
-  border-radius: 0.3em;
+  width: 2em;
+  display: flex;
+  /* margin-right: 5px; */
+  /* margin: 2% 5%; */
+  /* border-radius: 0.3em; */
 }
 
 .button-area .calculater:hover {
@@ -256,19 +303,6 @@ button:focus {
 
 .button-area .calculater-container.display {
   display: flex;
-}
-
-.button-area .calculater-container .cal-1, .button-area .calculater-container .cal-2 {
-  background-color: transparent;
-  border: 3px solid mediumpurple;
-  border-radius: 5px;
-  color: white;
-}
-
-.button-area .calculater-container .plus, .button-area .calculater-container .equal {
-  color: mediumpurple;
-  font-weight: bold;
-  margin: 0.5em;
 }
 
 @keyframes shake {
@@ -321,12 +355,12 @@ button:focus {
 }
 
 
-.button-area .input-box:hover{
+.button-area .input-box:hover {
   cursor: pointer;
   border-width: 4px;
 }
 
-.button-area .calculater-container .cal-1:hover, 
+.button-area .calculater-container .cal-1:hover,
 .button-area .calculater-container .cal-2:hover {
   cursor: pointer;
   /* background-color: rgba(255, 255, 255, 0.4); */
@@ -345,6 +379,7 @@ button:focus {
   /* width: 5%; */
   /* height: 3%; */
   box-sizing: border-box;
+  /* color: #9c67b5; */
   /* padding: 1em; */
 }
 
@@ -379,7 +414,7 @@ button:focus {
 .card {
   background: white;
   color: #222222;
-  border: 2px solid #ff928c;
+  border: 2px solid #ff9d95;
   display: flex;
   border-radius: 10px;
   text-align: center;
@@ -399,7 +434,7 @@ button:focus {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.5em;
   text-align: center;
-  color: #ff928c;
+  color: #ff9d95;
   width: 100%;
   top: 10%;
 }
@@ -418,7 +453,7 @@ button:focus {
   }
 
   .card {
-    border: 1px solid #ff928c;
+    border: 1px solid #ff9d95;
   }
 
   .card-title {
@@ -506,7 +541,7 @@ button:focus {
   background-color: #161616;
   margin: 0;
   padding: 20px;
-  border: 1px solid #ff928c;
+  border: 1px solid #ff9d95;
   border-radius: 10px;
   width: 30vw;
   max-width: 30em;
@@ -542,7 +577,7 @@ button:focus {
 }
 
 .card-description-id {
-  color: #ff928c;
+  color: #ff9d95;
   font-size: 2em;
   text-align: center;
   margin-bottom: 15px;
@@ -565,7 +600,7 @@ button:focus {
 .divider {
   height: 2px;
   width: 80%;
-  background-color: #ff928c;
+  background-color: #ff9d95;
   /* margin-top: 15px; */
   margin-bottom: 15px;
 }
