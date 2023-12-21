@@ -146,8 +146,7 @@ function popCardFromContainer(container, cardId) {
     let childs = container.childNodes;
     for (var i = 0; i < childs.length; i++) {
         if (childs[i].id == cardId) {
-            fadeOut(childs[i]);
-            container.removeChild(childs[i]);
+            fadeOutAndRemove(childs[i]); 
             return;
         }
     }
@@ -422,8 +421,11 @@ function fadeIn(element) {
     element.classList.add('fade-in');
   }
   
-  function fadeOut(element) {
-    element.classList.remove('fade-in');
+  function fadeOutAndRemove(element) {
     element.classList.add('fade-out');
-  }
+
+    element.addEventListener('animationend', function() {
+        element.remove();
+    }, { once: true }); 
+}
   
