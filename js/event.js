@@ -121,6 +121,10 @@ function startEvent(eventId, options) {
         document.querySelector('.text-container').style.marginRight = 'auto';
     }
 
+    // update input-box color
+    // document.querySelector('.input-box').style.borderColor = color;
+    // document.getElementById('go').style.borderColor = color;
+
     document.getElementById('inputs').style.display = 'none';
     document.getElementById('outputs').style.display = 'none';
 

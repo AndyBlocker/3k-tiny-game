@@ -298,6 +298,7 @@ function setupInputArea(event, eventId, color) {
     const goButton = document.getElementById('go');
     const cal1 = document.querySelector(".cal-1");
     const cal2 = document.querySelector(".cal-2");
+    const calc = document.querySelector('.calculater');
 
     document.querySelector(".plus").style.color = color;
     document.querySelector(".equal").style.color = color;
@@ -306,7 +307,9 @@ function setupInputArea(event, eventId, color) {
     goButton.style.color = color;
     cal1.style.borderColor = color;
     cal2.style.borderColor = color;
+    calc.style.borderColor = color;
     document.querySelector(".calculater").src = IMAGE_PATH + (color == EVENT_COLOR ? 'calc-purple.png' : 'calc-red.png');
+    document.querySelector("#go-img").src = IMAGE_PATH + (color == EVENT_COLOR ? 'arrow-purple.png' : 'arrow-red.png');
 
     goButton.onclick = () => {
         const input = inputBox.value;

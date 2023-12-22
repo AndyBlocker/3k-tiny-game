@@ -201,7 +201,7 @@ button:focus {
   /* margin: auto; */
   border: 2px solid #9c67b5;
   background-color: #222222;
-  margin: 5%;
+  /* margin: 5%; */
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   height: 3em;
@@ -244,7 +244,7 @@ button:focus {
 
 .calculater-container{
   /* width: calc(80% - 3em); */
-  margin-left: calc(2em + 10px);
+  margin-left: calc(2em + 25px);
   /* overflow: hidden; */
   display: flex;
   align-items: center;
@@ -271,10 +271,10 @@ button:focus {
     margin-left: 0;
   }
   .equal{
-    width: 2em;
+    width: 1em;
     font-size: 1em;
     margin:5%;
-    margin-left: 5px;
+    /* margin-left: 5; */
     border: 3px;
   }
 }
@@ -297,6 +297,9 @@ button:focus {
 .button-area .calculater {
   width: 2em;
   display: flex;
+  border: 3px solid #9c67b5;
+  border-radius: 10px;
+  padding: 0.35em;
   /* margin-right: 5px; */
   /* margin: 2% 5%; */
   /* border-radius: 0.3em; */
