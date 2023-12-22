@@ -469,5 +469,11 @@
         "descriptionNoJ": false,
         "descriptionNoL": false,
         "descriptionNoJL": false
+    },
+    "purse": {
+        "name": "钱包",
+        "color": "props",
+        "img": "585Move.gif",
+        "description": "你的钱包。占位"
     }
 }

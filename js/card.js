@@ -76,28 +76,6 @@ function getDescription(id, type) {
     ===== 有关card对象CRUD等操作的接口 =====
 */
 
-/*
-function getCardDescription(id) {
-    const card = allCards[id];
-    if (card == undefined || card.description == undefined) {
-        return "未找到卡牌信息！ID：" + id;
-    }
-
-    if (branch.j && branch.l) {
-        return card.descriptionNoJL || DEFAULT_CLINICAL_VAGUE_DESC;
-    }
-    else if (branch.j && card.descriptionNoJ != undefined) {
-        return card.descriptionNoJ;
-    }
-    else if (branch.l && card.descriptionNoL != undefined) {
-        return card.descriptionNoL;
-    }
-    else {
-        return card.description;
-    }
-}
-*/
-
 // 添加一张card
 function addCardToDeck(cardId, options) {
     deck.push(cardId);
@@ -116,6 +94,17 @@ function loseCards(cardList) {
     });
     currentStartIndex = Math.max(0, deck.length - maxCardsToShow);
     updateCardVisibility();
+}
+
+// 原位替换卡牌，丑陋但有用，以后可能优化？
+function replaceCard(oldId, newId) {
+    for (var i = 0; i < cardList.length; i++) {
+        if (deck[i] == oldId) {
+            deck[i] = newId;
+            break;
+        }
+    }
+    refreshCardContainer();
 }
 
 // 清空card

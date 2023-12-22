@@ -21,6 +21,8 @@ const BOSS_COLOR = "#fde44c";
 const CLINICAL_COLOR = "#BBBBBB";
 const DEFAULT_CONTINUE_TEXT = "前往下一事件";
 
+const PURSE_CARD_ID = "purse";
+
 /* 
     ===== VARIABLES =====
 */
@@ -29,6 +31,7 @@ const cardContainer = document.querySelector('.card-container');
 const lootContainer = document.getElementById('loots');
 const hintText1 = document.getElementById('hintText1');
 const hintText2 = document.getElementById('hintText2');
+let purseTitle = undefined;
 
 var maxCardsToShow = 4;
 
@@ -36,10 +39,12 @@ const attributesCommon = [
     "description", "descriptionNoJ", "descriptionNoL", "descriptionNoJL"
 ];
 const attributesEvent = [
-    "type", "hintText", "getCards", "loseCards", "correctPrompt", "easterEggPrompt", "nextEvent", "choices", "buttonPrompt", "specialDescription"
+    "type", "displayID", "hintText", "getCards", "loseCards", "correctPrompt", "easterEggPrompt", "nextEvent", "choices", "buttonPrompt",
+    "specialDescription", "specialNextEvent", "specialOnEnter",
+    "getMoney"
 ];
 const attributesCard = [
-    "name", "img"
+    "name", "color", "img"
 ];
 const DATA_TYPES = {
     Card: 0,
@@ -59,4 +64,6 @@ let branch = {
     l: false, // 爱线完成情况
     m: false  // 钱线完成情况
 };
+let money = 0;
+
 let _lootToPick = 0;

@@ -24,9 +24,10 @@ if (DEV) {
     document.querySelector('.goto-event').addEventListener('click', () => {
         const inputBox = document.getElementById('dev-goto-event-box');
         const id = inputBox.value;
+        const options = { isRefresh: true };
         if (id != undefined && id != "") {
             inputBox.value = "";
-            startEvent(id);
+            startEvent(id, options);
         }
     });
 

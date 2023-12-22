@@ -2,32 +2,6 @@
     ===== 有关事件&提示的接口 =====
 */
 
-/*
-function getEventDescription(id) {
-    const event = allEvents[id];
-    if (event == undefined || event.description == undefined) {
-        return "未找到事件信息！ID：" + id;
-    }
-
-    if (event.specialDescription && GetSpecialEventDesc[id] != undefined && GetSpecialEventDesc[id]() != undefined) {
-        return GetSpecialEventDesc[id]();
-    }
-    if (branch.j && branch.m) {
-        return event.descriptionNoJM;
-    }
-    else if (branch.m && event.descriptionNoM != undefined) {
-        return event.descriptionNoM;
-    }
-    else if (branch.j && event.descriptionNoJ != undefined) {
-        return event.descriptionNoJ;
-    }
-    else {
-        return event.description;
-    }
-}
-
-*/
-
 function setupHint(event) {
     const hintPrompt1 = document.getElementById('hintPrompt1');
     const hintPrompt2 = document.getElementById('hintPrompt2');
@@ -89,8 +63,20 @@ function getUseResult(input, event, id) {
     }
 }
 
-function startEvent(eventId) {
+function updateMoney(event, isRefresh) {
+    if (event == undefined || event.getMoney == undefined || isRefresh){
+        return;
+    }
+    money += parseInt(event.getMoney);
+    if (purseTitle != undefined){
+        purseTitle.textContent = money > 0 ? ("+" + money) : money;
+    }
+    return;
+}
+
+function startEvent(eventId, options) {
     currentEventId = eventId;
+    options = options ? options : {};
 
     const event = allEvents[eventId];
     if (event){
@@ -133,6 +119,8 @@ function startEvent(eventId) {
 
     document.getElementById('inputs').style.display = 'none';
     document.getElementById('outputs').style.display = 'none';
+
+    updateMoney(event, options.isRefresh);
 
     setupHint(event);
     if (!setupLootArea(event)) {

@@ -54,7 +54,10 @@ function previewCard(cardId, options) {
     modalContent.innerHTML = '<span class="close">&times;</span>';
 
     var titleDiv = document.createElement('div');
-    if (allCards[cardId] && allCards[cardId].displayID) {
+    if (cardId == PURSE_CARD_ID) {
+        titleDiv.innerHTML = money;
+    }
+    else if (allCards[cardId] && allCards[cardId].displayID) {
         titleDiv.innerHTML = allCards[cardId].displayID;
     }
     else {
@@ -120,7 +123,11 @@ function addCardToContainer(cardId, options) {
     cardDiv.style.borderColor = options.color;
 
     const cardTitle = document.createElement('div');
-    if (allCards[cardId] && allCards[cardId].displayID) {
+    if (cardId == PURSE_CARD_ID) {
+        cardTitle.textContent = money > 0 ? "+" + money : money;
+        purseTitle = cardTitle;
+    }
+    else if (allCards[cardId] && allCards[cardId].displayID) {
         cardTitle.textContent = allCards[cardId].displayID;
     }
     else {
@@ -131,7 +138,7 @@ function addCardToContainer(cardId, options) {
     cardTitle.style.color = options.color;
 
     const cardImage = document.createElement('img');
-    cardImage.src = options && options.imageUrl ? options.imageUrl : './img/cards/585.png';
+    cardImage.src = options && options.imageUrl ? options.imageUrl : IMAGE_PATH + '585.png';
     cardImage.classList.add('card-image');
     cardDiv.appendChild(cardImage);
 
@@ -255,7 +262,7 @@ function setupOutputArea(event, eventId, color) {
         const nextEvent = getNextEvent('', event, eventId);
         choices.push({ nextEvent: nextEvent, buttonPrompt: event.buttonPrompt });
     }
-    color = color ? color : getColor(event. DATA_TYPES.Event);
+    color = color ? color : getColor(event, DATA_TYPES.Event);
     for (var i = 0; i < choices.length; i++) {
         let choice = choices[i];
         addOutputButton(choice.nextEvent, choice.buttonPrompt, color);
