@@ -176,7 +176,7 @@ function popCardFromContainer(container, cardId) {
     let childs = container.childNodes;
     for (var i = 0; i < childs.length; i++) {
         if (childs[i].id == cardId) {
-            fadeOutAndRemove(childs[i]); 
+            fadeOutAndRemove(childs[i]);
             return;
         }
     }
@@ -225,7 +225,7 @@ function addCardToLootContainer(event, cardId, divClass) {
     cardDiv.id = cardId;
     cardDiv.classList.add(divClass);
 
-    let options = { "color": getColor(allCards[cardId]), "imageUrl":  IMAGE_PATH + allCards[cardId].img};
+    let options = { "color": getColor(allCards[cardId]), "imageUrl": IMAGE_PATH + allCards[cardId].img };
     cardDiv.style.borderColor = options.color;
     cardDiv.style.color = options.color;
     setTimeout(() => {
@@ -439,7 +439,7 @@ function getFullDimensionsWithMargin(element) {
 
     return { width: widthWithMargin, height: heightWithMargin };
 }
-    
+
 function updateCalcWidth() {
     const inputBox = document.querySelector(".input-box");
     const calcContainer = document.querySelector(".calculater-container");
@@ -460,13 +460,12 @@ function updateCalcWidth() {
 function fadeIn(element) {
     element.classList.remove('fade-out');
     element.classList.add('fade-in');
-  }
-  
-  function fadeOutAndRemove(element) {
+}
+
+function fadeOutAndRemove(element) {
     element.classList.add('fade-out');
 
-    element.addEventListener('animationend', function() {
+    element.addEventListener('animationend', function () {
         element.remove();
-    }, { once: true }); 
+    }, { once: true });
 }
-  
