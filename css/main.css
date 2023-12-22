@@ -418,7 +418,7 @@ button:focus {
 }
 
 .card {
-  background: white;
+  background-color: #222222;
   color: #222222;
   border: 2px solid #ff9d95;
   display: flex;

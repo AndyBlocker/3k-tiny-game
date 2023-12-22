@@ -51,10 +51,11 @@ function getDescription(id, type) {
         return "未找到" + ((type == DATA_TYPES.Card) ? '卡牌' : '事件') + "信息！ID：" + id;
     }
 
-    if (data.specialDescription){
+    if (data.specialDescription && type == DATA_TYPES.Event){
         // 特殊事件描述
-        if (type == DATA_TYPES.Event && GetSpecialEventDesc[id] != undefined && GetSpecialEventDesc[id]() != undefined){
-            return GetSpecialEventDesc[id]();
+        const specialDesc = tryEventSpecialFunc(id, GetSpecialEventDesc, {}, data.parent);
+        if (specialDesc){
+            return specialDesc;
         }
     }
 
@@ -99,15 +100,15 @@ function loseCards(cardList) {
     updateCardVisibility();
 }
 
-// 原位替换卡牌，丑陋但有用，以后可能优化？
+// 原位替换卡牌
 function replaceCard(oldId, newId) {
-    for (var i = 0; i < cardList.length; i++) {
+    for (var i = 0; i < deck.length; i++) {
         if (deck[i] == oldId) {
             deck[i] = newId;
             break;
         }
     }
-    refreshCardContainer();
+    replaceCardInContainer(oldId, newId);
 }
 
 // 清空card

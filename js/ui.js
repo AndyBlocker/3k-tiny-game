@@ -112,18 +112,13 @@ function previewCard(cardId, options) {
     }
 }
 
-// 将card绘制到container中
-function addCardToContainer(cardId, options) {
-    const cardDiv = document.createElement('div');
-    cardDiv.id = cardId;
-    cardDiv.classList.add('card');
+function setupCardElement(cardDiv, cardId, options, cardTitle, cardImage){
     const card = allCards[cardId];
-
     options = options ? options : {};
+
     options.color = options.color ? options.color : getColor(card);
     cardDiv.style.borderColor = options.color;
 
-    const cardTitle = document.createElement('div');
     if (cardId == PURSE_CARD_ID) {
         cardTitle.textContent = money;
         purseTitle = cardTitle;
@@ -134,19 +129,45 @@ function addCardToContainer(cardId, options) {
     else {
         cardTitle.textContent = cardId;
     }
-    cardTitle.classList.add('card-title');
-    cardDiv.appendChild(cardTitle);
     cardTitle.style.color = options.color;
 
-    const cardImage = document.createElement('img');
     cardImage.src = (options && options.imageUrl) ? options.imageUrl : 
         (IMAGE_PATH + (card && card.img ? card.img : '585.png'));
+
+    cardDiv.onclick = () => {
+        previewCard(cardId, options);
+    }
+}
+
+// 替换卡牌
+function replaceCardInContainer(cardId, newId, options) {
+    const cardDiv = document.getElementById(cardId);
+    if (cardDiv == undefined){
+        return;
+    }
+    cardDiv.id = newId;
+    const cardTitle = cardDiv.getElementsByClassName('card-title')[0];
+    const cardImage = cardDiv.getElementsByTagName('img')[0];
+    setupCardElement(cardDiv, newId, options, cardTitle, cardImage);
+}
+
+// 将card绘制到container中
+function addCardToContainer(cardId, options) {
+    const cardDiv = document.createElement('div');
+    cardDiv.id = cardId;
+    cardDiv.classList.add('card');
+
+    const cardTitle = document.createElement('div');
+    cardTitle.classList.add('card-title');
+    cardDiv.appendChild(cardTitle);
+
+    const cardImage = document.createElement('img');
     cardImage.classList.add('card-image');
     cardDiv.appendChild(cardImage);
 
-    cardDiv.addEventListener('click', () => { previewCard(cardId, options); });
-    cardDiv.style.backgroundColor = '#222222';
     cardContainer.appendChild(cardDiv);
+
+    setupCardElement(cardDiv, cardId, options, cardTitle, cardImage);
     fadeIn(cardDiv);
 }
 

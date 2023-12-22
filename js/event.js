@@ -36,8 +36,9 @@ function tryAddEasterEggDescription(easterEggID, text) {
 }
 
 function getNextEvent(input, event, id) {
-    if (event.specialNextEvent && GetSpecialNextEvent[id] != undefined && GetSpecialNextEvent[id](input) != undefined) {
-        return GetSpecialNextEvent[id](input);
+    const specialNext = tryEventSpecialFunc(id, GetSpecialNextEvent, { input: input }, event.parent);
+    if (specialNext) {
+        return specialNext;
     }
     return event.nextEvent;
 }
@@ -75,14 +76,13 @@ function updateMoney(event) {
 }
 
 function startEvent(eventId, options) {
+    previousEventId = currentEventId;
     currentEventId = eventId;
     options = options ? options : {};
 
     const event = allEvents[eventId];
     if (event){
-        if (event.specialOnEnter && GetSpecialOnEnter[eventId]){
-            GetSpecialOnEnter[eventId]();
-        }
+        tryEventSpecialFunc(eventId, GetSpecialOnEnter, { previousEvent: previousEventId }, event.parent);
     }
 
     const color = getColor(event, DATA_TYPES.Event);
@@ -137,8 +137,18 @@ function startEvent(eventId, options) {
     ===== 特殊事件相关 =====
 */
 
-var GetSpecialEventDesc = {
-    "sample-specialDesc": () => {
+function tryEventSpecialFunc(id, FuncArray, args, parent){
+    if (FuncArray[id] != undefined && FuncArray[id](args) != undefined){
+        return FuncArray[id](args);
+    }
+    else if (parent && FuncArray[parent] != undefined && FuncArray[parent](args) != undefined){
+        return FuncArray[parent](args);
+    }
+    return undefined;
+}
+
+const GetSpecialEventDesc = {
+    "sample-specialDesc": (args) => {
         if (branch.m && !branch.j) {
             return "你没有钱了，但是没有关系，你的输入框也没有了！";
         }
@@ -149,8 +159,8 @@ var GetSpecialEventDesc = {
     }
 }
 
-var GetSpecialNextEvent = {
-    "sample-specialDesc": (input) => {
+const GetSpecialNextEvent = {
+    "sample-specialDesc": (args) => {
         if (branch.m && !branch.j) {
             return "sample-variant";
         }
@@ -158,15 +168,8 @@ var GetSpecialNextEvent = {
     }
 }
 
-var GetSpecialOnEnter = {
-    "2": () => {
-        let newDeck = [];
-        deck.forEach( (id) => {
-            if (allCards[id] && (allCards[id].color == "Boss" || allCards[id].color == "boss")) {
-                newDeck.push(id);
-            }
-        } )
-        deck = newDeck;
-        refreshCardContainer();
+const GetSpecialOnEnter = {
+    "1": (args) => {
+        replaceCard("585", "585-full");
     }
 }
