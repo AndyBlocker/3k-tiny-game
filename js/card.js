@@ -68,6 +68,9 @@ function getDescription(id, type) {
         return data.descriptionNoL;
     }
     else {
+        if (branch.j && branch.l && type == DATA_TYPES.Event && data.descriptionNoJ){
+            return data.descriptionNoJ;
+        }
         return data.description;
     }
 }
