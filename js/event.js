@@ -48,6 +48,10 @@ function getUseResult(input, event, id) {
     if (nextEvent == undefined) {
         return;
     }
+    else if (nextEvent == "wrong") {
+        playErrorAnimation();
+        return;
+    }
     const correctPrompt = event.correctPrompt;
     const easterEggPrompt = event.easterEggPrompt;
 
@@ -160,16 +164,22 @@ const GetSpecialEventDesc = {
 }
 
 const GetSpecialNextEvent = {
-    "sample-specialDesc": (args) => {
-        if (branch.m && !branch.j) {
-            return "sample-variant";
+    "15": (args) => {
+        const input = args.input;
+        if (input == "984" || input == "1302") {
+            return input;
         }
-        return undefined;
+        return "wrong";
+    },
+    "343": (args) => {
+        const input = args.input;
+        if (input == "1014" || input == "1091") {
+            return input;
+        }
+        return "wrong";
     }
 }
 
 const GetSpecialOnEnter = {
-    "1": (args) => {
-        replaceCard("585", "585-full");
-    }
+    
 }

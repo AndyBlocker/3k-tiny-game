@@ -310,8 +310,8 @@ function setupInputArea(event, eventId, color) {
 
     goButton.onclick = () => {
         const input = inputBox.value;
-        inputBox.value = "";
         getUseResult(input, event, eventId);
+        inputBox.value = "";
 
         cal1.value = null;
         cal2.value = null;
