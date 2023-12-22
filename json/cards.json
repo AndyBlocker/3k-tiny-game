@@ -52,13 +52,11 @@
     },
     "585-full": {
         "displayID": "585",
-        "name": "一笔兔",
-        "color": "SCP",
+        "parent": "585",
         "img": "585-full.PNG",
         "description": "被基金会编号为SCP-CN-585的神奇生物。\n\n虽然说是一笔兔，但其实用了三笔。喜欢吃线条，终于吃到了一个点，所以现在很饱。",
         "descriptionNoJ": "SCP-CN-585是一类二维生物，以印刷品、手写内容和绘画中的线条为食，可在不同介质中移动及进行简单交流。其进食特性已表现。",
-        "descriptionNoL": "被基金会编号为SCP-CN-585的神奇生物。\n\n好像是个简笔画兔子，看起来比刚才胖了一点点……很多点点。",
-        "descriptionNoJL": "SCP-CN-585是一个由线条组成的图案。"
+        "descriptionNoL": "被基金会编号为SCP-CN-585的神奇生物。\n\n好像是个简笔画兔子，看起来比刚才胖了一点点……很多点点。"
     },
     "012": {
         "name": "液体广告",
@@ -297,14 +295,7 @@
         "name": "<del>文乎wordのmeme是也です呐♥</del> 复合型文字模因，又名究极缝合怪",
         "color": "SCP",
         "img": "006J.PNG",
-        "description": "被基金会？编号为SCP-CN-1881的神奇物件。\n\n一张写满了各种你不忍直视的模因的纸。值得注意的好像有以下这些：\n\nSCP-CN-，00122 - 第五一模因\n艾斯 瑟 癖 横杠 瑟 恩 横杠 二九六 - 汉字模因\nSCP-CN-048-J - 中二病体验器\nSCP-CN-321-J - 一个车轱辘\nSCP-CN-888-J - <del>由于贯彻O5议会第一次会议关于收容异常的决议而被收容的模因</del> 官僚主义模因"
-    },
-    "006J-2": {
-        "displayID": "006J",
-        "name": "<del>文乎wordのmeme是也です呐♥</del> 复合型文字模因，又名究极缝合怪",
-        "color": "SCP",
-        "img": "006J.PNG",
-        "description": "被基金会？编号为SCP-CN-1881的神奇物件。\n\n一张写满了各种你不忍直视的模因的纸。值得注意的好像有以下这些：\n\nSCP-CN-，00122 - 第五一模因\n艾斯 瑟 癖 横杠 瑟 恩 横杠 二九六 - 汉字模因\nSCP-CN-048-J - 中二病体验器\nSCP-CN-321-J - 一个车轱辘\nSCP-CN-888-J - <del>由于贯彻O5议会第一次会议关于收容异常的决议而被收容的模因</del> 官僚主义模因\nSCP-CN-648-J - 现在我的手中抓住了希望！\n\n咦，是不是增加了？"
+        "description": "被基金会？编号为SCP-CN-006-J的神奇物件。\n\n一张写满了各种你不忍直视的模因的纸。值得注意的好像有以下这些：\n\nSCP-CN-，00122 - 第五一模因\n艾斯 瑟 癖 横杠 瑟 恩 横杠 二九六 - 汉字模因\nSCP-CN-048-J - 中二病体验器\nSCP-CN-321-J - 一个车轱辘\nSCP-CN-888-J - <del>由于贯彻O5议会第一次会议关于收容异常的决议而被收容的模因</del> 官僚主义模因"
     },
     "048J": {
         "name": "中二病体验器",
@@ -404,18 +395,21 @@
         "description": "旭蟹撰写的cp文，描写了薛定谔和Wontertainment博士的狗血恋情，以及作为他们恋爱结晶的……猫。到底是怎样的脑洞才能凑出这样的cp……",
         "descriptionNoJ": "由SCP-CN-1211“今天起，做一个有梦想的旭蟹”撰写的有关埃尔温·薛定谔的文章，充满了荒谬的内容。"
     },
-    "+709Butterfly": {
-        "name": "宇宙猫猫头（囚星蝶ver.）",
+    "+709": {
         "displayID": "+709",
         "color": "props",
+        "description": "用来登记囚星蝶ver.和青鸟ver.的共同点，这张基类卡并没有被设计出现在游戏里"
+    },
+    "+709Butterfly": {
+        "parent": "+709",
+        "name": "宇宙猫猫头（囚星蝶ver.）",
         "img": "P709.png",
         "description": "在囚星蝶前方露出惊讶的神情，仿佛在思考宇宙奥秘的猫.jpg。",
         "descriptionNoJ": "由SCP-CN-173“自定义先生”绘制的有关家猫的知名模因图像，背景中加入了SCP-CN-027“囚星蝶”。"
     },
     "+709Bird": {
+        "parent": "+709",
         "name": "宇宙猫猫头（青鸟ver.）",
-        "displayID": "+709",
-        "color": "props",
         "img": "P709-2.png",
         "description": "在青鸟前方露出惊讶的神情，仿佛在思考宇宙奥秘的猫.jpg。",
         "descriptionNoJ": "由SCP-CN-173“自定义先生”绘制的有关家猫的知名模因图像，背景中加入了SCP-CN-1559“青鸟”。"
@@ -469,5 +463,20 @@
         "descriptionNoJ": false,
         "descriptionNoL": false,
         "descriptionNoJL": false
+    },
+    "purse": {
+        "name": "钱包",
+        "color": "props",
+        "img": "585Move.gif",
+        "description": "你捡到的钱包，里面装着一些钱。",
+        "descriptionNoL": "该卡片记录了你在游戏中拥有的金钱数量。",
+        "descriptionNoJL": "该卡片记录了你在游戏中拥有的金钱数量。"
+    },
+    "pet": {
+        "name": "拓麻歌子",
+        "color": "props",
+        "img": "585Move.gif",
+        "description": "会变，先占位",
+        "descriptionNoJ": "会变，先占位"
     }
 }

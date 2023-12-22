@@ -24,19 +24,21 @@ if (DEV) {
     document.querySelector('.goto-event').addEventListener('click', () => {
         const inputBox = document.getElementById('dev-goto-event-box');
         const id = inputBox.value;
+        const options = { isRefresh: true };
         if (id != undefined && id != "") {
             inputBox.value = "";
-            startEvent(id);
+            startEvent(id, options);
         }
     });
 
     document.getElementById('dev-toggle-branch').addEventListener('click', () => {
         let checkboxes = document.getElementsByName("dev-choose-branch");
+        const options = { isRefresh: true };
         branch.j = checkboxes[0].checked;
         branch.d = checkboxes[1].checked;
         branch.l = checkboxes[2].checked;
         branch.m = checkboxes[3].checked;
-        startEvent(currentEventId);
+        startEvent(currentEventId, options);
         refreshCardContainer();
     });
 
@@ -137,11 +139,13 @@ if (DEV) {
         //dev_tryExecute(text.slice(3), //Remove the var identifier
         //callback);
 
+        const json = dev_loadJSONStr(text, callback);
+
         if (_dataType == "card"){
-            allCards = dev_loadJSONStr(text, callback);
+            allCards = populateInheritedData(DATA_TYPES.Card, json, attributesCommon.concat(attributesCard));
         }
         else {
-            allEvents = dev_loadJSONStr(text, callback);
+            allEvents = populateInheritedData(DATA_TYPES.Event, json, attributesCommon.concat(attributesEvent));
         }
     }
 
@@ -160,24 +164,29 @@ if (DEV) {
             }
         }
 
+        const json = dev_loadJSONStr('{' + text + '}', callback);
+
         if (_dataType == "card"){
-            allCards[key] = dev_loadJSONStr('{' + text + '}', callback);
+            allCards[key] = json;
+            allCards =  populateInheritedData(DATA_TYPES.Card, allCards, attributesCommon.concat(attributesCard));
         }
         else {
-            allEvents[key] = dev_loadJSONStr('{' + text + '}', callback);
+            allEvents[key] = json;
+            allEvents = populateInheritedData(DATA_TYPES.Event, json, attributesCommon.concat(attributesEvent));
         }
     }
 
     document.getElementById('dev-load-data').addEventListener('click', () => {
         const key = document.getElementById('dev-eval-title').value;
         const text = document.getElementById('dev-eval-content').value;
+        const options = { isRefresh: true };
         if (_replaceAll) {
             dev_replaceAll(text);
         }
         else {
             dev_changeSingle(key, text);
         }
-        startEvent(currentEventId);
+        startEvent(currentEventId, options);
         refreshCardContainer();
     });
 

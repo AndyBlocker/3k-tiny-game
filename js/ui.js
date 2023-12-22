@@ -54,7 +54,10 @@ function previewCard(cardId, options) {
     modalContent.innerHTML = '<span class="close">&times;</span>';
 
     var titleDiv = document.createElement('div');
-    if (allCards[cardId] && allCards[cardId].displayID) {
+    if (cardId == PURSE_CARD_ID) {
+        titleDiv.innerHTML = money;
+    }
+    else if (allCards[cardId] && allCards[cardId].displayID) {
         titleDiv.innerHTML = allCards[cardId].displayID;
     }
     else {
@@ -109,35 +112,62 @@ function previewCard(cardId, options) {
     }
 }
 
+function setupCardElement(cardDiv, cardId, options, cardTitle, cardImage){
+    const card = allCards[cardId];
+    options = options ? options : {};
+
+    options.color = options.color ? options.color : getColor(card);
+    cardDiv.style.borderColor = options.color;
+
+    if (cardId == PURSE_CARD_ID) {
+        cardTitle.textContent = money;
+        purseTitle = cardTitle;
+    }
+    else if (card && card.displayID) {
+        cardTitle.textContent = card.displayID;
+    }
+    else {
+        cardTitle.textContent = cardId;
+    }
+    cardTitle.style.color = options.color;
+
+    cardImage.src = (options && options.imageUrl) ? options.imageUrl : 
+        (IMAGE_PATH + (card && card.img ? card.img : '585.png'));
+
+    cardDiv.onclick = () => {
+        previewCard(cardId, options);
+    }
+}
+
+// 替换卡牌
+function replaceCardInContainer(cardId, newId, options) {
+    const cardDiv = document.getElementById(cardId);
+    if (cardDiv == undefined){
+        return;
+    }
+    cardDiv.id = newId;
+    const cardTitle = cardDiv.getElementsByClassName('card-title')[0];
+    const cardImage = cardDiv.getElementsByTagName('img')[0];
+    setupCardElement(cardDiv, newId, options, cardTitle, cardImage);
+}
+
 // 将card绘制到container中
 function addCardToContainer(cardId, options) {
     const cardDiv = document.createElement('div');
     cardDiv.id = cardId;
     cardDiv.classList.add('card');
 
-    options = options ? options : {};
-    options.color = options.color ? options.color : getColor(allCards[cardId]);
-    cardDiv.style.borderColor = options.color;
-
     const cardTitle = document.createElement('div');
-    if (allCards[cardId] && allCards[cardId].displayID) {
-        cardTitle.textContent = allCards[cardId].displayID;
-    }
-    else {
-        cardTitle.textContent = cardId;
-    }
     cardTitle.classList.add('card-title');
     cardDiv.appendChild(cardTitle);
-    cardTitle.style.color = options.color;
 
     const cardImage = document.createElement('img');
-    cardImage.src = options && options.imageUrl ? options.imageUrl : './img/cards/585.png';
     cardImage.classList.add('card-image');
     cardDiv.appendChild(cardImage);
 
-    cardDiv.addEventListener('click', () => { previewCard(cardId, options); });
-    cardDiv.style.backgroundColor = '#222222';
     cardContainer.appendChild(cardDiv);
+
+    setupCardElement(cardDiv, cardId, options, cardTitle, cardImage);
     fadeIn(cardDiv);
 }
 
@@ -242,7 +272,7 @@ function setupLootArea(event) {
     return true;
 }
 
-function setupOutputArea(event, eventId) {
+function setupOutputArea(event, eventId, color) {
     if (event == undefined) {
         return;
     }
@@ -255,21 +285,36 @@ function setupOutputArea(event, eventId) {
         const nextEvent = getNextEvent('', event, eventId);
         choices.push({ nextEvent: nextEvent, buttonPrompt: event.buttonPrompt });
     }
+    color = color ? color : getColor(event, DATA_TYPES.Event);
     for (var i = 0; i < choices.length; i++) {
         let choice = choices[i];
-        addOutputButton(choice.nextEvent, choice.buttonPrompt);
+        addOutputButton(choice.nextEvent, choice.buttonPrompt, color);
     }
 }
 
-function setupInputArea(event, eventId) {
-    document.getElementById('go').onclick = () => {
-        const inputBox = document.querySelector('.input-box');
+function setupInputArea(event, eventId, color) {
+    color = color ? color : getColor(event, DATA_TYPES.Event);
+    const inputBox = document.querySelector('.input-box');
+    const goButton = document.getElementById('go');
+    const cal1 = document.querySelector(".cal-1");
+    const cal2 = document.querySelector(".cal-2");
+
+    document.querySelector(".plus").style.color = color;
+    document.querySelector(".equal").style.color = color;
+    inputBox.style.borderColor = color;
+    goButton.style.borderColor = color;
+    goButton.style.color = color;
+    cal1.style.borderColor = color;
+    cal2.style.borderColor = color;
+    document.querySelector(".calculater").src = IMAGE_PATH + (color == EVENT_COLOR ? 'calc-purple.png' : 'calc-red.png');
+
+    goButton.onclick = () => {
         const input = inputBox.value;
         inputBox.value = "";
         getUseResult(input, event, eventId);
 
-        document.querySelector(".cal-1").value = null;
-        document.querySelector(".cal-2").value = null;
+        cal1.value = null;
+        cal2.value = null;
     }
 }
 
@@ -277,7 +322,7 @@ function playErrorAnimation() {
     triggerErrorAnimation(document.querySelector('.input-box'));
 }
 
-function addOutputButton(nextEventId, buttonPrompt) {
+function addOutputButton(nextEventId, buttonPrompt, color) {
     if (nextEventId == undefined) {
         return;
     }
@@ -286,32 +331,28 @@ function addOutputButton(nextEventId, buttonPrompt) {
     continueButton.name = nextEventId;
     continueButton.classList.add('continue');
     continueButton.classList.add('large-button');
+    continueButton.style.borderColor = color;
+    continueButton.style.color = color;
     document.getElementById('outputs').appendChild(continueButton);
 
     continueButton.innerText = buttonPrompt ? buttonPrompt : DEFAULT_CONTINUE_TEXT;
-    // const borderColor = getComputedStyle(continueButton).borderColor;
-    // continueButton.style.color = borderColor;
-
-    const color = document.querySelector('.topic').style.color;
-    continueButton.style.color = color;
-    continueButton.style.borderColor = color;
-
+    
     console.log(continueButton.style)
     setTimeout(() => continueButton.onclick = () => {
         startEvent(nextEventId);
     }, 100);
 }
 
-function setupInOutArea(event, eventId) {
+function setupInOutArea(event, eventId, color) {
     popAllChildElement(lootContainer);
     const isOutputType = event == undefined || (event.type != "input" && event.type != "Input");
     if (isOutputType || branch.m) {
         document.getElementById('outputs').style.display = 'initial';
-        setupOutputArea(event, eventId);
+        setupOutputArea(event, eventId, color);
     }
     else {
         document.getElementById('inputs').style.display = 'initial';
-        setupInputArea(event, eventId);
+        setupInputArea(event, eventId, color);
     }
 }
 

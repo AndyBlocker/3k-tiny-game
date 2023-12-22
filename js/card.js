@@ -51,10 +51,11 @@ function getDescription(id, type) {
         return "未找到" + ((type == DATA_TYPES.Card) ? '卡牌' : '事件') + "信息！ID：" + id;
     }
 
-    if (data.specialDescription){
+    if (data.specialDescription && type == DATA_TYPES.Event){
         // 特殊事件描述
-        if (type == DATA_TYPES.Event && GetSpecialEventDesc[id] != undefined && GetSpecialEventDesc[id]() != undefined){
-            return GetSpecialEventDesc[id]();
+        const specialDesc = tryEventSpecialFunc(id, GetSpecialEventDesc, {}, data.parent);
+        if (specialDesc){
+            return specialDesc;
         }
     }
 
@@ -68,39 +69,15 @@ function getDescription(id, type) {
         return data.descriptionNoL;
     }
     else {
-        if (branch.j && branch.l && type == DATA_TYPES.Card){
-            // 卡牌无爱无J默认返回统一描述
-            return DEFAULT_CLINICAL_VAGUE_DESC;
+        if (branch.j && branch.l && type == DATA_TYPES.Event && data.descriptionNoJ){
+            return data.descriptionNoJ;
         }
-
         return data.description;
     }
 }
 
 /*
     ===== 有关card对象CRUD等操作的接口 =====
-*/
-
-/*
-function getCardDescription(id) {
-    const card = allCards[id];
-    if (card == undefined || card.description == undefined) {
-        return "未找到卡牌信息！ID：" + id;
-    }
-
-    if (branch.j && branch.l) {
-        return card.descriptionNoJL || DEFAULT_CLINICAL_VAGUE_DESC;
-    }
-    else if (branch.j && card.descriptionNoJ != undefined) {
-        return card.descriptionNoJ;
-    }
-    else if (branch.l && card.descriptionNoL != undefined) {
-        return card.descriptionNoL;
-    }
-    else {
-        return card.description;
-    }
-}
 */
 
 // 添加一张card
@@ -121,6 +98,17 @@ function loseCards(cardList) {
     });
     currentStartIndex = Math.max(0, deck.length - maxCardsToShow);
     updateCardVisibility();
+}
+
+// 原位替换卡牌
+function replaceCard(oldId, newId) {
+    for (var i = 0; i < deck.length; i++) {
+        if (deck[i] == oldId) {
+            deck[i] = newId;
+            break;
+        }
+    }
+    replaceCardInContainer(oldId, newId);
 }
 
 // 清空card
