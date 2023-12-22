@@ -117,9 +117,10 @@ function addCardToContainer(cardId, options) {
     const cardDiv = document.createElement('div');
     cardDiv.id = cardId;
     cardDiv.classList.add('card');
+    const card = allCards[cardId];
 
     options = options ? options : {};
-    options.color = options.color ? options.color : getColor(allCards[cardId]);
+    options.color = options.color ? options.color : getColor(card);
     cardDiv.style.borderColor = options.color;
 
     const cardTitle = document.createElement('div');
@@ -127,8 +128,8 @@ function addCardToContainer(cardId, options) {
         cardTitle.textContent = money > 0 ? "+" + money : money;
         purseTitle = cardTitle;
     }
-    else if (allCards[cardId] && allCards[cardId].displayID) {
-        cardTitle.textContent = allCards[cardId].displayID;
+    else if (card && card.displayID) {
+        cardTitle.textContent = card.displayID;
     }
     else {
         cardTitle.textContent = cardId;
@@ -138,7 +139,8 @@ function addCardToContainer(cardId, options) {
     cardTitle.style.color = options.color;
 
     const cardImage = document.createElement('img');
-    cardImage.src = options && options.imageUrl ? options.imageUrl : IMAGE_PATH + '585.png';
+    cardImage.src = (options && options.imageUrl) ? options.imageUrl : 
+        (IMAGE_PATH + (card && card.img ? card.img : '585.png'));
     cardImage.classList.add('card-image');
     cardDiv.appendChild(cardImage);
 

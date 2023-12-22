@@ -36,10 +36,10 @@ let purseTitle = undefined;
 var maxCardsToShow = 4;
 
 const attributesCommon = [
-    "description", "descriptionNoJ", "descriptionNoL", "descriptionNoJL"
+    "displayID", "description", "descriptionNoJ", "descriptionNoL", "descriptionNoJL"
 ];
 const attributesEvent = [
-    "type", "displayID", "hintText", "getCards", "loseCards", "correctPrompt", "easterEggPrompt", "nextEvent", "choices", "buttonPrompt",
+    "type", "hintText", "getCards", "loseCards", "correctPrompt", "easterEggPrompt", "nextEvent", "choices", "buttonPrompt",
     "specialDescription", "specialNextEvent", "specialOnEnter",
     "getMoney"
 ];
