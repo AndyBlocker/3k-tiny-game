@@ -63,13 +63,13 @@ function getUseResult(input, event, id) {
     }
 }
 
-function updateMoney(event, isRefresh) {
-    if (event == undefined || event.getMoney == undefined || isRefresh){
+function updateMoney(event) {
+    if (event == undefined || event.newMoney == undefined){
         return;
     }
-    money += parseInt(event.getMoney);
+    money = event.newMoney;
     if (purseTitle != undefined){
-        purseTitle.textContent = money > 0 ? ("+" + money) : money;
+        purseTitle.textContent = event.newMoney;
     }
     return;
 }
@@ -120,7 +120,7 @@ function startEvent(eventId, options) {
     document.getElementById('inputs').style.display = 'none';
     document.getElementById('outputs').style.display = 'none';
 
-    updateMoney(event, options.isRefresh);
+    updateMoney(event);
 
     setupHint(event);
     if (!setupLootArea(event)) {

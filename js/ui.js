@@ -125,7 +125,7 @@ function addCardToContainer(cardId, options) {
 
     const cardTitle = document.createElement('div');
     if (cardId == PURSE_CARD_ID) {
-        cardTitle.textContent = money > 0 ? "+" + money : money;
+        cardTitle.textContent = money;
         purseTitle = cardTitle;
     }
     else if (card && card.displayID) {

@@ -41,7 +41,7 @@ const attributesCommon = [
 const attributesEvent = [
     "type", "hintText", "getCards", "loseCards", "correctPrompt", "easterEggPrompt", "nextEvent", "choices", "buttonPrompt",
     "specialDescription", "specialNextEvent", "specialOnEnter",
-    "getMoney"
+    "newMoney"
 ];
 const attributesCard = [
     "name", "color", "img"
@@ -64,6 +64,6 @@ let branch = {
     l: false, // 爱线完成情况
     m: false  // 钱线完成情况
 };
-let money = 0;
+let money = '0';
 
 let _lootToPick = 0;
