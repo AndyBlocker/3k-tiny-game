@@ -467,7 +467,7 @@
     "purse": {
         "name": "钱包",
         "color": "props",
-        "img": "585Move.gif",
+        "img": "purse.PNG",
         "description": "你捡到的钱包，里面装着一些钱。",
         "descriptionNoL": "该卡片记录了你在游戏中拥有的金钱数量。",
         "descriptionNoJL": "该卡片记录了你在游戏中拥有的金钱数量。"
@@ -475,7 +475,7 @@
     "pet": {
         "name": "拓麻歌子",
         "color": "props",
-        "img": "585Move.gif",
+        "img": "pet.PNG",
         "description": "会变，先占位",
         "descriptionNoJ": "会变，先占位"
     }
