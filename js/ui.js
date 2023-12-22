@@ -242,7 +242,7 @@ function setupLootArea(event) {
     return true;
 }
 
-function setupOutputArea(event, eventId) {
+function setupOutputArea(event, eventId, color) {
     if (event == undefined) {
         return;
     }
@@ -255,21 +255,36 @@ function setupOutputArea(event, eventId) {
         const nextEvent = getNextEvent('', event, eventId);
         choices.push({ nextEvent: nextEvent, buttonPrompt: event.buttonPrompt });
     }
+    color = color ? color : getColor(event. DATA_TYPES.Event);
     for (var i = 0; i < choices.length; i++) {
         let choice = choices[i];
-        addOutputButton(choice.nextEvent, choice.buttonPrompt);
+        addOutputButton(choice.nextEvent, choice.buttonPrompt, color);
     }
 }
 
-function setupInputArea(event, eventId) {
-    document.getElementById('go').onclick = () => {
-        const inputBox = document.querySelector('.input-box');
+function setupInputArea(event, eventId, color) {
+    color = color ? color : getColor(event. DATA_TYPES.Event);
+    const inputBox = document.querySelector('.input-box');
+    const goButton = document.getElementById('go');
+    const cal1 = document.querySelector(".cal-1");
+    const cal2 = document.querySelector(".cal-2");
+
+    document.querySelector(".plus").style.color = color;
+    document.querySelector(".equal").style.color = color;
+    inputBox.style.borderColor = color;
+    goButton.style.borderColor = color;
+    goButton.style.color = color;
+    cal1.style.borderColor = color;
+    cal2.style.borderColor = color;
+    document.querySelector(".calculater").src = IMAGE_PATH + (color == EVENT_COLOR ? 'calc-purple.png' : 'calc-red.png');
+
+    goButton.onclick = () => {
         const input = inputBox.value;
         inputBox.value = "";
         getUseResult(input, event, eventId);
 
-        document.querySelector(".cal-1").value = null;
-        document.querySelector(".cal-2").value = null;
+        cal1.value = null;
+        cal2.value = null;
     }
 }
 
@@ -277,7 +292,7 @@ function playErrorAnimation() {
     triggerErrorAnimation(document.querySelector('.input-box'));
 }
 
-function addOutputButton(nextEventId, buttonPrompt) {
+function addOutputButton(nextEventId, buttonPrompt, color) {
     if (nextEventId == undefined) {
         return;
     }
@@ -286,15 +301,11 @@ function addOutputButton(nextEventId, buttonPrompt) {
     continueButton.name = nextEventId;
     continueButton.classList.add('continue');
     continueButton.classList.add('large-button');
+    continueButton.style.borderColor = color;
+    continueButton.style.color = color;
     document.getElementById('outputs').appendChild(continueButton);
 
     continueButton.innerText = buttonPrompt ? buttonPrompt : DEFAULT_CONTINUE_TEXT;
-    // const borderColor = getComputedStyle(continueButton).borderColor;
-    // continueButton.style.color = borderColor;
-
-    const color = document.querySelector('.topic').style.color;
-    continueButton.style.color = color;
-    continueButton.style.borderColor = color;
     
     console.log(continueButton.style)
     setTimeout(() => continueButton.onclick = () => {
@@ -302,16 +313,16 @@ function addOutputButton(nextEventId, buttonPrompt) {
     }, 100);
 }
 
-function setupInOutArea(event, eventId) {
+function setupInOutArea(event, eventId, color) {
     popAllChildElement(lootContainer);
     const isOutputType = event == undefined || (event.type != "input" && event.type != "Input");
     if (isOutputType || branch.m) {
         document.getElementById('outputs').style.display = 'initial';
-        setupOutputArea(event, eventId);
+        setupOutputArea(event, eventId, color);
     }
     else {
         document.getElementById('inputs').style.display = 'initial';
-        setupInputArea(event, eventId);
+        setupInputArea(event, eventId, color);
     }
 }
 

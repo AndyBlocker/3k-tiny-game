@@ -16,10 +16,9 @@ const JSON_PATH = "./json/"; // https://raw.githubusercontent.com/AndyBlocker/3k
 */
 const SCP_COLOR = "#FF9D95";
 const PROPS_COLOR = "#CCE9FF";
-const EVENT_COLOR = "#CFB9FF";
+const EVENT_COLOR = "#9C67B5";
 const BOSS_COLOR = "#fde44c";
 const CLINICAL_COLOR = "#BBBBBB";
-const DEFAULT_CLINICAL_VAGUE_DESC = "该异常的性质不明。";
 const DEFAULT_CONTINUE_TEXT = "前往下一事件";
 
 /* 

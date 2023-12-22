@@ -46,7 +46,7 @@ function setupHint(event) {
 }
 
 function tryAddEasterEggDescription(easterEggID, text) {
-    const descriptionArea = document.getElementById('event-description');
+    const descriptionArea = document.querySelector('.text-container');
     let childs = descriptionArea.childNodes;
     for (var i = 0; i < childs.length; i++) {
         if (childs[i].name == easterEggID) {
@@ -136,7 +136,7 @@ function startEvent(eventId) {
 
     setupHint(event);
     if (!setupLootArea(event)) {
-        setupInOutArea(event, eventId);
+        setupInOutArea(event, eventId, color);
     }
     if (event && event.loseCards != undefined) {
         loseCards(event.loseCards);

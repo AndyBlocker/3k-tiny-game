@@ -68,11 +68,6 @@ function getDescription(id, type) {
         return data.descriptionNoL;
     }
     else {
-        if (branch.j && branch.l && type == DATA_TYPES.Card){
-            // 卡牌无爱无J默认返回统一描述
-            return DEFAULT_CLINICAL_VAGUE_DESC;
-        }
-
         return data.description;
     }
 }
