@@ -263,7 +263,7 @@ function setupOutputArea(event, eventId, color) {
 }
 
 function setupInputArea(event, eventId, color) {
-    color = color ? color : getColor(event. DATA_TYPES.Event);
+    color = color ? color : getColor(event, DATA_TYPES.Event);
     const inputBox = document.querySelector('.input-box');
     const goButton = document.getElementById('go');
     const cal1 = document.querySelector(".cal-1");
