@@ -80,7 +80,7 @@ function updateMoney(event) {
 }
 
 function startEvent(eventId, options) {
-    previousEventId = currentEventId;
+    const previousEventId = currentEventId;
     currentEventId = eventId;
     options = options ? options : {};
 
