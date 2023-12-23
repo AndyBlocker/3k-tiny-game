@@ -160,11 +160,13 @@ function updateSpecialCards(eventId, event) {
     }
     for (var id in specialCardsData) {
         let shouldUpdate = false;
-        if (event.bulletPoint && specialCardsData[id].logEvents && specialCardsData[id].logEvents.includes(eventId)){
-            // 更新bullet points
-            specialCardsData[id].hasExtraDesc = true;
-            specialCardsData[id].desc += event.bulletPoint;
-            specialCardsData[id].descNoJ += event.bulletPointNoJ ? event.bulletPointNoJ : event.bulletPoint;
+        if (specialCardsData[id].logEvents && specialCardsData[id].logEvents.includes(eventId)){
+            if (event.bulletPoint){
+                // 更新bullet points
+                specialCardsData[id].hasExtraDesc = true;
+                specialCardsData[id].desc += event.bulletPoint;
+                specialCardsData[id].descNoJ += event.bulletPointNoJ ? event.bulletPointNoJ : event.bulletPoint;
+            }
             if (id == PET_CARD_ID) {
                 specialCardsData[id].value += 250;
             }
@@ -174,6 +176,7 @@ function updateSpecialCards(eventId, event) {
             specialCardsData[id].value = parseInt(event.newMoney);
             shouldUpdate = true;
         }
+
         if (shouldUpdate) {
             replaceCardInContainer(id, id);
         }

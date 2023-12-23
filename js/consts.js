@@ -71,11 +71,11 @@ let specialCardsData = {
     "pet" : {
         value: 0,
         hasExtraDesc: false,
-        header: "",
-        headerNoJ: "",
+        header: "\n\n你目前累积的羁绊：",
+        headerNoJ: "\n\n研究员目前完成交互的异常：",
         desc: "",
         descNoJ: "",
-        logEvents: ["0", "1", "2", "3"]
+        logEvents: ["4454", "4455", "1922", "1775", "812", "765", "2297", "1061", "1818", "1819", "1296", "3000-love"]
     },
     "006J" : {
         hasExtraDesc: false,
