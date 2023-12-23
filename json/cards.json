@@ -429,7 +429,8 @@
         "descriptionNoJ": "由于家猫个体的动作而坠落损坏的酒瓶的碎片。"
     },
     "3000-Dream": {
-        "name": "异常物品Dream",
+        "name": "做梦都想摸鱼（自称）",
+        "displayID": "01673",
         "color": "boss",
         "img": "dream.gif",
         "description": "",
@@ -438,7 +439,8 @@
         "descriptionNoJL": false
     },
     "3000-Joke": {
-        "name": "异常物品J",
+        "name": "马桶蓄水池之神（自称）",
+        "displayID": "01520",
         "color": "boss",
         "img": "J.gif",
         "description": "",
@@ -447,7 +449,8 @@
         "descriptionNoJL": false
     },
     "3000-Love": {
-        "name": "异常物品Love",
+        "name": "可视化宠爱（自称）",
+        "displayID": "01721",
         "color": "boss",
         "img": "love.gif",
         "description": "",
@@ -456,7 +459,8 @@
         "descriptionNoJL": false
     },
     "3000-Money": {
-        "name": "异常物品Money",
+        "name": "绝对泛用钱包（自称）",
+        "displayID": "01582",
         "color": "boss",
         "img": "money.gif",
         "description": "",
