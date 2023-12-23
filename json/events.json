@@ -1911,7 +1911,7 @@
     {
         "type": "output",
 	    "displayID": "3000",
-        "description": "就剩你了，超常事件00335。或者按照你们自己的说法——“共鸣”。\n\nSCP-CN-2995 结束了吗？\nSCP-CN-1760 - 谢谢惠顾",
+        "description": "就剩你了，超常事件00335。或者按照你们自己的说法——“共鸣”。\n\nSCP-CN-2995 - 结束了吗？\nSCP-CN-1760 - 谢谢惠顾",
         "buttonPrompt": "继续提问",
         "nextEvent": "resonance-3"
     },
