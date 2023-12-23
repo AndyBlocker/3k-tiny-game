@@ -382,6 +382,7 @@
     "3000-Dream": {
         "type": "output",
         "color": "boss",
+	"displayID":"3000",
         "loseCards": [
             "843"
         ],
@@ -1321,10 +1322,11 @@
     "3000-money":
     {
         "type": "output",
+	"displayID":"3000",
         "color": "boss",
         "description": "变种的基类，用来登记各个3000-money事件的相同点。该事件本身不应出现在游戏中",
         "buttonPrompt": "收容该异常",
-        "getCards":["3000-money"],
+        "getCards":["3000-Money"],
         "nextEvent": "2"
     },
     "3000-money-a":
