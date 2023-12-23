@@ -38,16 +38,24 @@ document.getElementById('hintPrompt1').addEventListener('click', () => {
     hintText1.style.display = 'none';
     document.getElementById('hintPrompt2').style.display = 'none';
     hintText2.style.display = 'none';
+    document.querySelector('.main-container').style.maxHeight = 'calc(80% - 3.5em)';
   }
   else {
     hintText1.style.display = 'initial';
     if (hintText2.innerHTML != '') {
       document.getElementById('hintPrompt2').style.display = 'initial';
     }
+    document.querySelector('.main-container').style.maxHeight = 'calc(80% - 5em)';
   }
 })
 document.getElementById('hintPrompt2').addEventListener('click', () => {
   hintText2.style.display = hintText2.style.display == 'initial' ? 'none' : 'initial';
+  if(hintText2.style.display == 'initial'){
+    document.querySelector('.main-container').style.maxHeight = 'calc(80% - 6.5em)';
+  }
+  else{
+    document.querySelector('.main-container').style.maxHeight = 'calc(80% - 5em)';
+  }
 })
 
 window.addEventListener('resize', calcNumberOfCardToShow);

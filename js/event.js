@@ -111,18 +111,28 @@ function startEvent(eventId, options) {
     }
 
     // update event img
-    if (allEvents[eventId] && allEvents[eventId].img) {
+    if (allEvents[eventId] && allEvents[eventId].img) { // with img
         document.querySelector('.img-wrapper').src = IMAGE_PATH + allEvents[eventId].img;
         document.querySelector('.img-container').style.display = 'flex';
     }
-    else {
+    else {// without img
         document.querySelector('.img-container').style.display = 'none';
         document.querySelector('.text-container').style.marginLeft = 'auto';
         document.querySelector('.text-container').style.marginRight = 'auto';
+        if (window.innerWidth <= 768) {
+            document.querySelector(".text-container").style.maxHeight = '100%';
+        }
     }
+
+    // update input-box color
+    // document.querySelector('.input-box').style.borderColor = color;
+    // document.getElementById('go').style.borderColor = color;
 
     document.getElementById('inputs').style.display = 'none';
     document.getElementById('outputs').style.display = 'none';
+
+    // clear main height
+    document.querySelector('.main-container').style.maxHeight = '80%';
 
     updateMoney(event);
 
