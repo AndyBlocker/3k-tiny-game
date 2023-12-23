@@ -196,7 +196,7 @@ const GetSpecialNextEvent = {
 
 const GetSpecialOnEnter = {
     "2": (args) => {
-        const previousEvent = args.previousEventId;
+        const previousEvent = args.previousEvent;
 
         switch (previousEvent) {
             case "3000-Dream":
@@ -204,6 +204,11 @@ const GetSpecialOnEnter = {
                 break;
             case "3000-J":
                 branch.j = true;
+                break;
+            case "3000-money-a":
+            case "3000-money-b":
+            case "3000-money-c":
+                branch.m = true;
                 break;
             default:
                 return;

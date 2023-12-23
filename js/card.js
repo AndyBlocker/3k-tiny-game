@@ -62,10 +62,10 @@ function getDescription(id, type) {
     if (branch.j && branch.l && data.descriptionNoJL) {
         return data.descriptionNoJL;
     }
-    else if (branch.j && data.descriptionNoJ != undefined) {
+    else if (branch.j && data.descriptionNoJ) {
         return data.descriptionNoJ;
     }
-    else if (branch.l && data.descriptionNoL != undefined) {
+    else if (branch.l && data.descriptionNoL) {
         return data.descriptionNoL;
     }
     else {

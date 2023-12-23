@@ -220,12 +220,14 @@ function addButtonToLootContainer(buttonPrompt, buttonClass, buttonFunction) {
 }
 
 function addCardToLootContainer(cardId, divClass, callback) {
+    const card = allCards[cardId];
+
     const cardDiv = document.createElement('button');
-    cardDiv.innerText = "获得" + cardId;
+    cardDiv.innerText = "获得" + ((card && card.displayID) ? card.displayID : cardId);
     cardDiv.id = cardId;
     cardDiv.classList.add(divClass);
 
-    let options = { "color": getColor(allCards[cardId]), "imageUrl": IMAGE_PATH + allCards[cardId].img };
+    let options = { "color": getColor(card), "imageUrl": (card && card.img) ? (IMAGE_PATH + card.img) : '' };
     cardDiv.style.borderColor = options.color;
     cardDiv.style.color = options.color;
     setTimeout(() => {
