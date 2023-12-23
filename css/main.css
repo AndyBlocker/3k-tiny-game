@@ -250,7 +250,7 @@ button:focus {
 
 .calculater-container{
   /* width: calc(80% - 3em); */
-  margin-left: calc(2em + 25  px);
+  margin-left: calc(2em + 25px);
   /* overflow: hidden; */
   display: flex;
   align-items: center;

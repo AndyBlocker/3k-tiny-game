@@ -308,8 +308,14 @@ function setupInputArea(event, eventId, color) {
     cal1.style.borderColor = color;
     cal2.style.borderColor = color;
     calc.style.borderColor = color;
-    document.querySelector(".calculater").src = IMAGE_PATH + (color == EVENT_COLOR ? 'calc-purple.png' : 'calc-red.png');
-    document.querySelector("#go-img").src = IMAGE_PATH + (color == EVENT_COLOR ? 'arrow-purple.png' : 'arrow-red.png');
+    if (branch && branch.d)
+        document.querySelector(".calculater").src = IMAGE_PATH + 'calc-white.png';    
+    else
+        document.querySelector(".calculater").src = IMAGE_PATH + (color == EVENT_COLOR ? 'calc-purple.png' : 'calc-red.png');
+    if (branch && branch.d)
+        document.querySelector("#go-img").src = IMAGE_PATH + 'arrow-white.png';
+    else
+        document.querySelector("#go-img").src = IMAGE_PATH + (color == EVENT_COLOR ? 'arrow-purple.png' : 'arrow-red.png');
 
     goButton.onclick = () => {
         const input = inputBox.value;
