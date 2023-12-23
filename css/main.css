@@ -87,14 +87,18 @@ button:focus {
   color: white;
   width: 60%;
   height: auto;
+  max-height: 100%;
   /* min-height: 40em; */
   white-space: pre-line;
   box-sizing: border-box;
   /* padding: 1em; */
-  overflow: auto;
+  /* overflow: auto; */
   display: initial;
   flex-direction: column;
   overflow-y: auto;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  /* white-space: pre-line; */
 }
 
 .img-container {
@@ -116,6 +120,7 @@ button:focus {
   /* height: auto; */
   max-width: 500px;
   max-height: 500px;
+  min-width: 2;
   object-fit: contain;
 }
 
@@ -138,7 +143,8 @@ button:focus {
 
   .text-container {
     height: auto;
-    overflow-y: visible;
+    max-height: 60%;
+    /* overflow-y: visible; */
   }
 
   .img-container {
@@ -244,7 +250,7 @@ button:focus {
 
 .calculater-container{
   /* width: calc(80% - 3em); */
-  margin-left: calc(2em + 25px);
+  margin-left: calc(2em + 25  px);
   /* overflow: hidden; */
   display: flex;
   align-items: center;
