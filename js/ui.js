@@ -112,7 +112,7 @@ function previewCard(cardId, options) {
     }
 }
 
-function setupCardElement(cardDiv, cardId, options, cardTitle, cardImage){
+function setupCardElement(cardDiv, cardId, options, cardTitle, cardImage) {
     const card = allCards[cardId];
     options = options ? options : {};
 
@@ -131,7 +131,7 @@ function setupCardElement(cardDiv, cardId, options, cardTitle, cardImage){
     }
     cardTitle.style.color = options.color;
 
-    cardImage.src = (options && options.imageUrl) ? options.imageUrl : 
+    cardImage.src = (options && options.imageUrl) ? options.imageUrl :
         (IMAGE_PATH + (card && card.img ? card.img : '585.png'));
 
     cardDiv.onclick = () => {
@@ -142,7 +142,7 @@ function setupCardElement(cardDiv, cardId, options, cardTitle, cardImage){
 // 替换卡牌
 function replaceCardInContainer(cardId, newId, options) {
     const cardDiv = document.getElementById(cardId);
-    if (cardDiv == undefined){
+    if (cardDiv == undefined) {
         return;
     }
     cardDiv.id = newId;
@@ -227,7 +227,7 @@ function addCardToLootContainer(cardId, divClass, callback) {
     cardDiv.id = cardId;
     cardDiv.classList.add(divClass);
 
-    let options = { "color": getColor(card), "imageUrl": (card && card.img) ? (IMAGE_PATH + card.img) : '' };
+    let options = { "color": getColor(allCards[cardId]), "imageUrl": IMAGE_PATH + allCards[cardId].img };
     cardDiv.style.borderColor = options.color;
     cardDiv.style.color = options.color;
     setTimeout(() => {
@@ -290,7 +290,7 @@ function setupOutputArea(event, eventId, color) {
     color = color ? color : getColor(event, DATA_TYPES.Event);
     for (var i = 0; i < choices.length; i++) {
         let choice = choices[i];
-        if (choice.branch && branch[choice.branch]){
+        if (choice.branch && branch[choice.branch]) {
             // 该分支已经完成，不再显示按钮
             continue;
         }
@@ -315,7 +315,7 @@ function setupInputArea(event, eventId, color) {
     cal2.style.borderColor = color;
     calc.style.borderColor = color;
     if (branch && branch.d)
-        document.querySelector(".calculater").src = IMAGE_PATH + 'calc-white.png';    
+        document.querySelector(".calculater").src = IMAGE_PATH + 'calc-white.png';
     else
         document.querySelector(".calculater").src = IMAGE_PATH + (color == EVENT_COLOR ? 'calc-purple.png' : 'calc-red.png');
     if (branch && branch.d)
@@ -351,7 +351,7 @@ function addOutputButton(nextEventId, buttonPrompt, color) {
     document.getElementById('outputs').appendChild(continueButton);
 
     continueButton.innerText = buttonPrompt ? buttonPrompt : DEFAULT_CONTINUE_TEXT;
-    
+
     console.log(continueButton.style)
     setTimeout(() => continueButton.onclick = () => {
         startEvent(nextEventId);
@@ -441,6 +441,21 @@ function deployCalculater() {
 
 }
 
+function goNODREAM() {
+    var style = document.createElement('style');
+    document.head.appendChild(style);
+    style.sheet.insertRule('* {border-radius: 0 !important;border-color: white !important;color: white !important;}', 0);
+
+    style.sheet.insertRule('.img-container{display: none !important;}', 0);
+    style.sheet.insertRule('.text-container{width:80% !important;height:80% !important;}', 0);
+    style.sheet.insertRule('.card-image{display: none !important;}', 0);
+    style.sheet.insertRule('.card-title{display: flex !important;}', 0);
+
+    style.sheet.insertRule('.card-description-img{display: none !important;}', 0);
+    style.sheet.insertRule('.divider{display: none !important;}', 0);
+    style.sheet.insertRule('.card-description-text{height: 100% !important;}', 0);
+
+}
 function getFullDimensionsWithMargin(element) {
     var style = window.getComputedStyle(element);
 
