@@ -51,6 +51,7 @@ function getDescription(id, type) {
         return "未找到" + ((type == DATA_TYPES.Card) ? '卡牌' : '事件') + "信息！ID：" + id;
     }
 
+    let extraDesc = '';
     if (data.specialDescription && type == DATA_TYPES.Event){
         // 特殊事件描述
         const specialDesc = tryEventSpecialFunc(id, GetSpecialEventDesc, {}, data.parent);
@@ -58,22 +59,33 @@ function getDescription(id, type) {
             return specialDesc;
         }
     }
+    else if (type == DATA_TYPES.Card && specialCardsData[id] && specialCardsData[id].hasExtraDesc) {
+        // 会变化的卡牌描述
+        if (branch.j && specialCardsData[id].descNoJ != "") {
+            extraDesc = specialCardsData[id].headerNoJ + specialCardsData[id].descNoJ;
+        }
+        else {
+            extraDesc = specialCardsData[id].header + specialCardsData[id].desc;
+        }
+    }
 
+    let desc = '';
     if (branch.j && branch.l && data.descriptionNoJL) {
-        return data.descriptionNoJL;
+        desc = data.descriptionNoJL;
     }
     else if (branch.j && data.descriptionNoJ) {
-        return data.descriptionNoJ;
+        desc = data.descriptionNoJ;
     }
     else if (branch.l && data.descriptionNoL) {
-        return data.descriptionNoL;
+        desc = data.descriptionNoL;
     }
     else {
         if (branch.j && branch.l && type == DATA_TYPES.Event && data.descriptionNoJ){
-            return data.descriptionNoJ;
+            desc = data.descriptionNoJ;
         }
-        return data.description;
+        desc = data.description;
     }
+    return desc + extraDesc;
 }
 
 /*
@@ -83,7 +95,7 @@ function getDescription(id, type) {
 // 添加一张card
 function addCardToDeck(cardId, options) {
     deck.push(cardId);
-    addCardToContainer(cardId, options);
+    addCardToContainer(cardId, undefined, options);
     currentStartIndex = Math.max(0, deck.length - maxCardsToShow);
     updateCardVisibility();
 }
@@ -127,4 +139,43 @@ function checkDeck(cardList) {
         }
     }
     return newCards;
+}
+
+function getCardTitle(cardId){
+    if (cardId == PET_CARD_ID || cardId == PURSE_CARD_ID) {
+        const value = specialCardsData[cardId].value;
+        return (value > 0  ? "+" : "") + value;
+    }
+    else if (allCards[cardId] && allCards[cardId].displayID) {
+        return allCards[cardId].displayID;
+    }
+    else {
+        return cardId;
+    }
+}
+
+function updateSpecialCards(eventId, event) {
+    if (!event){
+        return;
+    }
+    for (var id in specialCardsData) {
+        let shouldUpdate = false;
+        if (event.bulletPoint && specialCardsData[id].logEvents && specialCardsData[id].logEvents.includes(eventId)){
+            // 更新bullet points
+            specialCardsData[id].hasExtraDesc = true;
+            specialCardsData[id].desc += event.bulletPoint;
+            specialCardsData[id].descNoJ += event.bulletPointNoJ ? event.bulletPointNoJ : event.bulletPoint;
+            if (id == PET_CARD_ID) {
+                specialCardsData[id].value += 250;
+            }
+            shouldUpdate = true;
+        }
+        if (id == PURSE_CARD_ID && event.newMoney) {
+            specialCardsData[id].value = parseInt(event.newMoney);
+            shouldUpdate = true;
+        }
+        if (shouldUpdate) {
+            replaceCardInContainer(id, id);
+        }
+    }
 }

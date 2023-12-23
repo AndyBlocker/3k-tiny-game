@@ -22,6 +22,7 @@ const CLINICAL_COLOR = "#BBBBBB";
 const DEFAULT_CONTINUE_TEXT = "前往下一事件";
 
 const PURSE_CARD_ID = "purse";
+const PET_CARD_ID = "pet";
 
 /* 
     ===== VARIABLES =====
@@ -50,7 +51,7 @@ const DATA_TYPES = {
     Card: 0,
     Event: 1,
     __Count: 2,
-}
+};
 
 /* 
     ===== GAME STATUS =====
@@ -65,5 +66,28 @@ let branch = {
     m: false  // 钱线完成情况
 };
 let money = '0';
+let completedEvents = [];
+let specialCardsData = {
+    "pet" : {
+        value: 0,
+        hasExtraDesc: false,
+        header: "",
+        headerNoJ: "",
+        desc: "",
+        descNoJ: "",
+        logEvents: ["0", "1", "2", "3"]
+    },
+    "006J" : {
+        hasExtraDesc: false,
+        header: "",
+        headerNoJ: "",
+        desc: "",
+        descNoJ: "",
+        logEvents: ["122", "296", "048J", "321J"]
+    },
+    "purse" : {
+        value : 0
+    }
+}
 
 let _lootToPick = 0;

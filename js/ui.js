@@ -54,15 +54,7 @@ function previewCard(cardId, options) {
     modalContent.innerHTML = '<span class="close">&times;</span>';
 
     var titleDiv = document.createElement('div');
-    if (cardId == PURSE_CARD_ID) {
-        titleDiv.innerHTML = money;
-    }
-    else if (allCards[cardId] && allCards[cardId].displayID) {
-        titleDiv.innerHTML = allCards[cardId].displayID;
-    }
-    else {
-        titleDiv.innerHTML = cardId;
-    }
+    titleDiv.innerHTML = getCardTitle(cardId);
     titleDiv.className = 'card-description-id';
     modalContent.appendChild(titleDiv);
     titleDiv.style.color = options.color;
@@ -116,19 +108,10 @@ function setupCardElement(cardDiv, cardId, options, cardTitle, cardImage){
     const card = allCards[cardId];
     options = options ? options : {};
 
-    options.color = options.color ? options.color : getColor(card);
+    options.color = options.color ? options.color : getColor(card, DATA_TYPES.Card);
     cardDiv.style.borderColor = options.color;
 
-    if (cardId == PURSE_CARD_ID) {
-        cardTitle.textContent = money;
-        purseTitle = cardTitle;
-    }
-    else if (card && card.displayID) {
-        cardTitle.textContent = card.displayID;
-    }
-    else {
-        cardTitle.textContent = cardId;
-    }
+    cardTitle.textContent = getCardTitle(cardId);
     cardTitle.style.color = options.color;
 
     cardImage.src = (options && options.imageUrl) ? options.imageUrl : 
@@ -152,7 +135,7 @@ function replaceCardInContainer(cardId, newId, options) {
 }
 
 // 将card绘制到container中
-function addCardToContainer(cardId, options) {
+function addCardToContainer(cardId, index, options) {
     const cardDiv = document.createElement('div');
     cardDiv.id = cardId;
     cardDiv.classList.add('card');
@@ -227,7 +210,7 @@ function addCardToLootContainer(cardId, divClass, callback) {
     cardDiv.id = cardId;
     cardDiv.classList.add(divClass);
 
-    let options = { "color": getColor(card), "imageUrl": (card && card.img) ? (IMAGE_PATH + card.img) : '' };
+    let options = { "color": getColor(card, DATA_TYPES.Card), "imageUrl": (card && card.img) ? (IMAGE_PATH + card.img) : '' };
     cardDiv.style.borderColor = options.color;
     cardDiv.style.color = options.color;
     setTimeout(() => {
@@ -274,7 +257,7 @@ function setupLootArea(event, callback) {
     return true;
 }
 
-function setupOutputArea(event, eventId, color) {
+function setupOutputArea(event, eventId, color, onProceed) {
     if (event == undefined) {
         return;
     }
@@ -294,11 +277,11 @@ function setupOutputArea(event, eventId, color) {
             // 该分支已经完成，不再显示按钮
             continue;
         }
-        addOutputButton(choice.nextEvent, choice.buttonPrompt, color);
+        addOutputButton(choice.nextEvent, choice.buttonPrompt, color, onProceed);
     }
 }
 
-function setupInputArea(event, eventId, color) {
+function setupInputArea(event, eventId, color, onProceed) {
     color = color ? color : getColor(event, DATA_TYPES.Event);
     const inputBox = document.querySelector('.input-box');
     const goButton = document.getElementById('go');
@@ -325,7 +308,7 @@ function setupInputArea(event, eventId, color) {
 
     goButton.onclick = () => {
         const input = inputBox.value;
-        getUseResult(input, event, eventId);
+        getUseResult(input, event, eventId, onProceed);
         inputBox.value = "";
 
         cal1.value = null;
@@ -337,7 +320,7 @@ function playErrorAnimation() {
     triggerErrorAnimation(document.querySelector('.input-box'));
 }
 
-function addOutputButton(nextEventId, buttonPrompt, color) {
+function addOutputButton(nextEventId, buttonPrompt, color, onProceed) {
     if (nextEventId == undefined) {
         return;
     }
@@ -354,20 +337,20 @@ function addOutputButton(nextEventId, buttonPrompt, color) {
     
     console.log(continueButton.style)
     setTimeout(() => continueButton.onclick = () => {
-        startEvent(nextEventId);
+        onProceed(nextEventId);
     }, 100);
 }
 
-function setupInOutArea(event, eventId, color) {
+function setupInOutArea(event, eventId, color, onProceed) {
     popAllChildElement(lootContainer);
     const isOutputType = event == undefined || (event.type != "input" && event.type != "Input");
     if (isOutputType || branch.m) {
         document.getElementById('outputs').style.display = 'initial';
-        setupOutputArea(event, eventId, color);
+        setupOutputArea(event, eventId, color, onProceed);
     }
     else {
         document.getElementById('inputs').style.display = 'initial';
-        setupInputArea(event, eventId, color);
+        setupInputArea(event, eventId, color, onProceed);
     }
 }
 

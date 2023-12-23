@@ -43,7 +43,7 @@ function getNextEvent(input, event, id) {
     return event.nextEvent;
 }
 
-function getUseResult(input, event, id) {
+function getUseResult(input, event, id, onProceed) {
     const nextEvent = getNextEvent(input, event, id);
     if (nextEvent == undefined) {
         return;
@@ -58,7 +58,7 @@ function getUseResult(input, event, id) {
     if (correctPrompt == undefined ||
         correctPrompt == input ||
         (Array.isArray(correctPrompt) && correctPrompt.includes(input))) {
-        startEvent(nextEvent);
+            onProceed(nextEvent);
     }
     else if (easterEggPrompt && easterEggPrompt[input] != undefined) {
         tryAddEasterEggDescription(input, easterEggPrompt[input]);
@@ -68,19 +68,10 @@ function getUseResult(input, event, id) {
     }
 }
 
-function updateMoney(event) {
-    if (event == undefined || event.newMoney == undefined){
-        return;
-    }
-    money = event.newMoney;
-    if (purseTitle != undefined){
-        purseTitle.textContent = event.newMoney;
-    }
-    return;
-}
-
 function startEvent(eventId, options) {
     const previousEventId = currentEventId;
+    completedEvents.push(previousEventId);
+
     currentEventId = eventId;
     options = options ? options : {};
 
@@ -88,6 +79,7 @@ function startEvent(eventId, options) {
     if (event){
         tryEventSpecialFunc(eventId, GetSpecialOnEnter, { previousEvent: previousEventId }, event.parent);
     }
+    updateSpecialCards(eventId, event);
 
     const color = getColor(event, DATA_TYPES.Event);
     if (event && event.displayID)
@@ -111,8 +103,8 @@ function startEvent(eventId, options) {
     }
 
     // update event img
-    if (allEvents[eventId] && allEvents[eventId].img) { // with img
-        document.querySelector('.img-wrapper').src = IMAGE_PATH + allEvents[eventId].img;
+    if (event && event.img) { // with img
+        document.querySelector('.img-wrapper').src = IMAGE_PATH + event.img;
         document.querySelector('.img-container').style.display = 'flex';
     }
     else {// without img
@@ -134,15 +126,17 @@ function startEvent(eventId, options) {
     // clear main height
     document.querySelector('.main-container').style.maxHeight = '80%';
 
-    updateMoney(event);
-
     setupHint(event);
 
+    function onProceed(nextEventId) {
+        startEvent(nextEventId);
+    }
+
     const hasLoot = setupLootArea(event, () => {
-        setupInOutArea(event, eventId, color);
+        setupInOutArea(event, eventId, color, onProceed);
     });
     if (!hasLoot) {
-        setupInOutArea(event, eventId, color);
+        setupInOutArea(event, eventId, color, onProceed);
     }
     if (event && event.loseCards != undefined) {
         loseCards(event.loseCards);
