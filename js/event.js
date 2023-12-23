@@ -127,7 +127,11 @@ function startEvent(eventId, options) {
     updateMoney(event);
 
     setupHint(event);
-    if (!setupLootArea(event)) {
+
+    const hasLoot = setupLootArea(event, () => {
+        setupInOutArea(event, eventId, color);
+    });
+    if (!hasLoot) {
         setupInOutArea(event, eventId, color);
     }
     if (event && event.loseCards != undefined) {
@@ -181,5 +185,34 @@ const GetSpecialNextEvent = {
 }
 
 const GetSpecialOnEnter = {
-    
+    "2": (args) => {
+        const previousEvent = args.previousEventId;
+
+        switch (previousEvent) {
+            case "3000-Dream":
+                branch.d = true;
+                break;
+            case "3000-J":
+                branch.j = true;
+                break;
+            default:
+                return;
+        }
+
+        // 重置部分游戏状态
+        money = "0";
+
+        // 删除所有非天王卡
+        let newDeck = [];
+        deck.forEach( (id) => {
+            if (allCards[id] && (allCards[id].color == "Boss" || allCards[id].color == "boss")) {
+                newDeck.push(id);
+            }
+        } )
+        deck = newDeck;
+        refreshCardContainer();
+
+        // 弹RAISA
+        displayRAISA(previousEvent, "占位，你刚刚完成了" + previousEvent);
+    }
 }

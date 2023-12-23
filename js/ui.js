@@ -219,7 +219,7 @@ function addButtonToLootContainer(buttonPrompt, buttonClass, buttonFunction) {
     lootContainer.appendChild(button);
 }
 
-function addCardToLootContainer(event, cardId, divClass) {
+function addCardToLootContainer(cardId, divClass, callback) {
     const cardDiv = document.createElement('button');
     cardDiv.innerText = "获得" + cardId;
     cardDiv.id = cardId;
@@ -236,28 +236,28 @@ function addCardToLootContainer(event, cardId, divClass) {
 
             _lootToPick--;
             if (_lootToPick == 0) {
-                setupInOutArea(event);
+                callback();
             }
         }
     }, 100);
     lootContainer.appendChild(cardDiv);
 }
 
-function setupLootArea_internal(event, cardList) {
+function setupLootArea_internal(cardList, callback) {
     if (cardList.length >= 2) {
-        addCardToLootContainer(event, cardList[0], 'medium-button');
-        addCardToLootContainer(event, cardList[1], 'medium-button');
-        setupLootArea_internal(event, cardList.slice(2));
+        addCardToLootContainer(cardList[0], 'medium-button', callback);
+        addCardToLootContainer(cardList[1], 'medium-button', callback);
+        setupLootArea_internal(cardList.slice(2), callback);
     }
     else if (cardList.length == 1) {
-        addCardToLootContainer(event, cardList[0], 'large-button');
+        addCardToLootContainer(cardList[0], 'large-button', callback);
     }
     else {
         return;
     }
 }
 
-function setupLootArea(event) {
+function setupLootArea(event, callback) {
     popAllChildElement(lootContainer);
     if (event == undefined || event.getCards == undefined) {
         return false;
@@ -268,7 +268,7 @@ function setupLootArea(event) {
         return false;
     }
 
-    setupLootArea_internal(event, newCards);
+    setupLootArea_internal(newCards, callback);
     return true;
 }
 
@@ -288,6 +288,10 @@ function setupOutputArea(event, eventId, color) {
     color = color ? color : getColor(event, DATA_TYPES.Event);
     for (var i = 0; i < choices.length; i++) {
         let choice = choices[i];
+        if (choice.branch && branch[choice.branch]){
+            // 该分支已经完成，不再显示按钮
+            continue;
+        }
         addOutputButton(choice.nextEvent, choice.buttonPrompt, color);
     }
 }
