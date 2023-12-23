@@ -58,22 +58,22 @@
     "specialOnEnter":true,
 	"choices": [
         {
-            "buttonPrompt": "走向“橱柜区”（爱线）",
+            "buttonPrompt": "走向“橱柜区”",
             "nextEvent": "35",
             "branch": "l"
         },
         {
-            "buttonPrompt": "走向“商店街”（钱线）",
+            "buttonPrompt": "走向“商店街”",
             "nextEvent": "593",
             "branch": "m"
         },
         {
-            "buttonPrompt": "走向“卫浴区”（J线，实装中）",
+            "buttonPrompt": "走向“卫浴区”",
             "nextEvent": "13",
             "branch": "j"
         },
         {
-            "buttonPrompt": "走向“装饰区”（梦线，已实装）",
+            "buttonPrompt": "走向“装饰区”",
             "nextEvent": "737",
             "branch": "d"
         }
