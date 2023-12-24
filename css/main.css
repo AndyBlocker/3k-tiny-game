@@ -504,7 +504,7 @@ button:focus {
   background-color: #161616;
 }
 
-.no-dream .card,
+.no-dream .card, .no-dream .modal-content,
 .no-dream .large-button, .no-dream .medium-button, .no-dream .small-button,
 .no-dream .input-box, .no-dream .cal-1, .no-dream .cal-2, .no-dream .calculater {
   border-radius: 0;
