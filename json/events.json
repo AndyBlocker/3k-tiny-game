@@ -908,6 +908,7 @@
         "easterEggPrompt" : {
             "2987": "擅自抬头是一种不遵守组织纪律、不尊重家具城领导和其他员工的严重违规行为，是研究员思想觉悟不够高、行为规范不够端正的体现，需要严正警告，记大过一次。"
         },
+	    "bulletPoint": "\n· SCP-CN-648-J - 现在我的手中抓住了希望！",
         "nextEvent": "648J"
     },
 
@@ -1322,7 +1323,7 @@
     "3000-money":
     {
         "type": "output",
-	    "displayID":"3000",
+	"displayID":"3000",
         "color": "boss",
         "description": "变种的基类，用来登记各个3000-money事件的相同点。该事件本身不应出现在游戏中",
         "buttonPrompt": "收容该异常",
