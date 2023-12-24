@@ -1322,7 +1322,7 @@
     "3000-money":
     {
         "type": "output",
-	"displayID":"3000",
+	    "displayID":"3000",
         "color": "boss",
         "description": "变种的基类，用来登记各个3000-money事件的相同点。该事件本身不应出现在游戏中",
         "buttonPrompt": "收容该异常",

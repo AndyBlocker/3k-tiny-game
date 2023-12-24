@@ -38,6 +38,13 @@ if (DEV) {
         branch.d = checkboxes[1].checked;
         branch.l = checkboxes[2].checked;
         branch.m = checkboxes[3].checked;
+
+        if (branch.d) {
+            document.querySelector('.content').classList.add("no-dream");
+        }
+        else {
+            document.querySelector('.content').classList.remove("no-dream");
+        }
         startEvent(currentEventId, options);
         refreshCardContainer();
     });

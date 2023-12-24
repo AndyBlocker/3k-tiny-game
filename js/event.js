@@ -103,7 +103,7 @@ function startEvent(eventId, options) {
     }
 
     // update event img
-    if (event && event.img) { // with img
+    if (!branch.d && event && event.img) { // with img
         document.querySelector('.img-wrapper').src = IMAGE_PATH + event.img;
         document.querySelector('.img-container').style.display = 'flex';
     }
@@ -194,6 +194,7 @@ const GetSpecialOnEnter = {
 
         switch (previousEvent) {
             case "3000-Dream":
+                document.querySelector('.content').classList.add("no-dream");
                 branch.d = true;
                 break;
             case "3000-J":
@@ -204,12 +205,15 @@ const GetSpecialOnEnter = {
             case "3000-money-c":
                 branch.m = true;
                 break;
+            case "3000-love":
+                branch.l;
+                break;
             default:
                 return;
         }
 
         // 重置部分游戏状态
-        money = "0";
+        specialCardsData[PURSE_CARD_ID].value = 0;
 
         // 删除所有非天王卡
         let newDeck = [];

@@ -12,7 +12,7 @@ function getRandomColor() {
 }
 
 function getColor(data, dataType) {
-    if (branch.j) {
+    if (branch.d) {
         return CLINICAL_COLOR;
     }
 
@@ -59,7 +59,7 @@ function previewCard(cardId, options) {
     modalContent.appendChild(titleDiv);
     titleDiv.style.color = options.color;
 
-    if (cardData && cardData.img) {
+    if (!branch.d && cardData && cardData.img) {
         var img = document.createElement('img');
         img.src = IMAGE_PATH + cardData.img;
         img.className = 'card-description-img';
@@ -104,7 +104,7 @@ function previewCard(cardId, options) {
     }
 }
 
-function setupCardElement(cardDiv, cardId, options, cardTitle, cardImage) {
+function setupCardElement(cardDiv, cardId, options, cardTitle, cardImage, cardName) {
     const card = allCards[cardId];
     options = options ? options : {};
 
@@ -114,8 +114,14 @@ function setupCardElement(cardDiv, cardId, options, cardTitle, cardImage) {
     cardTitle.textContent = getCardTitle(cardId);
     cardTitle.style.color = options.color;
 
-    cardImage.src = (options && options.imageUrl) ? options.imageUrl :
-        (IMAGE_PATH + (card && card.img ? card.img : '585.png'));
+    if (!branch.d) {
+        cardImage.src = (options && options.imageUrl) ? options.imageUrl : (IMAGE_PATH + (card && card.img ? card.img : '585.png'));
+        cardName.style.display = "none";
+    }
+    else if (card && card.name) {
+        cardName.innerHTML = card.name;
+        cardImage.style.display = "none";
+    }
 
     cardDiv.onclick = () => {
         previewCard(cardId, options);
@@ -131,11 +137,12 @@ function replaceCardInContainer(cardId, newId, options) {
     cardDiv.id = newId;
     const cardTitle = cardDiv.getElementsByClassName('card-title')[0];
     const cardImage = cardDiv.getElementsByTagName('img')[0];
-    setupCardElement(cardDiv, newId, options, cardTitle, cardImage);
+    const cardName = cardDiv.getElementsByClassName('card-description-name')[0];
+    setupCardElement(cardDiv, newId, options, cardTitle, cardImage, cardName);
 }
 
 // 将card绘制到container中
-function addCardToContainer(cardId, index, options) {
+function addCardToContainer(cardId, options) {
     const cardDiv = document.createElement('div');
     cardDiv.id = cardId;
     cardDiv.classList.add('card');
@@ -148,9 +155,13 @@ function addCardToContainer(cardId, index, options) {
     cardImage.classList.add('card-image');
     cardDiv.appendChild(cardImage);
 
+    const cardName = document.createElement('div');
+    cardName.className = 'card-description-name';
+    cardDiv.appendChild(cardName);
+
     cardContainer.appendChild(cardDiv);
 
-    setupCardElement(cardDiv, cardId, options, cardTitle, cardImage);
+    setupCardElement(cardDiv, cardId, options, cardTitle, cardImage, cardName);
     fadeIn(cardDiv);
 }
 

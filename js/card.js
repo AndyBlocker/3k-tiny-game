@@ -62,10 +62,10 @@ function getDescription(id, type) {
     else if (type == DATA_TYPES.Card && specialCardsData[id] && specialCardsData[id].hasExtraDesc) {
         // 会变化的卡牌描述
         if (branch.j && specialCardsData[id].descNoJ != "") {
-            extraDesc = specialCardsData[id].headerNoJ + specialCardsData[id].descNoJ;
+            extraDesc = specialCardsData[id].descNoJ;
         }
         else {
-            extraDesc = specialCardsData[id].header + specialCardsData[id].desc;
+            extraDesc = specialCardsData[id].desc;
         }
     }
 
@@ -95,7 +95,7 @@ function getDescription(id, type) {
 // 添加一张card
 function addCardToDeck(cardId, options) {
     deck.push(cardId);
-    addCardToContainer(cardId, undefined, options);
+    addCardToContainer(cardId, options);
     currentStartIndex = Math.max(0, deck.length - maxCardsToShow);
     updateCardVisibility();
 }
@@ -126,7 +126,7 @@ function replaceCard(oldId, newId) {
 // 清空card
 function refreshCardContainer() {
     popAllChildElement(cardContainer);
-    deck.forEach(addCardToContainer);
+    deck.forEach((v,i) => addCardToContainer(v));
     currentStartIndex = Math.max(0, deck.length - maxCardsToShow);
     updateCardVisibility();
 }

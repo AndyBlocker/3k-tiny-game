@@ -494,6 +494,41 @@ button:focus {
   width: 100%;
 }
 
+.no-dream .main {
+  border-radius: 0;
+  background-color: #161616;
+  border: 1px solid white;
+}
+
+.no-dream .main-container, .no-dream .topic {
+  background-color: #161616;
+}
+
+.no-dream .card,
+.no-dream .large-button, .no-dream .medium-button, .no-dream .small-button,
+.no-dream .input-box, .no-dream .cal-1, .no-dream .cal-2, .no-dream .calculater {
+  border-radius: 0;
+}
+
+.no-dream .calculater:hover{
+  background-color: transparent;
+}
+
+.no-dream .card:hover, .no-dream .hintPrompt:hover, 
+.no-dream .large-button:hover, .no-dream .medium-button:hover{
+  border-width: 2px;
+}
+
+.no-dream .input-box:hover, .no-dream .small-button:hover,
+.no-dream .cal-1:hover, .no-dream .cal-2:hover{
+  border-width: 3px;
+}
+
+.no-dream .hintPrompt:hover {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
 .dev-area {
   /* color: white; */
   background-color: darkolivegreen;

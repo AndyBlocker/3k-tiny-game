@@ -18,7 +18,7 @@ const SCP_COLOR = "#FF9D95";
 const PROPS_COLOR = "#CCE9FF";
 const EVENT_COLOR = "#9C67B5";
 const BOSS_COLOR = "#fde44c";
-const CLINICAL_COLOR = "#BBBBBB";
+const CLINICAL_COLOR = "#FFFFFF";
 const DEFAULT_CONTINUE_TEXT = "前往下一事件";
 
 const PURSE_CARD_ID = "purse";
@@ -71,16 +71,12 @@ let specialCardsData = {
     "pet" : {
         value: 0,
         hasExtraDesc: false,
-        header: "\n\n你目前累积的羁绊：",
-        headerNoJ: "\n\n研究员目前完成交互的异常：",
         desc: "",
         descNoJ: "",
         logEvents: ["4454", "4455", "1922", "1775", "812", "765", "2297", "1061", "1818", "1819", "1296", "3000-love"]
     },
     "006J" : {
         hasExtraDesc: false,
-        header: "",
-        headerNoJ: "",
         desc: "",
         descNoJ: "",
         logEvents: ["122", "296", "048J", "321J"]
