@@ -301,7 +301,7 @@ const GetSpecialOnEnter = {
 
         switch (previousEvent) {
             case "3000-Dream":
-                document.querySelector('.content').classList.add("no-dream");
+                swithToNoDream();
                 branch.d = true;
                 break;
             case "3000-J":

@@ -40,10 +40,11 @@ if (DEV) {
         branch.m = checkboxes[3].checked;
 
         if (branch.d) {
-            document.querySelector('.content').classList.add("no-dream");
+            swithToNoDream()
         }
         else {
             document.querySelector('.content').classList.remove("no-dream");
+            document.querySelector('.modal').classList.remove("no-dream");
         }
         startEvent(currentEventId, options);
         refreshCardContainer();

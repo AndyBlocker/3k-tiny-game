@@ -2,6 +2,11 @@
     ===== 有关UI变化的接口 =====
 */
 
+function swithToNoDream() {
+    document.querySelector('.content').classList.add("no-dream");
+    document.querySelector('.modal').classList.add("no-dream");
+}
+
 function getRandomColor() {
     const letters = '0123456789ABCDEF';
     let color = '#';
