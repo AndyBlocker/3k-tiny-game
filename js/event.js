@@ -24,7 +24,7 @@ function tryAddEasterEggDescription(easterEggID, text) {
     let childs = descriptionArea.childNodes;
     for (var i = 0; i < childs.length; i++) {
         if (childs[i].name == easterEggID) {
-            playErrorAnimation();
+            playErrorAnimation(document.getElementById('input-box'));
             return;
         }
     }
@@ -44,12 +44,13 @@ function getNextEvent(input, event, id) {
 }
 
 function getUseResult(input, event, id, onProceed) {
+    const inputBox = document.getElementById('input-box');
     const nextEvent = getNextEvent(input, event, id);
     if (nextEvent == undefined) {
         return;
     }
     else if (nextEvent == "wrong") {
-        playErrorAnimation();
+        playErrorAnimation(inputBox);
         return;
     }
     const correctPrompt = event.correctPrompt;
@@ -64,7 +65,7 @@ function getUseResult(input, event, id, onProceed) {
         tryAddEasterEggDescription(input, easterEggPrompt[input]);
     }
     else {
-        playErrorAnimation();
+        playErrorAnimation(inputBox);
     }
 }
 
@@ -116,12 +117,9 @@ function startEvent(eventId, options) {
         }
     }
 
-    // update input-box color
-    // document.querySelector('.input-box').style.borderColor = color;
-    // document.getElementById('go').style.borderColor = color;
-
     document.getElementById('inputs').style.display = 'none';
     document.getElementById('outputs').style.display = 'none';
+    document.getElementById('multiple-inputs').style.display = 'none';
 
     // clear main height
     document.querySelector('.main-container').style.maxHeight = '80%';

@@ -227,8 +227,7 @@ function addCardToLootContainer(cardId, divClass, callback) {
     cardDiv.classList.add(divClass);
 
     let options = { "color": getColor(card, DATA_TYPES.Card), "imageUrl": (card && card.img) ? (IMAGE_PATH + card.img) : '' };
-    cardDiv.style.borderColor = options.color;
-    cardDiv.style.color = options.color;
+    setTextAndBorderColor(cardDiv, options.color);
     setTimeout(() => {
         cardDiv.onclick = () => {
             addCardToDeck(cardId, options);
@@ -297,30 +296,33 @@ function setupOutputArea(event, eventId, color, onProceed) {
     }
 }
 
+function setTextAndBorderColor(element, color){
+    element.style.borderColor = color;
+    element.style.color = color;
+}
+
+function setImageColor(element, color, whiteSrc, purpleSrc, redSrc){
+    if (branch && branch.d)
+        element.src = IMAGE_PATH + whiteSrc;
+    else
+        element.src = IMAGE_PATH + (color == EVENT_COLOR ? purpleSrc : redSrc);
+}
+
 function setupInputArea(event, eventId, color, onProceed) {
     color = color ? color : getColor(event, DATA_TYPES.Event);
-    const inputBox = document.querySelector('.input-box');
+    const inputBox = document.getElementById('input-box');
     const goButton = document.getElementById('go');
     const cal1 = document.querySelector(".cal-1");
     const cal2 = document.querySelector(".cal-2");
     const calc = document.querySelector('.calculater');
 
+    [inputBox, cal1, cal2, calc].forEach((e,i) => {e.style.borderColor = color;});
+    setTextAndBorderColor(goButton);
     document.querySelector(".plus").style.color = color;
     document.querySelector(".equal").style.color = color;
-    inputBox.style.borderColor = color;
-    goButton.style.borderColor = color;
-    goButton.style.color = color;
-    cal1.style.borderColor = color;
-    cal2.style.borderColor = color;
-    calc.style.borderColor = color;
-    if (branch && branch.d)
-        document.querySelector(".calculater").src = IMAGE_PATH + 'calc-white.png';
-    else
-        document.querySelector(".calculater").src = IMAGE_PATH + (color == EVENT_COLOR ? 'calc-purple.png' : 'calc-red.png');
-    if (branch && branch.d)
-        document.querySelector("#go-img").src = IMAGE_PATH + 'arrow-white.png';
-    else
-        document.querySelector("#go-img").src = IMAGE_PATH + (color == EVENT_COLOR ? 'arrow-purple.png' : 'arrow-red.png');
+
+    setImageColor(calc, color, 'calc-white.png', 'calc-purple.png', 'calc-red.png');
+    setImageColor(document.querySelector("#go-img"), color, 'arrow-white.png', 'arrow-purple.png', 'arrow-red.png');
 
     goButton.onclick = () => {
         const input = inputBox.value;
@@ -332,8 +334,8 @@ function setupInputArea(event, eventId, color, onProceed) {
     }
 }
 
-function playErrorAnimation() {
-    triggerErrorAnimation(document.querySelector('.input-box'));
+function playErrorAnimation(inputBox) {
+    triggerErrorAnimation(inputBox);
 }
 
 function addOutputButton(nextEventId, buttonPrompt, color, onProceed) {
@@ -345,8 +347,7 @@ function addOutputButton(nextEventId, buttonPrompt, color, onProceed) {
     continueButton.name = nextEventId;
     continueButton.classList.add('continue');
     continueButton.classList.add('large-button');
-    continueButton.style.borderColor = color;
-    continueButton.style.color = color;
+    setTextAndBorderColor(continueButton, color);
     document.getElementById('outputs').appendChild(continueButton);
 
     continueButton.innerText = buttonPrompt ? buttonPrompt : DEFAULT_CONTINUE_TEXT;
@@ -357,10 +358,71 @@ function addOutputButton(nextEventId, buttonPrompt, color, onProceed) {
     }, 100);
 }
 
+//  inputBoxes: htmlCollection
+function getMultipleInputsUseResult(event, inputBoxes){
+    if (event == undefined){
+        return false;
+    }
+    let inputs = [];
+    let result = true;
+    const correctPrompt = event.correctPrompt;
+    const easterEggPrompt = event.easterEggPrompt;
+
+    // 先检查空输入框和重复输入
+    for (element of inputBoxes) {
+        const value = element.value;
+        if (value == undefined || value == ""){
+            return;
+        }
+        if (inputs.includes(value)){
+            playErrorAnimation(element);
+            element.value = "";
+            return;
+        }
+        else {
+            inputs.push(value);
+        }
+    }
+    for (element of inputBoxes) {
+        const value = element.value;
+        if (easterEggPrompt && easterEggPrompt[value]) {
+            tryAddEasterEggDescription(value, easterEggPrompt[value]);
+            element.value = "";
+        }
+        else if (correctPrompt && !correctPrompt.includes(value)){
+            playErrorAnimation(element);
+            result = false;
+            element.value = "";
+        }
+    }
+    return result;
+}
+
+function setupMultipleInputs(event, color, onProceed) {
+    color = color ? color : getColor(event, DATA_TYPES.Event);
+    const inputBoxes = document.getElementById('multiple-inputs').getElementsByClassName('input-box');
+    const goButton = document.getElementById('go-2');
+
+    for (element of inputBoxes) {
+        element.style.borderColor = color;
+    }
+    setTextAndBorderColor(goButton, color);
+    setImageColor(document.querySelector("#go-img-2"), color, 'arrow-white.png', 'arrow-purple.png', 'arrow-red.png');
+
+    goButton.onclick = () => {
+        if (getMultipleInputsUseResult(event, inputBoxes)) {
+            onProceed(event.nextEventId);
+        }
+    }
+}
+
 function setupInOutArea(event, eventId, color, onProceed) {
     popAllChildElement(lootContainer);
-    const isOutputType = event == undefined || (event.type != "input" && event.type != "Input");
-    if (isOutputType || branch.m) {
+    if (event && event.type == "fourInputs") {
+        document.getElementById('multiple-inputs').style.display = 'initial';
+        setupMultipleInputs(event, color, onProceed);
+    }
+    else if (event == undefined || (event.type != "input" && event.type != "Input") || branch.m) {
         document.getElementById('outputs').style.display = 'initial';
         setupOutputArea(event, eventId, color, onProceed);
     }
@@ -434,7 +496,7 @@ function deployCalculater() {
     function calculate() {
         var calcRes = parseInt(cal1.value) + parseInt(cal2.value);
         if (!isNaN(calcRes)) {
-            document.querySelector(".button-area #inputs .input-box").value = calcRes;
+            document.getElementById("input-box").value = calcRes;
         }
     }
 
@@ -470,7 +532,7 @@ function getFullDimensionsWithMargin(element) {
 }
 
 function updateCalcWidth() {
-    const inputBox = document.querySelector(".input-box");
+    const inputBox = document.getElementById("input-box");
     const calcContainer = document.querySelector(".calculater-container");
     const input_and_calc = document.querySelector(".input-and-calc-container");
     if (inputBox && calcContainer) {

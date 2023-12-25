@@ -1021,7 +1021,7 @@
 
     "649-input":
     {
-        "type": "fourInput",
+        "type": "fourInputs",
         "color": "scp",
         "img": "648J.PNG",
         "displayID": "649",
@@ -1511,8 +1511,8 @@
         "getCards":["+25"],
         "loseCards":["1469"],
         "buttonPrompt": "问问水的事情",
-        "bulletPoint": "\n ·结识了喜欢帽子的白鲸",
-	    "bulletPointNoJ": "\n ·SCP-CN-925 - 礼帽白鲸",
+        "bulletPoint": "\n · 结识了喜欢帽子的白鲸",
+	    "bulletPointNoJ": "\n · SCP-CN-925 - 礼帽白鲸",
         "nextEvent": "4455" 
     },
 
@@ -1524,8 +1524,8 @@
         "descriptionNoJ": "待填写",
         "getCards":["+1570"],
         "buttonPrompt": "返回陆地",
-        "bulletPoint": "\n ·结识了好学的鲨鱼“大伟”，并帮助海上交通大学招新",
-	    "bulletPointNoJ": "\n ·SCP-CN-985 - 考试鲨",
+        "bulletPoint": "\n · 结识了好学的鲨鱼“大伟”，并帮助海上交通大学招新",
+	    "bulletPointNoJ": "\n · SCP-CN-985 - 考试鲨",
         "nextEvent": "4456" 
     },
 
@@ -1553,8 +1553,8 @@
         "hintText2":"1922+5=1927",
         "loseCards":["+1570"],
         "correctPrompt": "1927",
-        "bulletPoint": "\n ·找回了液体猫猫",
-	    "bulletPointNoJ": "\n ·SCP-CN-1922 - 液体猫咪",
+        "bulletPoint": "\n · 找回了液体猫猫",
+	    "bulletPointNoJ": "\n · SCP-CN-1922 - 液体猫咪",
         "nextEvent": "1927"
     },
 
@@ -1593,8 +1593,8 @@
         "descriptionNoJ": "待填写",
         "getCards":["+460"],
         "buttonPrompt": "返回抽屉",
-        "bulletPoint": "\n ·结识了旭蟹，并让他完成了续写文章的梦想",
-	    "bulletPointNoJ": "\n ·SCP-CN-1211 - 今天起，做一个有梦想的旭蟹",
+        "bulletPoint": "\n · 结识了旭蟹，并让他完成了续写文章的梦想",
+	    "bulletPointNoJ": "\n · SCP-CN-1211 - 今天起，做一个有梦想的旭蟹",
         "nextEvent": "1776"
     },
 
@@ -1622,8 +1622,8 @@
         "hintText2":"812+5=817",
         "loseCards":["+460"],
         "correctPrompt": "817",
-        "bulletPoint": "\n ·找回了薛定谔的黑猫“Milton”",
-	    "bulletPointNoJ": "\n ·SCP-CN-812 - 不死妖喵",
+        "bulletPoint": "\n · 找回了薛定谔的黑猫“Milton”",
+	    "bulletPointNoJ": "\n · SCP-CN-812 - 不死妖喵",
         "buttonPrompt": "问问猫工智能",
         "nextEvent": "817"
     },
@@ -1677,8 +1677,8 @@
         "getCards":["+709Butterfly"],
         "loseCards":["564"],
         "buttonPrompt": "返回抽屉",
-        "bulletPoint": "\n ·结识了火柴人自定义先生，并帮他找回了画板",
-	    "bulletPointNoJ": "\n ·SCP-CN-173 - 自定义先生",
+        "bulletPoint": "\n · 结识了火柴人自定义先生，并帮他找回了画板",
+	    "bulletPointNoJ": "\n · SCP-CN-173 - 自定义先生",
         "nextEvent": "766"
     },
 
@@ -1691,8 +1691,8 @@
         "getCards":["+709Bird"],
         "loseCards":["564"],
         "buttonPrompt": "返回抽屉",
-        "bulletPoint": "\n ·结识了火柴人自定义先生，并帮他找回了画板",
-	    "bulletPointNoJ": "\n ·SCP-CN-173 - 自定义先生",
+        "bulletPoint": "\n · 结识了火柴人自定义先生，并帮他找回了画板",
+	    "bulletPointNoJ": "\n · SCP-CN-173 - 自定义先生",
         "nextEvent": "2298"
     },
 
@@ -1731,8 +1731,8 @@
         "descriptionNoJ": "待填写",
         "loseCards":["+709Bird","+709Butterfly"],
         "buttonPrompt": "但是怎么做？",
-        "bulletPoint": "\n ·找回了星空小猫“Sniff”",
-	    "bulletPointNoJ": "\n ·SCP-CN-1061 - 猫之彩",
+        "bulletPoint": "\n · 找回了星空小猫“Sniff”",
+	    "bulletPointNoJ": "\n · SCP-CN-1061 - 猫之彩",
         "nextEvent": "321"
     },
 
@@ -1787,8 +1787,8 @@
         "hintText": "有小鸟自己想作死，只能成全它了……",
         "hintText2":"1819+383=2202",
         "correctPrompt": "2202",
-        "bulletPoint": "\n ·结识了三只小鸟，并帮他们赶走恶龙",
-	    "bulletPointNoJ": "\n ·SCP-CN-321 - 蹦迪小鸟",
+        "bulletPoint": "\n · 结识了三只小鸟，并帮他们赶走恶龙",
+	    "bulletPointNoJ": "\n · SCP-CN-321 - 蹦迪小鸟",
         "easterEggPrompt" : {
             "1844" : "“哇，谢谢你！这个大小正适合当窝！”黑伯劳一边鸣叫着，一边和另外两只小鸟一起跳进了帽子。三只小鸟在帽子里挤成了一个大团子，发出了舒服的哼唱。这大概是你今天听到的最令人舒适的鸟叫了。"
         },
@@ -1875,8 +1875,8 @@
         "descriptionNoJ": "待填写",
         "loseCards":["+944","352"],
         "buttonPrompt": "查看拓麻歌子",
-        "bulletPoint": "\n ·找回了猫猫枪",
-	    "bulletPointNoJ": "\n ·SCP-CN-1296 - 猫枪",
+        "bulletPoint": "\n · 找回了猫猫枪",
+	    "bulletPointNoJ": "\n · SCP-CN-1296 - 猫枪",
         "nextEvent": "3000-love"
     },
 
@@ -1888,8 +1888,8 @@
         "description": "你失败了吗？你需要的是3000——一个整千数，一个里程碑，一个被人为赋予了意义的符号；然而，兜兜转转，忙前忙后，你所得到的只是丢了一块的纯白地狱拼图、玻璃的裂痕、孤独。（还有无法缓解的疲劳、可想而知的饥饿、悄无声息的死亡。）\n\n在橱柜迷宫的中央，你考虑着有关失败、意义和老宜家生存指南的事情。\n\n“这么安静，我以为你把听筒关了。”\n\n“……莱恩？莱恩艾尔？”\n\n“正确。”\n\n“我以为你也离开了。”\n\n于沉默中，你想象到莱恩艾尔无话可说地耸了耸肩。\n\n你打开手机，却发现个人办公室APP自动启动了，在熟悉的桌面界面上，出现了一个猫咪图标。而后——\n\n整个桌面如同正在渲染一般，从二维的平面变得立体，变得贴近现实，变得仿佛的确存在于世上的某个角落。金色长毛的缅因猫自梦中醒转，伸了个懒腰，从容地站起身，目光直直看向你。你没想到任何一句能够活跃气氛的俏皮话，只是凝视着莱恩艾尔一步一步、跨过桌上杂乱的物品、跨过有形无形的阻碍，朝你走来。\n\n你伸手触摸屏幕，而它庄重地将鼻子碰在你的指尖，像一位古老的骑士一样亲吻你，一阵潮湿的热气蹭过手指，鲜活得不容置疑。你第一次注意到，莱恩艾尔有一双深林似的绿眼睛。\n\n“到了这会儿，我反而拥有触觉了。”它略微退后一步，保持着礼貌的距离，“很好，人类的手仍然和我遥远的记忆中别无二致，又冷，又非常温暖。”\n\n你猛戳了几下手机，期望这个APP能把金属也变成毛绒的手感。\n\n莱恩艾尔不为所动，露出一个非常拟人化的微笑：“别做无谓的尝试了，我的朋友。在它们一开始邀请我加入这个计划时，我以为，这充其量是一场别出心裁、纯属胡闹的加班。但现在，能触碰到你，能感觉到你切实的存在，我想这是一件好事。”\n\n它慢慢低下头，像春季的最后一片新雪一样消融了。\n\n拓麻歌子发出了明亮的光芒，计数终于来到了3000。周围的家具在迅速失去色彩，乃至于失去轮廓，显露出更多你无法形容的事物。你却没有空去观察，逐渐崩溃的迷宫里，你只是咬牙切齿地想着：什么垃圾小玩具给我滚进收容柜里这辈子都别想再被人拿出来。",
         "descriptionNoJ": "待填写",
         "buttonPrompt": "收容该异常",
-        "bulletPoint": "\n ·与赛博猫猫谈天说地",
-	    "bulletPointNoJ": "\n ·SCP-CN-2067 - 你好，我是赛博猫猫。",
+        "bulletPoint": "\n · 与赛博猫猫谈天说地",
+	    "bulletPointNoJ": "\n · SCP-CN-2067 - 你好，我是赛博猫猫。",
         "getCards":["3000-Love"],
         "nextEvent": "2"
     },

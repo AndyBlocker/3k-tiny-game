@@ -5,7 +5,7 @@ const DEV = true;
 */
 
 const IMAGE_PATH = "./img/";
-const JSON_PATH = "./json/"; // https://raw.githubusercontent.com/AndyBlocker/3k-tiny-game/main/json/
+const JSON_PATH = "./json/";
 
 // for local debug
 // const IMAGE_PATH = " https://raw.githubusercontent.com/AndyBlocker/3k-tiny-game/main/img/";
@@ -42,7 +42,7 @@ const attributesCommon = [
 const attributesEvent = [
     "type", "hintText", "getCards", "loseCards", "correctPrompt", "easterEggPrompt", "nextEvent", "choices", "buttonPrompt",
     "specialDescription", "specialNextEvent", "specialOnEnter",
-    "newMoney"
+    "newMoney", "bulletPoint", "bulletPointNoJ"
 ];
 const attributesCard = [
     "name"
@@ -69,7 +69,7 @@ let money = '0';
 let completedEvents = [];
 let specialCardsData = {
     "pet" : {
-        value: 0,
+        value: 250,
         hasExtraDesc: false,
         desc: "",
         descNoJ: "",
