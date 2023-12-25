@@ -317,7 +317,7 @@ function setupInputArea(event, eventId, color, onProceed) {
     const calc = document.querySelector('.calculater');
 
     [inputBox, cal1, cal2, calc].forEach((e,i) => {e.style.borderColor = color;});
-    setTextAndBorderColor(goButton);
+    setTextAndBorderColor(goButton, color);
     document.querySelector(".plus").style.color = color;
     document.querySelector(".equal").style.color = color;
 
