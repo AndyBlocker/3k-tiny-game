@@ -140,6 +140,7 @@ function startEvent(eventId, options) {
         loseCards(event.loseCards);
     }
 
+    prefetchNextImg(event, eventId);
 }
 
 
@@ -322,15 +323,15 @@ const GetSpecialOnEnter = {
 
         // 删除所有非天王卡
         let newDeck = [];
-        deck.forEach( (id) => {
+        for (const id of deck){
             if (allCards[id] && (allCards[id].color == "Boss" || allCards[id].color == "boss")) {
                 newDeck.push(id);
             }
-        } )
+        }
         deck = newDeck;
         refreshCardContainer();
 
         // 弹RAISA
-        displayRAISA(previousEvent, "占位，你刚刚完成了" + previousEvent);
+        displayRAISA(allEvents[previousEvent].raisaTitle, allEvents[previousEvent].raisaDesc);
     }
 }

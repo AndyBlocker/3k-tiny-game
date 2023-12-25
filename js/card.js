@@ -13,9 +13,9 @@ function loadDataAndBoot(dataType, path, attributes, callback) {
     }).then(json => {
         const populatedData = populateInheritedData(dataType, json, attributesCommon.concat(attributes));
         callback(populatedData);
-    }).catch(function () {
+    }).catch(function (e) {
         this.dataError = true;
-        console.log("ERROR: " + path + " not found!");
+        console.log("ERROR: " + e.message + ', when reading' + path);
         window.alert("未能读取" + path + "！如果你看到这个弹窗，请告知");
     });
 }
@@ -31,11 +31,11 @@ function populateInheritedData(type, obj, attributes) {
             }
             else {
                 let newData = element;
-                attributes.forEach( (attr) => {
+                for (const attr of attributes){
                     if (newData[attr] == undefined && parent[attr] != undefined) {
                         newData[attr] = parent[attr];
                     }
-                });
+                }
                obj[key] = newData;
             }
         }
@@ -102,9 +102,9 @@ function addCardToDeck(cardId, options) {
 
 // 从deck中删除card
 function loseCards(cardList) {
-    cardList.forEach(card => {
+    cardList.forEach((card, i) => {
         if (deck.includes(card)) {
-            deck.splice(deck.indexOf(card), 1);
+            deck.splice(i, 1);
             popCardFromContainer(cardContainer, card);
         }
     });
@@ -126,7 +126,7 @@ function replaceCard(oldId, newId) {
 // 清空card
 function refreshCardContainer() {
     popAllChildElement(cardContainer);
-    deck.forEach((v,i) => addCardToContainer(v));
+    for (const v of deck) {addCardToContainer(v);}
     currentStartIndex = Math.max(0, deck.length - maxCardsToShow);
     updateCardVisibility();
 }

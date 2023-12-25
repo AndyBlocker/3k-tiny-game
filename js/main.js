@@ -5,7 +5,7 @@
 var allCards;
 loadDataAndBoot(DATA_TYPES.Card, 'cards.json', attributesCard, (populatedData) => {
   allCards = populatedData;
-  deck.forEach((v,i) => addCardToContainer(v));
+  for (const v of deck) {addCardToContainer(v);}
   updateCardVisibility();
 });
 

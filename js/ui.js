@@ -43,6 +43,26 @@ function getColor(data, dataType) {
     }
 }
 
+function prefetchNextImg(event, eventId) {
+    if (event == undefined){
+        return;
+    }
+    const nextEvent = getNextEvent("", event, eventId);
+    if (nextEvent && allEvents[nextEvent] && allEvents[nextEvent].img) {
+        let img = new Image();
+        img.src = IMAGE_PATH + allEvents[nextEvent].img;
+    }
+    if (event.getCards){
+        const newCards = checkDeck(event.getCards);
+        for (const id of newCards){
+            if (allCards[id] && allCards[id].img) {
+                let img = new Image();
+                img.src = IMAGE_PATH + allCards[id].img;
+            }
+        }
+    }
+}
+
 function popAllChildElement(parent) {
     let childs = parent.childNodes;
     for (var i = childs.length - 1; i >= 0; i--) {
@@ -316,7 +336,7 @@ function setupInputArea(event, eventId, color, onProceed) {
     const cal2 = document.querySelector(".cal-2");
     const calc = document.querySelector('.calculater');
 
-    [inputBox, cal1, cal2, calc].forEach((e,i) => {e.style.borderColor = color;});
+    for (const e of [inputBox, cal1, cal2, calc]) { e.style.borderColor = color; };
     setTextAndBorderColor(goButton, color);
     document.querySelector(".plus").style.color = color;
     document.querySelector(".equal").style.color = color;
