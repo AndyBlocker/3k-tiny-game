@@ -37,7 +37,7 @@ let purseTitle = undefined;
 var maxCardsToShow = 4;
 
 const attributesCommon = [
-    "displayID", "description", "descriptionNoJ", "descriptionNoL", "descriptionNoJL"
+    "displayID", "description", "descriptionNoJ", "descriptionNoL", "descriptionNoJL", "color", "img"
 ];
 const attributesEvent = [
     "type", "hintText", "getCards", "loseCards", "correctPrompt", "easterEggPrompt", "nextEvent", "choices", "buttonPrompt",
@@ -45,7 +45,7 @@ const attributesEvent = [
     "newMoney"
 ];
 const attributesCard = [
-    "name", "color", "img"
+    "name"
 ];
 const DATA_TYPES = {
     Card: 0,
