@@ -248,7 +248,7 @@ button:focus {
   width: calc(80% - 3em);
 }
 
-.calculater-container{
+.calculater-container {
   /* width: calc(80% - 3em); */
   margin-left: calc(2em + 25px);
   /* overflow: hidden; */
@@ -313,7 +313,8 @@ button:focus {
 
 .button-area .calculater:hover {
   cursor: pointer;
-  background-color: ghostwhite;
+  border-width: 4px;
+  padding: 0.55em;
 }
 
 .button-area .calculater-container.display {
