@@ -32,7 +32,6 @@ const cardContainer = document.querySelector('.card-container');
 const lootContainer = document.getElementById('loots');
 const hintText1 = document.getElementById('hintText1');
 const hintText2 = document.getElementById('hintText2');
-let purseTitle = undefined;
 
 var maxCardsToShow = 4;
 
@@ -92,5 +91,7 @@ let specialCardsData = {
         value : 0
     }
 }
+let luckyDrawRemaining = 5;
+let luckyDrawPool = ["2289", "970", "937", "600", "2426"];
 
 let _lootToPick = 0;

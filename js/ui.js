@@ -407,6 +407,7 @@ function getMultipleInputsUseResult(event, inputBoxes){
         const value = element.value;
         if (easterEggPrompt && easterEggPrompt[value]) {
             tryAddEasterEggDescription(value, easterEggPrompt[value]);
+            result = false;
             element.value = "";
         }
         else if (correctPrompt && !correctPrompt.includes(value)){
@@ -431,7 +432,7 @@ function setupMultipleInputs(event, color, onProceed) {
 
     goButton.onclick = () => {
         if (getMultipleInputsUseResult(event, inputBoxes)) {
-            onProceed(event.nextEventId);
+            onProceed(event.nextEvent);
         }
     }
 }

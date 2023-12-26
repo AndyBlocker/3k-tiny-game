@@ -55,7 +55,7 @@ function tryAddEasterEggDescription(easterEggID, text) {
 }
 
 function getNextEvent(input, event, id) {
-    const specialNext = tryEventSpecialFunc(id, GetSpecialNextEvent, { input: input }, event.parent);
+    const specialNext = tryEventSpecialFunc(id, "specialNextEvent", GetSpecialNextEvent, { input: input });
     if (specialNext) {
         return specialNext;
     }
@@ -98,13 +98,13 @@ function startEvent(eventId, options) {
     currentEventId = eventId;
     
     if (event){
-        tryEventSpecialFunc(eventId, GetSpecialOnEnter, { previousEvent: previousEventId }, event.parent);
+        tryEventSpecialFunc(eventId, "specialOnEnter", GetSpecialOnEnter, { previousEvent: previousEventId });
     }
     updateSpecialCards(eventId, event);
 
     if (getEventType(event) == EVENT_TYPES.Jump) {
         options.previousEvent = previousEventId;
-        const specialNext = tryEventSpecialFunc(eventId, GetSpecialNextEvent, options, event.parent);
+        const specialNext = tryEventSpecialFunc(eventId, "specialNextEvent", GetSpecialNextEvent, options);
         if (specialNext){
             startEvent(specialNext, options);
             return;
@@ -177,11 +177,19 @@ function startEvent(eventId, options) {
     ===== 特殊事件相关 =====
 */
 
-function tryEventSpecialFunc(id, FuncArray, args, parent){
-    if (FuncArray[id] != undefined && FuncArray[id](args) != undefined){
-        return FuncArray[id](args);
+function tryEventSpecialFunc(id, attr, FuncArray, args){
+    const event = allEvents[id];
+    if (!event || !event[attr]){
+        return undefined;
     }
-    else if (parent && FuncArray[parent] != undefined && FuncArray[parent](args) != undefined){
+    if (FuncArray[id] != undefined){
+        const result = FuncArray[id](args);
+        if (result){
+            return result;
+        }
+    }
+    const parent = event.parent;
+    if (parent && FuncArray[parent] != undefined){
         return FuncArray[parent](args);
     }
     return undefined;
@@ -309,12 +317,6 @@ const GetSpecialNextEvent = {
         }
         return "wrong";
     },
-    "2426": (args) => {
-        if (branch.d && !branch.m) {
-            return "649-input-noD";
-        }
-        return "649";
-    },
     "649": (args) => {
         if (branch.m) {
             return "649-1";
@@ -328,25 +330,40 @@ const GetSpecialNextEvent = {
         else {
             return "2";
         }
+    },
+    "lucky-draw": (args) => {
+        if (luckyDrawRemaining <= 0) {
+            // 没有扭蛋次数了，去649或变种
+            if (branch.d && !branch.m) {
+                return "649-input-noD";
+            }
+            return "649";
+        }
+        else {
+            const index = Math.floor(Math.random() * luckyDrawPool.length);
+            const nextEvent = luckyDrawPool[index];
+            luckyDrawPool.splice(index,1);
+            luckyDrawRemaining --;
+            return nextEvent;
+        }
     }
 }
 
 const GetSpecialOnEnter = {
     "2": (args) => {
         const previousEvent = args.previousEvent;
-
-        if (previousEvent == "3000-Dream"){
-            switchToNoDream();
+        const event = allEvents[previousEvent];
+        if (event && event.raisaTitle) {
+            // 弹RAISA
+            displayRAISA(event.raisaTitle, event.raisaDesc);
         }
-
-        // 弹RAISA
-        displayRAISA(allEvents[previousEvent].raisaTitle, allEvents[previousEvent].raisaDesc);
     },
     "branch-end-jump": (args) => {
         const previousEvent = args.previousEvent;
         
         switch (previousEvent) {
             case "3000-Dream":
+                switchToNoDream();
                 branch.d = true;
                 break;
             case "3000-J":

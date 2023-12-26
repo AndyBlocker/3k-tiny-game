@@ -54,7 +54,7 @@ function getDescription(id, type) {
     let extraDesc = '';
     if (data.specialDescription && type == DATA_TYPES.Event){
         // 特殊事件描述
-        const specialDesc = tryEventSpecialFunc(id, GetSpecialEventDesc, {}, data.parent);
+        const specialDesc = tryEventSpecialFunc(id, "specialDescription", GetSpecialEventDesc, {});
         if (specialDesc){
             return specialDesc;
         }
