@@ -394,7 +394,7 @@
             "3000-Dream"
         ],
         "buttonPrompt": "收容该异常",
-        "nextEvent": "2",
+        "nextEvent": "branch-end-jump",
         "raisaTitle": "占位，RAISA标题",
         "raisaDesc": "占位，3000-Dream RAISA描述"
     },
@@ -1051,7 +1051,7 @@
         "description": "“好吧，你确实拿到3000了。那愿赌服输，故事也就在这里结束了。”\n\n你刚刚抽到的那个马桶的蓄水池盖板突然打开，从里面飞出了一个洁白的，散发着柔光的，缓慢旋转的……屎。对此你感到毫不意外。\n\n“但其实你也意识到了，我并不是SCP-CN-3000。我只是这个游戏的其中一个制作者罢了，和其他几个家伙一样。”洁白的屎平静地诉说着，你觉得它在现出真身之后说话也变得客气了许多。\n\n“哦，你还没遇到他们来着，那没事了，反正你马上会遇到的。”好吧，觉得它变客气了是你的错觉。\n\n“怎么样，虽然是充满了厕所笑话和无意义吐槽的故事，但这段旅途有让你感到开心吗？”洁白的屎这么说道，你居然从它的声音里听出了一些寂寞。“我毕竟是游戏的文案……别说我自夸，你收容了我之后，接下来的旅途可能就没这么有趣了。但，这就是SCP基金会吧。”\n\n你已经将异常物品用标准收容箱拿在手上了。\n\n“最后告诉你一个秘密……其实我不是马桶蓄水池之神！马桶蓄水池没有神，也不需要神，它的精神存在于我们一分一秒的日常中！有缘再会！”\n\n说完这句话后，它就仿佛被马桶冲水一般吸进了收容箱，不再说话了。",
         "specialDescription": true,
         "buttonPrompt": "收容该异常",
-        "nextEvent": "2",
+        "nextEvent": "branch-end-jump",
         "raisaTitle": "占位，RAISA标题",
         "raisaDesc": "占位，3000-J RAISA描述"
     },
@@ -1394,7 +1394,7 @@
         "description": "变种的基类，用来登记各个3000-money事件的相同点。该事件本身不应出现在游戏中",
         "buttonPrompt": "收容该异常",
         "getCards":["3000-Money"],
-        "nextEvent": "2",
+        "nextEvent": "branch-end-jump",
         "raisaTitle": "占位，RAISA标题",
         "raisaDesc": "占位，3000-money RAISA描述"
     },
@@ -1897,9 +1897,16 @@
         "bulletPoint": "\n · 与赛博猫猫谈天说地",
 	    "bulletPointNoJ": "\n · SCP-CN-2067 - 你好，我是赛博猫猫。",
         "getCards":["3000-Love"],
-        "nextEvent": "2",
+        "nextEvent": "branch-end-jump",
         "raisaTitle": "占位，RAISA标题",
         "raisaDesc": "占位，3000-love RAISA描述"
+    },
+
+    "branch-end-jump":{
+        "type": "jump",
+        "specialNextEvent": true,
+        "specialOnEnter": true,
+        "#comment": "功能性事件，设置branch，若全部分支完成则跳转end-1，否则跳转2"
     },
 
 	"end-1":

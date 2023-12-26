@@ -2,6 +2,25 @@
     ===== 有关事件&提示的接口 =====
 */
 
+function getEventType(event) {
+    if (event == undefined || !event.type){
+        return EVENT_TYPES.Output;
+    }
+
+    switch (event.type.toLowerCase()){
+        case "ouptput":
+            return EVENT_TYPES.Output;
+        case "input":
+            return EVENT_TYPES.Input;
+        case "fourinputs":
+            return EVENT_TYPES.MultiInput;
+        case "jump":
+            return EVENT_TYPES.Jump;
+        default:
+            return EVENT_TYPES.Output;
+    }
+}
+
 function setupHint(event) {
     const hintPrompt1 = document.getElementById('hintPrompt1');
     const hintPrompt2 = document.getElementById('hintPrompt2');
@@ -70,17 +89,27 @@ function getUseResult(input, event, id, onProceed) {
 }
 
 function startEvent(eventId, options) {
-    const previousEventId = currentEventId;
-    completedEvents.push(previousEventId);
-
-    currentEventId = eventId;
     options = options ? options : {};
-
+    const previousEventId = options.previousEvent ? options.previousEvent : currentEventId;
     const event = allEvents[eventId];
+
+    // Start Event
+    completedEvents.push(previousEventId);
+    currentEventId = eventId;
+    
     if (event){
         tryEventSpecialFunc(eventId, GetSpecialOnEnter, { previousEvent: previousEventId }, event.parent);
     }
     updateSpecialCards(eventId, event);
+
+    if (getEventType(event) == EVENT_TYPES.Jump) {
+        options.previousEvent = previousEventId;
+        const specialNext = tryEventSpecialFunc(eventId, GetSpecialNextEvent, options, event.parent);
+        if (specialNext){
+            startEvent(specialNext, options);
+            return;
+        }
+    }
 
     const color = getColor(event, DATA_TYPES.Event);
     if (event && event.displayID)
@@ -292,15 +321,32 @@ const GetSpecialNextEvent = {
         }
         return "649-input";
     },
+    "branch-end-jump": (args) => {
+        if (branch.j && branch.d && branch.m && branch.l){
+            return "end-1";
+        }
+        else {
+            return "2";
+        }
+    }
 }
 
 const GetSpecialOnEnter = {
     "2": (args) => {
         const previousEvent = args.previousEvent;
 
+        if (previousEvent == "3000-Dream"){
+            switchToNoDream();
+        }
+
+        // 弹RAISA
+        displayRAISA(allEvents[previousEvent].raisaTitle, allEvents[previousEvent].raisaDesc);
+    },
+    "branch-end-jump": (args) => {
+        const previousEvent = args.previousEvent;
+        
         switch (previousEvent) {
             case "3000-Dream":
-                swithToNoDream();
                 branch.d = true;
                 break;
             case "3000-J":
@@ -312,10 +358,10 @@ const GetSpecialOnEnter = {
                 branch.m = true;
                 break;
             case "3000-love":
-                branch.l;
+                branch.l = true;
                 break;
             default:
-                return;
+                break;
         }
 
         // 重置部分游戏状态
@@ -330,8 +376,5 @@ const GetSpecialOnEnter = {
         }
         deck = newDeck;
         refreshCardContainer();
-
-        // 弹RAISA
-        displayRAISA(allEvents[previousEvent].raisaTitle, allEvents[previousEvent].raisaDesc);
     }
 }

@@ -2,7 +2,7 @@
     ===== 有关UI变化的接口 =====
 */
 
-function swithToNoDream() {
+function switchToNoDream() {
     document.querySelector('.content').classList.add("no-dream");
     document.querySelector('.modal').classList.add("no-dream");
 }
@@ -438,11 +438,12 @@ function setupMultipleInputs(event, color, onProceed) {
 
 function setupInOutArea(event, eventId, color, onProceed) {
     popAllChildElement(lootContainer);
-    if (event && event.type == "fourInputs") {
+    const eventType = getEventType(event);
+    if (eventType == EVENT_TYPES.MultiInput) {
         document.getElementById('multiple-inputs').style.display = 'initial';
         setupMultipleInputs(event, color, onProceed);
     }
-    else if (event == undefined || (event.type != "input" && event.type != "Input") || branch.m) {
+    else if (eventType == EVENT_TYPES.Output || branch.m) {
         document.getElementById('outputs').style.display = 'initial';
         setupOutputArea(event, eventId, color, onProceed);
     }

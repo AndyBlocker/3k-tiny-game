@@ -52,6 +52,13 @@ const DATA_TYPES = {
     Event: 1,
     __Count: 2,
 };
+const EVENT_TYPES = {
+    Output: 0,
+    Input: 1,
+    MultiInput: 2,
+    Jump : 3,
+    __Count: 4,
+}
 
 /* 
     ===== GAME STATUS =====

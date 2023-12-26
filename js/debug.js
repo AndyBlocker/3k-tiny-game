@@ -40,7 +40,7 @@ if (DEV) {
         branch.m = checkboxes[3].checked;
 
         if (branch.d) {
-            swithToNoDream()
+            switchToNoDream();
         }
         else {
             document.querySelector('.content').classList.remove("no-dream");
