@@ -332,24 +332,38 @@ const GetSpecialNextEvent = {
         }
     },
     "lucky-draw": (args) => {
-        if (luckyDrawRemaining <= 0) {
-            // 没有扭蛋次数了，去649或变种
+        if (_luckyDrawRemaining < 0 || luckyDrawPool.length == _prizeObtained.length) {
+            // 没有扭蛋次数/奖池已空，去649或变种
             if (branch.d && !branch.m) {
                 return "649-input-noD";
             }
             return "649";
         }
+        else if ( !_prizeObtained.includes(luckyDrawGuaranteeEvent) && (_luckyDrawRemaining == _luckyDrawGuaranteeOccurance || _luckyDrawRemaining <= 0 )) {
+            return luckyDrawGuaranteeEvent;
+        }
         else {
-            const index = Math.floor(Math.random() * luckyDrawPool.length);
-            const nextEvent = luckyDrawPool[index];
-            luckyDrawPool.splice(index,1);
-            luckyDrawRemaining --;
+            let nextEvent = "0";
+            do {
+                nextEvent = luckyDrawPool[getRandNumber(luckyDrawPool.length)];
+            } while (_prizeObtained.includes(nextEvent))
             return nextEvent;
         }
     }
 }
 
 const GetSpecialOnEnter = {
+    "648J": (args) => {
+        // Init lucky draw
+        _luckyDrawRemaining = LUCKY_DRAW_MAX_ATTEMPTS;
+        _luckyDrawGuaranteeOccurance = getRandNumber(_luckyDrawRemaining);
+        _prizeObtained = [];
+        console.log("扭蛋初始化完成，在第" + (5 - _luckyDrawGuaranteeOccurance) + "抽必出保底");
+    },
+    "lucky-draw": (args) => {
+        _luckyDrawRemaining --;
+        _prizeObtained.push(args.previousEvent);
+    },
     "2": (args) => {
         const previousEvent = args.previousEvent;
         const event = allEvents[previousEvent];

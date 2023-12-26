@@ -24,6 +24,10 @@ const DEFAULT_CONTINUE_TEXT = "前往下一事件";
 const PURSE_CARD_ID = "purse";
 const PET_CARD_ID = "pet";
 
+const LUCKY_DRAW_MAX_ATTEMPTS = 5;
+const luckyDrawGuaranteeEvent = "970";
+const luckyDrawPool = ["2289", "970", "937", "600", "2426"];
+
 /* 
     ===== VARIABLES =====
 */
@@ -91,7 +95,6 @@ let specialCardsData = {
         value : 0
     }
 }
-let luckyDrawRemaining = 5;
-let luckyDrawPool = ["2289", "970", "937", "600", "2426"];
 
 let _lootToPick = 0;
+var _luckyDrawRemaining, _luckyDrawGuaranteeOccurance, _prizeObtained;

@@ -922,11 +922,13 @@
         "description": "“你真要玩这个？我估计你也不想看到用十种不同方式描写的马桶，那就给你开个新手池吧！我作为马桶蓄水池之神，开个马桶新手蓄水奖池还是没什么问题的。但是十连有点多了，你又没有给我送钱，还炸了我两个马桶，所以我要克扣你一半的新手福利。就五连抽吧！点击下方抽奖按钮，进入紧张刺激的抽卡环节！”",
         "buttonPrompt":"扭蛋一次",
         "loseCards":["006J"],
+        "specialOnEnter": true,
         "nextEvent": "lucky-draw"
     },
 
     "lucky-draw": {
         "type": "jump",
+        "specialOnEnter": true,
         "specialNextEvent": true
     },
 

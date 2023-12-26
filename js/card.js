@@ -88,6 +88,11 @@ function getDescription(id, type) {
     return desc + extraDesc;
 }
 
+// Get a random int between 0 ~ n-1
+function getRandNumber(n){
+    return Math.floor(Math.random() * n);
+} 
+
 /*
     ===== 有关card对象CRUD等操作的接口 =====
 */
