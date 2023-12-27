@@ -183,14 +183,14 @@ function tryEventSpecialFunc(id, attr, FuncArray, args){
         return undefined;
     }
     if (FuncArray[id] != undefined){
-        const result = FuncArray[id](args);
+        const result = FuncArray[id](args, id);
         if (result){
             return result;
         }
     }
     const parent = event.parent;
     if (parent && FuncArray[parent] != undefined){
-        return FuncArray[parent](args);
+        return FuncArray[parent](args, id);
     }
     return undefined;
 }
@@ -250,15 +250,15 @@ const GetSpecialEventDesc = {
         }
         return undefined;
     },
-    "1302": (args) => {
+    "1302-2": (args) => {
         if (branch.m){
-            return "机械爪以一种你不太能理解的方式“夹”住了正在循环播放的爆炸动画。循环播放停止了，炸弹在发出闪光的那一刻化作一颗小型陨石，飞进了你的手机。你发现了一个有着像素炸弹图标的app。app提示你还有大概三百多个炸弹的库存，你也不知道它是怎么换算的。这个app似乎还支持充钱买更多的炸弹，可惜你已经把自己的钱包收容了，买不了。但三百多个炸弹怎么也够用了吧！\n\n你还有一个物品没有尝试转换。";
+            return "机械爪以一种你不太能理解的方式“夹”住了正在循环播放的爆炸动画。循环播放停止了，炸弹在发出闪光的那一刻化作一颗小型陨石，飞进了你的手机。你发现了一个有着像素炸弹图标的app。app提示你还有大概三百多个炸弹的库存，你也不知道它是怎么换算的。这个app似乎还支持充钱买更多的炸弹，可惜你已经把自己的钱包收容了，买不了。但三百多个炸弹怎么也够用了吧！";
         }
         return undefined;
     },
-    "1302-2": (args) => {
+    "1302": (args) => {
         if (branch.m){
-            return GetSpecialEventDesc["1302"] + "\n\n你还有一个物品没有尝试转换。";
+            return GetSpecialEventDesc["1302-2"]() + "\n\n你还有一个物品没有尝试转换。";
         }
         return undefined;
     },
@@ -296,8 +296,9 @@ const GetSpecialEventDesc = {
                     text += "”它看了一眼你的收容箱，仿佛在回忆逝去的伙伴们。";
                 }
             }
-            text += "\n\n“那么，虽然是充满了厕所笑话和无意义吐槽的故事和已经不能称之为游戏的游戏，但这段旅途有让你感到开心吗？”洁白的屎这么说道，你居然从它的声音里听出了一些寂寞。“我毕竟是游戏的文案……别说我自夸，你收容了我之后，接下来的旅途可能就没这么有趣了。但，这就是SCP基金会吧。”\n\n你已经将异常物品用标准收容箱拿在手上了。\n\n“最后告诉你一个秘密……其实我不是马桶蓄水池之神！马桶蓄水池没有神，也不需要神，它的精神存在于我们一分一秒的日常中！有缘再会！”\n\n说完这句话后，它就仿佛被马桶冲水一般吸进了收容箱，不再说话了。";
+            text += "\n\n“那么，虽然是充满了厕所笑话和无意义吐槽的故事和已经不能称之为游戏的游戏，但这段旅途有让你感到开心吗？”洁白的屎这么说道，你居然从它的声音里听出了一些寂寞。“我毕竟是游戏的文案……别说我自夸，你收容了我之后，接下来的旅途可能就没这么有趣了。但，这就是SCP基金会吧。”";
         }
+        text += "\n\n你已经将异常物品用标准收容箱拿在手上了。\n\n“最后告诉你一个秘密……其实我不是马桶蓄水池之神！马桶蓄水池没有神，也不需要神，它的精神存在于我们一分一秒的日常中！有缘再会！”\n\n说完这句话后，它就仿佛被马桶冲水一般吸进了收容箱，不再说话了。";
         return text;
     }
 }
@@ -367,6 +368,13 @@ const GetSpecialOnEnter = {
     "2": (args) => {
         const previousEvent = args.previousEvent;
         const event = allEvents[previousEvent];
+        if (event && event.raisaTitle) {
+            // 弹RAISA
+            displayRAISA(event.raisaTitle, event.raisaDesc);
+        }
+    },
+    "resonance-1": (args, id) => {
+        const event = allEvents[id];
         if (event && event.raisaTitle) {
             // 弹RAISA
             displayRAISA(event.raisaTitle, event.raisaDesc);
