@@ -350,8 +350,8 @@
         "name": "你好，我是赛博猫猫。",
         "color": "SCP",
         "img": "2067.png",
-        "description": "被基金会编号为SCP-CN-2067的神奇生物。\n\n进入基金会内网的赛博猫猫，其智慧程度已经完全看不出是猫了。你的好帮手！在任何时候将当前事件+5，即可获得赛博猫猫的提示。",
-        "descriptionNoJ": "SCP-CN-2067该异常是一个电子智能生命体，曾为植入物初期动物实验的对象。在本游戏中，拥有此卡时，在输入框中输入当前事件编号+5即可与其对话。"
+        "description": "被基金会编号为SCP-CN-2067的神奇生物。\n\n进入基金会内网的赛博猫猫，其智慧程度已经完全看不出是猫了。你的好帮手！在一些时候将当前事件+5，即可获得赛博猫猫的提示。",
+        "descriptionNoJ": "SCP-CN-2067该异常是一个电子智能生命体，曾为植入物初期动物实验的对象。在本游戏中，拥有此卡时，在特定事件的输入框中输入当前事件编号+5，即可与其对话。"
     },
     "1469": {
         "name": "鱼伞",
@@ -433,40 +433,40 @@
         "displayID": "01673",
         "color": "boss",
         "img": "dream.gif",
-        "description": "",
-        "descriptionNoJ": false,
-        "descriptionNoL": false,
-        "descriptionNoJL": false
+        "description": "本游戏的美术负责，是个摸鱼怪（字面意义）。",
+        "descriptionNoJ": "该异常物品为一个长60cm的鲨鱼形玩偶，负责当前游戏的美术。",
+        "descriptionNoL": "本游戏的美术。",
+        "descriptionNoJL": "一个异常物品。"
     },
     "3000-Joke": {
         "name": "马桶蓄水池之神（自称）",
         "displayID": "01520",
         "color": "boss",
         "img": "J.gif",
-        "description": "",
-        "descriptionNoJ": false,
-        "descriptionNoL": false,
-        "descriptionNoJL": false
+        "description": "就是我！马桶蓄水池之神！是游戏的文案负责！你能看到这段话，说明你有拿到卡片就点开看一下的好习惯。",
+        "descriptionNoJ": "该异常物品为一团形似人类排泄物的生物，负责当前游戏的文案。",
+        "descriptionNoL": "本游戏的文案。",
+        "descriptionNoJL": "一个异常物品。"
     },
     "3000-Love": {
         "name": "可视化宠爱（自称）",
         "displayID": "01721",
         "color": "boss",
         "img": "love.gif",
-        "description": "",
-        "descriptionNoJ": false,
-        "descriptionNoL": false,
-        "descriptionNoJL": false
+        "description": "本游戏的外部联络担当，是个会给人发任务的拓麻歌子。",
+        "descriptionNoJ": "该异常物品为一个“拓麻歌子”型电子宠物游戏机，负责当前游戏的异常信息获取与外部联络。",
+        "descriptionNoL": "本游戏的外部联络。",
+        "descriptionNoJL": "一个异常物品。"
     },
     "3000-Money": {
         "name": "绝对泛用钱包（自称）",
         "displayID": "01582",
         "color": "boss",
         "img": "money.gif",
-        "description": "",
-        "descriptionNoJ": false,
-        "descriptionNoL": false,
-        "descriptionNoJL": false
+        "description": "本游戏的玩法实现，一个不能装钱的钱包，会让人对东西的价格产生很大的误解。",
+        "descriptionNoJ": "该异常物品为一个不能存放现实货币的钱包，负责当前游戏的玩法实现。",
+        "descriptionNoL": "本游戏的玩法实现。",
+        "descriptionNoJL": "一个异常物品。"
     },
     "purse": {
         "name": "钱包",
