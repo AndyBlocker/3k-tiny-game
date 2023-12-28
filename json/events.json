@@ -2086,7 +2086,7 @@
     "resonance-7": {
         "type": "output",
         "displayID": "3000",
-        "description": "你让它们接触了。不，它们都在原位……那我换个表达，你让它们的异常效应直接互相影响了。如果配合项目列表触发Money的效应，就可以使任何SCP被Love读取情报，并在Dream中用这些情报模拟它们的行动，完成Joke编写的故事。是这样吗？\n\nSCP-CN-2676 - 自成逻辑\nSCP-CN-1726 - 秘法配方\nSCP-CN-984 - 87%",
+        "description": "你让它们接触了。不，它们都在原位……你让它们的异常效应直接互相影响了。如果配合项目列表触发“钱包”的效应，就可以使任何SCP被“拓麻歌子”读取情报，并在“画板鲨鱼”中用这些情报模拟它们的行动，完成“马桶蓄水池之神”编写的故事。是这样吗？\n\nSCP-CN-2676 - 自成逻辑\nSCP-CN-1726 - 秘法配方\nSCP-CN-984 - 87%",
         "buttonPrompt": "继续提问",
         "nextEvent": "resonance-8",
         "resonance": true
