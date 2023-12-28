@@ -220,24 +220,6 @@ function updateCardVisibility() {
     }
 }
 
-function addButtonToLootContainer(buttonPrompt, buttonClass, buttonFunction) {
-    const button = document.createElement('button');
-    button.classList.add(buttonClass);
-    button.innerText = buttonPrompt;
-    setTimeout(() => {
-        button.onclick = () => {
-            buttonFunction;
-            button.classList.add('hidden-element');
-            button.onclick = () => { };
-            _lootToPick--;
-            if (_lootToPick == 0) {
-                setupInOutArea(event);
-            }
-        }
-    }, 100);
-    lootContainer.appendChild(button);
-}
-
 function addCardToLootContainer(cardId, divClass, callback) {
     const card = allCards[cardId];
 
