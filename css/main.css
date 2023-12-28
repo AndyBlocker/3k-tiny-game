@@ -485,7 +485,7 @@ button:focus {
 
 @media screen and (max-width: 768px) {
   .card-wrapper {
-    height: 25vh;
+    height: 15vh;
   }
 
   .card {
