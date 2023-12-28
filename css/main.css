@@ -433,7 +433,7 @@ button:focus {
 .card-container {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
+  align-items: center;
   flex-grow: 1;
   /* padding: 10px; */
   height: 100%;
@@ -454,7 +454,6 @@ button:focus {
   border-radius: 10px;
   text-align: center;
   /* margin: auto; */
-  margin-top: 20px;
   position: relative;
   flex-direction: column;
   max-width: 6em;
@@ -490,10 +489,15 @@ button:focus {
 
   .card {
     border: 1px solid #ff9d95;
+    margin-top: 1em;
   }
 
   .card-title {
     display: none;
+  }
+
+  .card-container {
+    align-items: normal;
   }
 }
 
