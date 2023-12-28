@@ -1,24 +1,45 @@
-.text-container,
-.image-container {
-    width: 50%;
-    height: 100vh;
-    overflow: hidden;
+body {
+    background-color: #161616;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+#section-1 {
+    width: 80%;
+    margin: auto;
+    background-color: #222222;
+    border: 1px solid #222222;
+    border-radius: 10px;
+    padding: 10px;
+    height: 80vh;
+    display: flex;
+
 }
 
 .text-container {
-    /* 文字容器样式 */
+    width: 50%;
+    height: 100%;
+    color: white;
+    overflow: scroll;
+    /* white-space: pre-line; */
+}
+
+.img-container {
+    width: 30%;
+    height: auto;
+    /* height: auto; */
+    overflow: hidden;
+    margin: auto;
+    object-fit: contain;
 }
 
 .image-container {
-    /* 图片容器样式 */
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
 }
 
-/* 响应式布局 */
-@media screen and (max-width: 768px) {
-
-    .text-container,
-    .image-container {
-        width: 100%;
-        height: 50vh;
-    }
+.image-visible {
+    opacity: 1;
 }
