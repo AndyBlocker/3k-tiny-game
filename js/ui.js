@@ -591,7 +591,8 @@ function fadeOutAndRemove(element) {
 }
 
 function typingAnimation(element, text, speed) {
-    element.innerText = "";
+    // console.log(123);
+    element.innerText = "\n";
     let i = 0;
     let timer = setInterval(() => {
         if (i < text.length) {
@@ -602,4 +603,5 @@ function typingAnimation(element, text, speed) {
             clearInterval(timer);
         }
     }, speed);
+    
 }

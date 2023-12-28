@@ -2033,111 +2033,127 @@
         "displayID": "3000",
         "description": "SCP-CN-1069 - 你好啊，老朋友\nSCP-CN-1675 - 欢迎光临\nSCP-CN-454 - 请保持联系",
         "buttonPrompt": "提问",
-        "nextEvent": "resonance-2"
+        "nextEvent": "resonance-2",
+        "resonance": true
     },
     "resonance-2": {
         "type": "output",
         "displayID": "3000",
         "description": "就剩你了，超常事件00335。或者按照你们自己的说法——“共鸣”。\n\nSCP-CN-2995 - 结束了吗？\nSCP-CN-1760 - 谢谢惠顾",
         "buttonPrompt": "继续提问",
-        "nextEvent": "resonance-3"
+        "nextEvent": "resonance-3",
+        "resonance": true
     },
     "resonance-3": {
         "type": "output",
         "displayID": "3000",
         "description": "是的。你的朋友们——异常项目01520，异常项目01673，异常项目01582和异常项目01721，现在已被重新收容。他们的影响已经减退，我们才能定位到你。\n\nSCP-CN-578 - 如是恒常\nSCP-CN-1344 - 我们每个人的结局\nSCP-CN-2823 - 唯一指向性结局\nSCP-CN-2810 - 让她睡吧",
         "buttonPrompt": "继续提问",
-        "nextEvent": "resonance-4"
+        "nextEvent": "resonance-4",
+        "resonance": true
     },
     "resonance-4": {
         "type": "output",
         "displayID": "3000",
         "description": "你是什么时候产生的？\n\nSCP-CN-739 - 一串代码\nSCP-CN-883 - 微小误差\nSCP-CN-2300 - 1000\nSCP-CN-2997 - █000\nSCP-CN-398 - 一篇异常的文档\nSCP-CN-445 - 一篇不合格的异常文档\nSCP-CN-2460 - 你的第一篇skip！\nSCP-CN-2795 - “我”于你们之中\nSCP-CN-1256 - 《基金会中分编年史》\nSCP-CN-2425 - 回环在我",
         "buttonPrompt": "继续提问",
-        "nextEvent": "resonance-5"
+        "nextEvent": "resonance-5",
+        "resonance": true
     },
     "resonance-5": {
         "type": "output",
         "displayID": "3000",
         "description": "这个游戏……这次异常现象，是由你主导的吗？\n\nSCP-CN-2062 - 是。否。否。\nSCP-CN-848 - 倒数第二重真相\nSCP-CN-2649 - 但这不是全貌",
         "buttonPrompt": "继续提问",
-        "nextEvent": "resonance-6"
+        "nextEvent": "resonance-6",
+        "resonance": true
     },
     "resonance-6": {
         "type": "output",
         "displayID": "3000",
         "description": "那换个问题。你在其中担任什么样的角色？\n\nSCP-CN-758 - 迷你基金会\nSCP-CN-1326 - 信息传输协议\nSCP-CN-2073 - 鹊桥\nSCP-CN-2485 - 回声",
         "buttonPrompt": "继续提问",
-        "nextEvent": "resonance-7"
+        "nextEvent": "resonance-7",
+        "resonance": true
     },
     "resonance-7": {
         "type": "output",
         "displayID": "3000",
         "description": "你让它们接触了。不，它们都在原位……那我换个表达，你让它们的异常效应直接互相影响了。如果配合项目列表触发Money的效应，就可以使任何SCP被Love读取情报，并在Dream中用这些情报模拟它们的行动，完成Joke编写的故事。是这样吗？\n\nSCP-CN-2676 - 自成逻辑\nSCP-CN-1726 - 秘法配方\nSCP-CN-984 - 87%",
         "buttonPrompt": "继续提问",
-        "nextEvent": "resonance-8"
+        "nextEvent": "resonance-8",
+        "resonance": true
     },
     "resonance-8": {
         "type": "output",
         "displayID": "3000",
         "description": "那就算你承认了。既然有这样的能力，为什么你们会只选择做一个……游戏？\n\nSCP-CN-471 - 唯一能为你做的\nSCP-CN-1814 - 没玩过的新游戏\nSCP-CN-285 - 单人TRPG\nSCP-CN-1890 - 应当多加关心基金会员工的精神状态，也许吧",
         "buttonPrompt": "继续提问",
-        "nextEvent": "resonance-9"
+        "nextEvent": "resonance-9",
+        "resonance": true
     },
     "resonance-9": {
         "type": "output",
         "displayID": "3000",
         "description": "……也就是说，你们是为了基金会员工能玩到这个游戏，所以这么做了？\n\nSCP-CN-2629（已归档） - 只是一个小玩笑",
         "buttonPrompt": "继续提问",
-        "nextEvent": "resonance-10"
+        "nextEvent": "resonance-10",
+        "resonance": true
     },
     "resonance-10": {
         "type": "output",
         "displayID": "3000",
         "description": "那真正的原因是什么？或者说，还有什么其他的原因？\n\nSCP-CN-288 - 我们为何相聚\nSCP-CN-982 - 正确的事\nSCP-CN-2989 - 在场证明\nSCP-CN-026 - 不再孤独\nSCP-CN-318 - 他应当被人知晓\nSCP-CN-2131 - 我们有棱角，是为了成为星星\nSCP-CN-2785 - “星”代表“咫尺”\nSCP-CN-238 - 星之梦\nSCP-CN-210 - 平凡的梦想",
         "buttonPrompt": "继续提问",
-        "nextEvent": "resonance-11"
+        "nextEvent": "resonance-11",
+        "resonance": true
     },
     "resonance-11": {
         "type": "output",
         "displayID": "3000",
         "description": "我可以理解为，这是你们五个共同的决定吗？那这个“梦想”具体是什么？\n\nSCP-CN-1301 - 末时赠礼\nSCP-CN-2669 - 回忆永驻\nSCP-CN-1286 - 流金岁月\nSCP-CN-1999 - 幻想遗物\nSCP-CN-2418 - 归档",
         "buttonPrompt": "继续提问",
-        "nextEvent": "resonance-12"
+        "nextEvent": "resonance-12",
+        "resonance": true
     },
     "resonance-12": {
         "type": "output",
         "displayID": "3000",
         "description": "你应该也知道，这个游戏不会存在很久。即使你们对基金会没有敌意，这个异常也基本无害，但它，和你们，也依然是异常。你们耗费巨大的精力，不惜以自身的自由为代价，只是为了创造一个转瞬即逝的焰火。\n\nSCP-CN-1001 - 文字终结于此\nSCP-CN-2678 - ……直到大厦崩塌\nSCP-CN-2379 - 星落之时\nSCP-CN-099 - 献花之人\nSCP-CN-1757 - “墓志铭”\nSCP-CN-1200 - 余音",
         "buttonPrompt": "继续提问",
-        "nextEvent": "resonance-13"
+        "nextEvent": "resonance-13",
+        "resonance": true
     },
     "resonance-13": {
         "type": "output",
         "displayID": "3000",
         "description": "我们会从异常现象上调你的分级，并在下一次列表扩充之前就做好准备。你可能再也不会醒来。\n\nSCP-CN-004 - 只一場夢\nSCP-CN-2107 - 好梦\nSCP-CN-2662 - 一朝梦境，一影随行\nSCP-CN-1715 - 天下没有不散的筵席\nSCP-CN-1716 - 为你撰写的故事，待你谱写的结局\nSCP-CN-2638 - “即使故事的结局无法改变……”\nSCP-CN-319 - 此处仍有希望。",
         "buttonPrompt": "继续提问",
-        "nextEvent": "resonance-14"
+        "nextEvent": "resonance-14",
+        "resonance": true
     },
     "resonance-14": {
         "type": "output",
         "displayID": "3000",
         "description": "你对于收容这件事不抵触吗？\n\nSCP-CN-1572 - 预定的流程\nSCP-CN-992 - 危险物品测试\nSCP-CN-2805 - 一份普通的基金会档案\n项目的编号为SCP-CN-533。\nSCP-CN-626 - 项目等级\nSCP-CN-1573 - 特长收容措施\nSCP-CN-765 - 描述训练\nSCP-CN-2820 - 减少收容失效的可能性。\nSCP-CN-1790 - 然后我们得以生活在阳光之下",
         "buttonPrompt": "继续提问",
-        "nextEvent": "resonance-15"
+        "nextEvent": "resonance-15",
+        "resonance": true
     },
     "resonance-15": {
         "type": "output",
         "displayID": "3000",
         "description": "看来你对基金会持有正面的态度。你在某种程度上是基金会的一部分，或者说，是站在基金会的立场上的吗？\n\nSCP-CN-460 - 脑内所想\nSCP-CN-2220 - 灵魂所在\nSCP-CN-2088 - 我的新生\nSCP-CN-2437 - 伴你同行\nSCP-CN-1989 - 该轮到你啦",
         "buttonPrompt": "继续提问",
-        "nextEvent": "resonance-16"
+        "nextEvent": "resonance-16",
+        "resonance": true
     },
     "resonance-16": {
         "type": "end",
         "displayID": "3000",
         "description": "……我明白了。那么，晚安，SCP-CN-3000。\n\nSCP-CN-2640 - “如你所愿”\nSCP-CN-1004 - 一切终将逝去\nSCP-CN-2646 - 死亡从未是终点\nSCP-CN-1491 - 这可不是什么挽留\nSCP-CN-1261 - 当你漂泊的时候，不要害怕，因为我会等你\nSCP-CN-118 - 路上小心\nSCP-CN-2696 - 一路顺风",
         "specialOnEnter": true,
-        "buttonPrompt": "收容该异常"
+        "buttonPrompt": "收容该异常",
+        "resonance": true
     }
 }

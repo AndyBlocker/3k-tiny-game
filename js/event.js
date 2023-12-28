@@ -105,7 +105,10 @@ function startEvent(eventId, options) {
         document.querySelector('.topic').innerHTML = eventId;
 
     document.querySelector('.topic').style.color = color;
-    document.getElementsByClassName('text-container')[0].innerHTML = getDescription(eventId, DATA_TYPES.Event);
+    if (event && event.resonance)
+        typingAnimation(document.getElementsByClassName('text-container')[0], getDescription(eventId, DATA_TYPES.Event), 100);
+    else
+        document.getElementsByClassName('text-container')[0].innerHTML = getDescription(eventId, DATA_TYPES.Event);
 
     // if innerHTML is empty, hide the text container
     if (document.getElementsByClassName('text-container')[0].innerHTML == '') {
