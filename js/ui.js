@@ -47,7 +47,7 @@ function prefetchNextImg(event, eventId) {
     if (event == undefined){
         return;
     }
-    const nextEvent = getNextEvent("", event, eventId);
+    const nextEvent = getNextEvent(undefined, event, eventId);
     if (nextEvent && allEvents[nextEvent] && allEvents[nextEvent].img) {
         let img = new Image();
         img.src = IMAGE_PATH + allEvents[nextEvent].img;
@@ -302,7 +302,7 @@ function setupOutputArea(event, eventId, color, onProceed) {
         choices = event.choices;
     }
     else {
-        const nextEvent = getNextEvent('', event, eventId);
+        const nextEvent = getNextEvent(undefined, event, eventId);
         choices.push({ nextEvent: nextEvent, buttonPrompt: event.buttonPrompt });
     }
     color = color ? color : getColor(event, DATA_TYPES.Event);

@@ -14,8 +14,6 @@ function getEventType(event) {
             return EVENT_TYPES.Input;
         case "fourinputs":
             return EVENT_TYPES.MultiInput;
-        case "jump":
-            return EVENT_TYPES.Jump;
         default:
             return EVENT_TYPES.Output;
     }
@@ -92,17 +90,12 @@ function startEvent(eventId, options) {
     
     if (event){
         const result = tryEventSpecialFunc(eventId, "specialOnEnter", GetSpecialOnEnter, { previousEvent: previousEventId });
-    }
-    updateSpecialCards(eventId, event);
-
-    if (getEventType(event) == EVENT_TYPES.Jump) {
-        options.previousEvent = previousEventId;
-        const specialNext = tryEventSpecialFunc(eventId, "specialNextEvent", GetSpecialNextEvent, options);
-        if (specialNext){
-            startEvent(specialNext, options);
+        if (result && result.jumpTo && result.jumpTo != eventId) {
+            startEvent(result.jumpTo, options);
             return;
         }
     }
+    updateSpecialCards(eventId, event);
 
     const color = getColor(event, DATA_TYPES.Event);
     if (event && event.displayID)
@@ -296,54 +289,24 @@ const GetSpecialEventDesc = {
     }
 }
 
-function goToInput(args) {
+function commonMultiAnswer(args) {
+    if (branch.m) {
+        return undefined; //无钱没有输入框，用默认（nextEvent字段）
+    }
     return args.input;
 }
 
 const GetSpecialNextEvent = {
-    "15": goToInput,
-    "174": goToInput,
-    "343": goToInput,
-    "803": goToInput,
-    "2202": goToInput,
-    "803-jump": (args) => {
-        if (branch.l) {
-            return "803-NoL";
-        }
-        return "803";
-    },
+    "15": commonMultiAnswer,
+    "174": commonMultiAnswer,
+    "343": commonMultiAnswer,
+    "803": commonMultiAnswer,
+    "2202": commonMultiAnswer,
     "649": (args) => {
         if (branch.m) {
             return "649-1";
         }
         return "649-input";
-    },
-    "branch-end-jump": (args) => {
-        if (branch.j && branch.d && branch.m && branch.l){
-            return "end-1";
-        }
-        else {
-            return "2";
-        }
-    },
-    "lucky-draw": (args) => {
-        if (_luckyDrawRemaining < 0 || luckyDrawPool.length == _prizeObtained.length) {
-            // 没有扭蛋次数/奖池已空，去649或变种
-            if (branch.d && !branch.m) {
-                return "649-input-noD";
-            }
-            return "649";
-        }
-        else if ( !_prizeObtained.includes(luckyDrawGuaranteeEvent) && (_luckyDrawRemaining == _luckyDrawGuaranteeOccurance || _luckyDrawRemaining <= 0 )) {
-            return luckyDrawGuaranteeEvent;
-        }
-        else {
-            let nextEvent = "0";
-            do {
-                nextEvent = luckyDrawPool[getRandNumber(luckyDrawPool.length)];
-            } while (_prizeObtained.includes(nextEvent))
-            return nextEvent;
-        }
     }
 }
 
@@ -368,14 +331,30 @@ const GetSpecialOnEnter = {
     "lucky-draw": (args) => {
         _luckyDrawRemaining --;
         _prizeObtained.push(args.previousEvent);
+
+        let result = "649";
+        if (_luckyDrawRemaining < 0 || luckyDrawPool.length == _prizeObtained.length) {
+            // 没有扭蛋次数/奖池已空，去649或变种
+            if (branch.d && !branch.m) {
+                result = "649-input-noD";
+            }
+            else {
+                result = "649";
+            }
+        }
+        else if ( !_prizeObtained.includes(luckyDrawGuaranteeEvent) && (_luckyDrawRemaining == _luckyDrawGuaranteeOccurance || _luckyDrawRemaining <= 0 )) {
+            result = luckyDrawGuaranteeEvent;
+        }
+        else {
+            let nextEvent = "0";
+            do {
+                nextEvent = luckyDrawPool[getRandNumber(luckyDrawPool.length)];
+            } while (_prizeObtained.includes(nextEvent))
+            result = nextEvent;
+        }
+        return {jumpTo: result};
     },
     "2": (args) => {
-        displayRaisaWithDataId(args.previousEvent);
-    },
-    "end-7": (args, id) => {
-        displayRaisaWithDataId(id);
-    },
-    "branch-end-jump": (args) => {
         const previousEvent = args.previousEvent;
         
         switch (previousEvent) {
@@ -410,5 +389,24 @@ const GetSpecialOnEnter = {
         }
         deck = newDeck;
         refreshCardContainer();
-    }
+
+        // 若四线完成，跳转到结局
+        if (branch.j && branch.d && branch.m && branch.l){
+            return {jumpTo: "end-1"};
+        }
+        else{
+            displayRaisaWithDataId(args.previousEvent);
+        }
+    },
+    "end-7": (args, id) => {
+        displayRaisaWithDataId(id);
+    },
+    "803": (args) => {
+        if (branch.l) {
+            return {jumpTo: "803-NoL"};
+        }
+        else{
+            return {jumpTo: "803"};
+        }
+    },
 }

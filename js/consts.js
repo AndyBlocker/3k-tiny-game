@@ -59,8 +59,7 @@ const EVENT_TYPES = {
     Output: 0,
     Input: 1,
     MultiInput: 2,
-    Jump : 3,
-    __Count: 4,
+    __Count: 3,
 }
 
 /* 
