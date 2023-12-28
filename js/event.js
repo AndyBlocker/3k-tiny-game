@@ -14,6 +14,8 @@ function getEventType(event) {
             return EVENT_TYPES.Input;
         case "fourinputs":
             return EVENT_TYPES.MultiInput;
+        case "end":
+            return EVENT_TYPES.End;
         default:
             return EVENT_TYPES.Output;
     }
@@ -135,6 +137,7 @@ function startEvent(eventId, options) {
     document.getElementById('inputs').style.display = 'none';
     document.getElementById('outputs').style.display = 'none';
     document.getElementById('multiple-inputs').style.display = 'none';
+    document.getElementById('end-link').style.display = 'none';
 
     // clear main height
     document.querySelector('.main-container').style.maxHeight = '80%';
@@ -321,6 +324,14 @@ const GetSpecialOnEnter = {
     "0": (args, id) => {
         displayRaisaWithDataId(id);
     },
+    "803": (args) => {
+        if (branch.l) {
+            return {jumpTo: "803-NoL"};
+        }
+        else{
+            return {jumpTo: "803"};
+        }
+    },
     "648J": (args) => {
         // Init lucky draw
         _luckyDrawRemaining = LUCKY_DRAW_MAX_ATTEMPTS;
@@ -401,12 +412,7 @@ const GetSpecialOnEnter = {
     "end-7": (args, id) => {
         displayRaisaWithDataId(id);
     },
-    "803": (args) => {
-        if (branch.l) {
-            return {jumpTo: "803-NoL"};
-        }
-        else{
-            return {jumpTo: "803"};
-        }
+    "resonance-16": (args, id) => {
+        document.getElementById('end-link').innerHTML = '<a href="' + ITERATION_2_LINK + '">收容该异常。</a>'
     },
 }

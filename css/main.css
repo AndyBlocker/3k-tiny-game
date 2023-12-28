@@ -192,6 +192,12 @@ button:focus {
   margin: auto;
 }
 
+#end-link, #end-link a {
+  text-align: center;
+  color: white;
+  width: 100%;
+}
+
 .button-area {
   /* background-color: #222222; */
   width: 40%;
@@ -213,6 +219,13 @@ button:focus {
   border-radius: 10px;
   font-size: 1em;
   touch-action: manipulation;
+}
+
+.go-button {
+  color: #9c67b5;
+  border-color: #9c67b5;
+  margin-left: 5px;
+  border-width: 3px;
 }
 
 .button-area .large-button {

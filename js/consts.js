@@ -21,6 +21,8 @@ const BOSS_COLOR = "#fde44c";
 const CLINICAL_COLOR = "#FFFFFF";
 const DEFAULT_CONTINUE_TEXT = "前往下一事件";
 
+const ITERATION_2_LINK = "https://scp-wiki-cn.wikidot.com/scp-cn-20210401-j"
+
 const PURSE_CARD_ID = "purse";
 const PET_CARD_ID = "pet";
 
@@ -60,7 +62,8 @@ const EVENT_TYPES = {
     Output: 0,
     Input: 1,
     MultiInput: 2,
-    __Count: 3,
+    End: 3,
+    __Count: 4,
 }
 
 /* 

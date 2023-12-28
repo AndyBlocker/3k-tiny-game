@@ -2117,9 +2117,10 @@
         "nextEvent": "resonance-16"
     },
     "resonance-16": {
-        "type": "output",
+        "type": "end",
         "displayID": "3000",
         "description": "……我明白了。那么，晚安，SCP-CN-3000。\n\nSCP-CN-2640 - “如你所愿”\nSCP-CN-1004 - 一切终将逝去\nSCP-CN-2646 - 死亡从未是终点\nSCP-CN-1491 - 这可不是什么挽留\nSCP-CN-1261 - 当你漂泊的时候，不要害怕，因为我会等你\nSCP-CN-118 - 路上小心\nSCP-CN-2696 - 一路顺风",
+        "specialOnEnter": true,
         "buttonPrompt": "收容该异常"
     }
 }

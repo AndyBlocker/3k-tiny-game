@@ -444,6 +444,9 @@ function setupInOutArea(event, eventId, color, onProceed) {
         document.getElementById('multiple-inputs').style.display = 'initial';
         setupMultipleInputs(event, color, onProceed);
     }
+    else if (eventType == EVENT_TYPES.End) {
+        document.getElementById('end-link').style.display = 'initial';
+    }
     else if (eventType == EVENT_TYPES.Output || branch.m) {
         document.getElementById('outputs').style.display = 'initial';
         setupOutputArea(event, eventId, color, onProceed);
