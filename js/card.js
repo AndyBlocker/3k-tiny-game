@@ -7,7 +7,7 @@ function loadDataAndBoot(dataType, path, attributes, callback) {
     console.log("Loading " + JSON_PATH + path + "...")
     fetch(JSON_PATH + path).then(response => {
         if (!response.ok) {
-        throw new Error("HTTP error " + response.status);
+            throw new Error("HTTP error " + response.status);
         }
         return response.json();
     }).then(json => {
@@ -21,22 +21,22 @@ function loadDataAndBoot(dataType, path, attributes, callback) {
 }
 
 function populateInheritedData(type, obj, attributes) {
-    for (var key in obj){
+    for (var key in obj) {
         const element = obj[key];
-        if (element.parent){
+        if (element.parent) {
             const parent = obj[element.parent];
             if (parent == undefined) {
-                console.log( "WARNING: " + ((type == DATA_TYPES.Card) ? '卡牌' : '事件') + key + 
-                "被设置为" + element.parent + "的变种，但未找到" + element.parent + "的数据！" );
+                console.log("WARNING: " + ((type == DATA_TYPES.Card) ? '卡牌' : '事件') + key +
+                    "被设置为" + element.parent + "的变种，但未找到" + element.parent + "的数据！");
             }
             else {
                 let newData = element;
-                for (const attr of attributes){
+                for (const attr of attributes) {
                     if (newData[attr] == undefined && parent[attr] != undefined) {
                         newData[attr] = parent[attr];
                     }
                 }
-               obj[key] = newData;
+                obj[key] = newData;
             }
         }
     }
@@ -52,10 +52,10 @@ function getDescription(id, type) {
     }
 
     let extraDesc = '';
-    if (data.specialDescription && type == DATA_TYPES.Event){
+    if (data.specialDescription && type == DATA_TYPES.Event) {
         // 特殊事件描述
         const specialDesc = tryEventSpecialFunc(id, "specialDescription", GetSpecialEventDesc, {});
-        if (specialDesc){
+        if (specialDesc) {
             return specialDesc;
         }
     }
@@ -80,7 +80,7 @@ function getDescription(id, type) {
         desc = data.descriptionNoL;
     }
     else {
-        if (branch.j && branch.l && type == DATA_TYPES.Event && data.descriptionNoJ){
+        if (branch.j && branch.l && type == DATA_TYPES.Event && data.descriptionNoJ) {
             desc = data.descriptionNoJ;
         }
         desc = data.description;
@@ -89,9 +89,9 @@ function getDescription(id, type) {
 }
 
 // Get a random int between 0 ~ n-1
-function getRandNumber(n){
+function getRandNumber(n) {
     return Math.floor(Math.random() * n);
-} 
+}
 
 /*
     ===== 有关card对象CRUD等操作的接口 =====
@@ -131,11 +131,12 @@ function replaceCard(oldId, newId) {
 // 清空card
 function refreshCardContainer() {
     popAllChildElement(cardContainer);
-    for (const v of deck) {addCardToContainer(v);}
+    for (const v of deck) { addCardToContainer(v); }
     currentStartIndex = Math.max(0, deck.length - maxCardsToShow);
     updateCardVisibility();
 }
 
+// 返回没有的card
 function checkDeck(cardList) {
     let newCards = [];
     for (var i = 0; i < cardList.length; i++) {
@@ -146,10 +147,10 @@ function checkDeck(cardList) {
     return newCards;
 }
 
-function getCardTitle(cardId){
+function getCardTitle(cardId) {
     if (cardId == PET_CARD_ID || cardId == PURSE_CARD_ID) {
         const value = specialCardsData[cardId].value;
-        return (value > 0  ? "+" : "") + value;
+        return (value > 0 ? "+" : "") + value;
     }
     else if (allCards[cardId] && allCards[cardId].displayID) {
         return allCards[cardId].displayID;
@@ -160,13 +161,13 @@ function getCardTitle(cardId){
 }
 
 function updateSpecialCards(eventId, event) {
-    if (!event){
+    if (!event) {
         return;
     }
     for (var id in specialCardsData) {
         let shouldUpdate = false;
-        if (specialCardsData[id].logEvents && specialCardsData[id].logEvents.includes(eventId)){
-            if (event.bulletPoint){
+        if (specialCardsData[id].logEvents && specialCardsData[id].logEvents.includes(eventId)) {
+            if (event.bulletPoint) {
                 // 更新bullet points
                 specialCardsData[id].hasExtraDesc = true;
                 specialCardsData[id].desc += event.bulletPoint;

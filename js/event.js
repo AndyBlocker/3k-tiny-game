@@ -47,7 +47,6 @@ function tryAddEasterEggDescription(easterEggID, text) {
             return;
         }
     }
-
     const newLine = document.createElement('p');
     newLine.innerHTML = text;
     newLine.name = easterEggID;
@@ -399,6 +398,7 @@ const GetSpecialOnEnter = {
             }
         }
         deck = newDeck;
+        console.log(deck);
         refreshCardContainer();
 
         // 若四线完成，跳转到结局

@@ -72,6 +72,18 @@ const EVENT_TYPES = {
 let currentEventId = "0";
 let currentStartIndex = 0;
 let deck = [];
+const deckHandler = {
+    get(target, property) {
+        return Reflect.get(...arguments);
+    },
+    set(target, property, value) {
+        debugger;
+        return Reflect.set(...arguments);
+    }
+};
+
+deck = new Proxy(deck, deckHandler);
+
 let branch = {
     j: false, // J线完成情况
     d: false, // 梦线完成情况
@@ -81,21 +93,21 @@ let branch = {
 let money = '0';
 let completedEvents = [];
 let specialCardsData = {
-    "pet" : {
+    "pet": {
         value: 250,
         hasExtraDesc: false,
         desc: "",
         descNoJ: "",
         logEvents: ["4454", "4455", "1922", "1775", "812", "765", "2297", "1061", "1818", "1819", "1296", "3000-love"]
     },
-    "006J" : {
+    "006J": {
         hasExtraDesc: false,
         desc: "",
         descNoJ: "",
         logEvents: ["122", "296", "048J", "321J"]
     },
-    "purse" : {
-        value : 0
+    "purse": {
+        value: 0
     }
 }
 
