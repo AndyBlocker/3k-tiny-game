@@ -127,6 +127,7 @@ button:focus {
 @media screen and (max-width: 768px) {
   .main {
     height: 75vh;
+    margin-bottom: 0;
   }
 
   .main-container {
@@ -486,6 +487,7 @@ button:focus {
 @media screen and (max-width: 768px) {
   .card-wrapper {
     height: 15vh;
+    margin-top: 0;
   }
 
   .card {
