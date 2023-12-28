@@ -44,7 +44,7 @@ function getColor(data, dataType) {
 }
 
 function prefetchNextImg(event, eventId) {
-    if (event == undefined){
+    if (event == undefined) {
         return;
     }
     const nextEvent = getNextEvent(undefined, event, eventId);
@@ -52,9 +52,9 @@ function prefetchNextImg(event, eventId) {
         let img = new Image();
         img.src = IMAGE_PATH + allEvents[nextEvent].img;
     }
-    if (event.getCards){
+    if (event.getCards) {
         const newCards = checkDeck(event.getCards);
-        for (const id of newCards){
+        for (const id of newCards) {
             if (allCards[id] && allCards[id].img) {
                 let img = new Image();
                 img.src = IMAGE_PATH + allCards[id].img;
@@ -316,12 +316,12 @@ function setupOutputArea(event, eventId, color, onProceed) {
     }
 }
 
-function setTextAndBorderColor(element, color){
+function setTextAndBorderColor(element, color) {
     element.style.borderColor = color;
     element.style.color = color;
 }
 
-function setImageColor(element, color, whiteSrc, purpleSrc, redSrc){
+function setImageColor(element, color, whiteSrc, purpleSrc, redSrc) {
     if (branch && branch.d)
         element.src = IMAGE_PATH + whiteSrc;
     else
@@ -379,8 +379,8 @@ function addOutputButton(nextEventId, buttonPrompt, color, onProceed) {
 }
 
 //  inputBoxes: htmlCollection
-function getMultipleInputsUseResult(event, inputBoxes){
-    if (event == undefined){
+function getMultipleInputsUseResult(event, inputBoxes) {
+    if (event == undefined) {
         return false;
     }
     let inputs = [];
@@ -391,10 +391,10 @@ function getMultipleInputsUseResult(event, inputBoxes){
     // 先检查空输入框和重复输入
     for (element of inputBoxes) {
         const value = element.value;
-        if (value == undefined || value == ""){
+        if (value == undefined || value == "") {
             return;
         }
-        if (inputs.includes(value)){
+        if (inputs.includes(value)) {
             playErrorAnimation(element);
             element.value = "";
             return;
@@ -410,7 +410,7 @@ function getMultipleInputsUseResult(event, inputBoxes){
             result = false;
             element.value = "";
         }
-        else if (correctPrompt && !correctPrompt.includes(value)){
+        else if (correctPrompt && !correctPrompt.includes(value)) {
             playErrorAnimation(element);
             result = false;
             element.value = "";
@@ -581,4 +581,18 @@ function fadeOutAndRemove(element) {
     element.addEventListener('animationend', function () {
         element.remove();
     }, { once: true });
+}
+
+function typingAnimation(element, text, speed) {
+    element.innerText = "";
+    let i = 0;
+    let timer = setInterval(() => {
+        if (i < text.length) {
+            element.innerText += text.charAt(i);
+            i++;
+        }
+        else {
+            clearInterval(timer);
+        }
+    }, speed);
 }

@@ -51,7 +51,7 @@ button:focus {
   display: flex;
   align-items: flex-start;
   width: 90%;
-  height: 80%;
+  /* height: 80%; */
   background-color: #222222;
   /* margin-top: 5%; */
   margin-left: auto;
@@ -62,12 +62,12 @@ button:focus {
   align-items: flex-start;
   /* justify-content: space-between; */
   flex-grow: 1;
-  /* overflow-y: auto; */
+  flex-shrink: 1;
+  overflow-y: auto;
 }
 
 .topic {
   background-color: #222222;
-
   width: 90%;
   color: #9c67b5;
   margin: auto;
@@ -187,7 +187,7 @@ button:focus {
   display: none;
 }
 
-#hintText2{
+#hintText2 {
   text-align: center;
   margin: auto;
 }
@@ -198,7 +198,6 @@ button:focus {
   left: 0;
   right: 0;
   margin: auto;
-  flex-grow: 1;
 }
 
 .button-area .large-button,
@@ -256,7 +255,9 @@ button:focus {
   align-items: center;
   justify-content: space-between;
 }
-.cal-1, .cal-2{
+
+.cal-1,
+.cal-2 {
   flex: 1;
   border: 3px solid #9c67b5;
   background-color: transparent;
@@ -266,26 +267,30 @@ button:focus {
   font-size: 1em;
   width: calc((100% - 3em) / 2);
 }
-.equal, .plus{
+
+.equal,
+.plus {
   width: 1em;
   text-align: center;
   /* justify-content: center; */
 }
 
 @media screen and (max-width: 768px) {
-  .calculater-container{
+  .calculater-container {
     margin-left: 0;
   }
-  .equal{
+
+  .equal {
     width: 2em;
     font-size: 1em;
-    margin:5%;
+    margin: 5%;
     margin-left: 15px;
     border: 3px;
   }
 }
 
-.plus, .equal{
+.plus,
+.equal {
   font-size: 1.5em;
   color: #9c67b5;
 }
@@ -501,27 +506,38 @@ button:focus {
   border: 1px solid white;
 }
 
-.no-dream .main-container, .no-dream .topic {
+.no-dream .main-container,
+.no-dream .topic {
   background-color: #161616;
 }
 
-.no-dream .card, .no-dream .modal-content,
-.no-dream .large-button, .no-dream .medium-button, .no-dream .small-button,
-.no-dream .input-box, .no-dream .cal-1, .no-dream .cal-2, .no-dream .calculater {
+.no-dream .card,
+.no-dream .modal-content,
+.no-dream .large-button,
+.no-dream .medium-button,
+.no-dream .small-button,
+.no-dream .input-box,
+.no-dream .cal-1,
+.no-dream .cal-2,
+.no-dream .calculater {
   border-radius: 0;
 }
 
-.no-dream .calculater:hover{
+.no-dream .calculater:hover {
   background-color: transparent;
 }
 
-.no-dream .card:hover, .no-dream .hintPrompt:hover, 
-.no-dream .large-button:hover, .no-dream .medium-button:hover{
+.no-dream .card:hover,
+.no-dream .hintPrompt:hover,
+.no-dream .large-button:hover,
+.no-dream .medium-button:hover {
   border-width: 2px;
 }
 
-.no-dream .input-box:hover, .no-dream .small-button:hover,
-.no-dream .cal-1:hover, .no-dream .cal-2:hover{
+.no-dream .input-box:hover,
+.no-dream .small-button:hover,
+.no-dream .cal-1:hover,
+.no-dream .cal-2:hover {
   border-width: 3px;
 }
 
@@ -713,13 +729,23 @@ div.RAISA-description {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
 
 .fade-in {
@@ -728,4 +754,11 @@ div.RAISA-description {
 
 .fade-out {
   animation: fadeOut 1s forwards;
+}
+
+.prompt,
+.button-area {
+  flex-shrink: 0;
+  flex-grow: 0;
+  min-height: 50px;
 }
