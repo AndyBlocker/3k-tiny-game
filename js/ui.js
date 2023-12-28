@@ -250,6 +250,8 @@ function addCardToLootContainer(cardId, divClass, callback) {
     setTextAndBorderColor(cardDiv, options.color);
     setTimeout(() => {
         cardDiv.onclick = () => {
+            // console.log(cardId);
+            // console.log(deck);
             addCardToDeck(cardId, options);
             cardDiv.classList.add('hidden-element');
             cardDiv.onclick = () => { };
@@ -372,8 +374,10 @@ function addOutputButton(nextEventId, buttonPrompt, color, onProceed) {
 
     continueButton.innerText = buttonPrompt ? buttonPrompt : DEFAULT_CONTINUE_TEXT;
 
-    console.log(continueButton.style)
+    // console.log(continueButton.style)
     setTimeout(() => continueButton.onclick = () => {
+        console.log(buttonPrompt);
+        console.log(deck);
         onProceed(nextEventId);
     }, 100);
 }

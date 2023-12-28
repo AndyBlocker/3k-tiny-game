@@ -107,15 +107,17 @@ function addCardToDeck(cardId, options) {
 
 // 从deck中删除card
 function loseCards(cardList) {
-    cardList.forEach((card, i) => {
-        if (deck.includes(card)) {
-            deck.splice(i, 1);
+    cardList.forEach(card => {
+        const index = deck.indexOf(card);
+        if (index !== -1) {
+            deck.splice(index, 1);
             popCardFromContainer(cardContainer, card);
         }
     });
     currentStartIndex = Math.max(0, deck.length - maxCardsToShow);
     updateCardVisibility();
 }
+
 
 // 原位替换卡牌
 function replaceCard(oldId, newId) {

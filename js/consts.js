@@ -72,17 +72,6 @@ const EVENT_TYPES = {
 let currentEventId = "0";
 let currentStartIndex = 0;
 let deck = [];
-const deckHandler = {
-    get(target, property) {
-        return Reflect.get(...arguments);
-    },
-    set(target, property, value) {
-        debugger;
-        return Reflect.set(...arguments);
-    }
-};
-
-deck = new Proxy(deck, deckHandler);
 
 let branch = {
     j: false, // J线完成情况
