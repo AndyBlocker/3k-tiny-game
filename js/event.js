@@ -3,12 +3,12 @@
 */
 
 function getEventType(event) {
-    if (event == undefined || !event.type){
+    if (event == undefined || !event.type) {
         return EVENT_TYPES.Output;
     }
 
-    switch (event.type.toLowerCase()){
-        case "ouptput":
+    switch (event.type.toLowerCase()) {
+        case "output":
             return EVENT_TYPES.Output;
         case "input":
             return EVENT_TYPES.Input;
@@ -73,8 +73,8 @@ function getUseResult(input, event, id, onProceed) {
     else if (correctPrompt == undefined ||
         correctPrompt == input ||
         (Array.isArray(correctPrompt) && correctPrompt.includes(input))) {
-            const nextEvent = getNextEvent(input, event, id);
-            onProceed(nextEvent);
+        const nextEvent = getNextEvent(input, event, id);
+        onProceed(nextEvent);
     }
     else {
         playErrorAnimation(inputBox);
@@ -89,8 +89,8 @@ function startEvent(eventId, options) {
     // Start Event
     completedEvents.push(previousEventId);
     currentEventId = eventId;
-    
-    if (event){
+
+    if (event) {
         const result = tryEventSpecialFunc(eventId, "specialOnEnter", GetSpecialOnEnter, { previousEvent: previousEventId });
         if (result && result.jumpTo && result.jumpTo != eventId) {
             startEvent(result.jumpTo, options);
@@ -166,19 +166,19 @@ function startEvent(eventId, options) {
     ===== 特殊事件相关 =====
 */
 
-function tryEventSpecialFunc(id, attr, FuncArray, args){
+function tryEventSpecialFunc(id, attr, FuncArray, args) {
     const event = allEvents[id];
-    if (!event || !event[attr]){
+    if (!event || !event[attr]) {
         return undefined;
     }
-    if (FuncArray[id] != undefined){
+    if (FuncArray[id] != undefined) {
         const result = FuncArray[id](args, id);
-        if (result){
+        if (result) {
             return result;
         }
     }
     const parent = event.parent;
-    if (parent && FuncArray[parent] != undefined){
+    if (parent && FuncArray[parent] != undefined) {
         return FuncArray[parent](args, id);
     }
     return undefined;
@@ -186,7 +186,7 @@ function tryEventSpecialFunc(id, attr, FuncArray, args){
 
 const GetSpecialEventDesc = {
     "13": (args) => {
-        if (!branch.d && !branch.l && !branch.m){ //三有
+        if (!branch.d && !branch.l && !branch.m) { //三有
             return undefined;
         }
 
@@ -200,7 +200,7 @@ const GetSpecialEventDesc = {
             text += "”\n\n这个声音突然沉默了一会儿，然后重新开口说：\n\n“等会儿，玩不了啊！你把钱包收容了，现在没输入框了，你讲个屁的故事啊。再加上鲨鱼也被你收容了，现在整个游戏的图都没了！那没办法了，你就搁那儿干看字吧。”"
             return text;
         }
-        else{
+        else {
             text += "我们交替着讲，如果你让我没故事可讲了，那你就赢了，我会把3000给你。"
 
             if (branch.d && branch.l && branch.m) {//三无
@@ -217,10 +217,10 @@ const GetSpecialEventDesc = {
                 if (branch.d && branch.l && !branch.m) {//无梦爱
                     text += "你是不是把那个画画的鲨鱼和显示东西的拓麻歌子收容了？呃……反正至少你还有个输入框吧，也不至于太难堪。好了，接下来是你的回合了！”";
                 }
-                else if(!branch.d && branch.l && !branch.m){//无爱
+                else if (!branch.d && branch.l && !branch.m) {//无爱
                     text += "好了，我的开头已经给出，接下来是你的回合了。”"
                 }
-                else if(branch.d && !branch.l && !branch.m){//无梦
+                else if (branch.d && !branch.l && !branch.m) {//无梦
                     text += "等会儿，你是不是把那个拿画板的摸鱼怪收容了？那你拿到小道具都看不到图片啊，睁眼瞎啊属于是。唉，没办法，只能多给你描述一点了，我好心吧。\n\n“好了，我的开头已经给出，接下来是你的回合了。”";
                 }
             }
@@ -228,36 +228,36 @@ const GetSpecialEventDesc = {
         return text;
     },
     "14": (args) => {
-        if (branch.m){
+        if (branch.m) {
             return "虽然是胡闹一样的开场，但你也只能硬着头皮答应了下来。毕竟在基金会内部，陪着异常玩过家家的事情也不在少数。反正你现在也没有输入框了，那就来啥拿啥，出啥点啥，一路平推过去就好。\n\n当然……来啥拿啥，前提是要“来”。所以你还是得先在这片区域转转，看看有没有什么值得注意的东西。你好不容易在卫浴区找到了一个马桶搋子，还有一根不知道是谁放在这里的鱼竿（难道有人喜欢在浴缸或者马桶水里钓鱼吗）。你摸了摸裤兜，发现了自己的手机，然而上面只有一张家具城的大致分区平面图，以及一些奇怪的图案，眼睛、电池一类的。你研究了一下平面图，发现卫浴区的边缘还有一个内嵌式药房，理所当然没有开门。你只从铁栏杆的缝隙里顺到一板药片，药片板背面写着“dado的二次元药”。\n\n先从和马桶最相关的东西试起吧。";
         }
         return undefined;
     },
     "15": (args) => {
-        if (branch.m){
+        if (branch.m) {
             return "你尬住了。现在你的手上只有一堆意义不明的道具，甚至还有一个可以增加意义不明道具的鱼竿。你大可再吃一粒药对着马桶来一拳，但这也就顶多能把马桶打进一维，并没有什么实质性的作用。你的3000寻找之旅就要终结在厕所里了。\n\n“哎哟，这就没思路了？点按钮都点不利索？要不要我拿3000来安慰一下你受伤的小心灵？”\n\n马桶地砖的缝隙里传出了熟悉的声音，你在脑中迅速拟出了120种骂它的词汇。\n\n“别骂人啊！这样吧，我给你点提示。你手里那个爪子，其实是一个非常厉害的道具！它可以召唤不存在于家具城的，快乐的SCP项目们。只要用它夹住一个物品，就可以让这个物品也变得欢乐起来。反正你也没有输入框，那只能我帮你操作咯……”\n\n“好了好了，接下来是教学关卡！先用马桶碎片试试吧！”";
         }
         return undefined;
     },
     "1302-2": (args) => {
-        if (branch.m){
+        if (branch.m) {
             return "机械爪以一种你不太能理解的方式“夹”住了正在循环播放的爆炸动画。循环播放停止了，炸弹在发出闪光的那一刻化作一颗小型陨石，飞进了你的手机。你发现了一个有着像素炸弹图标的app。app提示你还有大概三百多个炸弹的库存，你也不知道它是怎么换算的。这个app似乎还支持充钱买更多的炸弹，可惜你已经把自己的钱包收容了，买不了。但三百多个炸弹怎么也够用了吧！";
         }
         return undefined;
     },
     "1302": (args) => {
-        if (branch.m){
+        if (branch.m) {
             return GetSpecialEventDesc["1302-2"]() + "\n\n你还有一个物品没有尝试转换。";
         }
         return undefined;
     },
     "3000-J": (args) => {
-        if (!branch.d && !branch.l && !branch.m){ //三有
+        if (!branch.d && !branch.l && !branch.m) { //三有
             return undefined;
         }
 
         let text = "“好吧，你确实拿到3000了。那愿赌服输，故事也就在这里结束了。”\n\n你刚刚抽到的那个马桶的蓄水池盖板突然打开，从里面飞出了一个洁白的，散发着柔光的，缓慢旋转的……屎。对此你感到毫不意外。\n\n“但其实你也意识到了，我并不是SCP-CN-3000。我只是这个游戏的其中一个制作者罢了，和其他几个家伙一样。”洁白的屎平静地诉说着，你觉得它在现出真身之后说话也变得客气了许多。\n\n“";
-        if (branch.d && branch.l && branch.m){ //三无
+        if (branch.d && branch.l && branch.m) { //三无
             text += "剩下几个家伙都在你手里了啊。”洁白的屎这么说道，你居然从它的声音里听出了一些寂寞。“你估计也发现了，根本没有什么SCP-CN-3000，有的只有我们几个凑在一起做的游戏。鲨鱼负责画图，我负责文案，钱包负责玩法，拓麻歌子负责联络和信息采集。还有一个……我不知道怎么形容的家伙，它其实才是一切的起点，用游戏描述的话应该是……制作人？但你还没见到，我就不剧透了。\n\n“怎么样，虽然是充满了厕所笑话和无意义吐槽的故事，但这段旅途有让你感到开心吗？虽然它也马上就要结束了。";
         }
         else {
@@ -313,7 +313,7 @@ const GetSpecialNextEvent = {
     }
 }
 
-function displayRaisaWithDataId(id){
+function displayRaisaWithDataId(id) {
     const event = allEvents[id];
     if (event && event.raisaTitle) {
         displayRAISA(event.raisaTitle, event.raisaDesc);
@@ -326,10 +326,10 @@ const GetSpecialOnEnter = {
     },
     "803": (args) => {
         if (branch.l) {
-            return {jumpTo: "803-NoL"};
+            return { jumpTo: "803-NoL" };
         }
-        else{
-            return {jumpTo: "803"};
+        else {
+            return { jumpTo: "803" };
         }
     },
     "648J": (args) => {
@@ -340,7 +340,7 @@ const GetSpecialOnEnter = {
         console.log("扭蛋初始化完成，在第" + (5 - _luckyDrawGuaranteeOccurance) + "抽必出保底");
     },
     "lucky-draw": (args) => {
-        _luckyDrawRemaining --;
+        _luckyDrawRemaining--;
         _prizeObtained.push(args.previousEvent);
 
         let result = "649";
@@ -353,7 +353,7 @@ const GetSpecialOnEnter = {
                 result = "649";
             }
         }
-        else if ( !_prizeObtained.includes(luckyDrawGuaranteeEvent) && (_luckyDrawRemaining == _luckyDrawGuaranteeOccurance || _luckyDrawRemaining <= 0 )) {
+        else if (!_prizeObtained.includes(luckyDrawGuaranteeEvent) && (_luckyDrawRemaining == _luckyDrawGuaranteeOccurance || _luckyDrawRemaining <= 0)) {
             result = luckyDrawGuaranteeEvent;
         }
         else {
@@ -363,11 +363,11 @@ const GetSpecialOnEnter = {
             } while (_prizeObtained.includes(nextEvent))
             result = nextEvent;
         }
-        return {jumpTo: result};
+        return { jumpTo: result };
     },
     "2": (args) => {
         const previousEvent = args.previousEvent;
-        
+
         switch (previousEvent) {
             case "3000-Dream":
                 switchToNoDream();
@@ -393,7 +393,7 @@ const GetSpecialOnEnter = {
 
         // 删除所有非天王卡
         let newDeck = [];
-        for (const id of deck){
+        for (const id of deck) {
             if (allCards[id] && (allCards[id].color == "Boss" || allCards[id].color == "boss")) {
                 newDeck.push(id);
             }
@@ -402,10 +402,10 @@ const GetSpecialOnEnter = {
         refreshCardContainer();
 
         // 若四线完成，跳转到结局
-        if (branch.j && branch.d && branch.m && branch.l){
-            return {jumpTo: "end-1"};
+        if (branch.j && branch.d && branch.m && branch.l) {
+            return { jumpTo: "end-1" };
         }
-        else{
+        else {
             displayRaisaWithDataId(args.previousEvent);
         }
     },
