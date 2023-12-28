@@ -1978,7 +1978,14 @@
         "buttonPrompt": "继续",
         "nextEvent": "end-3"
     },
-    "end-3": {
+     "end-3": {
+        "type": "output",
+        "displayID": "3000",
+        "description": "游戏进程已结束，开始播放制作人员名单。",
+        "buttonPrompt": "继续",
+        "nextEvent": "end-4"
+    },
+    "end-4": {
         "type": "output",
         "displayID": "3000",
         "description": "“逃离家具城”制作人员名单\n\n故事文案：\n\n“马桶蓄水池之神”（自称）\n异常项目01520",
@@ -1986,9 +1993,9 @@
             "3000-Joke"
         ],
         "buttonPrompt": "继续",
-        "nextEvent": "end-4"
+        "nextEvent": "end-5"
     },
-    "end-4": {
+    "end-5": {
         "type": "output",
         "displayID": "3000",
         "description": "“逃离家具城”制作人员名单\n\n页面美术：\n\n“做梦都想摸鱼”（自称）\n异常项目01673",
@@ -1996,9 +2003,9 @@
             "3000-Dream"
         ],
         "buttonPrompt": "继续",
-        "nextEvent": "end-5"
+        "nextEvent": "end-6"
     },
-    "end-5": {
+    "end-6": {
         "type": "output",
         "displayID": "3000",
         "description": "“逃离家具城”制作人员名单\n\n游戏设计：\n\n“绝对泛用钱包”（自称）\n异常项目01582",
@@ -2006,9 +2013,9 @@
             "3000-Money"
         ],
         "buttonPrompt": "继续",
-        "nextEvent": "end-6"
+        "nextEvent": "end-7"
     },
-    "end-6": {
+    "end-7": {
         "type": "output",
         "displayID": "3000",
         "description": "“逃离家具城”制作人员名单\n\n外部联络：\n\n“可视化宠爱”（自称）\n异常项目01721",
@@ -2016,9 +2023,9 @@
             "3000-Love"
         ],
         "buttonPrompt": "继续",
-        "nextEvent": "end-7"
+        "nextEvent": "end-8"
     },
-    "end-7": {
+    "end-8": {
         "type": "output",
         "displayID": "3000",
         "description": "“逃离家具城”制作人员名单\n\n总策划：\n\n“共鸣”（自称）\n超常事件00335",
