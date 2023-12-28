@@ -192,7 +192,8 @@ button:focus {
   margin: auto;
 }
 
-#end-link, #end-link a {
+#end-link,
+#end-link a {
   text-align: center;
   color: white;
   width: 100%;
@@ -432,7 +433,7 @@ button:focus {
 .card-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   flex-grow: 1;
   /* padding: 10px; */
   height: 100%;
@@ -453,6 +454,7 @@ button:focus {
   border-radius: 10px;
   text-align: center;
   /* margin: auto; */
+  margin-top: 20px;
   position: relative;
   flex-direction: column;
   max-width: 6em;
