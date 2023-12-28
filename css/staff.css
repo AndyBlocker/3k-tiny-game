@@ -43,3 +43,22 @@ body {
 .image-visible {
     opacity: 1;
 }
+
+@media (max-width: 768px) {
+    #section-1 {
+        flex-direction: column;
+        height: 90vh;
+    }
+
+    .text-container {
+        width: 100%;
+        order: 2;
+    }
+
+    .img-container {
+        width: 100%;
+        height: 30vh;
+        margin-bottom: 10px;
+        order: 1;
+    }
+}
