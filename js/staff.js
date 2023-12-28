@@ -1,6 +1,6 @@
 const url_prefix = "./img/";
 
-let images = ["creator1.png", "creator2.png", "creator3.png", "creator4.png", "creator5.png", "ac6.PNG"];
+let images = ["creator1.PNG", "creator2.PNG", "creator3.PNG", "creator4.PNG", "creator5.PNG", "ac6.PNG"];
 let currentImage = 0;
 let textContainer = document.querySelector('.text-container');
 let scrollSpeed = 1; // 可以调整滚动速度
