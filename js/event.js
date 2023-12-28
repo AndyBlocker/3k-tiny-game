@@ -64,24 +64,17 @@ function getNextEvent(input, event, id) {
 
 function getUseResult(input, event, id, onProceed) {
     const inputBox = document.getElementById('input-box');
-    const nextEvent = getNextEvent(input, event, id);
-    if (nextEvent == undefined) {
-        return;
-    }
-    else if (nextEvent == "wrong") {
-        playErrorAnimation(inputBox);
-        return;
-    }
     const correctPrompt = event.correctPrompt;
     const easterEggPrompt = event.easterEggPrompt;
 
-    if (correctPrompt == undefined ||
+    if (easterEggPrompt && easterEggPrompt[input] != undefined) {
+        tryAddEasterEggDescription(input, easterEggPrompt[input]);
+    }
+    else if (correctPrompt == undefined ||
         correctPrompt == input ||
         (Array.isArray(correctPrompt) && correctPrompt.includes(input))) {
+            const nextEvent = getNextEvent(input, event, id);
             onProceed(nextEvent);
-    }
-    else if (easterEggPrompt && easterEggPrompt[input] != undefined) {
-        tryAddEasterEggDescription(input, easterEggPrompt[input]);
     }
     else {
         playErrorAnimation(inputBox);
@@ -98,7 +91,7 @@ function startEvent(eventId, options) {
     currentEventId = eventId;
     
     if (event){
-        tryEventSpecialFunc(eventId, "specialOnEnter", GetSpecialOnEnter, { previousEvent: previousEventId });
+        const result = tryEventSpecialFunc(eventId, "specialOnEnter", GetSpecialOnEnter, { previousEvent: previousEventId });
     }
     updateSpecialCards(eventId, event);
 
@@ -303,20 +296,21 @@ const GetSpecialEventDesc = {
     }
 }
 
+function goToInput(args) {
+    return args.input;
+}
+
 const GetSpecialNextEvent = {
-    "15": (args) => {
-        const input = args.input;
-        if (input == "984" || input == "1302") {
-            return input;
+    "15": goToInput,
+    "174": goToInput,
+    "343": goToInput,
+    "803": goToInput,
+    "2202": goToInput,
+    "803-jump": (args) => {
+        if (branch.l) {
+            return "803-NoL";
         }
-        return "wrong";
-    },
-    "343": (args) => {
-        const input = args.input;
-        if (input == "1014" || input == "1091") {
-            return input;
-        }
-        return "wrong";
+        return "803";
     },
     "649": (args) => {
         if (branch.m) {
@@ -353,7 +347,17 @@ const GetSpecialNextEvent = {
     }
 }
 
+function displayRaisaWithDataId(id){
+    const event = allEvents[id];
+    if (event && event.raisaTitle) {
+        displayRAISA(event.raisaTitle, event.raisaDesc);
+    }
+}
+
 const GetSpecialOnEnter = {
+    "0": (args, id) => {
+        displayRaisaWithDataId(id);
+    },
     "648J": (args) => {
         // Init lucky draw
         _luckyDrawRemaining = LUCKY_DRAW_MAX_ATTEMPTS;
@@ -366,19 +370,10 @@ const GetSpecialOnEnter = {
         _prizeObtained.push(args.previousEvent);
     },
     "2": (args) => {
-        const previousEvent = args.previousEvent;
-        const event = allEvents[previousEvent];
-        if (event && event.raisaTitle) {
-            // 弹RAISA
-            displayRAISA(event.raisaTitle, event.raisaDesc);
-        }
+        displayRaisaWithDataId(args.previousEvent);
     },
-    "resonance-1": (args, id) => {
-        const event = allEvents[id];
-        if (event && event.raisaTitle) {
-            // 弹RAISA
-            displayRAISA(event.raisaTitle, event.raisaDesc);
-        }
+    "end-7": (args, id) => {
+        displayRaisaWithDataId(id);
     },
     "branch-end-jump": (args) => {
         const previousEvent = args.previousEvent;
