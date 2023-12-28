@@ -126,7 +126,7 @@ button:focus {
 
 @media screen and (max-width: 768px) {
   .main {
-    height: 85vh;
+    height: 75vh;
   }
 
   .main-container {

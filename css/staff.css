@@ -1,0 +1,24 @@
+.text-container,
+.image-container {
+    width: 50%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.text-container {
+    /* 文字容器样式 */
+}
+
+.image-container {
+    /* 图片容器样式 */
+}
+
+/* 响应式布局 */
+@media screen and (max-width: 768px) {
+
+    .text-container,
+    .image-container {
+        width: 100%;
+        height: 50vh;
+    }
+}
