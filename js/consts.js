@@ -45,7 +45,8 @@ const attributesCommon = [
 const attributesEvent = [
     "type", "hintText", "getCards", "loseCards", "correctPrompt", "easterEggPrompt", "nextEvent", "choices", "buttonPrompt",
     "specialDescription", "specialNextEvent", "specialOnEnter",
-    "newMoney", "bulletPoint", "bulletPointNoJ"
+    "newMoney", "bulletPoint", "bulletPointNoJ",
+    "raisaTitle", "raisaDesc"
 ];
 const attributesCard = [
     "name"
