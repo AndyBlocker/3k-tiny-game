@@ -294,7 +294,7 @@ function setupLootArea(event, callback) {
     return true;
 }
 
-function setupOutputArea(event, eventId, color, onProceed) {
+function setupOutputArea(event, eventId, color) {
     if (event == undefined) {
         return;
     }
@@ -314,7 +314,7 @@ function setupOutputArea(event, eventId, color, onProceed) {
             // 该分支已经完成，不再显示按钮
             continue;
         }
-        addOutputButton(choice.nextEvent, choice.buttonPrompt, color, onProceed);
+        addOutputButton(choice.nextEvent, choice.buttonPrompt, color);
     }
 }
 
@@ -330,7 +330,7 @@ function setImageColor(element, color, whiteSrc, purpleSrc, redSrc) {
         element.src = IMAGE_PATH + (color == EVENT_COLOR ? purpleSrc : redSrc);
 }
 
-function setupInputArea(event, eventId, color, onProceed) {
+function setupInputArea(event, eventId, color) {
     color = color ? color : getColor(event, DATA_TYPES.Event);
     const inputBox = document.getElementById('input-box');
     const goButton = document.getElementById('go');
@@ -348,7 +348,7 @@ function setupInputArea(event, eventId, color, onProceed) {
 
     goButton.onclick = () => {
         const input = inputBox.value;
-        getUseResult(input, event, eventId, onProceed);
+        getUseResult(input, event, eventId);
         inputBox.value = "";
 
         cal1.value = null;
@@ -360,7 +360,7 @@ function playErrorAnimation(inputBox) {
     triggerErrorAnimation(inputBox);
 }
 
-function addOutputButton(nextEventId, buttonPrompt, color, onProceed) {
+function addOutputButton(nextEventId, buttonPrompt, color) {
     if (nextEventId == undefined) {
         return;
     }
@@ -378,7 +378,7 @@ function addOutputButton(nextEventId, buttonPrompt, color, onProceed) {
     setTimeout(() => continueButton.onclick = () => {
         console.log(buttonPrompt);
         console.log(deck);
-        onProceed(nextEventId);
+        startEvent(nextEventId);
     }, 100);
 }
 
@@ -423,7 +423,7 @@ function getMultipleInputsUseResult(event, inputBoxes) {
     return result;
 }
 
-function setupMultipleInputs(event, color, onProceed) {
+function setupMultipleInputs(event, color) {
     color = color ? color : getColor(event, DATA_TYPES.Event);
     const inputBoxes = document.getElementById('multiple-inputs').getElementsByClassName('input-box');
     const goButton = document.getElementById('go-2');
@@ -436,28 +436,28 @@ function setupMultipleInputs(event, color, onProceed) {
 
     goButton.onclick = () => {
         if (getMultipleInputsUseResult(event, inputBoxes)) {
-            onProceed(event.nextEvent);
+            startEvent(event.nextEvent);
         }
     }
 }
 
-function setupInOutArea(event, eventId, color, onProceed) {
+function setupInOutArea(event, eventId, color) {
     popAllChildElement(lootContainer);
     const eventType = getEventType(event);
     if (eventType == EVENT_TYPES.MultiInput) {
         document.getElementById('multiple-inputs').style.display = 'initial';
-        setupMultipleInputs(event, color, onProceed);
+        setupMultipleInputs(event, color);
     }
     else if (eventType == EVENT_TYPES.End) {
         document.getElementById('end-link').style.display = 'initial';
     }
     else if (eventType == EVENT_TYPES.Output || branch.m) {
         document.getElementById('outputs').style.display = 'initial';
-        setupOutputArea(event, eventId, color, onProceed);
+        setupOutputArea(event, eventId, color);
     }
     else {
         document.getElementById('inputs').style.display = 'initial';
-        setupInputArea(event, eventId, color, onProceed);
+        setupInputArea(event, eventId, color);
     }
 }
 

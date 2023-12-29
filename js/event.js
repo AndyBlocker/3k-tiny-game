@@ -61,7 +61,7 @@ function getNextEvent(input, event, id) {
     return event.nextEvent;
 }
 
-function getUseResult(input, event, id, onProceed) {
+function getUseResult(input, event, id) {
     const inputBox = document.getElementById('input-box');
     const correctPrompt = event.correctPrompt;
     const easterEggPrompt = event.easterEggPrompt;
@@ -73,7 +73,7 @@ function getUseResult(input, event, id, onProceed) {
         correctPrompt == input ||
         (Array.isArray(correctPrompt) && correctPrompt.includes(input))) {
         const nextEvent = getNextEvent(input, event, id);
-        onProceed(nextEvent);
+        startEvent(nextEvent);
     }
     else {
         playErrorAnimation(inputBox);
@@ -105,10 +105,13 @@ function startEvent(eventId, options) {
         document.querySelector('.topic').innerHTML = eventId;
 
     document.querySelector('.topic').style.color = color;
-    if (event && event.resonance){
+    
+    const isResonance = event && event.resonance;
+    if (isResonance){
         const proceedElement = getEventType(event) == EVENT_TYPES.End ? document.getElementById('end-link') : document.getElementById('outputs');
         prepareFadeIn(proceedElement);
         typingAnimation(document.getElementsByClassName('text-container')[0], getDescription(eventId, DATA_TYPES.Event), TYPE_ANIM_SPEED, () => {
+            setupInOutArea(event, eventId, color);
             fadeIn(proceedElement);
         });
     }
@@ -151,15 +154,11 @@ function startEvent(eventId, options) {
 
     setupHint(event);
 
-    function onProceed(nextEventId) {
-        startEvent(nextEventId);
-    }
-
     const hasLoot = setupLootArea(event, () => {
-        setupInOutArea(event, eventId, color, onProceed);
+        setupInOutArea(event, eventId, color);
     });
-    if (!hasLoot) {
-        setupInOutArea(event, eventId, color, onProceed);
+    if (!hasLoot && !isResonance) {
+        setupInOutArea(event, eventId, color);
     }
     if (event && event.loseCards) {
         loseCards(event.loseCards);
@@ -421,6 +420,6 @@ const GetSpecialOnEnter = {
         displayRaisaWithDataId(id);
     },
     "resonance-16": (args, id) => {
-        document.getElementById('end-link').innerHTML = '<a href="' + ITERATION_2_LINK + '">收容该异常。</a>'
+        document.getElementById('end-link').innerHTML = '<a href="' + ITERATION_2_LINK + '" target="_top">收容该异常。</a>'
     },
 }
