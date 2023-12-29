@@ -21,8 +21,8 @@ parseUrl();
    ===== PATHS =====
 */
 
-const IMAGE_PATH = "./img/";
-const JSON_PATH = "./json/";
+let IMAGE_PATH = "./img/";
+let JSON_PATH = "./json/";
 
 // for local debug
 // const IMAGE_PATH = " https://raw.githubusercontent.com/AndyBlocker/3k-tiny-game/main/img/";
