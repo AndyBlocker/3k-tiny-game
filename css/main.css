@@ -331,7 +331,9 @@ button:focus {
   /* border-radius: 0.3em; */
 }
 
-.button-area .calculater:hover {
+.button-area .calculater:hover,
+.button-area .cal-1:hover,
+.button-area .cal-2:hover {
   cursor: pointer;
   border-width: 4px;
   padding: 0.55em;
@@ -394,13 +396,6 @@ button:focus {
 .button-area .input-box:hover {
   cursor: pointer;
   border-width: 4px;
-}
-
-.button-area .calculater-container .cal-1:hover,
-.button-area .calculater-container .cal-2:hover {
-  cursor: pointer;
-  /* background-color: rgba(255, 255, 255, 0.4); */
-  border-width: 3px;
 }
 
 .hidden-element {
@@ -493,10 +488,6 @@ button:focus {
   .card {
     border: 1px solid #ff9d95;
   }
-
-  .card-title {
-    display: none;
-  }
 }
 
 .card:hover,
@@ -544,6 +535,10 @@ button:focus {
   background-color: transparent;
 }
 
+.no-dream .card-description-text {
+  overflow-y: scroll;
+}
+
 .no-dream .card:hover,
 .no-dream .hintPrompt:hover,
 .no-dream .large-button:hover,
@@ -551,11 +546,8 @@ button:focus {
   border-width: 2px;
 }
 
-.no-dream .input-box:hover,
-.no-dream .small-button:hover,
-.no-dream .cal-1:hover,
-.no-dream .cal-2:hover {
-  border-width: 3px;
+.no-dream .card-title {
+  display: none;
 }
 
 .no-dream .hintPrompt:hover {
@@ -646,6 +638,7 @@ button:focus {
   right: 10px;
   font-size: 28px;
   font-weight: bold;
+  margin-top: 1em;
 }
 
 .close:hover,
@@ -706,7 +699,8 @@ button:focus {
   }
 
   .card-description-name {
-    font-size: 1em;
+    font-size: 0.75em;
+    margin: auto 0;
   }
 
   .card-description-text {
