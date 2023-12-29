@@ -193,7 +193,7 @@ function addCardToContainer(cardId, options) {
 // 从container中删除card
 function popCardFromContainer(container, cardId) {
     let childs = container.childNodes;
-    for (var i = 0; i < childs.length; i++) {
+    for (var i = childs.length-1; i >= 0; i--) {
         if (childs[i].id == cardId) {
             fadeOutAndRemove(childs[i]);
             return;

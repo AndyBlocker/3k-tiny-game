@@ -156,7 +156,7 @@ function startEvent(eventId, options) {
     if (!hasLoot) {
         setupInOutArea(event, eventId, color, onProceed);
     }
-    if (event && event.loseCards != undefined) {
+    if (event && event.loseCards) {
         loseCards(event.loseCards);
     }
 
@@ -412,7 +412,7 @@ const GetSpecialOnEnter = {
             displayRaisaWithDataId(args.previousEvent);
         }
     },
-    "end-7": (args, id) => {
+    "end-8": (args, id) => {
         displayRaisaWithDataId(id);
     },
     "resonance-16": (args, id) => {

@@ -110,7 +110,7 @@ let specialCardsData = {
         hasExtraDesc: false,
         desc: "",
         descNoJ: "",
-        logEvents: ["122", "296", "048J", "321J"]
+        logEvents: ["122", "296", "048J", "321J", "888J"]
     },
     "purse": {
         value: 0
