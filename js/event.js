@@ -410,6 +410,7 @@ const GetSpecialOnEnter = {
 
         // 若四线完成，跳转到结局
         if (branch.j && branch.d && branch.m && branch.l) {
+            displayRaisaWithDataId(args.previousEvent);
             return { jumpTo: "end-1" };
         }
         else {

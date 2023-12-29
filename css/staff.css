@@ -33,18 +33,9 @@ body {
     overflow: hidden;
     margin: auto;
     object-fit: contain;
-}
+}   
 
-.image-container {
-    transition: opacity 1s ease-in-out;
-    opacity: 0;
-}
-
-.image-visible {
-    opacity: 1;
-}
-
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     #section-1 {
         flex-direction: column;
         height: 90vh;

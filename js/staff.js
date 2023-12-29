@@ -27,5 +27,6 @@ textContainer.innerHTML = "<br><br><br><br><br><br><br><br><br><br><br><br><br><
 
 
 // 启动动画
+console.log(window.innerWidth)
 changeImage();
 requestAnimationFrame(scrollText);
