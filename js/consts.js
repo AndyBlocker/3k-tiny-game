@@ -4,19 +4,6 @@
 
 let DEV = true;
 
-function parseUrl(){
-    const href = window.location.href;
-    const hrefRegExp = /\?_?[A-Za-z0-9\-=/:]+/g;
-    if (hrefRegExp.test(href)) {
-        const arg = href.slice(href.search(hrefRegExp) + 1);
-        if (arg && arg.toLowerCase() == "ship"){
-            DEV = false;
-        }
-    }
-}
-
-parseUrl();
-
 /*
    ===== PATHS =====
 */
@@ -38,7 +25,7 @@ const BOSS_COLOR = "#fde44c";
 const CLINICAL_COLOR = "#FFFFFF";
 const DEFAULT_CONTINUE_TEXT = "前往下一事件";
 let TYPE_ANIM_SPEED = 100;
-let ITERATION_2_LINK = "https://scp-wiki-cn.wikidot.com/scp-cn-20210401-j"
+let ITERATION_2_LINK = "";
 
 const PURSE_CARD_ID = "purse";
 const PET_CARD_ID = "pet";
@@ -46,6 +33,40 @@ const PET_CARD_ID = "pet";
 const LUCKY_DRAW_MAX_ATTEMPTS = 5;
 const luckyDrawGuaranteeEvent = "970";
 const luckyDrawPool = ["2289", "970", "937", "600", "2426"];
+
+/* 
+    ===== PARSE URL =====
+*/
+
+function parseUrl(){
+    const href = window.location.href;
+    const hrefRegExp = /\?_?[A-Za-z0-9\-=/:]+/g;
+    if (hrefRegExp.test(href)) {
+        const args = href.slice(href.search(hrefRegExp) + 1);
+        const pairs = args ? args.split('&') : [];
+        for (v of pairs) {
+            [key, value] = v.split('=');
+            if (!key) {
+                continue;
+            }
+            else {
+                key = key.toLowerCase();
+            }
+            if (key == "ship") {
+                DEV = false;
+            }
+            else if (key == "iteration-2") {
+                ITERATION_2_LINK = value;
+            }
+            else if (key == "file-path") {
+                IMAGE_PATH = value;
+                JSON_PATH = value;
+            }
+        }
+    }
+}
+
+parseUrl();
 
 /* 
     ===== VARIABLES =====
