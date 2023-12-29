@@ -120,7 +120,7 @@ function previewCard(cardId, options) {
         modalContent.style.display = "none";
     }
 
-    window.onclick = function (event) {
+    modal.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
             modalContent.innerHTML = '';
@@ -496,7 +496,7 @@ function displayRAISA(title, description) {
         RAISA.style.display = "none";
     }
 
-    window.onclick = function (event) {
+    modal.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
             RAISA.style.display = "none";
