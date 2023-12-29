@@ -2067,7 +2067,7 @@
     "resonance-1": {
         "type": "output",
         "displayID": "3000",
-        "description": "SCP-CN-1069 - 你好啊，老朋友\nSCP-CN-1675 - 欢迎光临\nSCP-CN-454 - 请保持联系",
+        "description": "SCP-CN-1069 - 你好啊，老朋友\nSCP-CN-1675 - 欢迎光临\nSCP-CN-454 - 请保持联系",
         "buttonPrompt": "提问",
         "nextEvent": "resonance-2",
         "resonance": true
