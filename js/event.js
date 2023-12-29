@@ -105,8 +105,13 @@ function startEvent(eventId, options) {
         document.querySelector('.topic').innerHTML = eventId;
 
     document.querySelector('.topic').style.color = color;
-    if (event && event.resonance)
-        typingAnimation(document.getElementsByClassName('text-container')[0], getDescription(eventId, DATA_TYPES.Event), 100);
+    if (event && event.resonance){
+        const proceedElement = getEventType(event) == EVENT_TYPES.End ? document.getElementById('end-link') : document.getElementById('outputs');
+        prepareFadeIn(proceedElement);
+        typingAnimation(document.getElementsByClassName('text-container')[0], getDescription(eventId, DATA_TYPES.Event), TYPE_ANIM_SPEED, () => {
+            fadeIn(proceedElement);
+        });
+    }
     else
         document.getElementsByClassName('text-container')[0].innerHTML = getDescription(eventId, DATA_TYPES.Event);
 

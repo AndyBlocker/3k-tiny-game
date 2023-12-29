@@ -577,6 +577,11 @@ function updateCalcWidth() {
     console.log("calcContainer width: " + window.getComputedStyle(calcContainer).width);
 }
 
+function prepareFadeIn(element) {
+    element.classList.remove('fade-in');
+    element.style.opacity = 0;
+}
+
 function fadeIn(element) {
     element.classList.remove('fade-out');
     element.classList.add('fade-in');
@@ -590,7 +595,7 @@ function fadeOutAndRemove(element) {
     }, { once: true });
 }
 
-function typingAnimation(element, text, speed) {
+function typingAnimation(element, text, speed, callback) {
     // console.log(123);
     element.innerText = "\n";
     let i = 0;
@@ -601,6 +606,7 @@ function typingAnimation(element, text, speed) {
         }
         else {
             clearInterval(timer);
+            callback();
         }
     }, speed);
     
