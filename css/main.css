@@ -713,17 +713,11 @@ div.RAISA {
   background-color: #fff9e6;
   text-align: center;
   margin: auto;
-  width: 40vw;
+  width: 80vw;
   padding: 10px;
   padding-top: 20px;
   padding-bottom: 20px;
   display: none;
-}
-
-@media screen and (max-width: 768px) {
-  div.RAISA {
-    width: 80vw;
-  }
 }
 
 div.RAISA-title {
