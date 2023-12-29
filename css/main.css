@@ -546,10 +546,6 @@ button:focus {
   border-width: 2px;
 }
 
-.no-dream .card-title {
-  display: none;
-}
-
 .no-dream .hintPrompt:hover {
   background-color: transparent;
   text-decoration: underline;
@@ -686,6 +682,10 @@ button:focus {
   .modal-content {
     width: 80vw;
     height: 120vw;
+  }
+
+  .card-title {
+    display: none;
   }
 
   .card-description-img {
