@@ -1,4 +1,21 @@
-const DEV = true;
+/*
+   ===== FOR DEV =====
+*/
+
+let DEV = true;
+
+function parseUrl(){
+    const href = window.location.href;
+    const hrefRegExp = /\?_?[A-Za-z0-9\-=/:]+/g;
+    if (hrefRegExp.test(href)) {
+        const arg = href.slice(href.search(hrefRegExp) + 1);
+        if (arg && arg.toLowerCase() == "ship"){
+            DEV = false;
+        }
+    }
+}
+
+parseUrl();
 
 /*
    ===== PATHS =====
