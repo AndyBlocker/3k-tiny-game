@@ -398,6 +398,17 @@ button:focus {
   border-width: 4px;
 }
 
+.no-dream .input-box:hover,
+.no-dream .cal-1:hover,
+.no-dream .cal-2:hover,
+.no-dream .calculater:hover {
+  border-width: 3px;
+}
+
+.no-dream .small-button:hover {
+  border-width: 2px;
+}
+
 .hidden-element {
   opacity: 0;
 }
@@ -661,6 +672,11 @@ button:focus {
   font-size: 1.5em;
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+.no-dream .card-description-name {
+  margin: auto 0;
+  font-size: 1em;  
 }
 
 .card-description-text {
