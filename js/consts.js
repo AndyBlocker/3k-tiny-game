@@ -143,6 +143,7 @@ let specialCardsData = {
 let _lootToPick = 0;
 var _luckyDrawRemaining, _luckyDrawGuaranteeOccurance, _prizeObtained;
 
-var _dragElement, _offsetX, _offsetY;
+var _dragElement, _dragStartTime;
 let _dragging = false;
 let _dragValue = '';
+let _dragOffset = { X: 0, Y: 0 };

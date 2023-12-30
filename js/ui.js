@@ -72,8 +72,8 @@ function initCardDrag(){
         if (!_dragging || !_dragElement){
             return;
         }
-        _dragElement.style.left = e.pageX - _offsetX;
-        _dragElement.style.top = e.pageY - _offsetY;
+        _dragElement.style.left = e.pageX - _dragOffset.X;
+        _dragElement.style.top = e.pageY - _dragOffset.Y;
     });
 
     document.addEventListener('mouseup', (e) => {
@@ -83,13 +83,14 @@ function initCardDrag(){
         _dragging = false;
         _dragElement.remove();
         document.removeEventListener('selectstart', nullHandler);
-        _offsetX = 0;
-        _offsetY = 0;
+        _dragOffset = {X: 0, Y: 0};
         _dragElement = undefined;
 
         if (e.target.type == 'text') {
             e.target.value = _dragValue;
-            calculate();
+            if (!e.target.classList.contains('input-box')){
+                calculate();
+            }
         }
         _dragValue = '';
     });
@@ -102,12 +103,13 @@ function registerDraggable(element, value){
         dragElement.classList.add("card-drag");
         dragElement.style.left = e.pageX - e.offsetX;
         dragElement.style.top = e.pageY - e.offsetY;
-        _offsetX = e.offsetX;
-        _offsetY = e.offsetY;
+        _dragOffset.X = e.offsetX;
+        _dragOffset.Y = e.offsetY;
         element.parentElement.appendChild(dragElement);
         _dragElement = dragElement;
         _dragging = true;
         _dragValue = value;
+        _dragStartTime = e.timeStamp;
         document.addEventListener('selectstart', nullHandler);
     });
 }
@@ -198,8 +200,10 @@ function setupCardElement(cardDiv, cardId, options, cardTitle, cardImage, cardNa
         cardImage.style.display = "none";
     }
 
-    cardDiv.onclick = () => {
-        previewCard(cardId, options);
+    cardDiv.onclick = (e) => {
+        if (e.timeStamp - _dragStartTime < 150) {
+            previewCard(cardId, options);
+        }
     }
 
     registerDraggable(cardDiv, title);
