@@ -2,7 +2,7 @@
     ===== 有关事件&提示的接口 =====
 */
 
-function getCal1Text(event, eventId) {
+function getCal1DefaultText(event, eventId) {
     if (!event) {
         return '';
     }
@@ -142,7 +142,7 @@ function startEvent(eventId, options) {
         document.querySelector('.text-container').style.height = 'auto';
     }
 
-    document.querySelector('.cal-1').value = getCal1Text(event, eventId);
+    document.querySelector('.cal-1').value = getCal1DefaultText(event, eventId);
 
     // update event img
     if (!branch.d && event && event.img) { // with img

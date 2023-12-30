@@ -338,6 +338,8 @@ function setupInputArea(event, eventId, color) {
     const cal2 = document.querySelector(".cal-2");
     const calc = document.querySelector('.calculater');
 
+    cal1.value = getCal1DefaultText(event, eventId);
+
     for (const e of [inputBox, cal1, cal2, calc]) { e.style.borderColor = color; };
     setTextAndBorderColor(goButton, color);
     document.querySelector(".plus").style.color = color;
@@ -348,11 +350,10 @@ function setupInputArea(event, eventId, color) {
 
     goButton.onclick = () => {
         const input = inputBox.value;
-        getUseResult(input, event, eventId);
         inputBox.value = "";
-
-        cal1.value = null;
+        cal1.value = getCal1DefaultText(event, eventId);
         cal2.value = null;
+        getUseResult(input, event, eventId);
     }
 }
 
