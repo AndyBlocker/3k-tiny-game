@@ -63,56 +63,99 @@ function prefetchNextImg(event, eventId) {
     }
 }
 
+let _lastTouchCoords = { x: 0, y: 0 };
+
 function nullHandler(e) {
     e.preventDefault();
 }
 
-function initCardDrag(){
-    document.addEventListener('mousemove', (e) => {
-        if (!_dragging || !_dragElement){
-            return;
-        }
-        _dragElement.style.left = e.pageX - _dragOffset.X;
-        _dragElement.style.top = e.pageY - _dragOffset.Y;
-    });
+function getEventCoordinates(e) {
+    if (e.type.startsWith('touch')) {
+        return { x: e.touches[0].pageX, y: e.touches[0].pageY };
+    } else {
+        return { x: e.pageX, y: e.pageY };
+    }
+}
 
-    document.addEventListener('mouseup', (e) => {
-        if (!_dragging || !_dragElement){
+function initCardDrag() {
+    function moveHandler(e) {
+        if (!_dragging || !_dragElement) {
             return;
         }
+        const coords = getEventCoordinates(e);
+        if (e.type.startsWith('touch')) {
+            _lastTouchCoords = coords; // 更新触摸坐标
+        }
+        _dragElement.style.left = coords.x - _dragOffset.X + 'px';
+        _dragElement.style.top = coords.y - _dragOffset.Y + 'px';
+    }
+
+    function endHandler(e) {
+        if (!_dragging || !_dragElement) {
+            return;
+        }
+
+        const coords = e.type === 'touchend' ? 
+            { x: _lastTouchCoords.x, y: _lastTouchCoords.y } : 
+            { x: e.pageX, y: e.pageY };
+
+        const dropTarget = document.elementFromPoint(coords.x, coords.y);
+
+        if (dropTarget.type == 'text') {
+            dropTarget.value = _dragValue;
+            if (!dropTarget.classList.contains('input-box')) {
+                calculate();
+            }   
+        }
+        else {
+            console.log("not in");
+            console.log(dropTarget)
+            console.log(coords);
+        }
+
         _dragging = false;
         _dragElement.remove();
         document.removeEventListener('selectstart', nullHandler);
-        _dragOffset = {X: 0, Y: 0};
+        _dragOffset = { X: 0, Y: 0 };
         _dragElement = undefined;
-
-        if (e.target.type == 'text') {
-            e.target.value = _dragValue;
-            if (!e.target.classList.contains('input-box')){
-                calculate();
-            }
-        }
         _dragValue = '';
-    });
+    }
+
+    document.addEventListener('mousemove', moveHandler);
+    document.addEventListener('mouseup', endHandler);
+    document.addEventListener('touchmove', moveHandler);
+    document.addEventListener('touchend', endHandler);
 }
 
-function registerDraggable(element, value){
-    element.addEventListener('mousedown', (e) => {
+function registerDraggable(element, value) {
+    function startHandler(e) {
+        e.preventDefault();
+        const coords = getEventCoordinates(e);
+        if (e.type.startsWith('touch')) {
+            _lastTouchCoords = coords;
+        }
+        const offsetX = e.type.startsWith('touch') ? coords.x - element.getBoundingClientRect().left : e.offsetX;
+        const offsetY = e.type.startsWith('touch') ? coords.y - element.getBoundingClientRect().top : e.offsetY;
+
         const dragElement = element.cloneNode(true);
         dragElement.id = element.id + '-drag';
-        dragElement.classList.add("card-drag");
-        dragElement.style.left = e.pageX - e.offsetX;
-        dragElement.style.top = e.pageY - e.offsetY;
-        _dragOffset.X = e.offsetX;
-        _dragOffset.Y = e.offsetY;
+        dragElement.classList.add('card-drag');
+        dragElement.style.left = coords.x - offsetX + 'px';
+        dragElement.style.top = coords.y - offsetY + 'px';
+        _dragOffset.X = offsetX;
+        _dragOffset.Y = offsetY;
         element.parentElement.appendChild(dragElement);
         _dragElement = dragElement;
         _dragging = true;
         _dragValue = value;
         _dragStartTime = e.timeStamp;
         document.addEventListener('selectstart', nullHandler);
-    });
+    }
+
+    element.addEventListener('mousedown', startHandler);
+    element.addEventListener('touchstart', startHandler);
 }
+
 
 function popAllChildElement(parent) {
     let childs = parent.childNodes;
