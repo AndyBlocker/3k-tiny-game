@@ -2,6 +2,18 @@
     ===== 有关事件&提示的接口 =====
 */
 
+function getCal1Text(event, eventId) {
+    if (!event) {
+        return '';
+    }
+    else if (event.cal1){
+        return event.cal1;
+    }
+    else {
+        return event.displayID ? event.displayID : eventId;
+    }
+}
+
 function getEventType(event) {
     if (event == undefined || !event.type) {
         return EVENT_TYPES.Output;
@@ -129,6 +141,8 @@ function startEvent(eventId, options) {
         document.getElementsByClassName('text-container')[0].style.display = 'initial';
         document.querySelector('.text-container').style.height = 'auto';
     }
+
+    document.querySelector('.cal-1').value = getCal1Text(event, eventId);
 
     // update event img
     if (!branch.d && event && event.img) { // with img
