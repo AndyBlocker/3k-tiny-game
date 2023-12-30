@@ -6,7 +6,7 @@ function getCal1DefaultText(event, eventId) {
     if (!event) {
         return '';
     }
-    else if (event.cal1){
+    else if (event.cal1 || event.cal1 == ''){
         return event.cal1;
     }
     else {

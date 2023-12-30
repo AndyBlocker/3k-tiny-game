@@ -84,7 +84,7 @@ function initCardDrag() {
         }
         const coords = getEventCoordinates(e);
         if (e.type.startsWith('touch')) {
-            _lastTouchCoords = coords; // 更新触摸坐标
+            _lastTouchCoords = { x: e.touches[0].clientX, y: e.touches[0].clientY }; // 更新触摸坐标
         }
         _dragElement.style.left = coords.x - _dragOffset.X + 'px';
         _dragElement.style.top = coords.y - _dragOffset.Y + 'px';
@@ -97,7 +97,7 @@ function initCardDrag() {
 
         const coords = e.type === 'touchend' ? 
             { x: _lastTouchCoords.x, y: _lastTouchCoords.y } : 
-            { x: e.pageX, y: e.pageY };
+            { x: e.clientX, y: e.clientY };
 
         const dropTarget = document.elementFromPoint(coords.x, coords.y);
 
@@ -132,7 +132,7 @@ function registerDraggable(element, value) {
         e.preventDefault();
         const coords = getEventCoordinates(e);
         if (e.type.startsWith('touch')) {
-            _lastTouchCoords = coords;
+            _lastTouchCoords = { x: e.touches[0].clientX, y: e.touches[0].clientY };
         }
         const offsetX = e.type.startsWith('touch') ? coords.x - element.getBoundingClientRect().left : e.offsetX;
         const offsetY = e.type.startsWith('touch') ? coords.y - element.getBoundingClientRect().top : e.offsetY;
