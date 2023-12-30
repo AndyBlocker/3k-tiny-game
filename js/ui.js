@@ -77,15 +77,19 @@ function getEventCoordinates(e) {
     }
 }
 
+function updateLastTouchClientCoords(e){
+    if (e.type.startsWith('touch')) {
+        _lastTouchCoords = { x: e.touches[0].clientX, y: e.touches[0].clientY }; // 更新触摸坐标
+    }
+}
+
 function initCardDrag() {
     function moveHandler(e) {
         if (!_dragging || !_dragElement) {
             return;
         }
         const coords = getEventCoordinates(e);
-        if (e.type.startsWith('touch')) {
-            _lastTouchCoords = { x: e.touches[0].clientX, y: e.touches[0].clientY }; // 更新触摸坐标
-        }
+        updateLastTouchClientCoords(e);
         _dragElement.style.left = coords.x - _dragOffset.X + 'px';
         _dragElement.style.top = coords.y - _dragOffset.Y + 'px';
     }
@@ -131,9 +135,7 @@ function registerDraggable(element, value) {
     function startHandler(e) {
         e.preventDefault();
         const coords = getEventCoordinates(e);
-        if (e.type.startsWith('touch')) {
-            _lastTouchCoords = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-        }
+        updateLastTouchClientCoords(e);
         const offsetX = e.type.startsWith('touch') ? coords.x - element.getBoundingClientRect().left : e.offsetX;
         const offsetY = e.type.startsWith('touch') ? coords.y - element.getBoundingClientRect().top : e.offsetY;
 
@@ -243,12 +245,13 @@ function setupCardElement(cardDiv, cardId, options, cardTitle, cardImage, cardNa
         cardImage.style.display = "none";
     }
 
-    cardDiv.onclick = (e) => {
-        if (e.timeStamp - _dragStartTime < 150) {
+    clickHandler = (e) => {
+        if (e.timeStamp - _dragStartTime < DRAG_THRESHOLD) {
             previewCard(cardId, options);
         }
-    }
-
+    }  
+    cardDiv.onclick = clickHandler;
+    cardDiv.addEventListener('touchend', clickHandler);
     registerDraggable(cardDiv, title);
 }
 

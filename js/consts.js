@@ -26,6 +26,7 @@ const CLINICAL_COLOR = "#FFFFFF";
 const DEFAULT_CONTINUE_TEXT = "前往下一事件";
 let TYPE_ANIM_SPEED = 100;
 let ITERATION_2_LINK = "";
+const DRAG_THRESHOLD = 150;
 
 const PURSE_CARD_ID = "purse";
 const PET_CARD_ID = "pet";

@@ -561,6 +561,7 @@ button:focus {
   width: 5vw;
   text-align: center;
   border: none;
+  touch-action: manipulation;
 }
 
 .nav-button img {
