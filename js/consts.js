@@ -76,6 +76,8 @@ const cardContainer = document.querySelector('.card-container');
 const lootContainer = document.getElementById('loots');
 const hintText1 = document.getElementById('hintText1');
 const hintText2 = document.getElementById('hintText2');
+const cal1 = document.querySelector(".cal-1");
+const cal2 = document.querySelector(".cal-2");
 
 var maxCardsToShow = 4;
 
@@ -140,3 +142,7 @@ let specialCardsData = {
 
 let _lootToPick = 0;
 var _luckyDrawRemaining, _luckyDrawGuaranteeOccurance, _prizeObtained;
+
+var _dragElement, _offsetX, _offsetY;
+let _dragging = false;
+let _dragValue = '';

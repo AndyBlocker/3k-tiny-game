@@ -64,3 +64,5 @@ deployCalculater();
 
 window.addEventListener('resize', updateCalcWidth);
 updateCalcWidth();
+
+initCardDrag();

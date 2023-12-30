@@ -63,6 +63,55 @@ function prefetchNextImg(event, eventId) {
     }
 }
 
+function nullHandler(e) {
+    e.preventDefault();
+}
+
+function initCardDrag(){
+    document.addEventListener('mousemove', (e) => {
+        if (!_dragging || !_dragElement){
+            return;
+        }
+        _dragElement.style.left = e.pageX - _offsetX;
+        _dragElement.style.top = e.pageY - _offsetY;
+    });
+
+    document.addEventListener('mouseup', (e) => {
+        if (!_dragging || !_dragElement){
+            return;
+        }
+        _dragging = false;
+        _dragElement.remove();
+        document.removeEventListener('selectstart', nullHandler);
+        _offsetX = 0;
+        _offsetY = 0;
+        _dragElement = undefined;
+
+        if (e.target.type == 'text') {
+            e.target.value = _dragValue;
+            calculate();
+        }
+        _dragValue = '';
+    });
+}
+
+function registerDraggable(element, value){
+    element.addEventListener('mousedown', (e) => {
+        const dragElement = element.cloneNode(true);
+        dragElement.id = element.id + '-drag';
+        dragElement.classList.add("card-drag");
+        dragElement.style.left = e.pageX - e.offsetX;
+        dragElement.style.top = e.pageY - e.offsetY;
+        _offsetX = e.offsetX;
+        _offsetY = e.offsetY;
+        element.parentElement.appendChild(dragElement);
+        _dragElement = dragElement;
+        _dragging = true;
+        _dragValue = value;
+        document.addEventListener('selectstart', nullHandler);
+    });
+}
+
 function popAllChildElement(parent) {
     let childs = parent.childNodes;
     for (var i = childs.length - 1; i >= 0; i--) {
@@ -136,7 +185,8 @@ function setupCardElement(cardDiv, cardId, options, cardTitle, cardImage, cardNa
     options.color = options.color ? options.color : getColor(card, DATA_TYPES.Card);
     cardDiv.style.borderColor = options.color;
 
-    cardTitle.textContent = getCardTitle(cardId);
+    const title = getCardTitle(cardId)
+    cardTitle.textContent = title;
     cardTitle.style.color = options.color;
 
     if (!branch.d) {
@@ -151,6 +201,8 @@ function setupCardElement(cardDiv, cardId, options, cardTitle, cardImage, cardNa
     cardDiv.onclick = () => {
         previewCard(cardId, options);
     }
+
+    registerDraggable(cardDiv, title);
 }
 
 // 替换卡牌
@@ -515,6 +567,17 @@ function setCalculaterVisibility( visibility ) {
     document.querySelector('.calculater').style.display = visibility ? "initial" : "none";
 }
 
+function calculate() {
+    var calcRes = parseInt(cal1.value) + parseInt(cal2.value);
+    if (!isNaN(calcRes)) {
+        const regExp = /J$/;
+        if (regExp.test(cal1.value) || regExp.test(cal2.value)){
+            calcRes += 'J';
+        }
+        document.getElementById("input-box").value = calcRes;
+    }
+}
+
 function deployCalculater() {
     var calc = document.querySelector(".calculater");
     calc.onclick = () => {
@@ -523,19 +586,8 @@ function deployCalculater() {
         // const classList = document.querySelector(".calculater-container").classList;
         // classList.contains("display") ? classList.remove("display") : classList.add("display");
     };
-
-    const cal1 = document.querySelector(".cal-1");
-    const cal2 = document.querySelector(".cal-2");
     cal1.onkeyup = calculate;
     cal2.onkeyup = calculate;
-
-    function calculate() {
-        var calcRes = parseInt(cal1.value) + parseInt(cal2.value);
-        if (!isNaN(calcRes)) {
-            document.getElementById("input-box").value = calcRes;
-        }
-    }
-
 }
 
 function goNODREAM() {
