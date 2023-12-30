@@ -338,6 +338,7 @@ function setupInputArea(event, eventId, color) {
     const cal2 = document.querySelector(".cal-2");
     const calc = document.querySelector('.calculater');
 
+    setCalculaterVisibility(!event.hideCalculater);
     cal1.value = getCal1DefaultText(event, eventId);
 
     for (const e of [inputBox, cal1, cal2, calc]) { e.style.borderColor = color; };
@@ -508,6 +509,11 @@ function displayRAISA(title, description) {
 /*
     ===== 计算器相关 =====
 */
+
+function setCalculaterVisibility( visibility ) {
+    document.querySelector('.calculater-container').style.display = visibility ? "flex" : "none";
+    document.querySelector('.calculater').style.display = visibility ? "initial" : "none";
+}
 
 function deployCalculater() {
     var calc = document.querySelector(".calculater");

@@ -141,9 +141,7 @@ function startEvent(eventId, options) {
         document.getElementsByClassName('text-container')[0].style.display = 'initial';
         document.querySelector('.text-container').style.height = 'auto';
     }
-
-    document.querySelector('.cal-1').value = getCal1DefaultText(event, eventId);
-
+    
     // update event img
     if (!branch.d && event && event.img) { // with img
         document.querySelector('.img-wrapper').src = IMAGE_PATH + event.img;
