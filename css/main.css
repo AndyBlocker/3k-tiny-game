@@ -24,7 +24,6 @@ button:focus {
 
 ::-webkit-scrollbar-thumb {
   background-color: rgb(112, 112, 112);
-  /* outline: 1px solid slategrey; */
 }
 
 .content {
@@ -37,10 +36,8 @@ button:focus {
 
 .main {
   background-color: #222222;
-  /* border: 2px solid black; */
   width: 90%;
   height: 70vh;
-  /* min-height: 48em; */
   border-radius: 1em;
   margin: 1em auto auto auto;
   display: flex;
@@ -51,16 +48,11 @@ button:focus {
   display: flex;
   align-items: flex-start;
   width: 90%;
-  /* height: 80%; */
   background-color: #222222;
-  /* margin-top: 5%; */
   margin-left: auto;
   margin-right: auto;
-  /* margin-bottom: 5%; */
-  /* text-align: center; */
   flex-direction: row;
   align-items: flex-start;
-  /* justify-content: space-between; */
   flex-grow: 1;
   flex-shrink: 1;
   overflow-y: auto;
@@ -79,26 +71,19 @@ button:focus {
 
 
 .text-container {
-  /* background-color: black; */
   margin: auto;
-  /* margin-top: auto; */
   line-height: 150%;
-  /* margin-left: 10%; */
   color: white;
   width: 60%;
   height: auto;
   max-height: 100%;
-  /* min-height: 40em; */
   white-space: pre-line;
   box-sizing: border-box;
-  /* padding: 1em; */
-  /* overflow: auto; */
   display: initial;
   flex-direction: column;
   overflow-y: auto;
   word-break: break-all;
   overflow-wrap: break-word;
-  /* white-space: pre-line; */
 }
 
 .img-container {
@@ -114,10 +99,7 @@ button:focus {
 }
 
 .img-container img {
-  /* margin-top: 0; */
   margin: auto;
-  /* width: auto; */
-  /* height: auto; */
   max-width: 500px;
   max-height: 500px;
   min-width: 2;
@@ -145,7 +127,11 @@ button:focus {
   .text-container {
     height: auto;
     max-height: 60%;
-    /* overflow-y: visible; */
+    overflow-y: scroll; 
+  }
+
+  .no-dream .text-container {
+    max-height: 100%;
   }
 
   .img-container {
@@ -162,7 +148,6 @@ button:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin: auto; */
 }
 
 .prompt {
@@ -201,7 +186,6 @@ button:focus {
 }
 
 .button-area {
-  /* background-color: #222222; */
   width: 40%;
   left: 0;
   right: 0;
@@ -211,7 +195,6 @@ button:focus {
 .button-area .large-button,
 .medium-button,
 .small-button {
-  /* margin: auto; */
   border: 2px solid #9c67b5;
   background-color: #222222;
   margin: 5%;
@@ -232,7 +215,6 @@ button:focus {
 
 .button-area .large-button {
   width: 90%;
-  /* border: #9c67b5 2px; */
   color: white;
 }
 
@@ -253,7 +235,6 @@ button:focus {
   color: white;
   background-color: transparent;
   border: 3px solid #9c67b5;
-  /* margin: 5%; */
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   height: 3em;
@@ -263,9 +244,7 @@ button:focus {
 }
 
 .calculater-container {
-  /* width: calc(80% - 3em); */
   margin-left: calc(2em + 25px);
-  /* overflow: hidden; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -287,7 +266,6 @@ button:focus {
 .plus {
   width: 1em;
   text-align: center;
-  /* justify-content: center; */
 }
 
 @media screen and (max-width: 768px) {
@@ -311,7 +289,6 @@ button:focus {
 }
 
 .button-area .calculater-container {
-  /* margin: auto 5%; */
   display: none;
 }
 
@@ -326,9 +303,6 @@ button:focus {
   border: 3px solid #9c67b5;
   border-radius: 10px;
   padding: 0.6em;
-  /* margin-right: 5px; */
-  /* margin: 2% 5%; */
-  /* border-radius: 0.3em; */
 }
 
 .button-area .calculater:hover,
@@ -398,6 +372,17 @@ button:focus {
   border-width: 4px;
 }
 
+.no-dream .input-box:hover,
+.no-dream .cal-1:hover,
+.no-dream .cal-2:hover,
+.no-dream .calculater:hover {
+  border-width: 3px;
+}
+
+.no-dream .small-button:hover {
+  border-width: 2px;
+}
+
 .hidden-element {
   opacity: 0;
 }
@@ -407,11 +392,7 @@ button:focus {
 }
 
 .continue {
-  /* width: 5%; */
-  /* height: 3%; */
   box-sizing: border-box;
-  /* color: #9c67b5; */
-  /* padding: 1em; */
 }
 
 .card-wrapper {
@@ -422,16 +403,13 @@ button:focus {
   width: 100%;
   margin: auto;
   height: 25vh;
-  /* overflow: hidden; */
   top: 0;
 }
 
 .card-container {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   flex-grow: 1;
-  /* padding: 10px; */
   height: 100%;
   gap: 20px;
 }
@@ -449,7 +427,6 @@ button:focus {
   display: flex;
   border-radius: 10px;
   text-align: center;
-  /* margin: auto; */
   margin-top: 20px;
   position: relative;
   flex-direction: column;
@@ -498,7 +475,6 @@ button:focus {
 
 .card:hover::before {
   content: '';
-  /* background-color: rgba(255, 255, 255, 0.3); */
   z-index: 1;
   border-radius: inherit;
   position: absolute;
@@ -552,7 +528,6 @@ button:focus {
 }
 
 .dev-area {
-  /* color: white; */
   background-color: darkolivegreen;
 }
 
@@ -575,7 +550,6 @@ button:focus {
   height: 5vw;
   min-width: 60px;
   width: 5vw;
-  /* touch-action: manipulation; */
   text-align: center;
   border: none;
 }
@@ -646,7 +620,6 @@ button:focus {
 
 .card-description-img {
   width: 80%;
-  /* margin: auto; */
 }
 
 .card-description-id {
@@ -663,6 +636,11 @@ button:focus {
   margin-bottom: 15px;
 }
 
+.no-dream .card-description-name {
+  margin: auto 0;
+  font-size: 1em;  
+}
+
 .card-description-text {
   color: #ffffff;
   margin-top: 15px;
@@ -674,7 +652,6 @@ button:focus {
   height: 2px;
   width: 80%;
   background-color: #ff9d95;
-  /* margin-top: 15px; */
   margin-bottom: 15px;
 }
 
@@ -713,17 +690,11 @@ div.RAISA {
   background-color: #fff9e6;
   text-align: center;
   margin: auto;
-  width: 40vw;
+  width: 80vw;
   padding: 10px;
   padding-top: 20px;
   padding-bottom: 20px;
   display: none;
-}
-
-@media screen and (max-width: 768px) {
-  div.RAISA {
-    width: 80vw;
-  }
 }
 
 div.RAISA-title {

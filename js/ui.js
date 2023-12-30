@@ -601,7 +601,10 @@ function typingAnimation(element, text, speed, callback) {
     let i = 0;
     let timer = setInterval(() => {
         if (i < text.length) {
-            element.innerText += text.charAt(i);
+            if(text.charAt(i) != ' ')
+                element.innerText += text.charAt(i);
+            else
+                element.innerText += ' ';
             i++;
         }
         else {
