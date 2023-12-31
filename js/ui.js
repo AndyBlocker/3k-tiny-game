@@ -83,6 +83,24 @@ function updateLastTouchClientCoords(e){
     }
 }
 
+function getDragValue(cardId, oldValue) {
+    switch (cardId){
+        case "206":
+            return "-206";
+        case "2067":
+            return "5";
+        case "1066":
+            if (oldValue && parseInt(oldValue) == parseInt(specialCardsData[PURSE_CARD_ID].value)){
+                return 1066 + parseInt(oldValue);
+            }
+            else {
+                return 1066;
+            }
+        default:
+            return getCardTitle(cardId);
+    }
+};
+
 function initCardDrag() {
     function moveHandler(e) {
         if (!_dragging || !_dragElement) {
@@ -106,7 +124,7 @@ function initCardDrag() {
         const dropTarget = document.elementFromPoint(coords.x, coords.y);
 
         if (dropTarget.type == 'text') {
-            dropTarget.value = _dragValue;
+            dropTarget.value = getDragValue(_dragCardId, dropTarget.value);
             if (!dropTarget.classList.contains('input-box')) {
                 calculate();
             }   
@@ -123,7 +141,7 @@ function initCardDrag() {
         document.removeEventListener('selectstart', nullHandler);
         _dragOffset = { X: 0, Y: 0 };
         _dragElement = undefined;
-        _dragValue = '';
+        _dragCardId = '';
     }
 
     document.addEventListener('mousemove', moveHandler);
@@ -132,7 +150,7 @@ function initCardDrag() {
     document.addEventListener('touchend', endHandler);
 }
 
-function registerDraggable(element, value) {
+function registerDraggable(element, cardId) {
     function startHandler(e) {
         e.preventDefault();
         const coords = getEventCoordinates(e);
@@ -157,7 +175,7 @@ function registerDraggable(element, value) {
         console.log(dragElement);
         _dragElement = dragElement;
         _dragging = true;
-        _dragValue = value;
+        _dragCardId = cardId;
         _dragStartTime = e.timeStamp;
         document.addEventListener('selectstart', nullHandler);
     }
@@ -260,15 +278,7 @@ function setupCardElement(cardDiv, cardId, options, cardTitle, cardImage, cardNa
     }  
     cardDiv.onclick = clickHandler;
     cardDiv.addEventListener('touchend', clickHandler);
-
-    var specialValue;
-    if (cardId == "206"){
-        specialValue = "860";
-    }
-    else if (cardId == "2067") {
-        specialValue = "5";
-    }
-    registerDraggable(cardDiv, specialValue ? specialValue : title);
+    registerDraggable(cardDiv, cardId);
 }
 
 // 替换卡牌

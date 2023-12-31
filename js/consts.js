@@ -145,5 +145,5 @@ var _luckyDrawRemaining, _luckyDrawGuaranteeOccurance, _prizeObtained;
 
 var _dragElement, _dragStartTime;
 let _dragging = false;
-let _dragValue = '';
+let _dragCardId = '';
 let _dragOffset = { X: 0, Y: 0 };
