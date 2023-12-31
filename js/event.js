@@ -97,6 +97,13 @@ function startEvent(eventId, options) {
     const previousEventId = options.previousEvent ? options.previousEvent : currentEventId;
     const event = allEvents[eventId];
 
+    // clear all drags
+    const dragElements = document.querySelectorAll('[class*="-drag"]');
+
+    dragElements.forEach(element => {
+        element.parentNode.removeChild(element);
+    });
+
     // Start Event
     completedEvents.push(previousEventId);
     currentEventId = eventId;
