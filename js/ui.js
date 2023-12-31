@@ -136,6 +136,7 @@ function initCardDrag() {
         }
 
         _dragging = false;
+        _dragElement.style.display = 'none';
         _dragElement.parentNode.removeChild(_dragElement);
         _dragElement.remove();
         document.removeEventListener('selectstart', nullHandler);
@@ -153,6 +154,9 @@ function initCardDrag() {
 function registerDraggable(element, cardId) {
     function startHandler(e) {
         e.preventDefault();
+        if (_dragging) {
+            return;
+        }
         const coords = getEventCoordinates(e);
         updateLastTouchClientCoords(e);
 
