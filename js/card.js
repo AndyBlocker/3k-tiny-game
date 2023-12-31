@@ -114,8 +114,6 @@ function loseCards(cardList) {
             popCardFromContainer(cardContainer, card);
         }
     });
-    currentStartIndex = Math.max(0, deck.length - maxCardsToShow);
-    updateCardVisibility();
 }
 
 

@@ -730,7 +730,10 @@ function fadeOutAndRemove(element) {
     element.classList.add('fade-out');
 
     element.addEventListener('animationend', function () {
+        element.parentNode.removeChild(element);
         element.remove();
+        currentStartIndex = Math.max(0, deck.length - maxCardsToShow);
+        updateCardVisibility();
     }, { once: true });
 }
 
