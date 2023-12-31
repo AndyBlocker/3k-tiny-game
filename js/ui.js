@@ -71,7 +71,7 @@ function nullHandler(e) {
 
 function getEventCoordinates(e) {
     if (e.type.startsWith('touch')) {
-        return { x: e.touches[0].pageX, y: e.touches[0].pageY };
+        return { x: e.touches[0].clientX, y: e.touches[0].clientY };
     } else {
         return { x: e.pageX, y: e.pageY };
     }
@@ -82,6 +82,24 @@ function updateLastTouchClientCoords(e){
         _lastTouchCoords = { x: e.touches[0].clientX, y: e.touches[0].clientY }; // 更新触摸坐标
     }
 }
+
+function getDragValue(cardId, oldValue) {
+    switch (cardId){
+        case "206":
+            return "-206";
+        case "2067":
+            return "5";
+        case "1066":
+            if (oldValue && parseInt(oldValue) == parseInt(specialCardsData[PURSE_CARD_ID].value)){
+                return 1066 + parseInt(oldValue);
+            }
+            else {
+                return 1066;
+            }
+        default:
+            return getCardTitle(cardId);
+    }
+};
 
 function initCardDrag() {
     function moveHandler(e) {
@@ -106,7 +124,7 @@ function initCardDrag() {
         const dropTarget = document.elementFromPoint(coords.x, coords.y);
 
         if (dropTarget.type == 'text') {
-            dropTarget.value = _dragValue;
+            dropTarget.value = getDragValue(_dragCardId, dropTarget.value);
             if (!dropTarget.classList.contains('input-box')) {
                 calculate();
             }   
@@ -118,11 +136,13 @@ function initCardDrag() {
         }
 
         _dragging = false;
+        _dragElement.style.display = 'none';
+        _dragElement.parentNode.removeChild(_dragElement);
         _dragElement.remove();
         document.removeEventListener('selectstart', nullHandler);
         _dragOffset = { X: 0, Y: 0 };
         _dragElement = undefined;
-        _dragValue = '';
+        _dragCardId = '';
     }
 
     document.addEventListener('mousemove', moveHandler);
@@ -131,25 +151,35 @@ function initCardDrag() {
     document.addEventListener('touchend', endHandler);
 }
 
-function registerDraggable(element, value) {
+function registerDraggable(element, cardId) {
     function startHandler(e) {
         e.preventDefault();
+        if (_dragging) {
+            return;
+        }
         const coords = getEventCoordinates(e);
         updateLastTouchClientCoords(e);
-        const offsetX = e.type.startsWith('touch') ? coords.x - element.getBoundingClientRect().left : e.offsetX;
-        const offsetY = e.type.startsWith('touch') ? coords.y - element.getBoundingClientRect().top : e.offsetY;
+
+        const scrollX = window.scrollX || document.documentElement.scrollLeft;
+        const scrollY = window.scrollY || document.documentElement.scrollTop;
+
+        const offsetX = e.type.startsWith('touch') ? coords.x - (element.getBoundingClientRect().left + scrollX) : e.offsetX;
+        const offsetY = e.type.startsWith('touch') ? coords.y - (element.getBoundingClientRect().top + scrollY) : e.offsetY;
 
         const dragElement = element.cloneNode(true);
         dragElement.id = element.id + '-drag';
+        dragElement.display = 'block';
         dragElement.classList.add('card-drag');
-        dragElement.style.left = coords.x - offsetX + 'px';
-        dragElement.style.top = coords.y - offsetY + 'px';
+        dragElement.style.position = 'absolute';
+        dragElement.style.left = (coords.x - offsetX) + 'px';
+        dragElement.style.top = (coords.y - offsetY) + 'px';
         _dragOffset.X = offsetX;
         _dragOffset.Y = offsetY;
-        element.parentElement.appendChild(dragElement);
+        document.querySelector('.card-wrapper').appendChild(dragElement);
+        console.log(dragElement);
         _dragElement = dragElement;
         _dragging = true;
-        _dragValue = value;
+        _dragCardId = cardId;
         _dragStartTime = e.timeStamp;
         document.addEventListener('selectstart', nullHandler);
     }
@@ -252,7 +282,7 @@ function setupCardElement(cardDiv, cardId, options, cardTitle, cardImage, cardNa
     }  
     cardDiv.onclick = clickHandler;
     cardDiv.addEventListener('touchend', clickHandler);
-    registerDraggable(cardDiv, title);
+    registerDraggable(cardDiv, cardId);
 }
 
 // 替换卡牌

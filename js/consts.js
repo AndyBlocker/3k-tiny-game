@@ -59,9 +59,8 @@ function parseUrl(){
             else if (key == "iteration-2") {
                 ITERATION_2_LINK = value;
             }
-            else if (key == "file-path") {
+            else if (key == "img-path") {
                 IMAGE_PATH = value;
-                JSON_PATH = value;
             }
         }
     }
@@ -146,5 +145,5 @@ var _luckyDrawRemaining, _luckyDrawGuaranteeOccurance, _prizeObtained;
 
 var _dragElement, _dragStartTime;
 let _dragging = false;
-let _dragValue = '';
+let _dragCardId = '';
 let _dragOffset = { X: 0, Y: 0 };
