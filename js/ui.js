@@ -71,7 +71,7 @@ function nullHandler(e) {
 
 function getEventCoordinates(e) {
     if (e.type.startsWith('touch')) {
-        return { x: e.touches[0].pageX, y: e.touches[0].pageY };
+        return { x: e.touches[0].clientX, y: e.touches[0].clientY };
     } else {
         return { x: e.pageX, y: e.pageY };
     }
@@ -136,17 +136,24 @@ function registerDraggable(element, value) {
         e.preventDefault();
         const coords = getEventCoordinates(e);
         updateLastTouchClientCoords(e);
-        const offsetX = e.type.startsWith('touch') ? coords.x - element.getBoundingClientRect().left : e.offsetX;
-        const offsetY = e.type.startsWith('touch') ? coords.y - element.getBoundingClientRect().top : e.offsetY;
+
+        const scrollX = window.scrollX || document.documentElement.scrollLeft;
+        const scrollY = window.scrollY || document.documentElement.scrollTop;
+
+        const offsetX = e.type.startsWith('touch') ? coords.x - (element.getBoundingClientRect().left + scrollX) : e.offsetX;
+        const offsetY = e.type.startsWith('touch') ? coords.y - (element.getBoundingClientRect().top + scrollY) : e.offsetY;
 
         const dragElement = element.cloneNode(true);
         dragElement.id = element.id + '-drag';
+        dragElement.display = 'block';
         dragElement.classList.add('card-drag');
-        dragElement.style.left = coords.x - offsetX + 'px';
-        dragElement.style.top = coords.y - offsetY + 'px';
+        dragElement.style.position = 'absolute';
+        dragElement.style.left = (coords.x - offsetX) + 'px';
+        dragElement.style.top = (coords.y - offsetY) + 'px';
         _dragOffset.X = offsetX;
         _dragOffset.Y = offsetY;
         element.parentElement.appendChild(dragElement);
+        console.log(dragElement);
         _dragElement = dragElement;
         _dragging = true;
         _dragValue = value;
