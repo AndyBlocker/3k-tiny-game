@@ -35,16 +35,14 @@ function getEventType(event) {
 
 function setupHint(event) {
     const hintPrompt1 = document.getElementById('hintPrompt1');
-
+    const hintPrompt2 = document.getElementById('hintPrompt2');
+    hintText1.style.display = 'none';
+    hintPrompt2.style.display = 'none';
+    hintText2.style.display = 'none';
     if (branch.m || event == undefined || event.hintText == undefined) {
         hintPrompt1.style.display = 'none';
     }
     else {
-        const hintPrompt2 = document.getElementById('hintPrompt2');
-        hintText1.style.display = 'none';
-        hintPrompt2.style.display = 'none';
-        hintText2.style.display = 'none';
-
         hintPrompt1.style.display = 'initial';
         hintText1.innerHTML = event.hintText;
         hintText2.innerHTML = event.hintText2 ? event.hintText2 : '';
@@ -302,7 +300,7 @@ const GetSpecialEventDesc = {
             if (branch.l) {
                 text += "你收容的那个拓麻歌子其实是整个游戏的联络官。没有它的提示，我其实都不知道你们还收容了这么多奇形怪状的玩意儿，也只能在卡牌上随便写点含糊的吐槽。";
             }
-            
+
             if (branch.m || branch.d || branch.l) {
                 text += "”它看了一眼你的收容箱，仿佛在回忆逝去的伙伴。";
             }
