@@ -260,7 +260,15 @@ function setupCardElement(cardDiv, cardId, options, cardTitle, cardImage, cardNa
     }  
     cardDiv.onclick = clickHandler;
     cardDiv.addEventListener('touchend', clickHandler);
-    registerDraggable(cardDiv, title);
+
+    var specialValue;
+    if (cardId == "206"){
+        specialValue = "860";
+    }
+    else if (cardId == "2067") {
+        specialValue = "5";
+    }
+    registerDraggable(cardDiv, specialValue ? specialValue : title);
 }
 
 // 替换卡牌

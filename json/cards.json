@@ -484,6 +484,7 @@
     },
     "purse": {
         "name": "钱包",
+        "displayID": "钱包",
         "color": "props",
         "img": "purse.PNG",
         "description": "你捡到的钱包，里面装着一些钱。",
