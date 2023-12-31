@@ -118,6 +118,7 @@ function initCardDrag() {
         }
 
         _dragging = false;
+        _dragElement.parentNode.removeChild(_dragElement);
         _dragElement.remove();
         document.removeEventListener('selectstart', nullHandler);
         _dragOffset = { X: 0, Y: 0 };
@@ -152,7 +153,7 @@ function registerDraggable(element, value) {
         dragElement.style.top = (coords.y - offsetY) + 'px';
         _dragOffset.X = offsetX;
         _dragOffset.Y = offsetY;
-        element.parentElement.appendChild(dragElement);
+        document.querySelector('.card-wrapper').appendChild(dragElement);
         console.log(dragElement);
         _dragElement = dragElement;
         _dragging = true;
